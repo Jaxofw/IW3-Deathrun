@@ -3,11 +3,15 @@ init() {
     game["menu_customize"] = "customization";
     game["menu_primary"] = "primary";
     game["menu_primary2"] = "primary2";
+    game["menu_secondary"] = "secondary";
+    game["menu_secondary2"] = "secondary2";
 
     precacheMenu( game["menu_team"] );
     precacheMenu( game["menu_customize"] );
     precacheMenu( game["menu_primary"] );
     precacheMenu( game["menu_primary2"] );
+    precacheMenu( game["menu_secondary"] );
+    precacheMenu( game["menu_secondary2"] );
 
     level thread onPlayerConnect();
 }
@@ -46,10 +50,14 @@ onMenuResponse() {
 					self iPrintLnBold( "Coming Soon..." );
 					break;
 			}
-		} else if ( menu == game["menu_primary"] ) {
+		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] ) {
 			id = int(response) - 1;
 			self giveWeapon( level.primaryWeaps[id]["item"] );
 			self switchToWeapon( level.primaryWeaps[id]["item"] );
+		} else if ( menu == game["menu_secondary"] || menu == game["menu_secondary2"] ) {
+			id = int(response) - 1;
+			self giveWeapon( level.secondaryWeaps[id]["item"] );
+			self switchToWeapon( level.secondaryWeaps[id]["item"] );
 		}
     }
 }
