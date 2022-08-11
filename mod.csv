@@ -1,0 +1,17 @@
+# Base Game Scripts
+rawfile,maps/mp/gametypes/_callbacksetup.gsc
+rawfile,maps/mp/gametypes/_gametypes.txt
+rawfile,maps/mp/gametypes/deathrun.gsc
+rawfile,maps/mp/gametypes/deathrun.txt
+
+# Scriptmenus
+menufile,ui_mp/common/arcane.inc
+menufile,ui_mp/scriptmenus/team_marinesopfor.menu
+menufile,ui_mp/scriptmenus/customization.menu
+
+# Menu Assets
+material,menu_rank_bg
+material,menu_rank_bar
+material,blue_button_shit
+material,grey_button_shit
+material,menu_rank_placeholder

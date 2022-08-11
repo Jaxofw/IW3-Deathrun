@@ -1,0 +1,24 @@
+#include "ui/menudef.h"
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+#include "ui_mp/common/arcane.inc"
+{
+	menuDef
+	{
+		name			"customization"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "team_marinesopfor"; }
+
+		ARCANE_INGAME_MENU
+
+		CREATE_BUTTON( 1, "Jumpers", close self; open "jumpers";, 1 )
+		CREATE_BUTTON( 2, "Activators", close self; open "activators";, 1 )
+		CREATE_BUTTON( 3, "Primary", close self; open "primary";, 1 )
+		CREATE_BUTTON( 4, "Secondary", close self; open "secondary";, 1 )
+		CREATE_BUTTON( 5, "Gloves", close self; open "gloves";, 1 )
+		CREATE_BUTTON( 6, "Sprays", close self; open "sprays";, 1 )
+		CREATE_BUTTON( 7, "Trails", close self; open "trails";, 1 )
+		CREATE_BUTTON( 8, "Go Back", close self; open "team_marinesopfor";, 1 )
+	}
+}

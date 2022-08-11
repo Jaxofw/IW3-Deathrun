@@ -1,0 +1,53 @@
+#include "ui/menudef.h"
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+#include "ui_mp/common/arcane.inc"
+{
+	menuDef
+	{
+		name			"team_marinesopfor"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+
+		ARCANE_INGAME_MENU
+
+		CREATE_BUTTON( 1, "Auto-Assign", scriptMenuResponse "autoassign";, 1 )
+		CREATE_BUTTON( 2, "Spectate", scriptMenuResponse "spectate";, 1 )
+		CREATE_BUTTON( 3, "Customization", close self; open "customization";, 1 )
+		CREATE_BUTTON( 4, "Challenges", scriptMenuResponse "challenges";, 1 )
+		CREATE_BUTTON( 5, "Leaderboard", scriptMenuResponse "leaderboard";, 1 )
+		CREATE_BUTTON( 6, "Settings", close self; open "settings";, 1 )
+		CREATE_BUTTON( 7, "Leave Game", close self; open "leave";, 1 )
+
+		CREATE_FOOTER
+	}
+
+	menuDef
+	{
+		name			"settings"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+
+		ARCANE_INGAME_MENU
+
+		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls";, 1 )
+		CREATE_BUTTON( 2, "Graphics", close self; open "options_graphics";, 1 )
+
+		CREATE_FOOTER
+	}
+
+	menuDef
+	{
+		name			"leave"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+
+		ARCANE_INGAME_MENU
+
+		CREATE_TEXT( 125 140 36 36 1 0, "@MENU_ARE_YOU_SURE_QUIT", 1 1 1 1, 0.3, 1 )
+		CREATE_BUTTON( 1, "@MENU_YES", close self; exec "disconnect";, 1 )
+		CREATE_BUTTON( 2, "@MENU_NO", close self; open "team_marinesopfor";, 1 )
+
+		CREATE_FOOTER
+	}
+}
