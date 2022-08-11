@@ -1,11 +1,20 @@
 del mod.ff
 
 xcopy braxi ..\..\raw\braxi /SY
+xcopy english ..\..\raw\english /SY
 xcopy images ..\..\raw\images /SY
 xcopy maps ..\..\raw\maps /SY
 xcopy material_properties ..\..\raw\material_properties /SY
 xcopy materials ..\..\raw\materials /SY
+xcopy mp ..\..\raw\mp /SY
+xcopy soundaliases ..\..\raw\soundaliases /SY
+xcopy sound ..\..\raw\sound /SY
 xcopy ui_mp ..\..\raw\ui_mp /SY
+xcopy weapons ..\..\raw\weapons /SY
+xcopy xanim ..\..\raw\xanim /SY
+xcopy xmodel ..\..\raw\xmodel /SY
+xcopy xmodelparts ..\..\raw\xmodelparts /SY
+xcopy xmodelsurfs ..\..\raw\xmodelsurfs /SY
 
 copy /Y mod.csv ..\..\zone_source
 

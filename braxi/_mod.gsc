@@ -1,3 +1,5 @@
+#include braxi\_utility;
+
 init() {
 	precache();
 	init_spawns();
@@ -9,6 +11,8 @@ init() {
 
 	thread braxi\_dvar::setupDvars();
 	thread braxi\_menus::init();
+
+	buildPrimaryTable();
 }
 
 precache() {
@@ -19,9 +23,7 @@ precache() {
 	precacheStatusIcon( "hud_status_connecting" );
 	precacheStatusIcon( "hud_status_dead" );
 
-	preCacheModel("body_mp_sas_urban_sniper");
-
-	precacheItem("deserteaglegold_mp");
+	preCacheModel( "body_mp_sas_urban_sniper" );
 }
 
 init_spawns() {
@@ -51,7 +53,7 @@ playerConnect() {
 	// we want to show hud and we get an IP adress for "add to favourities" menu
 	self setClientDvars( "show_hud", "true", "ip", getDvar("net_ip"), "port", getDvar("net_port") );
 	if (!isDefined( self.pers["team"] )) {
-		iPrintln( self.name + " ^7entered the game" );
+		iPrintLn( self.name + " ^7entered the game" );
 
 		self.sessionstate = "spectator";
 		self.team = "spectator";
@@ -85,8 +87,8 @@ playerConnect() {
 playerDisconnect() {
 	level notify( "disconnected", self );
 
-	if ( !isDefined( self.name ) ) self.name = "no name";
-	iPrintln( self.name + " ^7left the game" );
+	if (!isDefined( self.name )) self.name = "no name";
+	iPrintLn( self.name + " ^7left the game" );
 
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
 }
@@ -111,13 +113,13 @@ PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vP
 	}
 
 	if ( isPlayer( eAttacker ) && eAttacker != self ) {
-		eAttacker iPrintln( "You hit " + self.name + " ^7for ^2" + iDamage + " ^7damage." );
-		self iPrintln( eAttacker.name + " ^7hit you for ^2" + iDamage + " ^7damage." );
+		eAttacker iPrintLn( "You hit " + self.name + " ^7for ^2" + iDamage + " ^7damage." );
+		self iPrintLn( eAttacker.name + " ^7hit you for ^2" + iDamage + " ^7damage." );
 	}
 
-	if ( !isDefined(vDir) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
+	if (!isDefined( vDir )) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
 
-	if ( !( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
+	if (!( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
 		if ( iDamage < 1 ) iDamage = 1;
 		self finishPlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 	}
@@ -197,7 +199,7 @@ respawnPlayer() {
 	self endon( "spawned_player" );
 	self endon( "joined_spectators" );
 	
-	if ( level.freerun ) self spawnPlayer();
+	self spawnPlayer();
 }
 
 spawnSpectator( origin, angles ) {

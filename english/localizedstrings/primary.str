@@ -1,0 +1,20 @@
+VERSION             "1"
+CONFIG              "C:\trees\cod3\cod3\bin\StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           BERETTA
+LANG_ENGLISH        "Beretta"
+
+REFERENCE           USP
+LANG_ENGLISH        "USP .45"
+
+REFERENCE           M40A3
+LANG_ENGLISH        "M40A3"
+
+REFERENCE           TACDEAGLE
+LANG_ENGLISH        "Tactical Deagle"
+
+REFERENCE           REMINGTON700
+LANG_ENGLISH        "Remington 700"
+
+ENDMARKER

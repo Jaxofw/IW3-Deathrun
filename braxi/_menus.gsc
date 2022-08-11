@@ -1,9 +1,13 @@
 init() {
     game["menu_team"] = "team_marinesopfor";
     game["menu_customize"] = "customization";
+    game["menu_primary"] = "primary";
+    game["menu_primary2"] = "primary2";
 
     precacheMenu( game["menu_team"] );
     precacheMenu( game["menu_customize"] );
+    precacheMenu( game["menu_primary"] );
+    precacheMenu( game["menu_primary2"] );
 
     level thread onPlayerConnect();
 }

@@ -84,8 +84,23 @@
 		textaligny		19 \
 		textalignx		8 \
 		textscale		0.3 \
-		action \
-		{ \
-			play "mouse_click"; action_ \
-		} \
+		mouseEnter { play "mouse_over"; } \
+		action { play "mouse_click"; action_ } \
+	}
+
+#define PAGE_BUTTON( position, string, action_, visibility ) \
+	itemDef \
+	{ \
+		rect 			position \
+		type			ITEM_TYPE_BUTTON \
+		style			WINDOW_STYLE_FILLED \
+		visible			when ( visibility ) \
+		exp text		( string ) \
+		forecolor		1 1 1 1 \
+		backcolor		0 0 0 0 \
+		textalignx		6 \
+		textaligny		14 \
+		textscale		0.26 \
+		mouseEnter { play "mouse_over"; } \
+		action { play "mouse_click"; action_ } \
 	}
