@@ -13,6 +13,7 @@ init() {
 	thread braxi\_menus::init();
 
 	buildPrimaryTable();
+	buildSecondaryTable();
 }
 
 precache() {
@@ -23,20 +24,11 @@ precache() {
 	precacheStatusIcon( "hud_status_connecting" );
 	precacheStatusIcon( "hud_status_dead" );
 
+	// Models
 	preCacheModel( "body_mp_sas_urban_sniper" );
-}
 
-init_spawns() {
-	level.spawn = [];
-	level.spawn["allies"] = getEntArray( "mp_jumper_spawn", "classname" );
-	level.spawn["axis"] = getEntArray( "mp_activator_spawn", "classname" );
-	level.spawn["spectator"] = getEntArray( "mp_global_intermission", "classname" )[0];
-
-	if ( !level.spawn["allies"].size ) level.spawn["allies"] = getEntArray( "mp_dm_spawn", "classname" );
-	if ( !level.spawn["axis"].size ) level.spawn["axis"] = getEntArray( "mp_tdm_spawn", "classname" );
-
-	for ( i = 0; i < level.spawn["allies"].size; i++ ) level.spawn["allies"][i] placeSpawnPoint();
-	for ( i = 0; i < level.spawn["axis"].size; i++ ) level.spawn["axis"][i] placeSpawnPoint();
+	// Weapons
+	preCacheItem( "deserteaglegold_mp" );
 }
 
 playerConnect() {
