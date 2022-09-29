@@ -15,9 +15,9 @@ setSpeed() {
 }
 
 setTeam( team ) {
-	if( self.pers["team"] == team ) return;
+	if ( self.pers["team"] == team ) return;
 
-	if( isAlive( self ) ) self suicide();
+	if ( isAlive( self ) ) self suicide();
 
 	self.pers["weapon"] = "none";
 	self.pers["team"] = team;
