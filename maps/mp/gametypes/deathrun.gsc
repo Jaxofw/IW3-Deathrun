@@ -1,9 +1,9 @@
 main()
 {
-	if( getDvar( "mapname" ) == "mp_background" )
+	if ( getDvar( "mapname" ) == "mp_background" )
 		return; // this isn't required but i'm putting it here...
 
-	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
+	thread maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	level.callbackStartGameType = ::Callback_StartGameType;
 	level.callbackPlayerConnect = ::Callback_PlayerConnect;
 	level.callbackPlayerDisconnect = ::Callback_PlayerDisconnect;
@@ -26,7 +26,7 @@ Callback_StartGameType()
 	if ( !isDefined( game["axis"] ) )
 		game["axis"] = "opfor";
 
-	braxi\_mod::init();
+	thread braxi\_mod::init();
 
 	allowed[0] = "war";
 	maps\mp\gametypes\_gameobjects::main(allowed);	
@@ -35,14 +35,13 @@ Callback_StartGameType()
 notifyConnecting()
 {
 	waittillframeend;
-	if (isDefined( self )) level notify("connecting", self);
+	if ( isDefined(self) ) level notify( "connecting", self );
 }
 
 
 Callback_PlayerConnect()
 {
 	thread notifyConnecting();
-
 	self.statusicon = "";
 	self waittill("begin");
 	self braxi\_mod::playerConnect();

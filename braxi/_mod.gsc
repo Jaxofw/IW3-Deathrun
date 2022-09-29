@@ -1,3 +1,8 @@
+#include maps\mp\_utility;
+#include common_scripts\utility;
+#include maps\mp\gametypes\_hud_util;
+#include braxi\_utility;
+
 init() {
 	precache();
 	init_spawns();
@@ -9,6 +14,19 @@ init() {
 
 	thread braxi\_dvar::setupDvars();
 	thread braxi\_menus::init();
+
+	level.freerun = false;
+	level.spawn_link = spawn( "script_model", (0,0,0) );
+
+	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 1;
+
+	game["state"] = "round_begin";
+
+	if ( game["rounds_played"] == 1 ) {
+		if ( level.dvar["freerun"] ) level.freerun = true;
+	}
+
+	level gameLogic();
 }
 
 precache() {
@@ -19,7 +37,7 @@ precache() {
 	precacheStatusIcon( "hud_status_connecting" );
 	precacheStatusIcon( "hud_status_dead" );
 
-	preCacheModel("body_mp_sas_urban_sniper");
+	precacheModel("body_mp_sas_urban_sniper");
 
 	precacheItem("deserteaglegold_mp");
 }
@@ -37,6 +55,116 @@ init_spawns() {
 	for ( i = 0; i < level.spawn["axis"].size; i++ ) level.spawn["axis"][i] placeSpawnPoint();
 }
 
+gameLogic() {
+	waittillframeend;
+
+	visionSetNaked( "mpIntro", 0 );
+	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
+
+	wait 0.2;
+
+	level.matchStartText = createServerFontString( "objective", 1.5 );
+	level.matchStartText setPoint( "CENTER", "CENTER", 0, 0 );
+	level.matchStartText.sort = 1001;
+	level.matchStartText setText( "Waiting for players..." );
+	level.matchStartText.foreground = false;
+	level.matchStartText.hidewheninmenu = true;
+
+	if ( !level.freerun ) waitForPlayers( 2 );
+
+	startTimer();
+
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ ) {
+		if ( players[i] isPlaying() ) players[i] unLink();
+	}
+
+	game["state"] = "playing";
+
+	visionSetNaked( level.script, 2.0 );
+
+	level watchTimeLimit();
+
+	iPrintLnBold( game["rounds_played"] + "/12" );
+}
+
+watchTimeLimit() {
+	if ( !level.dvar["time_limit"] ) return;
+	
+	time = level.dvar["time_limit"];
+	if ( level.freerun ) time = level.dvar["time_limit_freerun"];
+
+	iPrintLnBold( "Time Left: " + time );
+
+	wait time;
+
+	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
+		level endMap( "activator" );
+		return;
+	}
+
+	level endRound( "Time Limit Reached", "activator" );
+}
+
+endRound( string, winner ) {
+	game["state"] = "round_end";
+	game["rounds_played"]++;
+
+	iPrintLnBold( string );
+
+	if ( winner == "activator" ) {
+		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
+			level.activ braxi\_rank::giveRankXp( "activator", 100 );
+		}
+	}
+
+	wait 10;
+	map_restart( true );
+}
+
+endMap( winner ) {
+	setDvar( "g_deadChat", 1 );
+
+	if ( winner == "activator" ) {
+		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
+			level.activ braxi\_rank::giveRankXp( "activator", 100 );
+		}
+	}
+
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ ) {
+		players[i].sessionstate = "intermission";
+		players[i] spawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
+		players[i] allowSpectateTeam( "allies", false );
+		players[i] allowSpectateTeam( "axis", false );
+		players[i] allowSpectateTeam( "freelook", true );
+		players[i] allowSpectateTeam( "none", false );
+	}
+}
+
+startTimer() {
+	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
+
+	level.matchStartText = createServerFontString( "objective", 1.5 );
+	level.matchStartText setPoint( "CENTER", "CENTER", 0, -20 );
+	level.matchStartText setText( "Round begins in..." );
+	level.matchStartText.sort = 1001;
+	level.matchStartText.foreground = false;
+	level.matchStartText.hidewheninmenu = true;
+	
+	level.matchStartTimer = createServerTimer( "objective", 1.4 );
+	level.matchStartTimer setPoint( "CENTER", "CENTER", 0, 0 );
+	level.matchStartTimer setTimer( level.dvar["spawn_time"] );
+	level.matchStartTimer.sort = 1001;
+	level.matchStartTimer.foreground = false;
+	level.matchStartTimer.hideWhenInMenu = true;
+
+	wait level.dvar["spawn_time"];
+	
+	level.matchStartText destroyElem();
+	level.matchStartTimer destroyElem();
+}
+
 playerConnect() {
 	level notify( "connected", self );
 
@@ -45,13 +173,13 @@ playerConnect() {
 	self.statusicon = "hud_status_connecting";
 	self.died = false;
 
-	if (!isDefined( self.name )) self.name = "undefined name";
-	if (!isDefined( self.guid )) self.guid = "undefined guid";
+	if ( !isDefined( self.name ) ) self.name = "undefined name";
+	if ( !isDefined( self.guid ) ) self.guid = "undefined guid";
 
 	// we want to show hud and we get an IP adress for "add to favourities" menu
 	self setClientDvars( "show_hud", "true", "ip", getDvar("net_ip"), "port", getDvar("net_port") );
-	if (!isDefined( self.pers["team"] )) {
-		iPrintln( self.name + " ^7entered the game" );
+	if ( !isDefined( self.pers["team"] ) ) {
+		iPrintLn( self.name + " ^7entered the game" );
 
 		self.sessionstate = "spectator";
 		self.team = "spectator";
@@ -67,7 +195,7 @@ playerConnect() {
 		self.deaths = self.pers["deaths"];
 	}
 
-	if (!isDefined( level.spawn["spectator"] )) level.spawn["spectator"] = level.spawn["allies"][0];
+	if ( !isDefined( level.spawn["spectator"] ) ) level.spawn["spectator"] = level.spawn["allies"][0];
 
 	self setClientDvars(
 		"cg_drawSpectatorMessages", 1,
@@ -77,7 +205,7 @@ playerConnect() {
 		"ui_uav_client", 0
 	);
 
-	if (self.name.size > 8) self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );
+	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr(self.name, 0, 7) + "..." );
 	
 	self openMenu( game["menu_team"] );
 }
@@ -101,25 +229,13 @@ PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vP
 
 	level notify( "player_damage", self, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 
-	if ( isPlayer( eAttacker ) && eAttacker.pers["team"] == self.pers["team"] ) return;
+	if ( isPlayer(eAttacker) && eAttacker.pers["team"] == self.pers["team"] ) return;
 
-	// damage modifier
-	if ( sMeansOfDeath != "MOD_MELEE" ) {
-		if ( isPlayer( eAttacker ) && eAttacker.pers["ability"] == "specialty_bulletdamage" ) iDamage = int( iDamage * 1.1 );
-		modifier = getDvarFloat( "dr_damageMod_" + sWeapon );
-		if (modifier <= 2.0 && modifier >= 0.1 && sMeansOfDeath != "MOD_MELEE" ) iDamage = int( iDamage * modifier );
-	}
+	if ( !isDefined( vDir ) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
 
-	if ( isPlayer( eAttacker ) && eAttacker != self ) {
-		eAttacker iPrintln( "You hit " + self.name + " ^7for ^2" + iDamage + " ^7damage." );
-		self iPrintln( eAttacker.name + " ^7hit you for ^2" + iDamage + " ^7damage." );
-	}
-
-	if ( !isDefined(vDir) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
-
-	if ( !( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
+	if (!( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
 		if ( iDamage < 1 ) iDamage = 1;
-		self finishPlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
+		self finishPlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime);
 	}
 }
 
@@ -132,32 +248,24 @@ PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLo
 
 	level notify( "player_killed", self, eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
 
-	if ( sHitLoc == "head" && sMeansOfDeath != "MOD_MELEE" ) {
-		sMeansOfDeath = "MOD_HEAD_SHOT";
-	}
-
-	self.sessionstate = "dead";
 	self.statusicon = "hud_status_dead";
-	self.sessionstate =  "spectator";
-
-	if (isPlayer( attacker )) {
-		if ( attacker != self ) {
-			braxi\_rank::processXpReward( sMeansOfDeath, attacker, self );
-			attacker.kills++;
-			attacker.pers["kills"]++;
-		}
-	}
-
-	deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
-	self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
-	self.deaths++;
-	self.pers["deaths"]++;
+	self.sessionstate = "spectator";
 	self.died = true;
 
-	obituary( self, attacker, sWeapon, sMeansOfDeath );
+	if ( !level.freerun ) {
+		deaths = self maps\mp\gametypes\_persistence::statGet("deaths");
+		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
+		self.deaths++;
+		self.pers["deaths"]++;
+		obituary( self, attacker, sWeapon, sMeansOfDeath );
+	}
 
-	if ( self.pers["team"] == "axis" ) self thread braxi\_teams::setTeam( "allies" );
-	else self respawnPlayer();
+	if ( self.pers["team"] == "axis" ) {
+		self thread braxi\_teams::setTeam("allies");
+		return;
+	}
+
+	self respawnPlayer();
 }
 
 spawnPlayer( origin, angles ) {
@@ -175,7 +283,7 @@ spawnPlayer( origin, angles ) {
 
 	self setModel( "body_mp_sas_urban_sniper" );
 
-	if ( isDefined( origin ) && isDefined( angles ) ) self spawn( origin,angles );
+	if ( isDefined(origin) && isDefined(angles) ) self spawn( origin,angles );
 	else {
 		spawnPoint = level.spawn[self.pers["team"]][randomInt( level.spawn[self.pers["team"]].size )];
 		self spawn( spawnPoint.origin, spawnPoint.angles );
@@ -190,14 +298,20 @@ spawnPlayer( origin, angles ) {
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
+
+	if ( game["state"] == "round_begin" ) self linkTo( level.spawn_link );
 }
 
 respawnPlayer() {
 	self endon( "disconnect" );
 	self endon( "spawned_player" );
 	self endon( "joined_spectators" );
-	
-	if ( level.freerun ) self spawnPlayer();
+
+	if ( level.freeRun ) {
+		wait 0.05;
+		self spawnPlayer();
+		return;
+	}
 }
 
 spawnSpectator( origin, angles ) {
