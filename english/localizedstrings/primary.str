@@ -17,4 +17,19 @@ LANG_ENGLISH        "Tactical Deagle"
 REFERENCE           REMINGTON700
 LANG_ENGLISH        "Remington 700"
 
+REFERENCE           COLT44
+LANG_ENGLISH        "Colt .44"
+
+REFERENCE           FN57
+LANG_ENGLISH        "Five-Seven"
+
+REFERENCE           PP
+LANG_ENGLISH        "PPS-42"
+
+REFERENCE           MSR
+LANG_ENGLISH        "MSR"
+
+REFERENCE           P226
+LANG_ENGLISH        "P226"
+
 ENDMARKER
