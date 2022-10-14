@@ -21,6 +21,7 @@ playerConnect() {
 		self.pers["kills"] = 0;
 		self.pers["deaths"] = 0;
 		self.pers["assists"] = 0;
+		self.pers["activator"] = 0;
 	} else {
 		self.score = self.pers["score"];
 		self.kills = self.pers["kills"];

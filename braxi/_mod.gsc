@@ -14,9 +14,13 @@ init() {
 
 	thread braxi\_dvar::setupDvars();
 	thread braxi\_menus::init();
+	thread braxi\_teams::init();
 
 	level.freerun = false;
 	level.spawn_link = spawn( "script_model", (0,0,0) );
+	level.players = [];
+	level.activators = [];
+	level.activator = [];
 
 	if (!isDefined( game["rounds_played"])) game["rounds_played"] = 1;
 
@@ -68,13 +72,30 @@ gameLogic() {
 
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
-		if ( players[i] isPlaying() ) players[i] unLink();
+		if ( players[i] isPlaying() ) {
+			players[i] unLink();
+			level.players[i] = players[i];
+		}
 	}
 
 	visionSetNaked( level.script, 2.0 );
+	level pickRandomActivator();
 	level watchTimeLimit();
 
 	iPrintLnBold( game["rounds_played"] + "/12" );
+}
+
+pickRandomActivator() {
+	randomPlayer = randomInt( level.players.size );
+	playerChosen = level.players[randomPlayer];
+
+	if ( playerChosen.pers["team"] != "allies" ) level thread pickRandomActivator();
+
+	level.activator = playerChosen;
+	playerChosen.pers["activator"]++;
+	playerChosen braxi\_teams::setTeam( "axis" );
+
+	iPrintLnBold("^7" + playerChosen.name + " was chosen to ^5Activate!");
 }
 
 watchTimeLimit() {
