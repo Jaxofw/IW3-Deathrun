@@ -27,6 +27,7 @@ playerConnect() {
 		self.kills = self.pers["kills"];
 		self.assists = self.pers["assists"];
 		self.deaths = self.pers["deaths"];
+		self.activator = self.pers["activator"];
 	}
 
 	if (!isDefined( level.spawn["spectator"])) level.spawn["spectator"] = level.spawn["allies"][0];
@@ -46,7 +47,7 @@ playerConnect() {
 playerDisconnect() {
 	level notify( "disconnected", self );
 
-	if ( !isDefined( self.name ) ) self.name = "no name";
+	if (!isDefined( self.name )) self.name = "no name";
 	iPrintln( self.name + " ^7left the game" );
 
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
