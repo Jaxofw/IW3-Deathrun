@@ -1,3 +1,11 @@
+precache() {
+	precacheShader("white");
+	precacheStatusIcon("hud_status_connecting");
+	precacheStatusIcon("hud_status_dead");
+	precacheModel("body_mp_sas_urban_sniper");
+	precacheItem("deserteaglegold_mp");
+}
+
 getAllPlayers() {
 	return getEntArray( "player", "classname" );
 }
@@ -12,9 +20,8 @@ waitForPlayers( required ) {
 		wait 0.5;
 		players = getAllPlayers();
         if ( players.size > required ) {
-            for ( i = 0; i < players.size; i++ ) {
+            for ( i = 0; i < players.size; i++ )
                 if ( players[i] isPlaying() ) return true;
-            }
         }
     }
 }

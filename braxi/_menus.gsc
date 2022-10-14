@@ -42,10 +42,6 @@ onMenuResponse() {
 					self iPrintLnBold( "Coming Soon..." );
 					break;
 			}
-		} else if ( menu == game["menu_primary"] ) {
-			id = int(response) - 1;
-			self giveWeapon( level.primaryWeaps[id]["item"] );
-			self switchToWeapon( level.primaryWeaps[id]["item"] );
 		}
     }
 }
