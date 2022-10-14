@@ -31,7 +31,7 @@
 		ARCANE_INGAME_MENU
 
 		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls";, 1 )
-		CREATE_BUTTON( 2, "Graphics", close self; open "options_graphics";, 1 )
+		CREATE_BUTTON( 2, "Options", close self; open "options_graphics";, 1 )
 
 		CREATE_FOOTER
 	}

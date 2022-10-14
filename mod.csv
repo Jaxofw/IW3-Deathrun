@@ -16,4 +16,7 @@ material,blue_button_shit
 material,grey_button_shit
 material,menu_rank_placeholder
 
+# Interfaces
+menufile,ui_mp/hud.menu
+
 xmodel,body_mp_sas_urban_sniper
