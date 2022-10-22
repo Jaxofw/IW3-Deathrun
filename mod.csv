@@ -203,23 +203,6 @@ xanim,vm_s1_atlas45_sprint_in
 xanim,vm_s1_atlas45_sprint_loop
 xanim,vm_s1_atlas45_sprint_out
 
-xanim,viewmodel_bow_idle
-xanim,viewmodel_bow_empty_idle
-xanim,viewmodel_bow_fire
-xanim,viewmodel_bow_inspect
-xanim,viewmodel_bow_reload
-xanim,viewmodel_bow_pullout
-xanim,viewmodel_bow_putaway
-xanim,viewmodel_bow_pullout_first
-xanim,viewmodel_bow_empty_pullout
-xanim,viewmodel_bow_empty_putaway
-xanim,viewmodel_bow_sprint_in
-xanim,viewmodel_bow_sprint_loop
-xanim,viewmodel_bow_sprint_out
-xanim,viewmodel_bow_ads_up
-xanim,viewmodel_bow_ads_down
-xanim,viewmodel_bow_ads_down
-
 xanim,iw6_lynx_ads_down_scope
 xanim,iw6_lynx_ads_up_scope
 xanim,iw6_lynx_fire
