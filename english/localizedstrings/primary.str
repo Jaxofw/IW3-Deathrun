@@ -29,7 +29,22 @@ LANG_ENGLISH        "PPS-42"
 REFERENCE           MSR
 LANG_ENGLISH        "MSR"
 
-REFERENCE           P226
-LANG_ENGLISH        "P226"
+REFERENCE           ATLAS
+LANG_ENGLISH        "Atlas 45"
+
+REFERENCE           PSD9
+LANG_ENGLISH        "PK-PSD9"
+
+REFERENCE           LYNX
+LANG_ENGLISH        "Lynx"
+
+REFERENCE           1911
+LANG_ENGLISH        "M1911"
+
+REFERENCE           KAM12
+LANG_ENGLISH        "Kamchatka-12"
+
+REFERENCE           M1927
+LANG_ENGLISH        "M1927"
 
 ENDMARKER

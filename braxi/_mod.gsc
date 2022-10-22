@@ -321,3 +321,19 @@ spawnSpectator( origin, angles ) {
 
 	level notify( "player_spectator", self );
 }
+
+addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
+{
+    if( isPlayer( who ) )
+        hud = newClientHudElem( who );
+    else
+        hud = newHudElem();
+
+    hud.x = x;
+    hud.y = y;
+    hud.alpha = alpha;
+    hud.alignX = alignX;
+    hud.alignY = alignY;
+    hud.fontScale = fontScale;
+    return hud;
+}

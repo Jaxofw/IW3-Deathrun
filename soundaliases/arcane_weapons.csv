@@ -36,8 +36,7 @@
 name,sequence,file,vol_min,vol_max,vol_mod,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage
 
 
-# Colt 44,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
+# Colt 44
 weap_357_fire_plr,,weapons/iw4/44/weap_anaconda_fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
 weap_357_fire,,weapons/iw4/44/weap_anaconda_fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
 
@@ -46,7 +45,7 @@ st_colt44_bullets_out,,weapons/iw4/44/gr_357_empty.wav,1,1,,1,1,7,500,reload,,,,
 st_colt44_bullets_in,,weapons/iw4/44/gr_357_load.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 st_colt44_mag_in,,weapons/iw4/44/gr_357_close.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
-# Five-Seven,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# Five-Seven
 wpn_fiveseven_fire_plr,,weapons/t6/fiveseven/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
 wpn_fiveseven_fire_npc,,weapons/t6/fiveseven/fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
 
@@ -55,21 +54,90 @@ wpn_fiveseven_fly_mag_in,,weapons/t6/fiveseven/mag_in.wav,1,1,,1,1,7,500,reload,
 wpn_fiveseven_fly_mag_out,,weapons/t6/fiveseven/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 wpn_fiveseven_fly_slide_forward,,weapons/t6/fiveseven/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
-#PPS-42
-weap_ppsh42_fire_plr,,weapons/iw2_pps43/weap_pps43_fire_plr.wav,0.66,0.73,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
-weap_ppsh42_fire,,weapons/iw2_pps43/weap_pps43_fire_plr.wav,0.87,0.93,wpnai,1,1,35,10920,weapon,,,,0.7,all_mp,,,,weapon4
-weap_pps43_clipout_plr,,weapons/iw2_pps43/weap_pps43_clipout_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_pps43_clipin_plr,,weapons/iw2_pps43/weap_pps43_clipin_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_pps43_charge_plr,,weapons/iw2_pps43/weap_pps43_charge_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+# PPS-42
+weap_ppsh42_fire_plr,,weapons/iw2/pps43/weap_pps43_fire_plr.wav,0.66,0.73,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+weap_ppsh42_fire,,weapons/iw2/pps43/weap_pps43_fire_plr.wav,0.87,0.93,wpnai,1,1,35,10920,weapon,,,,0.7,all_mp,,,,weapon4
+
+weap_pps43_clipout_plr,,weapons/iw2/pps43/weap_pps43_clipout_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_pps43_clipin_plr,,weapons/iw2/pps43/weap_pps43_clipin_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_pps43_charge_plr,,weapons/iw2/pps43/weap_pps43_charge_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # MSR
-weap_msr_fire_plr,,weapons/msr/weap_msr_slst_1.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-weap_msr_fire_npc,,weapons/msr/weap_msr_slmn_1.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-weap_msr_lift_plr,,weapons/msr/wpfoly_msr_reload_lift_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_msr_chamber_open_plr,,weapons/msr/wpfoly_msr_reload_boltopen_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_msr_clipout_plr,,weapons/msr/wpfoly_msr_reload_clipout_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_msr_clipin_plr,,weapons/msr/wpfoly_msr_reload_clipin_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_msr_chamber_close_plr,,weapons/msr/wpfoly_msr_reload_boltclose_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_msr_fire_plr,,weapons/iw5/msr/weap_msr_slst_1.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+weap_msr_fire_npc,,weapons/iw5/msr/weap_msr_slmn_1.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+weap_msr_lift_plr,,weapons/iw5/msr/wpfoly_msr_reload_lift_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_msr_chamber_open_plr,,weapons/iw5/msr/wpfoly_msr_reload_boltopen_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_msr_clipout_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipout_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_msr_clipin_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipin_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_msr_chamber_close_plr,,weapons/iw5/msr/wpfoly_msr_reload_boltclose_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# PSD9
+wpn_psd9_fire_plr,,weapons/h1/psd9/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_psd9_fire_npc,,weapons/h1/psd9/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+pkpsd9_pout,,weapons/h1/psd9/h1_wpn_pkpsd9_pout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_pout_1st_01,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_pout_1st_02,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# ATLAS 45
+wpn_atlas45_fire_plr,,weapons/s1/atlas45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_atlas45_fire_npc,,weapons/s1/atlas45/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+wpn_titan45_charge,,weapons/s1/atlas45/wpn_titan45_charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_foley_start,,weapons/s1/atlas45/wpn_titan45_foley_start.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_magin,,weapons/s1/atlas45/wpn_titan45_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_magout,,weapons/s1/atlas45/wpn_titan45_magout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_settle,,weapons/s1/atlas45/wpn_titan45_settle.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_tac_foley_start,,weapons/s1/atlas45/wpn_titan45_tac_foley_start.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_tac_magin,,weapons/s1/atlas45/wpn_titan45_tac_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_tac_magout,,weapons/s1/atlas45/wpn_titan45_tac_magout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_tac_pre_magin,,weapons/s1/atlas45/wpn_titan45_tac_pre_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_titan45_tac_settle,,weapons/s1/atlas45/wpn_titan45_tac_settle.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Lynx
+weap_lynx_fire_plr,,weapons/iw6/lynx/bf3_m82/m82_fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+weap_lynx_fire_npc,,weapons/iw6/lynx/bf3_m82/m82_fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+lynx_clipout,,weapons/iw6/lynx/bf3_m82/m82_clipout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+lynx_clipin,,weapons/iw6/lynx/bf3_m82/m82_clipin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+hk416_chamber,,weapons/iw6/lynx/bf3_m416/an94_chamber.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# 1911
+wpn_m1911_fire_plr,,weapons/t5/m1911/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+wpn_m1911_fire_npc,,weapons/t5/m1911/fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
+
+fly_colt45_futz,,weapons/t5/m1911/fly_colt45_futz.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_colt45_mag_in,,weapons/t5/m1911/fly_colt45_mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_colt45_mag_out,,weapons/t5/m1911/fly_colt45_mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_colt45_slide_back,,weapons/t5/m1911/fly_colt45_slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_colt45_slide_forward,,weapons/t5/m1911/fly_colt45_slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_gear_reload_plr,,weapons/t5/m1911/fly_gear_reload_plr.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+
+# Kam12
+wpn_kam12_fire_plr,,weapons/h1/kam12/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_kam12_fire_npc,,weapons/h1/kam12/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+kam12_reload_1_plr,,weapons/h1/kam12/kam12_reload_1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+kam12_reload_2_plr,,weapons/h1/kam12/kam12_reload_2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+kam12_reload_3_plr,,weapons/h1/kam12/kam12_reload_3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+kam12_reload_4_plr,,weapons/h1/kam12/kam12_reload_4.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_ak47_chamber_plr,,weapons/h1/kam12/weap_ak47_chamber_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# M1927
+wpn_thompson_fire_plr,,weapons/t7/m1927/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_thompson_fire_npc,,weapons/t7/m1927/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+fly_tommy_bolt_back,,weapons/t7/m1927/fly_tommy_bolt_back.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_tommy_bolt_release,,weapons/t7/m1927/fly_tommy_bolt_release.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_tommy_mag_out,,weapons/t7/m1927/fly_tommy_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_tommy_mag_in,,weapons/t7/m1927/fly_tommy_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 
