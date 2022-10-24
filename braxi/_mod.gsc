@@ -28,6 +28,7 @@ init() {
 
 	buildPrimaryTable();
 	buildSecondaryTable();
+	buildGloveTable();
 
 	level gameLogic();
 }

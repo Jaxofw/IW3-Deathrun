@@ -7,10 +7,12 @@ rawfile,maps/mp/gametypes/deathrun.txt
 # Localized Strings
 localize,primary
 localize,secondary
+localize,glove
 
 # String Tables
 stringtable,mp/primaryTable.csv
 stringtable,mp/secondaryTable.csv
+stringtable,mp/gloveTable.csv
 
 # Scriptmenus
 menufile,ui_mp/common/arcane.inc

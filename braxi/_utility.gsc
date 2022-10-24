@@ -63,3 +63,19 @@ buildSecondaryTable() {
 		level.numSecondaries++;
 	}
 }
+
+buildGloveTable() {
+	level.gloveModels = [];
+	level.numGloves = 0;
+	
+	tableName = "mp/gloveTable.csv";
+
+	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+		id = int( tableLookup( tableName, 0, idx, 1 ) );
+		level.gloveModels[id]["item"] = tableLookup( tableName, 0, idx, 2 );
+		level.gloveModels[id]["name"] = tableLookup( tableName, 0, idx, 3 );
+		
+		precacheItem( level.gloveModels[id]["item"] );
+		level.numGloves++;
+	}
+}

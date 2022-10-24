@@ -5,6 +5,8 @@ init() {
     game["menu_primary2"] = "primary2";
     game["menu_secondary"] = "secondary";
     game["menu_secondary2"] = "secondary2";
+    game["menu_gloves"] = "gloves";
+    game["menu_gloves2"] = "gloves2";
 
     precacheMenu( game["menu_team"] );
     precacheMenu( game["menu_customize"] );
@@ -12,6 +14,8 @@ init() {
     precacheMenu( game["menu_primary2"] );
     precacheMenu( game["menu_secondary"] );
     precacheMenu( game["menu_secondary2"] );
+    precacheMenu( game["menu_gloves"] );
+    precacheMenu( game["menu_gloves2"] );
 
     level thread onPlayerConnect();
 }
@@ -58,6 +62,10 @@ onMenuResponse() {
 			id = int(response) - 1;
 			self giveWeapon( level.secondaryWeaps[id]["item"] );
 			self switchToWeapon( level.secondaryWeaps[id]["item"] );
+		} else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] ) {
+			id = int(response) - 1;
+			// self setViewModel( level.gloveModels[id]["item"] );
+			self iPrintLnBold( level.gloveModels[id]["item"] );
 		}
     }
 }
