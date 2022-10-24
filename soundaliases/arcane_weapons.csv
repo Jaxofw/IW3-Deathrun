@@ -139,5 +139,50 @@ fly_tommy_bolt_release,,weapons/t7/m1927/fly_tommy_bolt_release.wav,1,1,wpnplyr,
 fly_tommy_mag_out,,weapons/t7/m1927/fly_tommy_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_tommy_mag_in,,weapons/t7/m1927/fly_tommy_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# XPR-50
+weap_xpr50_fire_plr,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+weap_xpr50_fire_npc,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+weap_as50_bolt_forward,,weapons/t6/xpr50/weap_sniper_bf.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_bolt_back,,weapons/t6/xpr50/weap_sniper_bb.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_mag_out,,weapons/t6/xpr50/weap_sniper_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_mag_in,,weapons/t6/xpr50/weap_sniper_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# EMC
+wpn_emc_fire_plr,,weapons/iw7/emc/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_emc_fire_npc,,weapons/iw7/emc/fire_npc.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+weap_emc_clipin_plr,,weapons/iw7/emc/wpfoly_emc_reload_clipin_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_clipout_plr,,weapons/iw7/emc/wpfoly_emc_reload_clipout_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_empty_clipin_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_clipin_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_empty_clipout_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_clipout_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_empty_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_first_raise_close_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_close_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_first_raise_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_reload_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_emc_reload_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# CBJ-MS
+wpn_cbj_fire_plr,,weapons/iw6/cbj/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_cbj_fire_npc,,weapons/iw6/cbj/fire_npc.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+weap_cbj_chamber_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_chamber_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_cbj_clipin_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_clipin_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_cbj_clipout_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_clipout_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_cbj_lift_plr,,weapons/iw6/cbj/wpfoly_cbj_firstraise_lift_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_cbj_reload_end_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_end_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Shotgun
+weap_tac12_fire_plr,,weapons/bf3/bf3_r870/wpnfire_r870_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+weap_tac12_fire_npc,,weapons/bf3/bf3_r870/wpnfire_r870_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+fc4_870_fire_plr,,weapons/bf3/bf3_mk3a3/mk3a3_fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+fc4_870_fire_npc,,weapons/bf3/bf3_mk3a3/mk3a3_fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+tac12_pb,,weapons/bf3/bf3_r870/pumpback.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+tac12_pf,,weapons/bf3/bf3_r870/pumpforward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+tac12_shellin,,weapons/bf3/bf3_r870/bulletIn.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+tac12_open,,weapons/bf3/bf3_r870/open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+870_bolt_back,,weapons/bf3/bf3_mk3a3/mk3a3_pump_back.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+870_bolt_forward,,weapons/bf3/bf3_mk3a3/mk3a3_pump_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 ## END,,,,,,,,,,,,,,,,,,,
 

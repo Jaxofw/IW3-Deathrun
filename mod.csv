@@ -27,6 +27,8 @@ material,menu_rank_placeholder
 # Sound
 sound,arcane_weapons,,all_mp
 
+fx,arcane/emc_muzzleflash
+
 # Weapons
 weapon,mp/colt44_mp
 weapon,mp/deserteagle_mp
@@ -39,6 +41,10 @@ weapon,mp/lynx_mp
 weapon,mp/m1911_mp
 weapon,mp/kam12_mp
 weapon,mp/m1927_mp
+weapon,mp/emc_mp
+weapon,mp/xpr50_mp
+weapon,mp/cbj_mp
+weapon,mp/r870_mp
 
 # Character Models
 xmodel,body_mp_sas_urban_sniper
@@ -82,6 +88,18 @@ xmodel,wpn_h1_kam12_npc
 
 xmodel,wpn_t7_m1927_vm
 xmodel,wpn_t7_m1927_npc
+
+xmodel,viewmodel_bo2_xpr50
+xmodel,worldmodel_bo2_xpr50
+
+xmodel,wpn_iw7_emc_vm
+xmodel,wpn_iw7_emc_npc
+
+xmodel,wpn_iw6_cbj_vm
+xmodel,wpn_iw6_cbj_npc
+
+xmodel,fc4_870_view
+xmodel,fc4_870_world
 
 # Xanims
 xanim,st_anaconda_ads_down
@@ -261,3 +279,70 @@ xanim,vm_t7_m1927_reload_empty
 xanim,vm_t7_m1927_sprint_in
 xanim,vm_t7_m1927_sprint_loop
 xanim,vm_t7_m1927_sprint_out
+
+xanim,viewmodel_xpr50_acog_ads_down
+xanim,viewmodel_xpr50_acog_ads_up
+xanim,viewmodel_xpr50_ads_down
+xanim,viewmodel_xpr50_ads_fire
+xanim,viewmodel_xpr50_ads_up
+xanim,viewmodel_xpr50_fire
+xanim,viewmodel_xpr50_first_raise
+xanim,viewmodel_xpr50_idle
+xanim,viewmodel_xpr50_pullout
+xanim,viewmodel_xpr50_pullout_quick
+xanim,viewmodel_xpr50_putaway
+xanim,viewmodel_xpr50_putaway_quick
+xanim,viewmodel_xpr50_reload
+xanim,viewmodel_xpr50_reload_empty
+xanim,viewmodel_xpr50_sprint_in
+xanim,viewmodel_xpr50_sprint_loop
+xanim,viewmodel_xpr50_sprint_out
+
+xanim,vm_iw7_emc_ads_down
+xanim,vm_iw7_emc_ads_up
+xanim,vm_iw7_emc_drop
+xanim,vm_iw7_emc_drop_quick
+xanim,vm_iw7_emc_fire
+xanim,vm_iw7_emc_fire_ads
+xanim,vm_iw7_emc_fire_last
+xanim,vm_iw7_emc_idle
+xanim,vm_iw7_emc_raise
+xanim,vm_iw7_emc_raise_first
+xanim,vm_iw7_emc_reload
+xanim,vm_iw7_emc_reload_empty
+xanim,vm_iw7_emc_sprint_in
+xanim,vm_iw7_emc_sprint_loop
+xanim,vm_iw7_emc_sprint_out
+
+xanim,vm_iw6_cbj_ads_down
+xanim,vm_iw6_cbj_ads_up
+xanim,vm_iw6_cbj_drop
+xanim,vm_iw6_cbj_drop_quick
+xanim,vm_iw6_cbj_fire
+xanim,vm_iw6_cbj_fire_ads
+xanim,vm_iw6_cbj_idle
+xanim,vm_iw6_cbj_raise
+xanim,vm_iw6_cbj_raise_first
+xanim,vm_iw6_cbj_raise_quick
+xanim,vm_iw6_cbj_reload
+xanim,vm_iw6_cbj_reload_empty
+xanim,vm_iw6_cbj_sprint_in
+xanim,vm_iw6_cbj_sprint_loop
+xanim,vm_iw6_cbj_sprint_out
+
+xanim,fc4_r870_ads_down
+xanim,fc4_r870_ads_up
+xanim,fc4_r870_fire
+xanim,fc4_r870_fire_ads
+xanim,fc4_r870_first_raise
+xanim,fc4_r870_idle
+xanim,fc4_r870_pullout
+xanim,fc4_r870_putaway
+xanim,fc4_r870_rechamber
+xanim,fc4_r870_rechamber_ads
+xanim,fc4_r870_reload_in
+xanim,fc4_r870_reload_loop
+xanim,fc4_r870_reload_out
+xanim,fc4_r870_sprint_in
+xanim,fc4_r870_sprint_loop
+xanim,fc4_r870_sprint_out

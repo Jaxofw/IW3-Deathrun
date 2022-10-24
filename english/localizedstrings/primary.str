@@ -12,13 +12,16 @@ REFERENCE           M40A3
 LANG_ENGLISH        "M40A3"
 
 REFERENCE           TACDEAGLE
-LANG_ENGLISH        "Tactical Deagle"
+LANG_ENGLISH        "Desert Eagle"
 
 REFERENCE           REMINGTON700
 LANG_ENGLISH        "Remington 700"
 
 REFERENCE           COLT44
 LANG_ENGLISH        "Colt .44"
+
+REFERENCE           GDEAGLE
+LANG_ENGLISH        "Gold Desert Eagle"
 
 REFERENCE           FN57
 LANG_ENGLISH        "Five-Seven"
@@ -46,5 +49,17 @@ LANG_ENGLISH        "Kamchatka-12"
 
 REFERENCE           M1927
 LANG_ENGLISH        "M1927"
+
+REFERENCE           EMC
+LANG_ENGLISH        "EMC"
+
+REFERENCE           XPR
+LANG_ENGLISH        "XPR-50"
+
+REFERENCE           CBJ
+LANG_ENGLISH        "CBJ-MS"
+
+REFERENCE           870
+LANG_ENGLISH        "M133"
 
 ENDMARKER
