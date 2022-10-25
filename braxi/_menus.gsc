@@ -1,6 +1,8 @@
 init() {
     game["menu_team"] = "team_marinesopfor";
     game["menu_customize"] = "customization";
+    game["menu_jumpers"] = "jumpers";
+    game["menu_jumpers2"] = "jumpers2";
     game["menu_primary"] = "primary";
     game["menu_primary2"] = "primary2";
     game["menu_secondary"] = "secondary";
@@ -10,6 +12,8 @@ init() {
 
     precacheMenu( game["menu_team"] );
     precacheMenu( game["menu_customize"] );
+    precacheMenu( game["menu_jumpers"] );
+    precacheMenu( game["menu_jumpers2"] );
     precacheMenu( game["menu_primary"] );
     precacheMenu( game["menu_primary2"] );
     precacheMenu( game["menu_secondary"] );
@@ -54,6 +58,10 @@ onMenuResponse() {
 					self iPrintLnBold( "Coming Soon..." );
 					break;
 			}
+		} else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] ) {
+			id = int(response) - 1;
+			self setModel( level.jumperModels[id]["model"] );
+			self iPrintLnBold( level.jumperModels[id]["model"] );
 		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] ) {
 			id = int(response) - 1;
 			self giveWeapon( level.primaryWeaps[id]["item"] );
@@ -64,7 +72,7 @@ onMenuResponse() {
 			self switchToWeapon( level.secondaryWeaps[id]["item"] );
 		} else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] ) {
 			id = int(response) - 1;
-			self setViewModel( level.gloveModels[id]["item"] );
+			self setViewModel( level.gloveModels[id]["model"] );
 		}
     }
 }

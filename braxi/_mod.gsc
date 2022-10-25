@@ -26,6 +26,7 @@ init() {
 		if ( level.dvar["freerun"] ) level.freerun = true;
 	}
 
+	buildJumperTable();
 	buildPrimaryTable();
 	buildSecondaryTable();
 	buildGloveTable();

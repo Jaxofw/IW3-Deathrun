@@ -8,6 +8,7 @@ xcopy maps ..\..\raw\maps /SY
 xcopy material_properties ..\..\raw\material_properties /SY
 xcopy materials ..\..\raw\materials /SY
 xcopy mp ..\..\raw\mp /SY
+xcopy rumble ..\..\raw\rumble /SY
 xcopy soundaliases ..\..\raw\soundaliases /SY
 xcopy sound ..\..\raw\sound /SY
 xcopy ui_mp ..\..\raw\ui_mp /SY

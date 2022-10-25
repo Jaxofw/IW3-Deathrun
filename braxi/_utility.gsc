@@ -32,6 +32,22 @@ init_spawns() {
 	for ( i = 0; i < level.spawn["axis"].size; i++ ) level.spawn["axis"][i] placeSpawnPoint();
 }
 
+buildJumperTable() {
+	level.jumperModels = [];
+	level.numJumpers = 0;
+	
+	tableName = "mp/jumperTable.csv";
+
+	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+		id = int( tableLookup( tableName, 0, idx, 1 ) );
+		level.jumperModels[id]["model"] = tableLookup( tableName, 0, idx, 2 );
+		level.jumperModels[id]["name"] = tableLookup( tableName, 0, idx, 3 );
+		
+		preCacheModel( level.jumperModels[id]["model"] );
+		level.numJumpers++;
+	}
+}
+
 buildPrimaryTable() {
 	level.primaryWeaps = [];
 	level.numPrimaries = 0;
@@ -72,10 +88,10 @@ buildGloveTable() {
 
 	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.gloveModels[id]["item"] = tableLookup( tableName, 0, idx, 2 );
+		level.gloveModels[id]["model"] = tableLookup( tableName, 0, idx, 2 );
 		level.gloveModels[id]["name"] = tableLookup( tableName, 0, idx, 3 );
 		
-		preCacheModel( level.gloveModels[id]["item"] );
+		preCacheModel( level.gloveModels[id]["model"] );
 		level.numGloves++;
 	}
 }
