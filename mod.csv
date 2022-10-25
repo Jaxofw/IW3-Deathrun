@@ -30,6 +30,10 @@ material,menu_rank_placeholder
 sound,arcane_weapons,,all_mp
 
 fx,arcane/emc_muzzleflash
+fx,arcane/emc_trail
+
+# Viewhands
+xmodel,viewmodel_hands_zombie
 
 # Weapons
 weapon,mp/colt44_mp

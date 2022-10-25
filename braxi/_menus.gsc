@@ -64,8 +64,8 @@ onMenuResponse() {
 			self switchToWeapon( level.secondaryWeaps[id]["item"] );
 		} else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] ) {
 			id = int(response) - 1;
-			// self setViewModel( level.gloveModels[id]["item"] );
-			self iPrintLnBold( level.gloveModels[id]["item"] );
+			self setViewModel( level.gloveModels[id]["item"] );
+			//self iPrintLnBold( level.gloveModels[id]["item"] );
 		}
     }
 }
