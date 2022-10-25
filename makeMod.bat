@@ -2,6 +2,7 @@ del mod.ff
 
 xcopy braxi ..\..\raw\braxi /SY
 xcopy english ..\..\raw\english /SY
+xcopy fx ..\..\raw\fx /SY
 xcopy images ..\..\raw\images /SY
 xcopy maps ..\..\raw\maps /SY
 xcopy material_properties ..\..\raw\material_properties /SY
