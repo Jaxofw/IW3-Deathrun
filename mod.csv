@@ -29,11 +29,25 @@ material,menu_rank_placeholder
 # Sound
 sound,arcane_weapons,,all_mp
 
+# FX
 fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
 
+# Fixed Models
+xmodel,viewmodel_m40a3_mp
+xmodel,viewmodel_remington700_mp
+
 # Viewhands
 xmodel,viewmodel_hands_zombie
+xmodel,viewhands_wounded_fixed
+xmodel,viewhands_black_kit
+xmodel,viewhands_desert_opfor
+xmodel,viewhands_marine_sniper
+xmodel,viewhands_moh_ranger
+xmodel,viewhands_t5_cuban
+xmodel,viewhands_t5_nva_standard
+xmodel,viewhands_iw4_tf141
+xmodel,viewhands_t6_suit
 
 # Weapons
 weapon,mp/colt44_mp

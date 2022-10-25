@@ -1,4 +1,34 @@
 REFERENCE           ZOMBIE
 LANG_ENGLISH        "Rolled Up Sleeves"
 
+REFERENCE           BKIT
+LANG_ENGLISH        "Black Kit"
+
+REFERENCE           OPFOR
+LANG_ENGLISH        "Opfor"
+
+REFERENCE           SNIPER
+LANG_ENGLISH        "Woodland Sniper"
+
+REFERENCE           RANGER
+LANG_ENGLISH        "Ranger"
+
+REFERENCE           WOUND
+LANG_ENGLISH        "Wounded"
+
+REFERENCE           BASE
+LANG_ENGLISH        "Velinda"
+
+REFERENCE           CUBAN
+LANG_ENGLISH        "Casual Cuban"
+
+REFERENCE           NVA
+LANG_ENGLISH        "NVA Standard"
+
+REFERENCE           141
+LANG_ENGLISH        "Task Force 141"
+
+REFERENCE           SUIT
+LANG_ENGLISH        "Suit"
+
 ENDMARKER
