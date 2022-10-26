@@ -172,17 +172,14 @@ weap_cbj_clipout_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_clipout_v2.wav,1,1,wpnpl
 weap_cbj_lift_plr,,weapons/iw6/cbj/wpfoly_cbj_firstraise_lift_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_cbj_reload_end_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_end_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# Shotgun
-weap_tac12_fire_plr,,weapons/bf3/bf3_r870/wpnfire_r870_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-weap_tac12_fire_npc,,weapons/bf3/bf3_r870/wpnfire_r870_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-fc4_870_fire_plr,,weapons/bf3/bf3_mk3a3/mk3a3_fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-fc4_870_fire_npc,,weapons/bf3/bf3_mk3a3/mk3a3_fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# TAC-45
+wpn_fnp45_fire_plr,,weapons/t6/fnp45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_fnp45_fire_npc,,weapons/t6/fnp45/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-tac12_pb,,weapons/bf3/bf3_r870/pumpback.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-tac12_pf,,weapons/bf3/bf3_r870/pumpforward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-tac12_shellin,,weapons/bf3/bf3_r870/bulletIn.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-tac12_open,,weapons/bf3/bf3_r870/open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-870_bolt_back,,weapons/bf3/bf3_mk3a3/mk3a3_pump_back.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-870_bolt_forward,,weapons/bf3/bf3_mk3a3/mk3a3_pump_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_mag_out,,weapons/t6/fnp45/fly_fnp45_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
 ## END,,,,,,,,,,,,,,,,,,,
 

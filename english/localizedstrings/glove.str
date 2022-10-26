@@ -31,4 +31,13 @@ LANG_ENGLISH        "Task Force 141"
 REFERENCE           SUIT
 LANG_ENGLISH        "Suit"
 
+REFERENCE           INFANTRY
+LANG_ENGLISH        "Infantry Ghillie"
+
+REFERENCE           INFANTRY2
+LANG_ENGLISH        "Infantry"
+
+REFERENCE           MARLTON
+LANG_ENGLISH        "Marlton"
+
 ENDMARKER

@@ -61,7 +61,6 @@ onMenuResponse() {
 		} else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] ) {
 			id = int(response) - 1;
 			self setModel( level.jumperModels[id]["model"] );
-			self iPrintLnBold( level.jumperModels[id]["model"] );
 		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] ) {
 			id = int(response) - 1;
 			self giveWeapon( level.primaryWeaps[id]["item"] );

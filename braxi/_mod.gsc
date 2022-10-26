@@ -8,7 +8,7 @@ init() {
 	init_spawns();
 	thread braxi\_cod4stuff::init();
 
-	setDvar( "g_speed", 220 );
+	setDvar( "g_speed", 238 );
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "bullet_penetrationEnabled", 0 );
 

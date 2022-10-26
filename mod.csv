@@ -59,13 +59,11 @@ xmodel,sonic
 xmodel,plr_terry_naruto
 xmodel,plr_terry_police
 xmodel,plr_terry_chucky
-
-# VIP Characters
 xmodel,playerbody_t6_marlton
 
 # Viewhands
 xmodel,viewmodel_hands_zombie
-xmodel,viewhands_wounded_fixed
+xmodel,viewhands_t5_wounded
 xmodel,viewhands_black_kit
 xmodel,viewhands_desert_opfor
 xmodel,viewhands_marine_sniper
@@ -74,6 +72,9 @@ xmodel,viewhands_t5_cuban
 xmodel,viewhands_t5_nva_standard
 xmodel,viewhands_iw4_tf141
 xmodel,viewhands_t6_suit
+xmodel,viewhands_t4_ghillie
+xmodel,viewhands_t4_infantry
+xmodel,viewhands_t6_marlton
 
 # Weapons
 weapon,mp/m40a3_fixed_mp
@@ -92,7 +93,7 @@ weapon,mp/m1927_mp
 weapon,mp/emc_mp
 weapon,mp/xpr50_mp
 weapon,mp/cbj_mp
-weapon,mp/r870_mp
+weapon,mp/fnp45_mp
 
 # Character Models
 xmodel,body_mp_sas_urban_sniper
@@ -146,8 +147,8 @@ xmodel,wpn_iw7_emc_npc
 xmodel,wpn_iw6_cbj_vm
 xmodel,wpn_iw6_cbj_npc
 
-xmodel,fc4_870_view
-xmodel,fc4_870_world
+xmodel,wpn_t6_fnp45_vm
+xmodel,wpn_t6_fnp45_npc
 
 # Xanims
 xanim,st_anaconda_ads_down
@@ -378,19 +379,15 @@ xanim,vm_iw6_cbj_sprint_in
 xanim,vm_iw6_cbj_sprint_loop
 xanim,vm_iw6_cbj_sprint_out
 
-xanim,fc4_r870_ads_down
-xanim,fc4_r870_ads_up
-xanim,fc4_r870_fire
-xanim,fc4_r870_fire_ads
-xanim,fc4_r870_first_raise
-xanim,fc4_r870_idle
-xanim,fc4_r870_pullout
-xanim,fc4_r870_putaway
-xanim,fc4_r870_rechamber
-xanim,fc4_r870_rechamber_ads
-xanim,fc4_r870_reload_in
-xanim,fc4_r870_reload_loop
-xanim,fc4_r870_reload_out
-xanim,fc4_r870_sprint_in
-xanim,fc4_r870_sprint_loop
-xanim,fc4_r870_sprint_out
+xanim,vm_t6_fnp45_ads_down
+xanim,vm_t6_fnp45_ads_up
+xanim,vm_t6_fnp45_drop
+xanim,vm_t6_fnp45_fire
+xanim,vm_t6_fnp45_fire_ads
+xanim,vm_t6_fnp45_fire_last
+xanim,vm_t6_fnp45_idle
+xanim,vm_t6_fnp45_raise
+xanim,vm_t6_fnp45_raise_first
+xanim,vm_t6_fnp45_reload
+xanim,vm_t6_fnp45_reload_empty
+xanim,vm_t6_fnp45_sprint_loop
