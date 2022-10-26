@@ -1,4 +1,61 @@
-REFERENCE           SAS
+REFERENCE           MARINE
 LANG_ENGLISH        "Marine"
+
+REFERENCE           FARMER
+LANG_ENGLISH        "Farmer"
+
+REFERENCE           ZOEY
+LANG_ENGLISH        "Zoey"
+
+REFERENCE           DICKHEAD
+LANG_ENGLISH        "Shepherd"
+
+REFERENCE           HALONIGGA
+LANG_ENGLISH        "Masterchief"
+
+REFERENCE           MAKAROV
+LANG_ENGLISH        "Makarov"
+
+REFERENCE           JUG
+LANG_ENGLISH        "Juggernaut"
+
+REFERENCE           ALICE
+LANG_ENGLISH        "Alice"
+
+REFERENCE           DOLLAR
+LANG_ENGLISH        "50 Cent"
+
+REFERENCE           GHILLIE
+LANG_ENGLISH        "USMC Sniper"
+
+REFERENCE           MANDO
+LANG_ENGLISH        "The Mandalorian"
+
+REFERENCE           SCULLY
+LANG_ENGLISH        "DJ Scully"
+
+REFERENCE           STEVE
+LANG_ENGLISH        "Steve"
+
+REFERENCE           PEELY
+LANG_ENGLISH        "Peely"
+
+REFERENCE           JOHNCENA
+LANG_ENGLISH        "Bing Chilling"
+
+REFERENCE           KERMIT
+LANG_ENGLISH        "Kermit"
+
+REFERENCE           SONIC
+LANG_ENGLISH        "Sonic"
+
+REFERENCE           NARUTO
+LANG_ENGLISH        "Naruto"
+
+REFERENCE           OFFICER
+LANG_ENGLISH        "Police Officer"
+
+REFERENCE           CHUCKY
+LANG_ENGLISH        "Chucky"
 
 ENDMARKER

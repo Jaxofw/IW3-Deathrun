@@ -36,8 +36,32 @@ fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
 
 # Fixed Models
-xmodel,viewmodel_m40a3_mp
-xmodel,viewmodel_remington700_mp
+xmodel,viewmodel_m40a3_fixed
+xmodel,viewmodel_remington700_fixed
+
+# Jumpers
+xmodel,body_masterchief
+xmodel,playermodel_mw3_ally_juggernaunt
+xmodel,body_complete_mp_russian_farmer
+xmodel,body_makarov
+xmodel,body_zoey
+xmodel,body_shepherd
+xmodel,body_alice
+xmodel,body_50cent
+xmodel,body_usmc_ghillie_erik
+xmodel,playermodel_mandalorian
+xmodel,plr_mrh_djskully
+xmodel,plr_terry_steve
+xmodel,plr_terry_peely
+xmodel,plr_john_cena
+xmodel,playermodel_kermit_the_frog
+xmodel,sonic
+xmodel,plr_terry_naruto
+xmodel,plr_terry_police
+xmodel,plr_terry_chucky
+
+# VIP Characters
+xmodel,playerbody_t6_marlton
 
 # Viewhands
 xmodel,viewmodel_hands_zombie
@@ -52,6 +76,8 @@ xmodel,viewhands_iw4_tf141
 xmodel,viewhands_t6_suit
 
 # Weapons
+weapon,mp/m40a3_fixed_mp
+weapon,mp/remington700_fixed_mp
 weapon,mp/colt44_mp
 weapon,mp/deserteagle_mp
 weapon,mp/fiveseven_mp
