@@ -35,11 +35,8 @@ sound,arcane_weapons,,all_mp
 fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
 
-# Fixed Models
-xmodel,viewmodel_m40a3_fixed
-xmodel,viewmodel_remington700_fixed
-
 # Jumpers
+xmodel,body_mp_sas_urban_sniper
 xmodel,body_masterchief
 xmodel,playermodel_mw3_ally_juggernaunt
 xmodel,body_complete_mp_russian_farmer
@@ -59,7 +56,10 @@ xmodel,sonic
 xmodel,plr_terry_naruto
 xmodel,plr_terry_police
 xmodel,plr_terry_chucky
+xmodel,playerbody_t6_samuel
+xmodel,playerbody_t6_russman
 xmodel,playerbody_t6_marlton
+xmodel,playerbody_t6_misty
 
 # Viewhands
 xmodel,viewmodel_hands_zombie
@@ -74,11 +74,12 @@ xmodel,viewhands_iw4_tf141
 xmodel,viewhands_t6_suit
 xmodel,viewhands_t4_ghillie
 xmodel,viewhands_t4_infantry
+xmodel,viewhands_t6_samuel
+xmodel,viewhands_t6_russman
 xmodel,viewhands_t6_marlton
+xmodel,viewhands_t6_misty
 
 # Weapons
-weapon,mp/m40a3_fixed_mp
-weapon,mp/remington700_fixed_mp
 weapon,mp/colt44_mp
 weapon,mp/deserteagle_mp
 weapon,mp/fiveseven_mp
@@ -95,10 +96,10 @@ weapon,mp/xpr50_mp
 weapon,mp/cbj_mp
 weapon,mp/fnp45_mp
 
-# Character Models
-xmodel,body_mp_sas_urban_sniper
-
 # Weapon Models
+xmodel,viewmodel_m40a3_fixed
+xmodel,viewmodel_remington700_fixed
+
 xmodel,viewmodel_colt_anaconda_44
 xmodel,weapon_colt_anaconda_44
 
@@ -111,14 +112,8 @@ xmodel,weapon_msr
 xmodel,viewmodel_pps43
 xmodel,weapon_pps43
 
-//xmodel,wpn_iw6_p226_npc
-//xmodel,wpn_iw6_p226_vm
-
 xmodel,wpn_t6_fiveseven_npc
 xmodel,wpn_t6_fiveseven_vm
-
-//xmodel,wpn_t9_milano_npc
-//xmodel,wpn_t9_milano_vm
 
 xmodel,wpn_h1_psd9_vm
 xmodel,wpn_h1_psd9_npc

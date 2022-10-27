@@ -37,7 +37,16 @@ LANG_ENGLISH        "Infantry Ghillie"
 REFERENCE           INFANTRY2
 LANG_ENGLISH        "Infantry"
 
+REFERENCE           SAMUEL
+LANG_ENGLISH        "Samuel"
+
+REFERENCE           RUSSMAN
+LANG_ENGLISH        "Russman"
+
 REFERENCE           MARLTON
 LANG_ENGLISH        "Marlton"
+
+REFERENCE           MISTY
+LANG_ENGLISH        "Misty"
 
 ENDMARKER
