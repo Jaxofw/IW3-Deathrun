@@ -32,9 +32,9 @@
 		visible 		when ( 1 ) \
 	}
 
-#define ARCANE_INGAME_MENU \
+#define ARCANE_INGAME_MENU( blur ) \
 	focuscolor 			1 1 1 1 \
-	blurworld 			2 \
+	blurworld 			blur \
 	CREATE_SHADER( 107 -4 200 640 1 0, "white", 0 0 0 0.5, 1 ) \
 	CREATE_SHADER( 120 50 48 48 1 0, "menu_rank_bg", 0 0 0 0.5, 1 ) \
 	CREATE_SHADER( 124 55 40 40 1 0, "menu_rank_placeholder", 1 1 1 1, 1 ) \

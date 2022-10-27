@@ -9,7 +9,7 @@
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
 
-		ARCANE_INGAME_MENU
+		ARCANE_INGAME_MENU( 2 )
 
 		CREATE_BUTTON( 1, "Auto-Assign", scriptMenuResponse "autoassign";, 1 )
 		CREATE_BUTTON( 2, "Spectate", scriptMenuResponse "spectate";, 1 )
@@ -28,7 +28,7 @@
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
 
-		ARCANE_INGAME_MENU
+		ARCANE_INGAME_MENU( 2 )
 
 		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls";, 1 )
 		CREATE_BUTTON( 2, "Graphics", close self; open "options_graphics";, 1 )
@@ -42,7 +42,7 @@
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
 
-		ARCANE_INGAME_MENU
+		ARCANE_INGAME_MENU( 2 )
 
 		CREATE_TEXT( 125 140 36 36 1 0, "@MENU_ARE_YOU_SURE_QUIT", 1 1 1 1, 0.3, 1 )
 		CREATE_BUTTON( 1, "@MENU_YES", close self; exec "disconnect";, 1 )
