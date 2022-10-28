@@ -76,6 +76,7 @@ xmodel,viewhands_iw4_tf141
 xmodel,viewhands_t6_suit
 xmodel,viewhands_t4_ghillie
 xmodel,viewhands_t4_infantry
+xmodel,viewhands_t5_moon
 xmodel,viewhands_t6_seal6_longsleeve
 xmodel,viewhands_t6_pmc_longsleeve
 xmodel,viewhands_t6_samuel
@@ -100,6 +101,7 @@ weapon,mp/xpr50_mp
 weapon,mp/cbj_mp
 weapon,mp/fnp45_mp
 weapon,mp/sickle_mp
+weapon,mp/sword_mp
 
 # Melee Weapons
 weapon,mp/hands_mp
@@ -158,6 +160,7 @@ xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
 
 xmodel,melee_h1_sickle_vm
+xmodel,melee_t7_sword_vm
 
 # Xanims
 xanim,st_anaconda_ads_down
@@ -396,3 +399,12 @@ xanim,vm_h1_sickle_sprint_loop
 xanim,vm_h1_sickle_sprint_out
 xanim,vm_h1_sickle_stab
 xanim,vm_h1_sickle_swipe
+
+xanim,vm_t7_sword_ads_down
+xanim,vm_t7_sword_drop
+xanim,vm_t7_sword_idle
+xanim,vm_t7_sword_raise
+xanim,vm_t7_sword_sprint_in
+xanim,vm_t7_sword_sprint_loop
+xanim,vm_t7_sword_sprint_out
+xanim,vm_t7_sword_swipe

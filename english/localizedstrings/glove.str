@@ -37,6 +37,9 @@ LANG_ENGLISH        "Infantry Ghillie"
 REFERENCE           INFANTRY2
 LANG_ENGLISH        "Infantry"
 
+REFERENCE           MOON
+LANG_ENGLISH        "Pressure Suit"
+
 REFERENCE           SEAL6
 LANG_ENGLISH        "SEAL Team Six"
 
