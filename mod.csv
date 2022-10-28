@@ -109,6 +109,9 @@ weapon,mp/knife_mp
 xmodel,viewmodel_m40a3_fixed
 xmodel,viewmodel_remington700_fixed
 
+xmodel,viewmodel_m40a3_acog
+xmodel,viewmodel_remington700_acog
+
 xmodel,viewmodel_colt_anaconda_44
 xmodel,weapon_colt_anaconda_44
 
