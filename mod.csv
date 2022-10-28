@@ -35,6 +35,8 @@ sound,arcane_weapons,,all_mp
 fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
 
+xmodel,tag_origin_bitchface
+
 # Jumpers
 xmodel,body_mp_sas_urban_sniper
 xmodel,body_masterchief
@@ -74,6 +76,8 @@ xmodel,viewhands_iw4_tf141
 xmodel,viewhands_t6_suit
 xmodel,viewhands_t4_ghillie
 xmodel,viewhands_t4_infantry
+xmodel,viewhands_t6_seal6_longsleeve
+xmodel,viewhands_t6_pmc_longsleeve
 xmodel,viewhands_t6_samuel
 xmodel,viewhands_t6_russman
 xmodel,viewhands_t6_marlton
@@ -95,6 +99,11 @@ weapon,mp/emc_mp
 weapon,mp/xpr50_mp
 weapon,mp/cbj_mp
 weapon,mp/fnp45_mp
+weapon,mp/sickle_mp
+
+# Melee Weapons
+weapon,mp/hands_mp
+weapon,mp/knife_mp
 
 # Weapon Models
 xmodel,viewmodel_m40a3_fixed
@@ -144,6 +153,8 @@ xmodel,wpn_iw6_cbj_npc
 
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
+
+xmodel,melee_h1_sickle_vm
 
 # Xanims
 xanim,st_anaconda_ads_down
@@ -218,22 +229,6 @@ xanim,vm_t6_fiveseven_reload_empty
 xanim,vm_t6_fiveseven_sprint_in
 xanim,vm_t6_fiveseven_sprint_loop
 xanim,vm_t6_fiveseven_sprint_out
-
-//xanim,vm_t9_milano_ads_down
-//xanim,vm_t9_milano_ads_up
-//xanim,vm_t9_milano_drop
-//xanim,vm_t9_milano_drop_quick
-//xanim,vm_t9_milano_fire
-//xanim,vm_t9_milano_fire_ads
-//xanim,vm_t9_milano_idle
-//xanim,vm_t9_milano_raise
-//xanim,vm_t9_milano_raise_first
-//xanim,vm_t9_milano_raise_quick
-//xanim,vm_t9_milano_reload
-//xanim,vm_t9_milano_reload_empty
-//xanim,vm_t9_milano_sprint_in
-//xanim,vm_t9_milano_sprint_loop
-//xanim,vm_t9_milano_sprint_out
 
 xanim,vm_h1_psd9_ads_down
 xanim,vm_h1_psd9_ads_up
@@ -386,3 +381,15 @@ xanim,vm_t6_fnp45_raise_first
 xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
+
+xanim,vm_h1_sickle_drop
+xanim,vm_h1_sickle_drop_quick
+xanim,vm_h1_sickle_idle
+xanim,vm_h1_sickle_raise
+xanim,vm_h1_sickle_raise_first
+xanim,vm_h1_sickle_raise_quick
+xanim,vm_h1_sickle_sprint_in
+xanim,vm_h1_sickle_sprint_loop
+xanim,vm_h1_sickle_sprint_out
+xanim,vm_h1_sickle_stab
+xanim,vm_h1_sickle_swipe

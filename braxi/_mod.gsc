@@ -8,7 +8,13 @@ init() {
 	init_spawns();
 	thread braxi\_cod4stuff::init();
 
-	setDvar( "g_speed", 238 );
+	setDvar( "cg_fovscale", 1.15 );
+
+	setDvar( "bg_bobamplitudesprinting", 0 );
+	setDvar( "bg_bobamplitudeducked", 0 );
+	setDvar( "bg_bobamplitudeprone", 0 );
+	setDvar( "bg_bobamplitudestanding", 0 );
+	setDvar( "g_speed", 230 );
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "bullet_penetrationEnabled", 0 );
 

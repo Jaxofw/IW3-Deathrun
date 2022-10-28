@@ -181,5 +181,8 @@ fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,re
 fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# Sickle
+h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 ## END,,,,,,,,,,,,,,,,,,,
 

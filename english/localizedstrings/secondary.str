@@ -1,4 +1,10 @@
+REFERENCE           HANDS
+LANG_ENGLISH        "Hands"
+
 REFERENCE           KNIFE
 LANG_ENGLISH        "Knife"
+
+REFERENCE           SICKLE
+LANG_ENGLISH        "Sickle"
 
 ENDMARKER

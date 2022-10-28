@@ -37,6 +37,12 @@ LANG_ENGLISH        "Infantry Ghillie"
 REFERENCE           INFANTRY2
 LANG_ENGLISH        "Infantry"
 
+REFERENCE           SEAL6
+LANG_ENGLISH        "SEAL Team Six"
+
+REFERENCE           PMC
+LANG_ENGLISH        "Mercs"
+
 REFERENCE           SAMUEL
 LANG_ENGLISH        "Samuel"
 
