@@ -101,6 +101,7 @@ weapon,mp/xpr50_mp
 weapon,mp/cbj_mp
 weapon,mp/fnp45_mp
 weapon,mp/sickle_mp
+weapon,mp/shovel_mp
 weapon,mp/sword_mp
 
 # Melee Weapons
@@ -160,6 +161,9 @@ xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
 
 xmodel,melee_h1_sickle_vm
+
+xmodel,viewmodel_fox_ww2_shovel
+
 xmodel,melee_t7_sword_vm
 
 # Xanims
@@ -399,6 +403,16 @@ xanim,vm_h1_sickle_sprint_loop
 xanim,vm_h1_sickle_sprint_out
 xanim,vm_h1_sickle_stab
 xanim,vm_h1_sickle_swipe
+
+xanim,viewmodel_ww2_shovel_sprint_loop
+xanim,viewmodel_ww2_shovel_swipe
+xanim,viewmodel_ww2_shovel_stab
+xanim,viewmodel_ww2_shovel_sprint_out
+xanim,viewmodel_ww2_shovel_sprint_in
+xanim,viewmodel_ww2_shovel_putaway
+xanim,viewmodel_ww2_shovel_pullout_first
+xanim,viewmodel_ww2_shovel_pullout_fast
+xanim,viewmodel_ww2_shovel_idle
 
 xanim,vm_t7_sword_ads_down
 xanim,vm_t7_sword_drop

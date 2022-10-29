@@ -7,6 +7,9 @@ LANG_ENGLISH        "Knife"
 REFERENCE           SICKLE
 LANG_ENGLISH        "Sickle"
 
+REFERENCE           SHOVEL
+LANG_ENGLISH        "Shovel"
+
 REFERENCE           SWORD
 LANG_ENGLISH        "Fury's Song"
 
