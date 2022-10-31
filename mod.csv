@@ -414,15 +414,6 @@ xanim,vm_h1_sickle_sprint_out
 xanim,vm_h1_sickle_stab
 xanim,vm_h1_sickle_swipe
 
-xanim,vm_s2_sledgehammer_drop
-xanim,vm_s2_sledgehammer_idle
-xanim,vm_s2_sledgehammer_raise
-xanim,vm_s2_sledgehammer_sprint_in
-xanim,vm_s2_sledgehammer_sprint_loop
-xanim,vm_s2_sledgehammer_sprint_out
-xanim,vm_s2_sledgehammer_stab
-xanim,vm_s2_sledgehammer_swipe
-
 xanim,vm_t5_b_knife_ads_down
 xanim,vm_t5_b_knife_drop
 xanim,vm_t5_b_knife_fire
