@@ -4,11 +4,17 @@ LANG_ENGLISH        "Hands"
 REFERENCE           KNIFE
 LANG_ENGLISH        "Knife"
 
+REFERENCE           BKNIFE
+LANG_ENGLISH        "Ballistic Knife"
+
 REFERENCE           SICKLE
 LANG_ENGLISH        "Sickle"
 
 REFERENCE           SHOVEL
 LANG_ENGLISH        "Shovel"
+
+REFERENCE           SLEDGE
+LANG_ENGLISH        "Sledgehammer"
 
 REFERENCE           SWORD
 LANG_ENGLISH        "Fury's Song"

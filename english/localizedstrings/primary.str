@@ -44,7 +44,7 @@ REFERENCE           KAM12
 LANG_ENGLISH        "Kamchatka-12"
 
 REFERENCE           M1927
-LANG_ENGLISH        "M1927"
+LANG_ENGLISH        "Thompson"
 
 REFERENCE           EMC
 LANG_ENGLISH        "EMC"
@@ -52,8 +52,8 @@ LANG_ENGLISH        "EMC"
 REFERENCE           XPR
 LANG_ENGLISH        "XPR-50"
 
-REFERENCE           CBJ
-LANG_ENGLISH        "CBJ-MS"
+REFERENCE           PPSH
+LANG_ENGLISH        "PPSH"
 
 REFERENCE           FNP45
 LANG_ENGLISH        "TAC-45"

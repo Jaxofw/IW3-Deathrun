@@ -130,15 +130,6 @@ kam12_reload_3_plr,,weapons/h1/kam12/kam12_reload_3.wav,1,1,wpnplyr,1,1,7,500,re
 kam12_reload_4_plr,,weapons/h1/kam12/kam12_reload_4.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_ak47_chamber_plr,,weapons/h1/kam12/weap_ak47_chamber_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# M1927
-wpn_thompson_fire_plr,,weapons/t7/m1927/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_thompson_fire_npc,,weapons/t7/m1927/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-
-fly_tommy_bolt_back,,weapons/t7/m1927/fly_tommy_bolt_back.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_tommy_bolt_release,,weapons/t7/m1927/fly_tommy_bolt_release.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_tommy_mag_out,,weapons/t7/m1927/fly_tommy_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_tommy_mag_in,,weapons/t7/m1927/fly_tommy_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
 # XPR-50
 weap_xpr50_fire_plr,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
 weap_xpr50_fire_npc,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
@@ -162,16 +153,6 @@ weap_emc_first_raise_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_ope
 weap_emc_reload_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_emc_reload_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# CBJ-MS
-wpn_cbj_fire_plr,,weapons/iw6/cbj/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_cbj_fire_npc,,weapons/iw6/cbj/fire_npc.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-
-weap_cbj_chamber_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_chamber_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_cbj_clipin_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_clipin_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_cbj_clipout_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_clipout_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_cbj_lift_plr,,weapons/iw6/cbj/wpfoly_cbj_firstraise_lift_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_cbj_reload_end_plr,,weapons/iw6/cbj/wpfoly_cbj_reload_end_v2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
 # TAC-45
 wpn_fnp45_fire_plr,,weapons/t6/fnp45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 wpn_fnp45_fire_npc,,weapons/t6/fnp45/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
@@ -181,6 +162,22 @@ fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,re
 fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# PPSH
+wpn_ppsh_fire_plr,,weapons/t4/ppsh/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_ppsh_fire_npc,,weapons/t4/ppsh/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+gr_ppsh_mag_in_plr,,weapons/t4/ppsh/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_ppsh_mag_out_plr,,weapons/t4/ppsh/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_ppsh_slide_back_plr,,weapons/t4/ppsh/slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_ppsh_tap_plr,,weapons/t4/ppsh/mag_tap.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# THOMPSON
+wpn_thompson_fire_plr,,weapons/t4/thompson/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_thompson_fire_npc,,weapons/t4/thompson/fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 # Sickle
 h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,

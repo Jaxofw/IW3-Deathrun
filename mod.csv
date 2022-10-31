@@ -34,7 +34,6 @@ sound,arcane_weapons,,all_mp
 # FX
 fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
-
 xmodel,tag_origin_bitchface
 
 # Jumpers
@@ -95,18 +94,20 @@ weapon,mp/pps43_mp
 weapon,mp/lynx_mp
 weapon,mp/m1911_mp
 weapon,mp/kam12_mp
-weapon,mp/m1927_mp
+weapon,mp/thompson_mp
 weapon,mp/emc_mp
 weapon,mp/xpr50_mp
-weapon,mp/cbj_mp
+weapon,mp/ppsh_mp
 weapon,mp/fnp45_mp
-weapon,mp/sickle_mp
-weapon,mp/shovel_mp
-weapon,mp/sword_mp
 
 # Melee Weapons
 weapon,mp/hands_mp
 weapon,mp/knife_mp
+weapon,mp/ballistic_knife_mp
+weapon,mp/sickle_mp
+weapon,mp/shovel_mp
+weapon,mp/sledgehammer_mp
+weapon,mp/sword_mp
 
 # Weapon Models
 xmodel,viewmodel_m40a3_fixed
@@ -145,8 +146,8 @@ xmodel,wpn_t5_m1911_npc
 xmodel,wpn_h1_kam12_vm
 xmodel,wpn_h1_kam12_npc
 
-xmodel,wpn_t7_m1927_vm
-xmodel,wpn_t7_m1927_npc
+xmodel,wpn_t4_thompson_vm
+xmodel,wpn_t4_thompson_npc
 
 xmodel,viewmodel_bo2_xpr50
 xmodel,worldmodel_bo2_xpr50
@@ -154,16 +155,18 @@ xmodel,worldmodel_bo2_xpr50
 xmodel,wpn_iw7_emc_vm
 xmodel,wpn_iw7_emc_npc
 
-xmodel,wpn_iw6_cbj_vm
-xmodel,wpn_iw6_cbj_npc
+xmodel,wpn_t4_ppsh_vm
+xmodel,wpn_t4_ppsh_npc
 
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
 
+# Melee
 xmodel,melee_h1_sickle_vm
-
 xmodel,viewmodel_fox_ww2_shovel
-
+xmodel,melee_t5_b_knife_vm
+xmodel,melee_t5_b_knife_blade
+xmodel,melee_t5_b_knife_projectile
 xmodel,melee_t7_sword_vm
 
 # Xanims
@@ -313,21 +316,20 @@ xanim,vm_h1_kam12_sprint_in
 xanim,vm_h1_kam12_sprint_loop
 xanim,vm_h1_kam12_sprint_out
 
-xanim,vm_t7_m1927_ads_down
-xanim,vm_t7_m1927_ads_up
-xanim,vm_t7_m1927_drop
-xanim,vm_t7_m1927_drop_quick
-xanim,vm_t7_m1927_fire
-xanim,vm_t7_m1927_fire_ads
-xanim,vm_t7_m1927_idle
-xanim,vm_t7_m1927_raise
-xanim,vm_t7_m1927_raise_first
-xanim,vm_t7_m1927_raise_quick
-xanim,vm_t7_m1927_reload
-xanim,vm_t7_m1927_reload_empty
-xanim,vm_t7_m1927_sprint_in
-xanim,vm_t7_m1927_sprint_loop
-xanim,vm_t7_m1927_sprint_out
+xanim,vm_t4_thompson_ads_down
+xanim,vm_t4_thompson_ads_up
+xanim,vm_t4_thompson_drop
+xanim,vm_t4_thompson_drop_quick
+xanim,vm_t4_thompson_fire
+xanim,vm_t4_thompson_fire_ads
+xanim,vm_t4_thompson_idle
+xanim,vm_t4_thompson_raise
+xanim,vm_t4_thompson_raise_quick
+xanim,vm_t4_thompson_reload
+xanim,vm_t4_thompson_reload_empty
+xanim,vm_t4_thompson_sprint_in
+xanim,vm_t4_thompson_sprint_loop
+xanim,vm_t4_thompson_sprint_out
 
 xanim,viewmodel_xpr50_acog_ads_down
 xanim,viewmodel_xpr50_acog_ads_up
@@ -363,21 +365,19 @@ xanim,vm_iw7_emc_sprint_in
 xanim,vm_iw7_emc_sprint_loop
 xanim,vm_iw7_emc_sprint_out
 
-xanim,vm_iw6_cbj_ads_down
-xanim,vm_iw6_cbj_ads_up
-xanim,vm_iw6_cbj_drop
-xanim,vm_iw6_cbj_drop_quick
-xanim,vm_iw6_cbj_fire
-xanim,vm_iw6_cbj_fire_ads
-xanim,vm_iw6_cbj_idle
-xanim,vm_iw6_cbj_raise
-xanim,vm_iw6_cbj_raise_first
-xanim,vm_iw6_cbj_raise_quick
-xanim,vm_iw6_cbj_reload
-xanim,vm_iw6_cbj_reload_empty
-xanim,vm_iw6_cbj_sprint_in
-xanim,vm_iw6_cbj_sprint_loop
-xanim,vm_iw6_cbj_sprint_out
+xanim,vm_t4_ppsh_ads_down
+xanim,vm_t4_ppsh_ads_up
+xanim,vm_t4_ppsh_drop
+xanim,vm_t4_ppsh_drop_quick
+xanim,vm_t4_ppsh_fire
+xanim,vm_t4_ppsh_idle
+xanim,vm_t4_ppsh_raise
+xanim,vm_t4_ppsh_raise_quick
+xanim,vm_t4_ppsh_reload
+xanim,vm_t4_ppsh_reload_empty
+xanim,vm_t4_ppsh_sprint_in
+xanim,vm_t4_ppsh_sprint_loop
+xanim,vm_t4_ppsh_sprint_out
 
 xanim,vm_t6_fnp45_ads_down
 xanim,vm_t6_fnp45_ads_up
@@ -392,6 +392,16 @@ xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
 
+xanim,viewmodel_ww2_shovel_sprint_loop
+xanim,viewmodel_ww2_shovel_swipe
+xanim,viewmodel_ww2_shovel_stab
+xanim,viewmodel_ww2_shovel_sprint_out
+xanim,viewmodel_ww2_shovel_sprint_in
+xanim,viewmodel_ww2_shovel_putaway
+xanim,viewmodel_ww2_shovel_pullout_first
+xanim,viewmodel_ww2_shovel_pullout_fast
+xanim,viewmodel_ww2_shovel_idle
+
 xanim,vm_h1_sickle_drop
 xanim,vm_h1_sickle_drop_quick
 xanim,vm_h1_sickle_idle
@@ -404,15 +414,27 @@ xanim,vm_h1_sickle_sprint_out
 xanim,vm_h1_sickle_stab
 xanim,vm_h1_sickle_swipe
 
-xanim,viewmodel_ww2_shovel_sprint_loop
-xanim,viewmodel_ww2_shovel_swipe
-xanim,viewmodel_ww2_shovel_stab
-xanim,viewmodel_ww2_shovel_sprint_out
-xanim,viewmodel_ww2_shovel_sprint_in
-xanim,viewmodel_ww2_shovel_putaway
-xanim,viewmodel_ww2_shovel_pullout_first
-xanim,viewmodel_ww2_shovel_pullout_fast
-xanim,viewmodel_ww2_shovel_idle
+xanim,vm_s2_sledgehammer_drop
+xanim,vm_s2_sledgehammer_idle
+xanim,vm_s2_sledgehammer_raise
+xanim,vm_s2_sledgehammer_sprint_in
+xanim,vm_s2_sledgehammer_sprint_loop
+xanim,vm_s2_sledgehammer_sprint_out
+xanim,vm_s2_sledgehammer_stab
+xanim,vm_s2_sledgehammer_swipe
+
+xanim,vm_t5_b_knife_ads_down
+xanim,vm_t5_b_knife_drop
+xanim,vm_t5_b_knife_fire
+xanim,vm_t5_b_knife_idle
+xanim,vm_t5_b_knife_raise
+xanim,vm_t5_b_knife_raise_quick
+xanim,vm_t5_b_knife_reload
+xanim,vm_t5_b_knife_sprint_in
+xanim,vm_t5_b_knife_sprint_loop
+xanim,vm_t5_b_knife_sprint_out
+xanim,vm_t5_b_knife_stab
+xanim,vm_t5_b_knife_swipe
 
 xanim,vm_t7_sword_ads_down
 xanim,vm_t7_sword_drop
