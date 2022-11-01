@@ -28,8 +28,8 @@ LANG_ENGLISH        "NVA Standard"
 REFERENCE           141
 LANG_ENGLISH        "Task Force 141"
 
-REFERENCE           SUIT
-LANG_ENGLISH        "Suit"
+REFERENCE           MILITIA
+LANG_ENGLISH        "Militia"
 
 REFERENCE           INFANTRY
 LANG_ENGLISH        "Infantry Ghillie"
@@ -50,12 +50,15 @@ REFERENCE           SAMUEL
 LANG_ENGLISH        "Samuel"
 
 REFERENCE           RUSSMAN
-LANG_ENGLISH        "Russman"
+LANG_ENGLISH        "REPLACE"
 
 REFERENCE           MARLTON
 LANG_ENGLISH        "Marlton"
 
 REFERENCE           MISTY
 LANG_ENGLISH        "Misty"
+
+REFERENCE           MOHW
+LANG_ENGLISH        "Woodland Ranger"
 
 ENDMARKER

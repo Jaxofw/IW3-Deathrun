@@ -178,8 +178,16 @@ wpn_thompson_fire_npc,,weapons/t4/thompson/fire_npc.wav,0.8,1,wpnai,1,1,35,13780
 gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
 # Sickle
 h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Ballistic Knife
+wpn_b_knife_fire_plr,,weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+
+b_knife_pin,,weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_bal_knife_load,,weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
 ## END,,,,,,,,,,,,,,,,,,,
 

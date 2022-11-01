@@ -27,6 +27,7 @@ material,menu_rank_bar
 material,blue_button_shit
 material,grey_button_shit
 material,menu_rank_placeholder
+material,knife_ballistic_reticle
 
 # Sound
 sound,arcane_weapons,,all_mp
@@ -34,6 +35,8 @@ sound,arcane_weapons,,all_mp
 # FX
 fx,arcane/emc_muzzleflash
 fx,arcane/emc_trail
+
+# Fixes
 xmodel,tag_origin_bitchface
 
 # Jumpers
@@ -53,10 +56,6 @@ xmodel,plr_terry_steve
 xmodel,plr_terry_peely
 xmodel,plr_john_cena
 xmodel,playermodel_kermit_the_frog
-xmodel,sonic
-xmodel,plr_terry_naruto
-xmodel,plr_terry_police
-xmodel,plr_terry_chucky
 xmodel,playerbody_t6_samuel
 xmodel,playerbody_t6_russman
 xmodel,playerbody_t6_marlton
@@ -71,17 +70,17 @@ xmodel,viewhands_marine_sniper
 xmodel,viewhands_moh_ranger
 xmodel,viewhands_t5_cuban
 xmodel,viewhands_t5_nva_standard
-xmodel,viewhands_iw4_tf141
-xmodel,viewhands_t6_suit
 xmodel,viewhands_t4_ghillie
 xmodel,viewhands_t4_infantry
 xmodel,viewhands_t5_moon
 xmodel,viewhands_t6_seal6_longsleeve
 xmodel,viewhands_t6_pmc_longsleeve
 xmodel,viewhands_t6_samuel
-xmodel,viewhands_t6_russman
 xmodel,viewhands_t6_marlton
 xmodel,viewhands_t6_misty
+xmodel,viewhands_mohw_marines
+xmodel,viewhands_mw2_tf141
+xmodel,viewhands_mw2_militia
 
 # Weapons
 weapon,mp/colt44_mp
@@ -109,12 +108,6 @@ weapon,mp/shovel_mp
 weapon,mp/sword_mp
 
 # Weapon Models
-xmodel,viewmodel_m40a3_fixed
-xmodel,viewmodel_remington700_fixed
-
-xmodel,viewmodel_m40a3_acog
-xmodel,viewmodel_remington700_acog
-
 xmodel,viewmodel_colt_anaconda_44
 xmodel,weapon_colt_anaconda_44
 
@@ -418,6 +411,7 @@ xanim,vm_t5_b_knife_drop
 xanim,vm_t5_b_knife_fire
 xanim,vm_t5_b_knife_idle
 xanim,vm_t5_b_knife_raise
+xanim,vm_t5_b_knife_raise_first
 xanim,vm_t5_b_knife_raise_quick
 xanim,vm_t5_b_knife_reload
 xanim,vm_t5_b_knife_sprint_in
