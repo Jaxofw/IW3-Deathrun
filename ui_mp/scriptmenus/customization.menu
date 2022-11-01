@@ -121,6 +121,31 @@
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
 		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open primary;, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open primary3;, 1 )
+	}
+
+	menuDef
+	{
+		name			"primary3"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		CREATE_BUTTON( 1, tableLookup( "mp/primaryTable.csv", 0, 21, 3 ), scriptMenuResponse 21;, 1 )
+		CREATE_BUTTON( 2, tableLookup( "mp/primaryTable.csv", 0, 22, 3 ), scriptMenuResponse 22;, 1 )
+		CREATE_BUTTON( 3, tableLookup( "mp/primaryTable.csv", 0, 23, 3 ), scriptMenuResponse 23;, 1 )
+		CREATE_BUTTON( 4, tableLookup( "mp/primaryTable.csv", 0, 24, 3 ), scriptMenuResponse 24;, 1 )
+		CREATE_BUTTON( 5, tableLookup( "mp/primaryTable.csv", 0, 25, 3 ), scriptMenuResponse 25;, 1 )
+		CREATE_BUTTON( 6, tableLookup( "mp/primaryTable.csv", 0, 26, 3 ), scriptMenuResponse 26;, 1 )
+		CREATE_BUTTON( 7, tableLookup( "mp/primaryTable.csv", 0, 27, 3 ), scriptMenuResponse 27;, 1 )
+		CREATE_BUTTON( 8, tableLookup( "mp/primaryTable.csv", 0, 28, 3 ), scriptMenuResponse 28;, 1 )
+		CREATE_BUTTON( 9, tableLookup( "mp/primaryTable.csv", 0, 29, 3 ), scriptMenuResponse 29;, 1 )
+		CREATE_BUTTON( 10, tableLookup( "mp/primaryTable.csv", 0, 30, 3 ), scriptMenuResponse 30;, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open primary2;, 1 )
 	}
 
 	menuDef

@@ -5,6 +5,7 @@ init() {
     game["menu_jumpers2"] = "jumpers2";
     game["menu_primary"] = "primary";
     game["menu_primary2"] = "primary2";
+    game["menu_primary3"] = "primary3";
     game["menu_secondary"] = "secondary";
     game["menu_secondary2"] = "secondary2";
     game["menu_gloves"] = "gloves";
@@ -16,6 +17,7 @@ init() {
     precacheMenu( game["menu_jumpers2"] );
     precacheMenu( game["menu_primary"] );
     precacheMenu( game["menu_primary2"] );
+    precacheMenu( game["menu_primary3"] );
     precacheMenu( game["menu_secondary"] );
     precacheMenu( game["menu_secondary2"] );
     precacheMenu( game["menu_gloves"] );
@@ -61,7 +63,7 @@ onMenuResponse() {
 		} else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] ) {
 			id = int(response) - 1;
 			self setModel( level.jumperModels[id]["model"] );
-		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] ) {
+		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] || menu == game["menu_primary3"] ) {
 			id = int(response) - 1;
 			self giveWeapon( level.primaryWeaps[id]["item"] );
 			self switchToWeapon( level.primaryWeaps[id]["item"] );
