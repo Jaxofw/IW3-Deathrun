@@ -19,11 +19,11 @@ LANG_ENGLISH        "Baseball Bat"
 REFERENCE           SCYTHE
 LANG_ENGLISH        "Scythe"
 
-REFERENCE           NUN
-LANG_ENGLISH        "Nunchucks"
+REFERENCE           COIN
+LANG_ENGLISH        "Money Bag"
 
-REFERENCE           KATANA
-LANG_ENGLISH        "Katana"
+REFERENCE           MACHETE
+LANG_ENGLISH        "Machete"
 
 REFERENCE           SWORD
 LANG_ENGLISH        "Fury's Song"

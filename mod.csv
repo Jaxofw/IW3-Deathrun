@@ -126,7 +126,8 @@ weapon,mp/knife_mp
 weapon,mp/ballistic_knife_mp
 weapon,mp/sickle_mp
 weapon,mp/shovel_mp
-weapon,mp/katana_mp
+weapon,mp/machete_mp
+weapon,mp/coinbag_mp
 weapon,mp/scythe_mp
 weapon,mp/bat_mp
 weapon,mp/sword_mp
@@ -188,7 +189,8 @@ xmodel,viewmodel_fox_ww2_shovel
 xmodel,melee_t5_b_knife_vm
 xmodel,melee_t5_b_knife_blade
 xmodel,melee_t5_b_knife_projectile
-xmodel,melee_iw7_katana_vm
+xmodel,melee_t9_machete_vm
+xmodel,melee_t8_coinbag_vm
 xmodel,melee_t9_scythe_vm
 xmodel,melee_t9_bat_vm
 xmodel,melee_t7_sword_vm
@@ -465,25 +467,24 @@ xanim,vm_t5_b_knife_sprint_out
 xanim,vm_t5_b_knife_stab
 xanim,vm_t5_b_knife_swipe
 
-xanim,vm_iw7_katana_ads_down
-xanim,vm_iw7_katana_drop
-xanim,vm_iw7_katana_idle
-xanim,vm_iw7_katana_raise
-xanim,vm_iw7_katana_raise_first
-xanim,vm_iw7_katana_raise_quick
-xanim,vm_iw7_katana_sprint_in
-xanim,vm_iw7_katana_sprint_loop
-xanim,vm_iw7_katana_sprint_out
-xanim,vm_iw7_katana_swipe
+xanim,vm_t9_machete_ads_down
+xanim,vm_t9_machete_drop
+xanim,vm_t9_machete_idle
+xanim,vm_t9_machete_raise
+xanim,vm_t9_machete_sprint_in
+xanim,vm_t9_machete_sprint_loop
+xanim,vm_t9_machete_sprint_out
+xanim,vm_t9_machete_stab
+xanim,vm_t9_machete_swipe
 
-xanim,vm_t7_nunchucks_ads_down
-xanim,vm_t7_nunchucks_drop
-xanim,vm_t7_nunchucks_raise_first
-xanim,vm_t7_nunchucks_idle
-xanim,vm_t7_nunchucks_sprint_in
-xanim,vm_t7_nunchucks_sprint_loop
-xanim,vm_t7_nunchucks_sprint_out
-xanim,vm_t7_nunchucks_swipe
+xanim,vm_t8_coinbag_ads_down
+xanim,vm_t8_coinbag_drop
+xanim,vm_t8_coinbag_idle
+xanim,vm_t8_coinbag_raise
+xanim,vm_t8_coinbag_sprint_in
+xanim,vm_t8_coinbag_sprint_loop
+xanim,vm_t8_coinbag_sprint_out
+xanim,vm_t8_coinbag_swipe
 
 xanim,vm_t9_bat_ads_down
 xanim,vm_t9_bat_drop
