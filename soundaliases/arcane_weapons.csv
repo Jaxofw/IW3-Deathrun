@@ -179,6 +179,15 @@ gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,rel
 gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# Wave Gun
+wpn_wavegun_fire_plr,,prestige_weapons/wavegun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_wavegun_fire_npc,,prestige_weapons/wavegun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+fly_mgun_rld_rifle_futz,,prestige_weapons/wavegun/wpn_micro_rld_rifle_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_mgun_rld_rifle_mag_in,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_mgun_rld_rifle_mag_out,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_mgun_rld_rifle_power_up,,prestige_weapons/wavegun/wpn_micro_rld_rifle_power_up.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
 # Sickle
 h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
@@ -188,6 +197,12 @@ wpn_b_knife_fire_plr,,weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,lo
 
 b_knife_pin,,weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_bal_knife_load,,weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Katana
+katana_first_raise_a,,weapons/iw7/katana/katana_first_raise_a.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+katana_first_raise_b,,weapons/iw7/katana/katana_first_raise_b.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+katana_first_raise_c,,weapons/iw7/katana/katana_first_raise_c.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+katana_raise_01,,weapons/iw7/katana/katana_raise_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 

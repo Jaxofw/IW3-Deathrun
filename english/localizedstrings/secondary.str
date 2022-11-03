@@ -13,6 +13,18 @@ LANG_ENGLISH        "Sickle"
 REFERENCE           SHOVEL
 LANG_ENGLISH        "Shovel"
 
+REFERENCE           BAT
+LANG_ENGLISH        "Baseball Bat"
+
+REFERENCE           SCYTHE
+LANG_ENGLISH        "Scythe"
+
+REFERENCE           NUN
+LANG_ENGLISH        "Nunchucks"
+
+REFERENCE           KATANA
+LANG_ENGLISH        "Katana"
+
 REFERENCE           SWORD
 LANG_ENGLISH        "Fury's Song"
 

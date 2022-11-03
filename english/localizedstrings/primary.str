@@ -58,4 +58,7 @@ LANG_ENGLISH        "PPSH"
 REFERENCE           FNP45
 LANG_ENGLISH        "TAC-45"
 
+REFERENCE           WAVE
+LANG_ENGLISH        "Wave Gun"
+
 ENDMARKER

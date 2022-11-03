@@ -52,7 +52,7 @@ precache() {
 	preCacheModel( "body_mp_sas_urban_sniper" );
 
 	// Weapons
-	preCacheItem( "deserteaglegold_mp" );
+	preCacheItem( "beretta_mp" );
 }
 
 gameLogic() {
@@ -289,9 +289,9 @@ spawnPlayer( origin, angles ) {
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
-	self giveWeapon( "deserteaglegold_mp" );
-	self setSpawnWeapon( "deserteaglegold_mp" );
-	self giveMaxAmmo( "deserteaglegold_mp" );
+	self giveWeapon( "beretta_mp" );
+	self setSpawnWeapon( "beretta_mp" );
+	self giveMaxAmmo( "beretta_mp" );
 
 	self thread braxi\_teams::setHealth();
 	self thread braxi\_teams::setSpeed();

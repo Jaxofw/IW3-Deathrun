@@ -28,6 +28,24 @@ material,blue_button_shit
 material,grey_button_shit
 material,menu_rank_placeholder
 material,knife_ballistic_reticle
+material,melee_weapon_reticle
+
+# Test Nigga
+xanim,vm_h1_tribal_ads_down
+xanim,vm_h1_tribal_drop
+xanim,vm_h1_tribal_drop_quick
+xanim,vm_h1_tribal_idle
+xanim,vm_h1_tribal_raise
+xanim,vm_h1_tribal_raise_first
+xanim,vm_h1_tribal_raise_quick
+xanim,vm_h1_tribal_sprint_in
+xanim,vm_h1_tribal_sprint_loop
+xanim,vm_h1_tribal_sprint_out
+xanim,vm_h1_tribal_stab
+xanim,vm_h1_tribal_swipe
+xmodel,melee_h1_tribal_vm
+xmodel,melee_h1_tribal_npc
+weapon,mp/tribal_mp
 
 # Sound
 sound,arcane_weapons,,all_mp
@@ -99,12 +117,18 @@ weapon,mp/xpr50_mp
 weapon,mp/ppsh_mp
 weapon,mp/fnp45_mp
 
+# Prestige Weapons
+weapon,mp/wavegun_mp
+
 # Melee Weapons
 weapon,mp/hands_mp
 weapon,mp/knife_mp
 weapon,mp/ballistic_knife_mp
 weapon,mp/sickle_mp
 weapon,mp/shovel_mp
+weapon,mp/katana_mp
+weapon,mp/scythe_mp
+weapon,mp/bat_mp
 weapon,mp/sword_mp
 
 # Weapon Models
@@ -153,12 +177,20 @@ xmodel,wpn_t4_ppsh_npc
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
 
-# Melee
+# Prestige Weapons
+
+xmodel,wpn_t7_wavegun_vm
+xmodel,wpn_t7_wavegun_npc
+
+# Melee Weapons
 xmodel,melee_h1_sickle_vm
 xmodel,viewmodel_fox_ww2_shovel
 xmodel,melee_t5_b_knife_vm
 xmodel,melee_t5_b_knife_blade
 xmodel,melee_t5_b_knife_projectile
+xmodel,melee_iw7_katana_vm
+xmodel,melee_t9_scythe_vm
+xmodel,melee_t9_bat_vm
 xmodel,melee_t7_sword_vm
 
 # Xanims
@@ -384,6 +416,19 @@ xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
 
+xanim,vm_t7_wavegun_ads_down
+xanim,vm_t7_wavegun_ads_up
+xanim,vm_t7_wavegun_drop
+xanim,vm_t7_wavegun_drop_quick
+xanim,vm_t7_wavegun_fire
+xanim,vm_t7_wavegun_fire_ads
+xanim,vm_t7_wavegun_raise
+xanim,vm_t7_wavegun_raise_quick
+xanim,vm_t7_wavegun_reload
+xanim,vm_t7_wavegun_sprint_in
+xanim,vm_t7_wavegun_sprint_loop
+xanim,vm_t7_wavegun_sprint_out
+
 xanim,viewmodel_ww2_shovel_sprint_loop
 xanim,viewmodel_ww2_shovel_swipe
 xanim,viewmodel_ww2_shovel_stab
@@ -419,6 +464,48 @@ xanim,vm_t5_b_knife_sprint_loop
 xanim,vm_t5_b_knife_sprint_out
 xanim,vm_t5_b_knife_stab
 xanim,vm_t5_b_knife_swipe
+
+xanim,vm_iw7_katana_ads_down
+xanim,vm_iw7_katana_drop
+xanim,vm_iw7_katana_idle
+xanim,vm_iw7_katana_raise
+xanim,vm_iw7_katana_raise_first
+xanim,vm_iw7_katana_raise_quick
+xanim,vm_iw7_katana_sprint_in
+xanim,vm_iw7_katana_sprint_loop
+xanim,vm_iw7_katana_sprint_out
+xanim,vm_iw7_katana_swipe
+
+xanim,vm_t7_nunchucks_ads_down
+xanim,vm_t7_nunchucks_drop
+xanim,vm_t7_nunchucks_raise_first
+xanim,vm_t7_nunchucks_idle
+xanim,vm_t7_nunchucks_sprint_in
+xanim,vm_t7_nunchucks_sprint_loop
+xanim,vm_t7_nunchucks_sprint_out
+xanim,vm_t7_nunchucks_swipe
+
+xanim,vm_t9_bat_ads_down
+xanim,vm_t9_bat_drop
+xanim,vm_t9_bat_idle
+xanim,vm_t9_bat_raise
+xanim,vm_t9_bat_sprint_in
+xanim,vm_t9_bat_sprint_loop
+xanim,vm_t9_bat_sprint_out
+xanim,vm_t9_bat_stab
+xanim,vm_t9_bat_swipe
+
+xanim,vm_t9_scythe_ads_down
+xanim,vm_t9_scythe_drop
+xanim,vm_t9_scythe_drop_quick
+xanim,vm_t9_scythe_idle
+xanim,vm_t9_scythe_raise
+xanim,vm_t9_scythe_raise_quick
+xanim,vm_t9_scythe_sprint_in
+xanim,vm_t9_scythe_sprint_loop
+xanim,vm_t9_scythe_sprint_out
+xanim,vm_t9_scythe_stab
+xanim,vm_t9_scythe_swipe
 
 xanim,vm_t7_sword_ads_down
 xanim,vm_t7_sword_drop
