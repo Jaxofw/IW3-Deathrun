@@ -29,7 +29,7 @@
             textScale                 0.24375
             textStyle                 ITEM_TEXTSTYLE_SHADOWED
             gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
-            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && ! ui_active( ) ) )
+            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && !ui_active() ) )
         }
     }
 
@@ -62,7 +62,58 @@
             textStyle                 ITEM_TEXTSTYLE_SHADOWED
             gameMsgWindowIndex        1
             gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
-            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && ! ui_active( ) ) )
+            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && !ui_active() ) )
         }
     }
+
+	menuDef
+	{
+		name			"xpbar"
+		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		fullScreen		0
+		visible 		1
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 8 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			origin			0 0
+			background		"white"
+			forecolor		0 0 0 0.25
+			visible			when( !dvarInt( "wideScreen" ) );
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 2 540 4 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			exp				rect W( 640 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351))) );
+			origin			0 0
+			background		"white"
+			forecolor		0 0.502 1 0.4
+			visible			when( !dvarInt( "wideScreen" ) );
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 854 8 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			origin			0 0
+			background		"white"
+			forecolor		0 0 0 0.25
+			visible			when( dvarInt( "wideScreen" ) );
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 2 720 4 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
+			exp				rect W( 854 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351))) );
+			origin			0 0
+			background		"white"
+			forecolor		0 0.502 1 0.4
+			visible			when( dvarInt( "wideScreen" ) );
+			decoration
+		}
+	}
 }

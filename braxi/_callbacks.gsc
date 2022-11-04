@@ -9,14 +9,22 @@ playerConnect() {
 	if (!isDefined( self.name )) self.name = "undefined name";
 	if (!isDefined( self.guid )) self.guid = "undefined guid";
 
-	// we want to show hud and we get an IP adress for "add to favourities" menu
-	self setClientDvars( "show_hud", "true", "ip", getDvar("net_ip"), "port", getDvar("net_port") );
+	self setClientDvars(
+		"show_hud", true,
+		"ip", getDvar("net_ip"),
+		"port", getDvar("net_port"),
+		"cg_drawSpectatorMessages", 1,
+		"ui_menu_playername", self.name,
+		"ui_uav_client", 0
+	);
+	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr(self.name, 0, 7) + "..." );
+	
 	if (!isDefined( self.pers["team"] )) {
 		iPrintLn( self.name + " ^7entered the game" );
 
-		self.sessionstate = "spectator";
-		self.team = "spectator";
-		self.pers["team"] = "spectator";
+		self.sessionstate = "playing";
+		self.team = "allies";
+		self.pers["team"] = "allies";
 		self.pers["score"] = 0;
 		self.pers["kills"] = 0;
 		self.pers["deaths"] = 0;
@@ -27,28 +35,18 @@ playerConnect() {
 		self.kills = self.pers["kills"];
 		self.assists = self.pers["assists"];
 		self.deaths = self.pers["deaths"];
-		self.activator = self.pers["activator"];
+		self.activator = self.pers["acitvator"];
 	}
 
-	if (!isDefined( level.spawn["spectator"])) level.spawn["spectator"] = level.spawn["allies"][0];
+	if ( !isDefined(level.spawn["spectator"]) ) level.spawn["spectator"] = level.spawn["allies"][0];
 
-	self setClientDvars(
-		"cg_drawSpectatorMessages", 1,
-		"ui_hud_hardcore", 1,
-		"ui_menu_playername", self.name,
-		"ui_uav_client", 0
-	);
-
-	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr(self.name, 0, 7) + "..." );
-	
-	self openMenu( game["menu_team"] );
+	self braxi\_mod::spawnPlayer();
 }
 
 playerDisconnect() {
 	level notify( "disconnected", self );
 
-	if (!isDefined( self.name )) self.name = "no name";
-	iPrintln( self.name + " ^7left the game" );
+	if (!isDefined( self.name )) iPrintLn( self.name + " ^7left the game" );
 
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
 }
@@ -74,7 +72,6 @@ PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vP
 }
 
 PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration) {
-	self endon( "spawned" );
 	self notify( "killed_player" );
 	self notify( "death" );
 
@@ -87,15 +84,16 @@ PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLo
 	self.died = true;
 
 	if ( !level.freerun ) {
-		deaths = self maps\mp\gametypes\_persistence::statGet("deaths");
-		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
 		self.deaths++;
 		self.pers["deaths"]++;
-		obituary( self, attacker, sWeapon, sMeansOfDeath );
+		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
+		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
 	}
+	
+	obituary( self, attacker, sWeapon, sMeansOfDeath );
 
 	if ( self.pers["team"] == "axis" ) {
-		self thread braxi\_teams::setTeam("allies");
+		self thread braxi\_teams::setTeam( "allies" );
 		return;
 	}
 

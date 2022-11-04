@@ -8,9 +8,10 @@
 		name			"customization"
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
+		onOpen          { setdvar cg_thirdperson 0; setdvar cg_thirdpersonangle 0; }
 		onESC 			{ close self; open "team_marinesopfor"; }
 
-		ARCANE_INGAME_MENU
+		ARCANE_INGAME_MENU( 2 )
 
 		CREATE_BUTTON( 1, "Jumpers", close self; open "jumpers";, 1 )
 		CREATE_BUTTON( 2, "Activators", close self; open "activators";, 1 )
@@ -20,5 +21,228 @@
 		CREATE_BUTTON( 6, "Sprays", close self; open "sprays";, 1 )
 		CREATE_BUTTON( 7, "Trails", close self; open "trails";, 1 )
 		CREATE_BUTTON( 8, "Go Back", close self; open "team_marinesopfor";, 1 )
+	}
+
+	menuDef
+	{
+		name			"jumpers"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onOpen          { setdvar cg_thirdperson 1; setdvar cg_thirdpersonangle 210; }
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, JUMPER, 1, 1 )
+		UNLOCKABLE( 2, JUMPER, 2, 1 )
+		UNLOCKABLE( 3, JUMPER, 3, 1 )
+		UNLOCKABLE( 4, JUMPER, 4, 1 )
+		UNLOCKABLE( 5, JUMPER, 5, 1 )
+		UNLOCKABLE( 6, JUMPER, 6, 1 )
+		UNLOCKABLE( 7, JUMPER, 7, 1 )
+		UNLOCKABLE( 8, JUMPER, 8, 1 )
+		UNLOCKABLE( 9, JUMPER, 9, 1 )
+		UNLOCKABLE( 10, JUMPER, 10, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open jumpers2, 1 )
+	}
+
+	menuDef
+	{
+		name			"jumpers2"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onOpen          { setdvar cg_thirdperson 1; setdvar cg_thirdpersonangle 210; }
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, JUMPER, 11, 1 )
+		UNLOCKABLE( 2, JUMPER, 12, 1 )
+		UNLOCKABLE( 3, JUMPER, 13, 1 )
+		UNLOCKABLE( 4, JUMPER, 14, 1 )
+		UNLOCKABLE( 5, JUMPER, 15, 1 )
+		UNLOCKABLE( 6, JUMPER, 16, 1 )
+		UNLOCKABLE( 7, JUMPER, 17, 1 )
+		UNLOCKABLE( 8, JUMPER, 18, 1 )
+		UNLOCKABLE( 9, JUMPER, 19, 1 )
+		UNLOCKABLE( 10, JUMPER, 20, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open jumpers, 1 )
+	}
+
+	menuDef
+	{
+		name			"primary"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, PRIMARY, 1, 1 )
+		UNLOCKABLE( 2, PRIMARY, 2, 1 )
+		UNLOCKABLE( 3, PRIMARY, 3, 1 )
+		UNLOCKABLE( 4, PRIMARY, 4, 1 )
+		UNLOCKABLE( 5, PRIMARY, 5, 1 )
+		UNLOCKABLE( 6, PRIMARY, 6, 1 )
+		UNLOCKABLE( 7, PRIMARY, 7, 1 )
+		UNLOCKABLE( 8, PRIMARY, 8, 1 )
+		UNLOCKABLE( 9, PRIMARY, 9, 1 )
+		UNLOCKABLE( 10, PRIMARY, 10, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary2, 1 )
+	}
+
+	menuDef
+	{
+		name			"primary2"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, PRIMARY, 11, 1 )
+		UNLOCKABLE( 2, PRIMARY, 12, 1 )
+		UNLOCKABLE( 3, PRIMARY, 13, 1 )
+		UNLOCKABLE( 4, PRIMARY, 14, 1 )
+		UNLOCKABLE( 5, PRIMARY, 15, 1 )
+		UNLOCKABLE( 6, PRIMARY, 16, 1 )
+		UNLOCKABLE( 7, PRIMARY, 17, 1 )
+		UNLOCKABLE( 8, PRIMARY, 18, 1 )
+		UNLOCKABLE( 9, PRIMARY, 19, 1 )
+		UNLOCKABLE( 10, PRIMARY, 20, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary3, 1 )
+	}
+
+	menuDef
+	{
+		name			"primary3"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, PRIMARY, 21, 1 )
+		UNLOCKABLE( 2, PRIMARY, 22, 1 )
+		UNLOCKABLE( 3, PRIMARY, 23, 1 )
+		UNLOCKABLE( 4, PRIMARY, 24, 1 )
+		UNLOCKABLE( 5, PRIMARY, 25, 1 )
+		UNLOCKABLE( 6, PRIMARY, 26, 1 )
+		UNLOCKABLE( 7, PRIMARY, 27, 1 )
+		UNLOCKABLE( 8, PRIMARY, 28, 1 )
+		UNLOCKABLE( 9, PRIMARY, 29, 1 )
+		UNLOCKABLE( 10, PRIMARY, 30, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary2, 1 )
+	}
+
+	menuDef
+	{
+		name			"secondary"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, SECONDARY, 1, 1 )
+		UNLOCKABLE( 2, SECONDARY, 2, 1 )
+		UNLOCKABLE( 3, SECONDARY, 3, 1 )
+		UNLOCKABLE( 4, SECONDARY, 4, 1 )
+		UNLOCKABLE( 5, SECONDARY, 5, 1 )
+		UNLOCKABLE( 6, SECONDARY, 6, 1 )
+		UNLOCKABLE( 7, SECONDARY, 7, 1 )
+		UNLOCKABLE( 8, SECONDARY, 8, 1 )
+		UNLOCKABLE( 9, SECONDARY, 9, 1 )
+		UNLOCKABLE( 10, SECONDARY, 10, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open secondary2, 1 )
+	}
+
+	menuDef
+	{
+		name			"secondary2"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, SECONDARY, 11, 1 )
+		UNLOCKABLE( 2, SECONDARY, 12, 1 )
+		UNLOCKABLE( 3, SECONDARY, 13, 1 )
+		UNLOCKABLE( 4, SECONDARY, 14, 1 )
+		UNLOCKABLE( 5, SECONDARY, 15, 1 )
+		UNLOCKABLE( 6, SECONDARY, 16, 1 )
+		UNLOCKABLE( 7, SECONDARY, 17, 1 )
+		UNLOCKABLE( 8, SECONDARY, 18, 1 )
+		UNLOCKABLE( 9, SECONDARY, 19, 1 )
+		UNLOCKABLE( 10, SECONDARY, 20, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open secondary, 1 )
+	}
+
+	menuDef
+	{
+		name			"gloves"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, GLOVE, 1, 1 )
+		UNLOCKABLE( 2, GLOVE, 2, 1 )
+		UNLOCKABLE( 3, GLOVE, 3, 1 )
+		UNLOCKABLE( 4, GLOVE, 4, 1 )
+		UNLOCKABLE( 5, GLOVE, 5, 1 )
+		UNLOCKABLE( 6, GLOVE, 6, 1 )
+		UNLOCKABLE( 7, GLOVE, 7, 1 )
+		UNLOCKABLE( 8, GLOVE, 8, 1 )
+		UNLOCKABLE( 9, GLOVE, 9, 1 )
+		UNLOCKABLE( 10, GLOVE, 10, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open gloves2, 1 )
+	}
+
+	menuDef
+	{
+		name			"gloves2"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "customization"; }
+
+		ARCANE_INGAME_MENU( 0 )
+
+		UNLOCKABLE( 1, GLOVE, 11, 1 )
+		UNLOCKABLE( 2, GLOVE, 12, 1 )
+		UNLOCKABLE( 3, GLOVE, 13, 1 )
+		UNLOCKABLE( 4, GLOVE, 14, 1 )
+		UNLOCKABLE( 5, GLOVE, 15, 1 )
+		UNLOCKABLE( 6, GLOVE, 16, 1 )
+		UNLOCKABLE( 7, GLOVE, 17, 1 )
+		UNLOCKABLE( 8, GLOVE, 18, 1 )
+		UNLOCKABLE( 9, GLOVE, 19, 1 )
+		UNLOCKABLE( 10, GLOVE, 20, 1 )
+
+		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open gloves, 1 )
 	}
 }

@@ -1,0 +1,64 @@
+REFERENCE           ZOMBIE
+LANG_ENGLISH        "Rolled Up Sleeves"
+
+REFERENCE           BKIT
+LANG_ENGLISH        "Black Kit"
+
+REFERENCE           OPFOR
+LANG_ENGLISH        "Opfor"
+
+REFERENCE           SNIPER
+LANG_ENGLISH        "Woodland Sniper"
+
+REFERENCE           RANGER
+LANG_ENGLISH        "Ranger"
+
+REFERENCE           WOUND
+LANG_ENGLISH        "Wounded"
+
+REFERENCE           BASE
+LANG_ENGLISH        "Velinda"
+
+REFERENCE           CUBAN
+LANG_ENGLISH        "Casual Cuban"
+
+REFERENCE           NVA
+LANG_ENGLISH        "NVA Standard"
+
+REFERENCE           141
+LANG_ENGLISH        "Task Force 141"
+
+REFERENCE           MILITIA
+LANG_ENGLISH        "Militia"
+
+REFERENCE           INFANTRY
+LANG_ENGLISH        "Infantry Ghillie"
+
+REFERENCE           INFANTRY2
+LANG_ENGLISH        "Infantry"
+
+REFERENCE           MOON
+LANG_ENGLISH        "Pressure Suit"
+
+REFERENCE           SEAL6
+LANG_ENGLISH        "SEAL Team Six"
+
+REFERENCE           PMC
+LANG_ENGLISH        "Mercs"
+
+REFERENCE           SAMUEL
+LANG_ENGLISH        "Samuel"
+
+REFERENCE           RUSSMAN
+LANG_ENGLISH        "REPLACE"
+
+REFERENCE           MARLTON
+LANG_ENGLISH        "Marlton"
+
+REFERENCE           MISTY
+LANG_ENGLISH        "Misty"
+
+REFERENCE           MOHW
+LANG_ENGLISH        "Woodland Ranger"
+
+ENDMARKER
