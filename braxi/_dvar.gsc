@@ -4,6 +4,8 @@ setupDvars() {
     addDvar( "motd", "Visit discord.gg/ArcaneNW", "", "", "string" );
     makeDvarServerInfo( "motd", level.dvar["motd"] );
 
+	addDvar( "player_speed", 190, 190, 300, "int" );
+
 	addDvar( "time_limit", 5, 5, 600, "int" );
 	addDvar( "time_limit_freerun", 5, 5, 180, "int" );
 

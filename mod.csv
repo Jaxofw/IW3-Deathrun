@@ -1,6 +1,7 @@
-# Base Game Scripts
+# Scripts
 rawfile,maps/mp/gametypes/_callbacksetup.gsc
 rawfile,maps/mp/gametypes/_gametypes.txt
+rawfile,maps/mp/gametypes/_persistence.gsc
 rawfile,maps/mp/gametypes/deathrun.gsc
 rawfile,maps/mp/gametypes/deathrun.txt
 
@@ -8,11 +9,23 @@ rawfile,maps/mp/gametypes/deathrun.txt
 menufile,ui_mp/common/arcane.inc
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
+menufile,ui_mp/hud.menu
+
+# Localized Strings
+localize,glove
+localize,jumper
+localize,rank
+localize,primary
+localize,secondary
 
 # String Tables
 stringtable,mp/rankTable.csv
 stringtable,mp/rankIconTable.csv
 stringtable,mp/playerStatsTable.csv
+stringtable,mp/gloveTable.csv
+stringtable,mp/jumperTable.csv
+stringtable,mp/primaryTable.csv
+stringtable,mp/secondaryTable.csv
 
 # Rank Icons
 material,rank_0
@@ -71,9 +84,6 @@ material,menu_rank_bg
 material,menu_rank_bar
 material,blue_button_shit
 material,grey_button_shit
-material,menu_rank_placeholder
-
-# Interfaces
-menufile,ui_mp/hud.menu
+material,menu_lock
 
 xmodel,body_mp_sas_urban_sniper

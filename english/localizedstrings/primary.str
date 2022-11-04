@@ -1,0 +1,61 @@
+REFERENCE           BERETTA
+LANG_ENGLISH        "Beretta"
+
+REFERENCE           USP
+LANG_ENGLISH        "USP .45"
+
+REFERENCE           M40A3
+LANG_ENGLISH        "M40A3"
+
+REFERENCE           TACDEAGLE
+LANG_ENGLISH        "Desert Eagle"
+
+REFERENCE           REMINGTON700
+LANG_ENGLISH        "Remington 700"
+
+REFERENCE           COLT44
+LANG_ENGLISH        "Colt .44"
+
+REFERENCE           GDEAGLE
+LANG_ENGLISH        "Gold Desert Eagle"
+
+REFERENCE           FN57
+LANG_ENGLISH        "Five-Seven"
+
+REFERENCE           PP
+LANG_ENGLISH        "PPS-42"
+
+REFERENCE           MSR
+LANG_ENGLISH        "MSR"
+
+REFERENCE           ATLAS
+LANG_ENGLISH        "Atlas 45"
+
+REFERENCE           PSD9
+LANG_ENGLISH        "PK-PSD9"
+
+REFERENCE           LYNX
+LANG_ENGLISH        "Lynx"
+
+REFERENCE           1911
+LANG_ENGLISH        "M1911"
+
+REFERENCE           KAM12
+LANG_ENGLISH        "Kamchatka-12"
+
+REFERENCE           M1927
+LANG_ENGLISH        "Thompson"
+
+REFERENCE           EMC
+LANG_ENGLISH        "EMC"
+
+REFERENCE           XPR
+LANG_ENGLISH        "XPR-50"
+
+REFERENCE           PPSH
+LANG_ENGLISH        "PPSH"
+
+REFERENCE           FNP45
+LANG_ENGLISH        "TAC-45"
+
+ENDMARKER
