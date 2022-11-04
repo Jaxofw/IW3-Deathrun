@@ -20,11 +20,15 @@ init() {
 
 	thread braxi\_dvar::setupDvars();
 	thread braxi\_menus::init();
+	thread braxi\_teams::init();
 
 	level.freerun = false;
 	level.spawn_link = spawn( "script_model", (0,0,0) );
+	level.players = [];
+	level.activators = [];
+	level.activator = [];
 
-	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 1;
+	if (!isDefined( game["rounds_played"])) game["rounds_played"] = 1;
 
 	game["state"] = "round_begin";
 
@@ -40,28 +44,16 @@ init() {
 	level gameLogic();
 }
 
-precache() {
-	// Shaders
-	preCacheShader( "white" );
-
-	// Icons
-	preCacheStatusIcon( "hud_status_connecting" );
-	preCacheStatusIcon( "hud_status_dead" );
-
-	// Models
-	preCacheModel( "body_mp_sas_urban_sniper" );
-
-	// Weapons
-	preCacheItem( "beretta_mp" );
-}
-
 gameLogic() {
 	waittillframeend;
 
 	visionSetNaked( "mpIntro", 0 );
-	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
+	if (isDefined( level.matchStartText )) level.matchStartText destroyElem();
 
 	wait 0.2;
+
+	// DVAR Changes
+	setDvar( "player_sprintTime", 12.8 );
 
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "CENTER", 0, 0 );
@@ -72,20 +64,36 @@ gameLogic() {
 
 	if ( !level.freerun ) waitForPlayers( 2 );
 
-	startTimer();
-
-	players = getAllPlayers();
-	for ( i = 0; i < players.size; i++ ) {
-		if ( players[i] isPlaying() ) players[i] unLink();
-	}
+	level startTimer();
 
 	game["state"] = "playing";
 
-	visionSetNaked( level.script, 2.0 );
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ ) {
+		if ( players[i] isPlaying() ) {
+			players[i] unLink();
+			level.players[i] = players[i];
+		}
+	}
 
+	visionSetNaked( level.script, 2.0 );
+	level pickRandomActivator();
 	level watchTimeLimit();
 
 	iPrintLnBold( game["rounds_played"] + "/12" );
+}
+
+pickRandomActivator() {
+	randomPlayer = randomInt( level.players.size );
+	playerChosen = level.players[randomPlayer];
+
+	if ( playerChosen.pers["team"] != "allies" ) level thread pickRandomActivator();
+
+	level.activator = playerChosen;
+	playerChosen.pers["activator"]++;
+	playerChosen braxi\_teams::setTeam( "axis" );
+
+	iPrintLnBold("^7" + playerChosen.name + " was chosen to ^5Activate!");
 }
 
 watchTimeLimit() {
@@ -143,7 +151,7 @@ endMap( winner ) {
 }
 
 startTimer() {
-	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
+	if (isDefined( level.matchStartText )) level.matchStartText destroyElem();
 
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "CENTER", 0, -20 );
@@ -163,109 +171,6 @@ startTimer() {
 	
 	level.matchStartText destroyElem();
 	level.matchStartTimer destroyElem();
-}
-
-playerConnect() {
-	level notify( "connected", self );
-
-	self.guid = self getGuid();
-	self.number = self getEntityNumber();
-	self.statusicon = "hud_status_connecting";
-	self.died = false;
-
-	if ( !isDefined( self.name ) ) self.name = "undefined name";
-	if ( !isDefined( self.guid ) ) self.guid = "undefined guid";
-
-	// we want to show hud and we get an IP adress for "add to favourities" menu
-	self setClientDvars( "show_hud", "true", "ip", getDvar("net_ip"), "port", getDvar("net_port") );
-	if ( !isDefined( self.pers["team"] ) ) {
-		iPrintLn( self.name + " ^7entered the game" );
-
-		self.sessionstate = "spectator";
-		self.team = "spectator";
-		self.pers["team"] = "spectator";
-		self.pers["score"] = 0;
-		self.pers["kills"] = 0;
-		self.pers["deaths"] = 0;
-		self.pers["assists"] = 0;
-	} else {
-		self.score = self.pers["score"];
-		self.kills = self.pers["kills"];
-		self.assists = self.pers["assists"];
-		self.deaths = self.pers["deaths"];
-	}
-
-	if ( !isDefined( level.spawn["spectator"] ) ) level.spawn["spectator"] = level.spawn["allies"][0];
-
-	self setClientDvars(
-		"cg_drawSpectatorMessages", 1,
-		"player_sprintTime", 12.8,
-		"ui_hud_hardcore", 1,
-		"ui_menu_playername", self.name,
-		"ui_uav_client", 0
-	);
-
-	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr(self.name, 0, 7) + "..." );
-	
-	self openMenu( game["menu_team"] );
-}
-
-playerDisconnect() {
-	level notify( "disconnected", self );
-
-	if (!isDefined( self.name )) self.name = "no name";
-	iPrintLn( self.name + " ^7left the game" );
-
-	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
-}
-
-
-PlayerLastStand(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration) {
-	self suicide();
-}
-
-PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime) {
-	if ( self.sessionteam == "spectator" ) return;
-
-	level notify( "player_damage", self, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
-
-	if ( isPlayer( eAttacker ) && eAttacker.pers["team"] == self.pers["team"] ) return;
-
-	if ( !isDefined( vDir ) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
-
-	if (!( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
-		if ( iDamage < 1 ) iDamage = 1;
-		self finishPlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime);
-	}
-}
-
-PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration) {
-	self endon( "spawned" );
-	self notify( "killed_player" );
-	self notify( "death" );
-
-	if ( self.sessionteam == "spectator" ) return;
-
-	level notify( "player_killed", self, eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
-
-	self.statusicon = "hud_status_dead";
-	self.sessionstate = "spectator";
-	self.died = true;
-
-	if ( !level.freerun ) {
-		deaths = self maps\mp\gametypes\_persistence::statGet("deaths");
-		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
-		self.deaths++;
-		self.pers["deaths"]++;
-		obituary( self, attacker, sWeapon, sMeansOfDeath );
-	}
-
-	if ( self.pers["team"] == "axis" ) {
-		self thread braxi\_teams::setTeam("allies");
-		return;
-	}
-
-	self respawnPlayer();
 }
 
 spawnPlayer( origin, angles ) {
@@ -315,8 +220,8 @@ respawnPlayer() {
 }
 
 spawnSpectator( origin, angles ) {
-	if ( !isDefined( origin ) ) origin = (0,0,0);
-	if ( !isDefined( angles ) ) angles = (0,0,0);
+	if (!isDefined( origin )) origin = (0,0,0);
+	if (!isDefined( angles )) angles = (0,0,0);
 
 	self notify( "joined_spectators" );
 
