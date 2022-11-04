@@ -8,7 +8,7 @@
 		name			"customization"
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
-		onOpen			{ setdvar cg_thirdperson 0; setdvar cg_thirdpersonangle 0; }
+		onOpen          { setdvar cg_thirdperson 0; setdvar cg_thirdpersonangle 0; }
 		onESC 			{ close self; open "team_marinesopfor"; }
 
 		ARCANE_INGAME_MENU( 2 )
@@ -33,20 +33,20 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/jumperTable.csv", 0, 1, 3 ), scriptMenuResponse 1;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/jumperTable.csv", 0, 2, 3 ), scriptMenuResponse 2;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/jumperTable.csv", 0, 3, 3 ), scriptMenuResponse 3;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/jumperTable.csv", 0, 4, 3 ), scriptMenuResponse 4;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/jumperTable.csv", 0, 5, 3 ), scriptMenuResponse 5;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/jumperTable.csv", 0, 6, 3 ), scriptMenuResponse 6;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/jumperTable.csv", 0, 7, 3 ), scriptMenuResponse 7;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/jumperTable.csv", 0, 8, 3 ), scriptMenuResponse 8;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/jumperTable.csv", 0, 9, 3 ), scriptMenuResponse 9;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/jumperTable.csv", 0, 10, 3 ), scriptMenuResponse 10;, 1 )
+		UNLOCKABLE( 1, JUMPER, 1, 1 )
+		UNLOCKABLE( 2, JUMPER, 2, 1 )
+		UNLOCKABLE( 3, JUMPER, 3, 1 )
+		UNLOCKABLE( 4, JUMPER, 4, 1 )
+		UNLOCKABLE( 5, JUMPER, 5, 1 )
+		UNLOCKABLE( 6, JUMPER, 6, 1 )
+		UNLOCKABLE( 7, JUMPER, 7, 1 )
+		UNLOCKABLE( 8, JUMPER, 8, 1 )
+		UNLOCKABLE( 9, JUMPER, 9, 1 )
+		UNLOCKABLE( 10, JUMPER, 10, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open customization;, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open jumpers2;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open jumpers2, 1 )
 	}
 
 	menuDef
@@ -59,19 +59,19 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/jumperTable.csv", 0, 11, 3 ), scriptMenuResponse 11;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/jumperTable.csv", 0, 12, 3 ), scriptMenuResponse 12;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/jumperTable.csv", 0, 13, 3 ), scriptMenuResponse 13;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/jumperTable.csv", 0, 14, 3 ), scriptMenuResponse 14;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/jumperTable.csv", 0, 15, 3 ), scriptMenuResponse 15;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/jumperTable.csv", 0, 16, 3 ), scriptMenuResponse 16;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/jumperTable.csv", 0, 17, 3 ), scriptMenuResponse 17;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/jumperTable.csv", 0, 18, 3 ), scriptMenuResponse 18;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/jumperTable.csv", 0, 19, 3 ), scriptMenuResponse 19;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/jumperTable.csv", 0, 20, 3 ), scriptMenuResponse 20;, 1 )
+		UNLOCKABLE( 1, JUMPER, 11, 1 )
+		UNLOCKABLE( 2, JUMPER, 12, 1 )
+		UNLOCKABLE( 3, JUMPER, 13, 1 )
+		UNLOCKABLE( 4, JUMPER, 14, 1 )
+		UNLOCKABLE( 5, JUMPER, 15, 1 )
+		UNLOCKABLE( 6, JUMPER, 16, 1 )
+		UNLOCKABLE( 7, JUMPER, 17, 1 )
+		UNLOCKABLE( 8, JUMPER, 18, 1 )
+		UNLOCKABLE( 9, JUMPER, 19, 1 )
+		UNLOCKABLE( 10, JUMPER, 20, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open jumpers;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open jumpers, 1 )
 	}
 
 	menuDef
@@ -83,20 +83,20 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/primaryTable.csv", 0, 1, 3 ), scriptMenuResponse 1;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/primaryTable.csv", 0, 2, 3 ), scriptMenuResponse 2;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/primaryTable.csv", 0, 3, 3 ), scriptMenuResponse 3;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/primaryTable.csv", 0, 4, 3 ), scriptMenuResponse 4;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/primaryTable.csv", 0, 5, 3 ), scriptMenuResponse 5;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/primaryTable.csv", 0, 6, 3 ), scriptMenuResponse 6;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/primaryTable.csv", 0, 7, 3 ), scriptMenuResponse 7;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/primaryTable.csv", 0, 8, 3 ), scriptMenuResponse 8;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/primaryTable.csv", 0, 9, 3 ), scriptMenuResponse 9;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/primaryTable.csv", 0, 10, 3 ), scriptMenuResponse 10;, 1 )
+		UNLOCKABLE( 1, PRIMARY, 1, 1 )
+		UNLOCKABLE( 2, PRIMARY, 2, 1 )
+		UNLOCKABLE( 3, PRIMARY, 3, 1 )
+		UNLOCKABLE( 4, PRIMARY, 4, 1 )
+		UNLOCKABLE( 5, PRIMARY, 5, 1 )
+		UNLOCKABLE( 6, PRIMARY, 6, 1 )
+		UNLOCKABLE( 7, PRIMARY, 7, 1 )
+		UNLOCKABLE( 8, PRIMARY, 8, 1 )
+		UNLOCKABLE( 9, PRIMARY, 9, 1 )
+		UNLOCKABLE( 10, PRIMARY, 10, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open customization;, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open primary2;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary2, 1 )
 	}
 
 	menuDef
@@ -108,20 +108,20 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/primaryTable.csv", 0, 11, 3 ), scriptMenuResponse 11;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/primaryTable.csv", 0, 12, 3 ), scriptMenuResponse 12;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/primaryTable.csv", 0, 13, 3 ), scriptMenuResponse 13;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/primaryTable.csv", 0, 14, 3 ), scriptMenuResponse 14;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/primaryTable.csv", 0, 15, 3 ), scriptMenuResponse 15;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/primaryTable.csv", 0, 16, 3 ), scriptMenuResponse 16;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/primaryTable.csv", 0, 17, 3 ), scriptMenuResponse 17;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/primaryTable.csv", 0, 18, 3 ), scriptMenuResponse 18;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/primaryTable.csv", 0, 19, 3 ), scriptMenuResponse 19;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/primaryTable.csv", 0, 20, 3 ), scriptMenuResponse 20;, 1 )
+		UNLOCKABLE( 1, PRIMARY, 11, 1 )
+		UNLOCKABLE( 2, PRIMARY, 12, 1 )
+		UNLOCKABLE( 3, PRIMARY, 13, 1 )
+		UNLOCKABLE( 4, PRIMARY, 14, 1 )
+		UNLOCKABLE( 5, PRIMARY, 15, 1 )
+		UNLOCKABLE( 6, PRIMARY, 16, 1 )
+		UNLOCKABLE( 7, PRIMARY, 17, 1 )
+		UNLOCKABLE( 8, PRIMARY, 18, 1 )
+		UNLOCKABLE( 9, PRIMARY, 19, 1 )
+		UNLOCKABLE( 10, PRIMARY, 20, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open primary;, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open primary3;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary3, 1 )
 	}
 
 	menuDef
@@ -133,19 +133,19 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/primaryTable.csv", 0, 21, 3 ), scriptMenuResponse 21;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/primaryTable.csv", 0, 22, 3 ), scriptMenuResponse 22;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/primaryTable.csv", 0, 23, 3 ), scriptMenuResponse 23;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/primaryTable.csv", 0, 24, 3 ), scriptMenuResponse 24;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/primaryTable.csv", 0, 25, 3 ), scriptMenuResponse 25;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/primaryTable.csv", 0, 26, 3 ), scriptMenuResponse 26;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/primaryTable.csv", 0, 27, 3 ), scriptMenuResponse 27;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/primaryTable.csv", 0, 28, 3 ), scriptMenuResponse 28;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/primaryTable.csv", 0, 29, 3 ), scriptMenuResponse 29;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/primaryTable.csv", 0, 30, 3 ), scriptMenuResponse 30;, 1 )
+		UNLOCKABLE( 1, PRIMARY, 21, 1 )
+		UNLOCKABLE( 2, PRIMARY, 22, 1 )
+		UNLOCKABLE( 3, PRIMARY, 23, 1 )
+		UNLOCKABLE( 4, PRIMARY, 24, 1 )
+		UNLOCKABLE( 5, PRIMARY, 25, 1 )
+		UNLOCKABLE( 6, PRIMARY, 26, 1 )
+		UNLOCKABLE( 7, PRIMARY, 27, 1 )
+		UNLOCKABLE( 8, PRIMARY, 28, 1 )
+		UNLOCKABLE( 9, PRIMARY, 29, 1 )
+		UNLOCKABLE( 10, PRIMARY, 30, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open primary2;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary2, 1 )
 	}
 
 	menuDef
@@ -157,20 +157,20 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/secondaryTable.csv", 0, 1, 3 ), scriptMenuResponse 1;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/secondaryTable.csv", 0, 2, 3 ), scriptMenuResponse 2;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/secondaryTable.csv", 0, 3, 3 ), scriptMenuResponse 3;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/secondaryTable.csv", 0, 4, 3 ), scriptMenuResponse 4;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/secondaryTable.csv", 0, 5, 3 ), scriptMenuResponse 5;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/secondaryTable.csv", 0, 6, 3 ), scriptMenuResponse 6;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/secondaryTable.csv", 0, 7, 3 ), scriptMenuResponse 7;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/secondaryTable.csv", 0, 8, 3 ), scriptMenuResponse 8;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/secondaryTable.csv", 0, 9, 3 ), scriptMenuResponse 9;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/secondaryTable.csv", 0, 10, 3 ), scriptMenuResponse 10;, 1 )
+		UNLOCKABLE( 1, SECONDARY, 1, 1 )
+		UNLOCKABLE( 2, SECONDARY, 2, 1 )
+		UNLOCKABLE( 3, SECONDARY, 3, 1 )
+		UNLOCKABLE( 4, SECONDARY, 4, 1 )
+		UNLOCKABLE( 5, SECONDARY, 5, 1 )
+		UNLOCKABLE( 6, SECONDARY, 6, 1 )
+		UNLOCKABLE( 7, SECONDARY, 7, 1 )
+		UNLOCKABLE( 8, SECONDARY, 8, 1 )
+		UNLOCKABLE( 9, SECONDARY, 9, 1 )
+		UNLOCKABLE( 10, SECONDARY, 10, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open customization;, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open secondary2;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open secondary2, 1 )
 	}
 
 	menuDef
@@ -182,19 +182,19 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/secondaryTable.csv", 0, 11, 3 ), scriptMenuResponse 11;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/secondaryTable.csv", 0, 12, 3 ), scriptMenuResponse 12;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/secondaryTable.csv", 0, 13, 3 ), scriptMenuResponse 13;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/secondaryTable.csv", 0, 14, 3 ), scriptMenuResponse 14;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/secondaryTable.csv", 0, 15, 3 ), scriptMenuResponse 15;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/secondaryTable.csv", 0, 16, 3 ), scriptMenuResponse 16;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/secondaryTable.csv", 0, 17, 3 ), scriptMenuResponse 17;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/secondaryTable.csv", 0, 18, 3 ), scriptMenuResponse 18;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/secondaryTable.csv", 0, 19, 3 ), scriptMenuResponse 19;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/secondaryTable.csv", 0, 20, 3 ), scriptMenuResponse 20;, 1 )
+		UNLOCKABLE( 1, SECONDARY, 11, 1 )
+		UNLOCKABLE( 2, SECONDARY, 12, 1 )
+		UNLOCKABLE( 3, SECONDARY, 13, 1 )
+		UNLOCKABLE( 4, SECONDARY, 14, 1 )
+		UNLOCKABLE( 5, SECONDARY, 15, 1 )
+		UNLOCKABLE( 6, SECONDARY, 16, 1 )
+		UNLOCKABLE( 7, SECONDARY, 17, 1 )
+		UNLOCKABLE( 8, SECONDARY, 18, 1 )
+		UNLOCKABLE( 9, SECONDARY, 19, 1 )
+		UNLOCKABLE( 10, SECONDARY, 20, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open secondary;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open secondary, 1 )
 	}
 
 	menuDef
@@ -206,20 +206,20 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/gloveTable.csv", 0, 1, 3 ), scriptMenuResponse 1;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/gloveTable.csv", 0, 2, 3 ), scriptMenuResponse 2;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/gloveTable.csv", 0, 3, 3 ), scriptMenuResponse 3;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/gloveTable.csv", 0, 4, 3 ), scriptMenuResponse 4;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/gloveTable.csv", 0, 5, 3 ), scriptMenuResponse 5;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/gloveTable.csv", 0, 6, 3 ), scriptMenuResponse 6;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/gloveTable.csv", 0, 7, 3 ), scriptMenuResponse 7;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/gloveTable.csv", 0, 8, 3 ), scriptMenuResponse 8;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/gloveTable.csv", 0, 9, 3 ), scriptMenuResponse 9;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/gloveTable.csv", 0, 10, 3 ), scriptMenuResponse 10;, 1 )
+		UNLOCKABLE( 1, GLOVE, 1, 1 )
+		UNLOCKABLE( 2, GLOVE, 2, 1 )
+		UNLOCKABLE( 3, GLOVE, 3, 1 )
+		UNLOCKABLE( 4, GLOVE, 4, 1 )
+		UNLOCKABLE( 5, GLOVE, 5, 1 )
+		UNLOCKABLE( 6, GLOVE, 6, 1 )
+		UNLOCKABLE( 7, GLOVE, 7, 1 )
+		UNLOCKABLE( 8, GLOVE, 8, 1 )
+		UNLOCKABLE( 9, GLOVE, 9, 1 )
+		UNLOCKABLE( 10, GLOVE, 10, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open customization;, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", close self; open gloves2;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open gloves2, 1 )
 	}
 
 	menuDef
@@ -231,18 +231,18 @@
 
 		ARCANE_INGAME_MENU( 0 )
 
-		CREATE_BUTTON( 1, tableLookup( "mp/gloveTable.csv", 0, 11, 3 ), scriptMenuResponse 11;, 1 )
-		CREATE_BUTTON( 2, tableLookup( "mp/gloveTable.csv", 0, 12, 3 ), scriptMenuResponse 12;, 1 )
-		CREATE_BUTTON( 3, tableLookup( "mp/gloveTable.csv", 0, 13, 3 ), scriptMenuResponse 13;, 1 )
-		CREATE_BUTTON( 4, tableLookup( "mp/gloveTable.csv", 0, 14, 3 ), scriptMenuResponse 14;, 1 )
-		CREATE_BUTTON( 5, tableLookup( "mp/gloveTable.csv", 0, 15, 3 ), scriptMenuResponse 15;, 1 )
-		CREATE_BUTTON( 6, tableLookup( "mp/gloveTable.csv", 0, 16, 3 ), scriptMenuResponse 16;, 1 )
-		CREATE_BUTTON( 7, tableLookup( "mp/gloveTable.csv", 0, 17, 3 ), scriptMenuResponse 17;, 1 )
-		CREATE_BUTTON( 8, tableLookup( "mp/gloveTable.csv", 0, 18, 3 ), scriptMenuResponse 18;, 1 )
-		CREATE_BUTTON( 9, tableLookup( "mp/gloveTable.csv", 0, 19, 3 ), scriptMenuResponse 19;, 1 )
-		CREATE_BUTTON( 10, tableLookup( "mp/gloveTable.csv", 0, 20, 3 ), scriptMenuResponse 20;, 1 )
+		UNLOCKABLE( 1, GLOVE, 11, 1 )
+		UNLOCKABLE( 2, GLOVE, 12, 1 )
+		UNLOCKABLE( 3, GLOVE, 13, 1 )
+		UNLOCKABLE( 4, GLOVE, 14, 1 )
+		UNLOCKABLE( 5, GLOVE, 15, 1 )
+		UNLOCKABLE( 6, GLOVE, 16, 1 )
+		UNLOCKABLE( 7, GLOVE, 17, 1 )
+		UNLOCKABLE( 8, GLOVE, 18, 1 )
+		UNLOCKABLE( 9, GLOVE, 19, 1 )
+		UNLOCKABLE( 10, GLOVE, 20, 1 )
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", close self; open gloves;, 1 )
+		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open gloves, 1 )
 	}
 }

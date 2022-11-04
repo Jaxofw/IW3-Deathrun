@@ -1,6 +1,7 @@
-# Base Game Scripts
+# Scripts
 rawfile,maps/mp/gametypes/_callbacksetup.gsc
 rawfile,maps/mp/gametypes/_gametypes.txt
+rawfile,maps/mp/gametypes/_persistence.gsc
 rawfile,maps/mp/gametypes/deathrun.gsc
 rawfile,maps/mp/gametypes/deathrun.txt
 
@@ -20,13 +21,82 @@ stringtable,mp/secondaryTable.csv
 menufile,ui_mp/common/arcane.inc
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
+menufile,ui_mp/hud.menu
+
+# Localized Strings
+localize,glove
+localize,jumper
+localize,rank
+localize,primary
+localize,secondary
+
+# String Tables
+stringtable,mp/rankTable.csv
+stringtable,mp/rankIconTable.csv
+stringtable,mp/playerStatsTable.csv
+stringtable,mp/gloveTable.csv
+stringtable,mp/jumperTable.csv
+stringtable,mp/primaryTable.csv
+stringtable,mp/secondaryTable.csv
+
+# Rank Icons
+material,rank_0
+material,rank_1
+material,rank_2
+material,rank_3
+material,rank_4
+material,rank_5
+material,rank_6
+material,rank_7
+material,rank_8
+material,rank_9
+material,rank_10
+material,rank_11
+material,rank_12
+material,rank_13
+material,rank_14
+material,rank_15
+material,rank_16
+material,rank_17
+material,rank_18
+material,rank_19
+material,rank_20
+material,rank_21
+material,rank_22
+material,rank_23
+material,rank_24
+material,rank_25
+material,rank_26
+material,rank_27
+material,rank_28
+material,rank_29
+material,rank_30
+material,rank_31
+material,rank_32
+material,rank_33
+material,rank_34
+material,rank_35
+material,rank_36
+material,rank_37
+material,rank_38
+material,rank_39
+material,rank_40
+material,rank_41
+material,rank_42
+material,rank_43
+material,rank_44
+material,rank_45
+material,rank_46
+material,rank_47
+material,rank_48
+material,rank_49
 
 # Menu Assets
 material,menu_rank_bg
 material,menu_rank_bar
 material,blue_button_shit
 material,grey_button_shit
-material,menu_rank_placeholder
+material,menu_lock
 material,knife_ballistic_reticle
 material,melee_weapon_reticle
 

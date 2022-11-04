@@ -4,42 +4,43 @@
 #include braxi\_utility;
 
 init() {
-	precache();
+	initGame();
+	preCache();
 	init_spawns();
-	thread braxi\_cod4stuff::init();
 
-	setDvar( "cg_fovscale", 1.15 );
-
-	setDvar( "bg_bobamplitudesprinting", 0 );
-	setDvar( "bg_bobamplitudeducked", 0 );
-	setDvar( "bg_bobamplitudeprone", 0 );
-	setDvar( "bg_bobamplitudestanding", 0 );
-	setDvar( "g_speed", 230 );
-	setDvar( "jump_slowdownEnable", 0 );
-	setDvar( "bullet_penetrationEnabled", 0 );
-
-	thread braxi\_dvar::setupDvars();
-	thread braxi\_menus::init();
-	thread braxi\_teams::init();
-
-	level.freerun = false;
-	level.spawn_link = spawn( "script_model", (0,0,0) );
 	level.players = [];
-	level.activators = [];
-	level.activator = [];
-
-	if (!isDefined( game["rounds_played"])) game["rounds_played"] = 1;
-
-	game["state"] = "round_begin";
-
-	if ( game["rounds_played"] == 1 ) {
-		if ( level.dvar["freerun"] ) level.freerun = true;
-	}
+	level.activ = [];
+	level.weapons = [];
+	level.freerun = false;
+	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 0;
 
 	buildJumperTable();
 	buildPrimaryTable();
 	buildSecondaryTable();
 	buildGloveTable();
+
+	thread braxi\_dvar::setupDvars();
+	thread braxi\_rank::init();
+	thread braxi\_menus::init();
+	thread braxi\_maps::init();
+	thread braxi\_teams::init();
+
+	setDvar( "g_speed", level.dvar["player_speed"] );
+	setDvar( "jump_slowdownEnable", 0 );
+	setDvar( "player_sprintTime", 12.8 );
+	setDvar( "bullet_penetrationEnabled", 0 );
+	setDvar( "bg_bobAmplitudeSprinting", 0 );
+	setDvar( "bg_bobAmplitudeDucked", 0 );
+	setDvar( "bg_bobAmplitudeProne", 0 );
+	setDvar( "bg_bobAmplitudeStanding", 0 );
+
+	if ( game["rounds_played"] == 0 ) {
+		if ( level.dvar["freerun"] ) level.freerun = true;
+	}
+
+	game["state"] = "lobby";
+
+	visionSetNaked( level.script, 2.0 );
 
 	level gameLogic();
 }
@@ -47,112 +48,42 @@ init() {
 gameLogic() {
 	waittillframeend;
 
-	visionSetNaked( "mpIntro", 0 );
-	if (isDefined( level.matchStartText )) level.matchStartText destroyElem();
-
-	wait 0.2;
-
-	// DVAR Changes
-	setDvar( "player_sprintTime", 12.8 );
-
-	level.matchStartText = createServerFontString( "objective", 1.5 );
-	level.matchStartText setPoint( "CENTER", "CENTER", 0, 0 );
-	level.matchStartText.sort = 1001;
-	level.matchStartText setText( "Waiting for players..." );
-	level.matchStartText.foreground = false;
-	level.matchStartText.hidewheninmenu = true;
-
-	if ( !level.freerun ) waitForPlayers( 2 );
-
-	level startTimer();
+	if ( !level.freerun ) {
+		game["state"] = "waiting";
+		waitForPlayers( 2 );
+		tpJumpersToSpawn();
+		startTimer();
+		releaseJumpers();
+	}
 
 	game["state"] = "playing";
 
+	if ( !level.freerun ) pickRandomActivator();
+
+	watchTimeLimit();
+}
+
+tpJumpersToSpawn() {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
 		if ( players[i] isPlaying() ) {
-			players[i] unLink();
-			level.players[i] = players[i];
+			randomSpawn = level.spawn["allies"][randomInt(level.spawn["allies"].size)].origin;
+			players[i] setOrigin( randomSpawn );
+			players[i] linkTo( level.spawn_link );
 		}
 	}
-
-	visionSetNaked( level.script, 2.0 );
-	level pickRandomActivator();
-	level watchTimeLimit();
-
-	iPrintLnBold( game["rounds_played"] + "/12" );
 }
 
-pickRandomActivator() {
-	randomPlayer = randomInt( level.players.size );
-	playerChosen = level.players[randomPlayer];
-
-	if ( playerChosen.pers["team"] != "allies" ) level thread pickRandomActivator();
-
-	level.activator = playerChosen;
-	playerChosen.pers["activator"]++;
-	playerChosen braxi\_teams::setTeam( "axis" );
-
-	iPrintLnBold("^7" + playerChosen.name + " was chosen to ^5Activate!");
-}
-
-watchTimeLimit() {
-	if ( !level.dvar["time_limit"] ) return;
-	
-	time = level.dvar["time_limit"];
-	if ( level.freerun ) time = level.dvar["time_limit_freerun"];
-
-	iPrintLnBold( "Time Left: " + time );
-
-	wait time;
-
-	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
-		level endMap( "activator" );
-		return;
-	}
-
-	level endRound( "Time Limit Reached", "activator" );
-}
-
-endRound( string, winner ) {
-	game["state"] = "round_end";
-	game["rounds_played"]++;
-
-	iPrintLnBold( string );
-
-	if ( winner == "activator" ) {
-		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
-			level.activ braxi\_rank::giveRankXp( "activator", 100 );
-		}
-	}
-
-	wait 10;
-	map_restart( true );
-}
-
-endMap( winner ) {
-	setDvar( "g_deadChat", 1 );
-
-	if ( winner == "activator" ) {
-		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
-			level.activ braxi\_rank::giveRankXp( "activator", 100 );
-		}
-	}
-
+releaseJumpers() {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
-		players[i].sessionstate = "intermission";
-		players[i] spawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
-		players[i] allowSpectateTeam( "allies", false );
-		players[i] allowSpectateTeam( "axis", false );
-		players[i] allowSpectateTeam( "freelook", true );
-		players[i] allowSpectateTeam( "none", false );
+		if ( players[i] isPlaying() ) players[i] unLink();
 	}
 }
 
 startTimer() {
-	if (isDefined( level.matchStartText )) level.matchStartText destroyElem();
-
+	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
+	
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "CENTER", 0, -20 );
 	level.matchStartText setText( "Round begins in..." );
@@ -173,9 +104,28 @@ startTimer() {
 	level.matchStartTimer destroyElem();
 }
 
+pickRandomActivator() {
+	level.players = getAllPlayers();
+	level.activ = level.players[randomInt( level.players.size )];
+	
+	if ( level.activ.pers["team"] != "allies" ) level thread pickRandomActivator();
+
+	iPrintLnBold( "^7" + level.activ.name + " was chosen to ^5Activate!" );
+
+	level.activ.pers["activator"]++;
+	level.activ braxi\_teams::setTeam( "axis" );
+	level.activ spawnPlayer();
+
+	// Give activator xp being for chosen
+	level.activ braxi\_rank::giveRankXP( "activator" );
+}
+
 spawnPlayer( origin, angles ) {
 	level notify( "jumper", self );
 	resettimeout();
+
+	// Set activator from previous round to jumper if time limit ran out
+	if ( game["state"] == "lobby" && self.pers["team"] == "axis" ) self.pers["team"] = "allies";
 
 	self.team = self.pers["team"];
 	self.sessionteam = self.team;
@@ -188,7 +138,7 @@ spawnPlayer( origin, angles ) {
 
 	self setModel( "body_mp_sas_urban_sniper" );
 
-	if ( isDefined(origin) && isDefined(angles) ) self spawn( origin,angles );
+	if ( isDefined(origin) && isDefined(angles) ) self spawn( origin, angles );
 	else {
 		spawnPoint = level.spawn[self.pers["team"]][randomInt( level.spawn[self.pers["team"]].size )];
 		self spawn( spawnPoint.origin, spawnPoint.angles );
@@ -203,19 +153,60 @@ spawnPlayer( origin, angles ) {
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
-
-	if ( game["state"] == "round_begin" ) self linkTo( level.spawn_link );
 }
 
-respawnPlayer() {
-	self endon( "disconnect" );
-	self endon( "spawned_player" );
-	self endon( "joined_spectators" );
+watchTimeLimit() {
+	if ( !level.dvar["time_limit"] ) return;
+	
+	time = level.dvar["time_limit"];
+	if ( level.freerun ) time = level.dvar["time_limit_freerun"];
 
-	if ( level.freeRun ) {
-		wait 0.05;
-		self spawnPlayer();
+	iPrintLnBold( "Time Left: " + time );
+
+	wait time;
+
+	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
+		level endMap( "activator" );
 		return;
+	}
+
+	level endRound( "Time Limit Reached", "activator" );
+	iPrintLnBold( (game["rounds_played"] + 1) + "/12" );
+}
+
+endRound( string, winner ) {
+	game["state"] = "round_end";
+	game["rounds_played"]++;
+
+	iPrintLnBold( string );
+
+	if ( winner == "activator" ) {
+		if (isDefined( level.activ ) && isPlayer( level.activ )) {
+			level.activ braxi\_rank::giveRankXp( "activator" );
+		}
+	}
+
+	wait 4;
+	map_restart( true );
+}
+
+endMap( winner ) {
+	setDvar( "g_deadChat", 1 );
+
+	if ( winner == "activator" ) {
+		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
+			level.activ braxi\_rank::giveRankXp( "activator", 100 );
+		}
+	}
+
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ ) {
+		players[i].sessionstate = "intermission";
+		players[i] spawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
+		players[i] allowSpectateTeam( "allies", false );
+		players[i] allowSpectateTeam( "axis", false );
+		players[i] allowSpectateTeam( "freelook", true );
+		players[i] allowSpectateTeam( "none", true );
 	}
 }
 
@@ -233,6 +224,18 @@ spawnSpectator( origin, angles ) {
 	self braxi\_teams::setSpectatePermissions();
 
 	level notify( "player_spectator", self );
+}
+
+respawnPlayer() {
+	self endon( "disconnect" );
+	self endon( "spawned_player" );
+	self endon( "joined_spectators" );
+
+	if ( level.freerun || game["state"] != "playing" ) {
+		wait .05;
+		self spawnPlayer();
+		return;
+	}
 }
 
 addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
