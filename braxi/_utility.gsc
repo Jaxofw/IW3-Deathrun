@@ -34,7 +34,7 @@ buildJumperTable() {
 		level.jumperModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
 		level.jumperModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 		
-		// preCacheModel( level.jumperModels[id]["model"] );
+		preCacheModel( level.jumperModels[id]["model"] );
 		level.numJumpers++;
 	}
 }
@@ -51,7 +51,7 @@ buildPrimaryTable() {
 		level.primaryWeaps[id]["item"] = (tableLookup( tableName, 0, idx, 3 ) + "_mp");
 		level.primaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 		
-		// preCacheItem( level.primaryWeaps[id]["item"] );
+		preCacheItem( level.primaryWeaps[id]["item"] );
 		level.numPrimaries++;
 	}
 }
@@ -68,7 +68,7 @@ buildSecondaryTable() {
 		level.secondaryWeaps[id]["item"] = (tableLookup( tableName, 0, idx, 3 ) + "_mp");
 		level.secondaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 		
-		// preCacheItem( level.secondaryWeaps[id]["item"] );
+		preCacheItem( level.secondaryWeaps[id]["item"] );
 		level.numSecondaries++;
 	}
 }
@@ -85,7 +85,7 @@ buildGloveTable() {
 		level.gloveModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
 		level.gloveModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 		
-		// preCacheModel( level.gloveModels[id]["model"] );
+		preCacheModel( level.gloveModels[id]["model"] );
 		level.numGloves++;
 	}
 }

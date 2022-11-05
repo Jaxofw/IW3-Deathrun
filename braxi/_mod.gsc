@@ -28,6 +28,10 @@ init() {
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "player_sprintTime", 12.8 );
 	setDvar( "bullet_penetrationEnabled", 0 );
+	setDvar( "bg_bobamplitudesprinting", 0 );
+	setDvar( "bg_bobamplitudeducked", 0 );
+	setDvar( "bg_bobamplitudeprone", 0 );
+	setDvar( "bg_bobamplitudestanding", 0 );
 
 	if ( game["rounds_played"] == 0 ) {
 		if ( level.dvar["freerun"] ) level.freerun = true;
@@ -138,9 +142,9 @@ spawnPlayer( origin, angles ) {
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
-	self giveWeapon( "deserteaglegold_mp" );
-	self setSpawnWeapon( "deserteaglegold_mp" );
-	self giveMaxAmmo( "deserteaglegold_mp" );
+	self giveWeapon( "beretta_mp" );
+	self setSpawnWeapon( "beretta_mp" );
+	self giveMaxAmmo( "beretta_mp" );
 
 	self thread braxi\_teams::setHealth();
 	self thread braxi\_teams::setSpeed();
