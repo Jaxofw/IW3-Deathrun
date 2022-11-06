@@ -8,9 +8,9 @@ init() {
 	preCache();
 	init_spawns();
 
-	level.players = [];
 	level.activ = [];
 	level.freerun = false;
+	level.lastJumper = false;
 	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 0;
 
 	buildJumperTable();
@@ -51,31 +51,53 @@ gameLogic() {
 		waitForPlayers( 2 );
 		tpJumpersToSpawn();
 		startTimer();
-		releaseJumpers();
 	}
 
 	game["state"] = "playing";
 
 	if ( !level.freerun ) pickRandomActivator();
 
-	watchTimeLimit();
+	level thread watchTimeLimit();
+
+	while ( game["state"] == "playing" ) {
+		wait .2;
+
+		level.jumpers = [];
+		level.jumpersAlive = 0;
+		level.activatorsAlive = 0;
+		level.players = getAllPlayers();
+
+		if ( level.players.size > 0 ) {
+			for ( i = 0; i < level.players.size; i++ ) {
+				if ( isDefined( level.players[i].team ) ) {
+					if ( level.players[i] isAlive() ) {
+						if ( level.players[i].team == "allies" ) {
+							level.jumpersAlive++;
+							level.jumpers[level.jumpers.size] = level.players[i];
+						}
+
+						if ( level.players[i].team == "axis" ) level.activatorsAlive++;
+					}
+				}
+			}
+
+			if ( !level.freerun ) {
+				if ( level.players.size > 2 && level.jumpersAlive == 1 ) level.jumpers[0] lastJumperAlive();
+				if ( !level.jumpersAlive && level.activatorsAlive ) endRound( "Jumpers Died!", "activator" );
+				else if ( !level.activatorsAlive && level.jumpersAlive ) endRound( "Activator Died!" , "jumper" );
+			}
+		}
+	}
 }
 
 tpJumpersToSpawn() {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
-		if ( players[i] isPlaying() ) {
+		if ( players[i] isAlive() ) {
 			randomSpawn = level.spawn["allies"][randomInt(level.spawn["allies"].size)].origin;
 			players[i] setOrigin( randomSpawn );
 			players[i] linkTo( level.spawn_link );
 		}
-	}
-}
-
-releaseJumpers() {
-	players = getAllPlayers();
-	for ( i = 0; i < players.size; i++ ) {
-		if ( players[i] isPlaying() ) players[i] unLink();
 	}
 }
 
@@ -97,9 +119,18 @@ startTimer() {
 	level.matchStartTimer.hideWhenInMenu = true;
 
 	wait level.dvar["spawn_time"];
+
+	releaseJumpers();
 	
 	level.matchStartText destroyElem();
 	level.matchStartTimer destroyElem();
+}
+
+releaseJumpers() {
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ ) {
+		if ( players[i] isAlive() ) players[i] unLink();
+	}
 }
 
 pickRandomActivator() {
@@ -116,6 +147,29 @@ pickRandomActivator() {
 
 	// Give activator xp being for chosen
 	level.activ braxi\_rank::giveRankXP( "activator" );
+}
+
+lastJumperAlive() {
+	if ( level.lastJumper ) return;
+	level.lastJumper = true;
+
+	hud = addTextHud( level, 320, 240, 0, "center", "middle", 2.4 );
+	hud setText( self.name + " is the last Jumper alive" );
+
+	hud.glowColor = (0.7,0,0);
+	hud.glowAlpha = 1;
+	hud SetPulseFX( 30, 100000, 700 );
+
+	hud fadeOverTime( 0.5 );
+	hud.alpha = 1;
+
+	wait 2.6;
+
+	hud fadeOverTime( 0.4 );
+	hud.alpha = 0;
+	wait 0.4;
+
+	hud destroy();
 }
 
 spawnPlayer( origin, angles ) {
@@ -169,7 +223,6 @@ watchTimeLimit() {
 	}
 
 	level endRound( "Time Limit Reached", "activator" );
-	iPrintLnBold( (game["rounds_played"] + 1) + "/12" );
 }
 
 endRound( string, winner ) {
@@ -177,6 +230,7 @@ endRound( string, winner ) {
 	game["rounds_played"]++;
 
 	iPrintLnBold( string );
+	iPrintLnBold( "Starting Round " + (game["rounds_played"] + 1) + "/12" );
 
 	if ( winner == "activator" ) {
 		if (isDefined( level.activ ) && isPlayer( level.activ )) {

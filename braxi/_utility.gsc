@@ -94,9 +94,9 @@ getAllPlayers() {
 	return getEntArray( "player", "classname" );
 }
 
-isPlaying() {
-    if ( self.sessionstate == "playing" && self.pers["team"] == "allies" ) return true;
-    return false;
+isAlive() {
+	if ( self.sessionstate == "playing" ) return true;
+	return false;
 }
 
 waitForPlayers( required ) {
@@ -112,7 +112,7 @@ waitForPlayers( required ) {
 		players_ready = 0;
 
 		for ( i = 0; i < players.size; i++ ) {
-			if ( players[i] isPlaying() ) players_ready++;
+			if ( players[i] isAlive() && players[i].pers["team"] == "allies" ) players_ready++;
 		}
 
 		if ( players_ready >= required ) break;
@@ -145,4 +145,17 @@ spawnCollision( origin, height, width ) {
 	level.colliders[level.colliders.size] = spawn( "trigger_radius", origin, 0, width, height );
 	level.colliders[level.colliders.size-1] setContents( 1 );
 	level.colliders[level.colliders.size-1].targetname = "script_collision";
+}
+
+addTextHud( who, x, y, alpha, alignX, alignY, fontScale ) {
+	if ( isPlayer( who ) ) hud = newClientHudElem( who );
+	else hud = newHudElem();
+
+	hud.x = x;
+	hud.y = y;
+	hud.alpha = alpha;
+	hud.alignX = alignX;
+	hud.alignY = alignY;
+	hud.fontScale = fontScale;
+	return hud;
 }
