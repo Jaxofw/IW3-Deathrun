@@ -171,6 +171,7 @@ weapon,mp/ppsh_mp
 weapon,mp/fnp45_mp
 weapon,mp/wavegun_mp
 
+weapon,mp/tomahawk_mp
 weapon,mp/hands_mp
 weapon,mp/knife_mp
 weapon,mp/ballistic_knife_mp
@@ -184,6 +185,10 @@ weapon,mp/sword_mp
 weapon,mp/toy_mp
 
 # Weapon Models
+xmodel,weapon_bo_tomahawk
+xmodel,weapon_bo_tomahawk_wm
+xmodel,weapon_bo_tomahawk_wm_knife
+
 xmodel,viewmodel_colt_anaconda_44
 xmodel,weapon_colt_anaconda_44
 
@@ -253,6 +258,15 @@ xmodel,melee_t9_bat_vm
 xmodel,melee_t7_sword_vm
 
 # Xanims
+xanim,viewmodel_tomahawk_attack
+xanim,viewmodel_tomahawk_attack2
+xanim,viewmodel_tomahawk_idle
+xanim,viewmodel_tomahawk_putaway
+xanim,viewmodel_tomahawk_pullout
+xanim,viewmodel_tomahawk_sprint_in
+xanim,viewmodel_tomahawk_sprint_loop
+xanim,viewmodel_tomahawk_sprint_out
+
 xanim,st_anaconda_ads_down
 xanim,st_anaconda_ads_fire
 xanim,st_anaconda_ads_up
