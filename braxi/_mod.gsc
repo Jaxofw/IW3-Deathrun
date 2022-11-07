@@ -190,7 +190,7 @@ spawnPlayer( origin, angles ) {
 
 	self setModel( "body_mp_sas_urban_sniper" );
 
-	if ( isDefined(origin) && isDefined(angles) ) self spawn( origin, angles );
+	if ( isDefined( origin ) && isDefined( angles ) ) self spawn( origin, angles );
 	else {
 		spawnPoint = level.spawn[self.pers["team"]][randomInt( level.spawn[self.pers["team"]].size )];
 		self spawn( spawnPoint.origin, spawnPoint.angles );
@@ -230,7 +230,7 @@ endRound( string, winner ) {
 	game["rounds_played"]++;
 
 	iPrintLnBold( string );
-	iPrintLnBold( "Starting Round " + (game["rounds_played"] + 1) + "/12" );
+	iPrintLnBold( "Starting Round " + ( game["rounds_played"] + 1 ) + "/12" );
 
 	if ( winner == "activator" ) {
 		if (isDefined( level.activ ) && isPlayer( level.activ )) {
@@ -263,8 +263,8 @@ endMap( winner ) {
 }
 
 spawnSpectator( origin, angles ) {
-	if (!isDefined( origin )) origin = (0,0,0);
-	if (!isDefined( angles )) angles = (0,0,0);
+	if ( !isDefined( origin ) ) origin = (0,0,0);
+	if ( !isDefined( angles ) ) angles = (0,0,0);
 
 	self notify( "joined_spectators" );
 

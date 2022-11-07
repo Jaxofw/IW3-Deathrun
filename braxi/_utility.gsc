@@ -180,13 +180,10 @@ notification( notification, unlock ) {
 	} else {
 		self.notification[0].x = 270;
 		self.notification[0].y = 50;
-
 		self.notification[1].x = 271;
 		self.notification[1].y = 140;
-
 		self.notification[2].x = 320;
 		self.notification[2].y = 112;
-
 		self.notification[3].x = 320;
 		self.notification[3].y = 129;
 	}
@@ -220,11 +217,11 @@ notification( notification, unlock ) {
 	self.notification[3] setText( notification.footText );
 
 	if ( unlock ) {
-		moveNotifElements(240, 241, 290, 290, 0.2);
+		moveNotifElements( 240, 241, 290, 290, 0.2 );
 		wait .3;
-		moveNotifElements(300, 301, 350, 350, 3.0);
+		moveNotifElements( 300, 301, 350, 350, 3.0 );
 		wait 2;
-		moveNotifElements(670, 671, 720, 720, 0.2);
+		moveNotifElements( 670, 671, 720, 720, 0.2 );
 	} else {
 		for ( i = 0; i < self.notification.size; i++ ) {
 			self.notification[i].alpha = 0;

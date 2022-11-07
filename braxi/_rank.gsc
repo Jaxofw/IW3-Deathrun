@@ -45,7 +45,7 @@ onPlayerConnect() {
 		player.pers["prestige"] = prestige;
 
 		if ( !isDefined(player.hud_rankscoreupdate) ) {
-			player.hud_rankscoreupdate = newClientHudElem(player);
+			player.hud_rankscoreupdate = newClientHudElem( player );
 			player.hud_rankscoreupdate.horzAlign = "center";
 			player.hud_rankscoreupdate.vertAlign = "middle";
 			player.hud_rankscoreupdate.alignX = "center";

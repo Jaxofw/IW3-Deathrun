@@ -1,15 +1,14 @@
 main()
 {
-	if ( getDvar("mapname") == "mp_background" )
-		return; // this isn't required but i'm putting it here...
+	if ( getDvar( "mapname" ) == "mp_background" ) return;
 
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 
-	println( "Warning: g_gametype is \""+gametype+"\", should be \"deathrun\" " );
-	println( "Trying to load correct gametype!" );
+	printLn( "Warning: g_gametype is \""+gametype+"\", should be \"deathrun\" " );
+	printLn( "Trying to load correct gametype!" );
 
 	setDvar( "g_gametype", "deathrun" );
-	exitLevel(false);
+	exitLevel( false );
 }
 
 Callback_StartGameType()
