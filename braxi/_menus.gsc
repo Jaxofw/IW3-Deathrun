@@ -27,7 +27,7 @@ init() {
 }
 
 onPlayerConnect() {
-	for(;;) {
+	for (;;) {
 		level waittill( "connecting", player );
 
 		player setClientDvar( "ui_3dwaypointtext", 1 );
@@ -36,16 +36,17 @@ onPlayerConnect() {
 		player.enableDeathIcons = false;
 		player.classType = undefined;
 		player.selectedClass = false;
+		player.notifications = [];
 
 		player setClientDvar( "g_scriptMainMenu", game["menu_team"] );
-		player onMenuResponse();
+		player thread onMenuResponse();
 	}
 }
 
 onMenuResponse() {
-	self endon("disconnect");
+	self endon( "disconnect" );
 	
-	for(;;) {
+	for (;;) {
 		self waittill( "menuresponse", menu, response );
 
 		if ( menu == game["menu_team"] ) {

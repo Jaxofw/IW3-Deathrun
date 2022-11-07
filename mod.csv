@@ -94,9 +94,11 @@ material,rank_49
 # Menu Assets
 material,menu_rank_bg
 material,menu_rank_bar
-material,blue_button_shit
+material,menu_button_border
 material,grey_button_shit
 material,menu_lock
+material,hud_notify
+material,hud_notify_footer
 material,knife_ballistic_reticle
 material,melee_weapon_reticle
 

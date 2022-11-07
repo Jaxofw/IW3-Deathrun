@@ -1,5 +1,6 @@
 #include common_scripts\utility;
 #include maps\mp\gametypes\_hud_util;
+#include braxi\_utility;
 
 init() {
 	level.rankTable = [];
@@ -114,20 +115,32 @@ giveRankXp( type, value ) {
 increaseLevelXp( amount ) {
 	self.pers["rankxp"] += amount;
 	self maps\mp\gametypes\_persistence::statSet( "rankxp", self.pers["rankxp"] );
-	rankId = self getRankForXp(self.pers["rankxp"]);
-	self updateRank(rankId);
+	rankId = self getRankForXp( self.pers["rankxp"] );
+	self updateRank( rankId );
 }
 
-updateRank(rankId) {
+updateRank( rankId ) {
 	if ( getRankMaxXp( self.pers["rank"] ) <= self.pers["rankxp"] && self.pers["rank"] < level.maxRank ) {
 		self setRank( rankId, 0 );
 		self.pers["rank"] = rankId;
+		self displayRankUp();
 	}
 
 	updateRankStats(self, rankId);
 }
 
-updateRankStats(player, rankId) {
+displayRankUp() {
+	self endon( "disconnect" );
+
+	rankUp = spawnStruct();
+	rankUp.titleText = "Level Up!";
+	rankUp.footText = "Rank " + (self.pers["rank"] + 1);
+	rankUp.sound = "mp_level_up";
+
+	self notification( rankUp, true );
+}
+
+updateRankStats( player, rankId ) {
 	player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
 	player maps\mp\gametypes\_persistence::statSet( "minxp", getRankMinXp( rankId ) );
 	player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankMaxXp( rankId ) );
@@ -136,7 +149,7 @@ updateRankStats(player, rankId) {
 	else player setStat( 252, rankId );
 }
 
-updateRankScoreHUD(amount) {
+updateRankScoreHUD( amount ) {
 	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
@@ -170,7 +183,7 @@ updateRankScoreHUD(amount) {
 	}
 }
 
-getRankForXp(xpVal) {
+getRankForXp( xpVal ) {
 	rankId = 0;
 	rankName = level.rankTable[rankId][1];
 	assert( isDefined( rankName ) );
@@ -190,27 +203,31 @@ getRankXp() {
 	return self.pers["rankxp"];
 }
 
-getRankMinXp(rankId) {
-	return int(level.rankTable[rankId][2]);
+getRankMinXp( rank ) {
+	return int(level.rankTable[rank][2]);
 }
 
-getRankXpAmount(rankId) {
-	return int(level.rankTable[rankId][3]);
+getRankXpAmount( rank ) {
+	return int(level.rankTable[rank][3]);
 }
 
-getRankMaxXp(rankId) {
-	return int(level.rankTable[rankId][7]);
+getRankMaxXp( rank ) {
+	return int(level.rankTable[rank][7]);
 }
 
-setScoreValue(type, value) {
+getRankIcon( rank, prestige ) {
+	return tableLookup( "mp/rankIconTable.csv", 0, rank, prestige + 1 );
+}
+
+setScoreValue( type, value ) {
 	level.scoreInfo[type]["value"] = value;
 }
 
-getScoreValue(type) {
+getScoreValue( type ) {
 	return ( level.scoreInfo[type]["value"] );
 }
 
-isItemUnlocked(table, id) {
+isItemUnlocked( table, id ) {
 	if ( id >= table.size || id <= -1 ) return false;
 	if ( self.pers["rank"] >= table[id]["rank"] ) return true;
 	return false;

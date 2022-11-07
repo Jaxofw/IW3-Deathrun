@@ -6,7 +6,7 @@
 #define CURRENT_LEVEL 					(stat(2350) + 1)
 #define CURRENT_LEVEL_MT 				tablelookup( "mp/rankIconTable.csv", 0, stat(252), stat(2326) + 1 )
 #define CURRENT_XP 						(tablelookup( "mp/rankTable.csv" , 0, stat(252), 7 ) - stat(2301))
-#define NEXT_LEVEL 						tablelookup( "mp/rankIconTable.csv", 0, stat(252) + 1, stat(2326) )
+#define NEXT_LEVEL 						tablelookup( "mp/rankIconTable.csv", 0, stat(252) + 2, stat(2326) )
 #define MAX_LEVEL						tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 )
 
 #define BUTTON_X_START 					120
@@ -93,8 +93,9 @@
 	focuscolor 			1 1 1 1 \
 	blurworld 			blurworld_ \
 	CREATE_SHADER( 107 -4 200 640 1 0, "white", 0 0 0 0.5, 1 ) \
+	CREATE_SHADER( 307 -4 2 640 1 0, "menu_button_border", 0.2 0.4 0.8 1, 1 ) \
 	CREATE_SHADER( 120 50 48 48 1 0, "menu_rank_bg", 0 0 0 0.5, 1 ) \
-	CREATE_SHADER( 124 55 40 40 1 0, CURRENT_LEVEL_MT, 1 1 1 1, 1 ) \
+	CREATE_SHADER( 126.5 56.5 35 35 1 0, CURRENT_LEVEL_MT, 1 1 1 1, 1 ) \
 	CREATE_TEXT( 175 71 36 36 1 0, "Welcome " + dvarstring( "ui_menu_playername" ), 1 1 1 1, 0.3, 0, 1 ) \
 	XP_UNTIL_NEXT_LEVEL \
 	CREATE_SHADER( 175 87 105 4 1 0, "menu_rank_bar", 0 0 0 0.2, 1 ) \
@@ -103,10 +104,11 @@
 #define CREATE_BUTTON( idx, string, action_, visible_ ) \
 	itemDef \
 	{ \
-		rect 			BUTTON_HEADER_RECT( idx ) \
+		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 5 BUTTON_Y_SIZE 1 1 \
 		style			WINDOW_STYLE_SHADER \
 		visible			when ( visible_ ) \
-		exp 			material ( "blue_button_shit" ) \
+		forecolor		0 0.502 1 1 \
+		exp 			material ( "menu_button_border" ) \
 	} \
 	itemDef \
 	{ \
@@ -114,8 +116,8 @@
 		type			ITEM_TYPE_BUTTON \
 		style			WINDOW_STYLE_FILLED \
 		visible			when ( visible_ ) \
-		exp text		( string ) \
-		exp material	( "grey_button_shit" ) \
+		exp 			text ( string ) \
+		exp 			material ( "grey_button_shit" ) \
 		forecolor		1 1 1 1 \
 		backcolor		0 0 0 0.5 \
 		textaligny		19 \
@@ -144,10 +146,11 @@
 #define UNLOCKABLE( idx, table, action_, visible_ ) \
 	itemDef \
 	{ \
-		rect 			BUTTON_HEADER_RECT( idx ) \
+		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 5 BUTTON_Y_SIZE 1 1 \
 		style			WINDOW_STYLE_SHADER \
 		visible			when ( visible_ ) \
-		exp 			material ( "blue_button_shit" ) \
+		forecolor		0 0.502 1 1 \
+		exp 			material ( "menu_button_border" ) \
 	} \
 	itemDef \
 	{ \

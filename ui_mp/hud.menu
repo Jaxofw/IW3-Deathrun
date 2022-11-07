@@ -16,7 +16,8 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( ( ! inkillcam( ) ) )
+        visible                   when ( ( !inkillcam( ) ) )
+
         itemDef
         {
             rect                      3 0 0 0 HORIZONTAL_ALIGN_SUBLEFT VERTICAL_ALIGN_SUBTOP
@@ -47,7 +48,7 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( ( ! inkillcam( ) ) )
+        visible                   when ( ( !inkillcam( ) ) )
         itemDef
         {
             borderSize                1
@@ -71,7 +72,7 @@
 		name			"xpbar"
 		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
-		visible 		1
+		visible 		when ( !ui_active() )
 
 		itemDef
 		{

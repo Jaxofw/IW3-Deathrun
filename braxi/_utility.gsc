@@ -2,10 +2,11 @@
 
 preCache() {
 	preCacheShader( "white" );
+	preCacheShader( "hud_notify" );
+	preCacheShader( "hud_notify_footer" );
 	preCacheStatusIcon( "hud_status_connecting" );
 	preCacheStatusIcon( "hud_status_dead" );
 	preCacheModel( "body_mp_sas_urban_sniper" );
-	preCacheItem( "deserteaglegold_mp" );
 }
 
 init_spawns() {
@@ -158,4 +159,95 @@ addTextHud( who, x, y, alpha, alignX, alignY, fontScale ) {
 	hud.alignY = alignY;
 	hud.fontScale = fontScale;
 	return hud;
+}
+
+notification( notification, unlock ) {
+	self endon( "disconnect" );
+
+	self playLocalSound( notification.sound );
+
+	self.notification = [];
+	self.notification[0] = newClientHudElem( self );
+	self.notification[1] = newClientHudElem( self );
+	self.notification[2] = addTextHud( self, -300, 104, 1, "center", "middle", 1.4 );
+	self.notification[3] = addTextHud( self, -300, 122, 1, "center", "middle", 1.4 );
+
+	if ( unlock ) {
+		self.notification[0].x = -300;
+		self.notification[0].y = 42;
+		self.notification[1].x = -300;
+		self.notification[1].y = 133;
+	} else {
+		self.notification[0].x = 270;
+		self.notification[0].y = 50;
+
+		self.notification[1].x = 271;
+		self.notification[1].y = 140;
+
+		self.notification[2].x = 320;
+		self.notification[2].y = 112;
+
+		self.notification[3].x = 320;
+		self.notification[3].y = 129;
+	}
+
+	self.notification[0].alpha = .6;
+	self.notification[0].sort = 990;
+	self.notification[0].hideWhenInMenu = true;
+	self.notification[0].horzAlign = "fullscreen";
+	self.notification[0].vertAlign = "fullscreen";
+	self.notification[0] setShader( "hud_notify", 100, 142 );
+
+	self.notification[1].alpha = 1;
+	self.notification[1].sort = 993;
+	self.notification[1].hideWhenInMenu = true;
+	self.notification[1].horzAlign = "fullscreen";
+	self.notification[1].vertAlign = "fullscreen";
+	self.notification[1] setShader( "hud_notify_footer", 98, 2 );
+
+	self.notification[2].font = "default";
+	self.notification[2].sort = 993;
+	self.notification[2].hideWhenInMenu = true;
+	self.notification[2].horzAlign = "fullscreen";
+	self.notification[2].vertAlign = "fullscreen";
+	self.notification[2] setText( notification.titleText );
+
+	self.notification[3].font = "default";
+	self.notification[3].sort = 993;
+	self.notification[3].hideWhenInMenu = true;
+	self.notification[3].horzAlign = "fullscreen";
+	self.notification[3].vertAlign = "fullscreen";
+	self.notification[3] setText( notification.footText );
+
+	if ( unlock ) {
+		moveNotifElements(240, 241, 290, 290, 0.2);
+		wait .3;
+		moveNotifElements(300, 301, 350, 350, 3.0);
+		wait 2;
+		moveNotifElements(670, 671, 720, 720, 0.2);
+	} else {
+		for ( i = 0; i < self.notification.size; i++ ) {
+			self.notification[i].alpha = 0;
+			self.notification[i] fadeOverTime( 1 );
+			if ( i == 0 ) self.notification[i].alpha = 0.6;
+			else self.notification[i].alpha = 1;
+		}
+
+		wait 4;
+
+		for ( i = 0; i < self.notification.size; i++ ) {
+			self.notification[i] fadeOverTime( 1 );
+			self.notification[i].alpha = 0;
+		}
+	}
+}
+
+moveNotifElements(x1, x2, x3, x4, time) {
+	for ( i = 0; i < self.notification.size; i++ ) {
+		self.notification[i] moveOverTime( time );
+		if ( i == 0 ) self.notification[i].x = x1;
+		if ( i == 1 ) self.notification[i].x = x2;
+		if ( i == 2 ) self.notification[i].x = x3;
+		if ( i == 3 ) self.notification[i].x = x4;
+	}
 }
