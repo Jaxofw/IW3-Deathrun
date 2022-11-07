@@ -179,6 +179,17 @@ gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,rel
 gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# Signal 50
+wpn_iw9_signal_fire_plr,,weapons/iw9/signal/fire_plr.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+wpn_iw9_signal_fire_npc,,weapons/iw9/signal/fire_npc.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
+
+iw9_signal_mag_in,,weapons/iw9/signal/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_mag_out,,weapons/iw9/signal/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_slide_back,,weapons/iw9/signal/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_slide_forward,,weapons/iw9/signal/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+
+## END,,,,,,,,,
+
 # Wave Gun
 wpn_wavegun_fire_plr,,prestige_weapons/wavegun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 wpn_wavegun_fire_npc,,prestige_weapons/wavegun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4

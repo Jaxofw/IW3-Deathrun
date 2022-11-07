@@ -161,7 +161,7 @@ weapon,mp/psd9_mp
 weapon,mp/msr_mp
 weapon,mp/atlas45_mp
 weapon,mp/pps43_mp
-weapon,mp/lynx_mp
+weapon,mp/signal_mp
 weapon,mp/m1911_mp
 weapon,mp/kam12_mp
 weapon,mp/thompson_mp
@@ -210,9 +210,6 @@ xmodel,wpn_h1_psd9_npc
 xmodel,wpn_s1_atlas45_vm
 xmodel,wpn_s1_atlas45_npc
 
-xmodel,ghosts_lynx_view
-xmodel,ghosts_lynx_world
-
 xmodel,wpn_t5_m1911_vm
 xmodel,wpn_t5_m1911_npc
 
@@ -233,6 +230,9 @@ xmodel,wpn_t4_ppsh_npc
 
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
+
+xmodel,wpn_iw9_signal_vm
+xmodel,wpn_iw9_signal_npc
 
 xmodel,wpn_t7_wavegun_vm
 xmodel,wpn_t7_wavegun_npc
@@ -370,20 +370,6 @@ xanim,vm_s1_atlas45_sprint_in
 xanim,vm_s1_atlas45_sprint_loop
 xanim,vm_s1_atlas45_sprint_out
 
-xanim,iw6_lynx_ads_down_scope
-xanim,iw6_lynx_ads_up_scope
-xanim,iw6_lynx_fire
-xanim,iw6_lynx_fire_ads_scope
-xanim,iw6_lynx_first_raise
-xanim,iw6_lynx_idle
-xanim,iw6_lynx_pullout
-xanim,iw6_lynx_putaway
-xanim,iw6_lynx_reload
-xanim,iw6_lynx_reload_empty
-xanim,iw6_lynx_sprint_in
-xanim,iw6_lynx_sprint_loop
-xanim,iw6_lynx_sprint_out
-
 xanim,vm_t5_m1911_ads_down
 xanim,vm_t5_m1911_ads_up
 xanim,vm_t5_m1911_drop
@@ -488,6 +474,24 @@ xanim,vm_t6_fnp45_raise_first
 xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
+
+xanim,vm_iw9_signal_ads_down
+xanim,vm_iw9_signal_ads_up
+xanim,vm_iw9_signal_drop
+xanim,vm_iw9_signal_drop_quick
+xanim,vm_iw9_signal_fire
+xanim,vm_iw9_signal_fire_ads
+xanim,vm_iw9_signal_idle
+xanim,vm_iw9_signal_raise
+xanim,vm_iw9_signal_raise_first
+xanim,vm_iw9_signal_raise_quick
+xanim,vm_iw9_signal_reload
+xanim,vm_iw9_signal_reload_empty
+xanim,vm_iw9_signal_sprint_in
+xanim,vm_iw9_signal_sprint_loop
+xanim,vm_iw9_signal_sprint_out
+xanim,vm_iw9_signal_stab
+xanim,vm_iw9_signal_swipe
 
 xanim,vm_t7_wavegun_ads_down
 xanim,vm_t7_wavegun_ads_up
