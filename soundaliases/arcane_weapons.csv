@@ -188,8 +188,6 @@ iw9_signal_mag_out,,weapons/iw9/signal/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,
 iw9_signal_slide_back,,weapons/iw9/signal/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 iw9_signal_slide_forward,,weapons/iw9/signal/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
-## END,,,,,,,,,
-
 # Wave Gun
 wpn_wavegun_fire_plr,,prestige_weapons/wavegun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 wpn_wavegun_fire_npc,,prestige_weapons/wavegun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
@@ -198,6 +196,19 @@ fly_mgun_rld_rifle_futz,,prestige_weapons/wavegun/wpn_micro_rld_rifle_futz.wav,1
 fly_mgun_rld_rifle_mag_in,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_mgun_rld_rifle_mag_out,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_mgun_rld_rifle_power_up,,prestige_weapons/wavegun/wpn_micro_rld_rifle_power_up.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Raygun
+wpn_t9_raygun_fire_plr,,prestige_weapons/raygun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_t9_raygun_fire_npc,,prestige_weapons/raygun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+wpn_t9_raygun_loop,,prestige_weapons/raygun/loop.wav,0.75,0.85,explosion,0.7,0.9,50,15000,auto,streamed,,looping,0.5,all_mp,,,,,,,,,
+wpn_t9_raygun_exp,,prestige_weapons/raygun/exp.wav,0.75,0.85,explosion,0.7,0.9,50,15000,auto,streamed,,,0.5,all_mp,,,,,,,,,
+
+t9_raygun_bullet_1,,prestige_weapons/raygun/bullet_1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+t9_raygun_bullet_2,,prestige_weapons/raygun/bullet_2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+t9_raygun_close,,prestige_weapons/raygun/close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+t9_raygun_dial,,prestige_weapons/raygun/dial.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+t9_raygun_open,,prestige_weapons/raygun/open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+t9_raygun_raise_first,,prestige_weapons/raygun/raise_first.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # Sickle
 h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
@@ -208,12 +219,6 @@ wpn_b_knife_fire_plr,,weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,lo
 
 b_knife_pin,,weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 fly_bal_knife_load,,weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
-# Katana
-katana_first_raise_a,,weapons/iw7/katana/katana_first_raise_a.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-katana_first_raise_b,,weapons/iw7/katana/katana_first_raise_b.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-katana_first_raise_c,,weapons/iw7/katana/katana_first_raise_c.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-katana_raise_01,,weapons/iw7/katana/katana_raise_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 

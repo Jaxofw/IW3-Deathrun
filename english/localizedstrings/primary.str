@@ -58,6 +58,9 @@ LANG_ENGLISH        "PPSH"
 REFERENCE           FNP45
 LANG_ENGLISH        "TAC-45"
 
+REFERENCE           RAYGUN
+LANG_ENGLISH        "Ray Gun"
+
 REFERENCE           WAVE
 LANG_ENGLISH        "Wave Gun"
 

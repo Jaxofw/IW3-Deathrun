@@ -106,8 +106,12 @@ material,melee_weapon_reticle
 sound,arcane_weapons,,all_mp
 
 # FX
-fx,arcane/emc_muzzleflash
-fx,arcane/emc_trail
+fx,arcane\emc_muzzleflash
+fx,arcane\emc_trail
+
+fx,weapon\raygun\raygun_trail
+fx,weapon\raygun\raygun_muzzle
+fx,weapon\raygun\raygun_impact
 
 # Fixes
 xmodel,tag_origin_bitchface
@@ -172,6 +176,7 @@ weapon,mp/xpr50_mp
 weapon,mp/ppsh_mp
 weapon,mp/fnp45_mp
 weapon,mp/wavegun_mp
+weapon,mp/raygun_mp
 
 weapon,mp/tomahawk_mp
 weapon,mp/hands_mp
@@ -238,6 +243,9 @@ xmodel,wpn_iw9_signal_npc
 
 xmodel,wpn_t7_wavegun_vm
 xmodel,wpn_t7_wavegun_npc
+
+xmodel,wpn_t9_raygun_vm
+xmodel,wpn_t9_raygun_npc
 
 xmodel,melee_t8_toy_vm
 
@@ -507,6 +515,20 @@ xanim,vm_t7_wavegun_reload
 xanim,vm_t7_wavegun_sprint_in
 xanim,vm_t7_wavegun_sprint_loop
 xanim,vm_t7_wavegun_sprint_out
+
+xanim,vm_t9_raygun_ads_down
+xanim,vm_t9_raygun_ads_up
+xanim,vm_t9_raygun_drop
+xanim,vm_t9_raygun_fire
+xanim,vm_t9_raygun_fire_ads
+xanim,vm_t9_raygun_idle
+xanim,vm_t9_raygun_raise
+xanim,vm_t9_raygun_raise_first
+xanim,vm_t9_raygun_reload
+xanim,vm_t9_raygun_sprint_in
+xanim,vm_t9_raygun_sprint_loop
+xanim,vm_t9_raygun_sprint_out
+xanim,vm_t9_raygun_swipe
 
 xanim,viewmodel_ww2_shovel_sprint_loop
 xanim,viewmodel_ww2_shovel_swipe
