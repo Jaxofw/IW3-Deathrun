@@ -21,7 +21,7 @@ init() {
 	thread braxi\_dvar::setupDvars();
 	thread braxi\_rank::init();
 	thread braxi\_menus::init();
-	thread braxi\_maps::init();
+	braxi\_maps::init();
 	thread braxi\_teams::init();
 
 	setDvar( "g_speed", level.dvar["player_speed"] );
@@ -40,7 +40,7 @@ init() {
 	game["state"] = "lobby";
 
 	visionSetNaked( level.script, 2.0 );
-	level gameLogic();
+	level thread gameLogic();
 }
 
 gameLogic() {
@@ -82,9 +82,9 @@ gameLogic() {
 			}
 
 			if ( !level.freerun ) {
-				if ( level.players.size > 2 && level.jumpersAlive == 1 ) level.jumpers[0] lastJumperAlive();
-				if ( !level.jumpersAlive && level.activatorsAlive ) endRound( "Jumpers Died!", "activator" );
-				else if ( !level.activatorsAlive && level.jumpersAlive ) endRound( "Activator Died!" , "jumper" );
+				if ( level.players.size > 2 && level.jumpersAlive == 1 ) level.jumpers[0] thread lastJumperAlive();
+				if ( !level.jumpersAlive && level.activatorsAlive ) level endRound( "Jumpers Died!", "activator" );
+				else if ( !level.activatorsAlive && level.jumpersAlive ) level endRound( "Activator Died!" , "jumper" );
 			}
 		}
 	}
@@ -128,9 +128,8 @@ startTimer() {
 
 releaseJumpers() {
 	players = getAllPlayers();
-	for ( i = 0; i < players.size; i++ ) {
+	for ( i = 0; i < players.size; i++ )
 		if ( players[i] isAlive() ) players[i] unLink();
-	}
 }
 
 pickRandomActivator() {
@@ -217,26 +216,25 @@ watchTimeLimit() {
 
 	wait time;
 
-	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
-		level endMap( "activator" );
-		return;
-	}
-
-	level endRound( "Time Limit Reached", "activator" );
+	level thread endRound( "Time Limit Reached", "activator" );
 }
 
 endRound( string, winner ) {
-	game["state"] = "round_end";
 	game["rounds_played"]++;
-
-	iPrintLnBold( string );
-	iPrintLnBold( "Starting Round " + ( game["rounds_played"] + 1 ) + "/12" );
 
 	if ( winner == "activator" ) {
 		if (isDefined( level.activ ) && isPlayer( level.activ )) {
-			level.activ braxi\_rank::giveRankXp( "activator" );
+			level.activ thread braxi\_rank::giveRankXp( "activator" );
 		}
 	}
+
+	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
+		level thread endMap( "activator" );
+		return;
+	}
+
+	iPrintLnBold( string );
+	iPrintLnBold( "Starting Round " + ( game["rounds_played"] + 1 ) + "/" + level.dvar["round_limit"] );
 
 	wait 4;
 	map_restart( true );
@@ -247,7 +245,7 @@ endMap( winner ) {
 
 	if ( winner == "activator" ) {
 		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
-			level.activ braxi\_rank::giveRankXp( "activator", 100 );
+			level.activ thread braxi\_rank::giveRankXp( "activator", 100 );
 		}
 	}
 
@@ -260,6 +258,8 @@ endMap( winner ) {
 		players[i] allowSpectateTeam( "freelook", true );
 		players[i] allowSpectateTeam( "none", true );
 	}
+
+	iPrintLnBold( "end map triggered" );
 }
 
 spawnSpectator( origin, angles ) {

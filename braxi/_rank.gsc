@@ -133,11 +133,12 @@ displayRankUp() {
 	self endon( "disconnect" );
 
 	rankUp = spawnStruct();
-	rankUp.titleText = "Level Up!";
-	rankUp.footText = "Rank " + (self.pers["rank"] + 1);
+	rankUp.title = "You Leveled Up!";
+	rankUp.footer = "Level " + (self.pers["rank"] + 1);
 	rankUp.sound = "mp_level_up";
+	rankUp.levelUp = true;
 
-	self notification( rankUp, true );
+	self thread braxi\_utility::notification( rankUp );
 }
 
 updateRankStats( player, rankId ) {

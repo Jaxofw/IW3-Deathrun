@@ -36,7 +36,6 @@ onPlayerConnect() {
 		player.enableDeathIcons = false;
 		player.classType = undefined;
 		player.selectedClass = false;
-		player.notifications = [];
 
 		player setClientDvar( "g_scriptMainMenu", game["menu_team"] );
 		player thread onMenuResponse();

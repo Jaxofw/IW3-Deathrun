@@ -12,7 +12,7 @@ setupDvars() {
 	addDvar( "freerun", 1, 0, 1, "int" );
 	addDvar( "spawn_time", 5, 1, 10, "int" );
 
-	addDvar( "round_limit", 12, 12, 100, "int" );
+	addDvar( "round_limit", 12, 2, 100, "int" );
 
     addDvar( "ui_menu_playername", "Player", "", "", "string" );
 }

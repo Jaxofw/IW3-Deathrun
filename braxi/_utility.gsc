@@ -161,31 +161,40 @@ addTextHud( who, x, y, alpha, alignX, alignY, fontScale ) {
 	return hud;
 }
 
-notification( notification, unlock ) {
+notification( notification ) {
 	self endon( "disconnect" );
 
-	self playLocalSound( notification.sound );
+	if ( !self.notifying ) {
+		self thread showNotification( notification );
+		return;
+	}
 
+	self.notifications[self.notifications.size] = notification;
+}
+
+showNotification( notification ) {
+	self endon( "disconnect" );
+
+	self.notifying = true;
 	self.notification = [];
 	self.notification[0] = newClientHudElem( self );
 	self.notification[1] = newClientHudElem( self );
 	self.notification[2] = addTextHud( self, -300, 104, 1, "center", "middle", 1.4 );
 	self.notification[3] = addTextHud( self, -300, 122, 1, "center", "middle", 1.4 );
+	self playLocalSound( notification.sound );
 
-	if ( unlock ) {
+	if ( notification.levelUp ) {
 		self.notification[0].x = -300;
-		self.notification[0].y = 42;
+		self.notification[0].y = 90;
 		self.notification[1].x = -300;
 		self.notification[1].y = 133;
 	} else {
 		self.notification[0].x = 270;
-		self.notification[0].y = 50;
+		self.notification[0].y = 90;
 		self.notification[1].x = 271;
-		self.notification[1].y = 140;
+		self.notification[1].y = 133;
 		self.notification[2].x = 320;
-		self.notification[2].y = 112;
 		self.notification[3].x = 320;
-		self.notification[3].y = 129;
 	}
 
 	self.notification[0].alpha = .6;
@@ -193,7 +202,7 @@ notification( notification, unlock ) {
 	self.notification[0].hideWhenInMenu = true;
 	self.notification[0].horzAlign = "fullscreen";
 	self.notification[0].vertAlign = "fullscreen";
-	self.notification[0] setShader( "hud_notify", 100, 142 );
+	self.notification[0] setShader( "hud_notify", 100, 45 );
 
 	self.notification[1].alpha = 1;
 	self.notification[1].sort = 993;
@@ -207,16 +216,16 @@ notification( notification, unlock ) {
 	self.notification[2].hideWhenInMenu = true;
 	self.notification[2].horzAlign = "fullscreen";
 	self.notification[2].vertAlign = "fullscreen";
-	self.notification[2] setText( notification.titleText );
+	self.notification[2] setText( notification.title );
 
 	self.notification[3].font = "default";
 	self.notification[3].sort = 993;
 	self.notification[3].hideWhenInMenu = true;
 	self.notification[3].horzAlign = "fullscreen";
 	self.notification[3].vertAlign = "fullscreen";
-	self.notification[3] setText( notification.footText );
+	self.notification[3] setText( notification.footer );
 
-	if ( unlock ) {
+	if ( notification.levelUp ) {
 		moveNotifElements( 240, 241, 290, 290, 0.2 );
 		wait .3;
 		moveNotifElements( 300, 301, 350, 350, 3.0 );
@@ -236,6 +245,22 @@ notification( notification, unlock ) {
 			self.notification[i] fadeOverTime( 1 );
 			self.notification[i].alpha = 0;
 		}
+	}
+
+	wait .8;
+
+	for ( i = 0; i < self.notification.size; i++ ) self.notification[i] destroy();
+	self.notification = undefined;
+	self.notifying = false;
+
+	if ( self.notifications.size > 0 ) {
+		nextNotification = self.notifications[0];
+		
+		for ( i = 1; i < self.notifications.size; i++ )
+			self.notifications[i-1] = self.notifications[i];
+			self.notifications[i-1] = undefined;
+		
+		self thread showNotification( nextNotification );
 	}
 }
 

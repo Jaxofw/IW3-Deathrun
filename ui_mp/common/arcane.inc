@@ -10,13 +10,13 @@
 #define MAX_LEVEL						tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 )
 
 #define BUTTON_X_START 					120
-#define BUTTON_Y_START 					115
+#define BUTTON_Y_START 					105
 #define BUTTON_X_SIZE 					200
 #define BUTTON_Y_SIZE 					25
 #define BUTTON_X_SPACING				( BUTTON_X_SIZE + 4 )
 #define BUTTON_Y_SPACING				( BUTTON_Y_SIZE + 4 )
-#define BUTTON_ROW( idx )				( ( idx - 0 ) % 24 )
 #define BUTTON_COL( idx )				( ( idx - 0 - ( ( idx - 0 ) % 24 ) ) / 24 )
+#define BUTTON_ROW( idx )				( ( idx - 0 ) % 24 )
 
 #define BUTTON_HEADER_X_START 			118
 #define BUTTON_HEADER_X_POS( idx )		( BUTTON_HEADER_X_START + BUTTON_X_SPACING * BUTTON_COL( idx ) )

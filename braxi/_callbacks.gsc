@@ -5,6 +5,8 @@ playerConnect() {
 	self.number = self getEntityNumber();
 	self.statusicon = "hud_status_connecting";
 	self.died = false;
+	self.notifying = false;
+	self.notifications = [];
 
 	if ( !isDefined( self.name ) ) self.name = "undefined name";
 	if ( !isDefined( self.guid ) ) self.guid = "undefined guid";
@@ -17,6 +19,7 @@ playerConnect() {
 		"ui_menu_playername", self.name,
 		"ui_uav_client", 0
 	);
+
 	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );
 	
 	if ( !isDefined( self.pers["team"] ) ) {
@@ -29,13 +32,11 @@ playerConnect() {
 		self.pers["kills"] = 0;
 		self.pers["deaths"] = 0;
 		self.pers["assists"] = 0;
-		self.pers["activator"] = 0;
 	} else {
 		self.score = self.pers["score"];
 		self.kills = self.pers["kills"];
 		self.assists = self.pers["assists"];
 		self.deaths = self.pers["deaths"];
-		self.activator = self.pers["activator"];
 	}
 
 	if ( !isDefined( level.spawn["spectator"] ) ) level.spawn["spectator"] = level.spawn["allies"][0];
