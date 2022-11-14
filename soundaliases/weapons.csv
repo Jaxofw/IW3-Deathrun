@@ -72,20 +72,6 @@ weap_msr_clipout_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipout_v1.wav,1,1,wpnpl
 weap_msr_clipin_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipin_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_msr_chamber_close_plr,,weapons/iw5/msr/wpfoly_msr_reload_boltclose_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# PSD9
-wpn_psd9_fire_plr,,weapons/h1/psd9/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_psd9_fire_npc,,weapons/h1/psd9/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-
-pkpsd9_pout,,weapons/h1/psd9/h1_wpn_pkpsd9_pout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_pout_1st_01,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_pout_1st_02,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_empty_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_empty_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-pkpsd9_rel_empty_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
 # ATLAS 45
 wpn_atlas45_fire_plr,,weapons/s1/atlas45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 wpn_atlas45_fire_npc,,weapons/s1/atlas45/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
@@ -101,13 +87,28 @@ wpn_titan45_tac_magout,,weapons/s1/atlas45/wpn_titan45_tac_magout.wav,1,1,wpnply
 wpn_titan45_tac_pre_magin,,weapons/s1/atlas45/wpn_titan45_tac_pre_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 wpn_titan45_tac_settle,,weapons/s1/atlas45/wpn_titan45_tac_settle.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# Lynx
-weap_lynx_fire_plr,,weapons/iw6/lynx/bf3_m82/m82_fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-weap_lynx_fire_npc,,weapons/iw6/lynx/bf3_m82/m82_fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# PSD9
+wpn_psd9_fire_plr,,weapons/h1/psd9/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_psd9_fire_npc,,weapons/h1/psd9/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-lynx_clipout,,weapons/iw6/lynx/bf3_m82/m82_clipout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-lynx_clipin,,weapons/iw6/lynx/bf3_m82/m82_clipin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-hk416_chamber,,weapons/iw6/lynx/bf3_m416/an94_chamber.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_pout,,weapons/h1/psd9/h1_wpn_pkpsd9_pout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_pout_1st_01,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_pout_1st_02,,weapons/h1/psd9/h1_wpn_pkpsd9_pout_1st_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_01.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+pkpsd9_rel_empty_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Signal 50
+wpn_iw9_signal_fire_plr,,weapons/iw9/signal/fire_plr.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+wpn_iw9_signal_fire_npc,,weapons/iw9/signal/fire_npc.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
+
+iw9_signal_mag_in,,weapons/iw9/signal/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_mag_out,,weapons/iw9/signal/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_slide_back,,weapons/iw9/signal/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+iw9_signal_slide_forward,,weapons/iw9/signal/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
 # 1911
 wpn_m1911_fire_plr,,weapons/t5/m1911/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
@@ -130,14 +131,13 @@ kam12_reload_3_plr,,weapons/h1/kam12/kam12_reload_3.wav,1,1,wpnplyr,1,1,7,500,re
 kam12_reload_4_plr,,weapons/h1/kam12/kam12_reload_4.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_ak47_chamber_plr,,weapons/h1/kam12/weap_ak47_chamber_plr.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# XPR-50
-weap_xpr50_fire_plr,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
-weap_xpr50_fire_npc,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# THOMPSON
+wpn_thompson_fire_plr,,weapons/t4/thompson/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_thompson_fire_npc,,weapons/t4/thompson/fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-weap_as50_bolt_forward,,weapons/t6/xpr50/weap_sniper_bf.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_bolt_back,,weapons/t6/xpr50/weap_sniper_bb.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_mag_out,,weapons/t6/xpr50/weap_sniper_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_mag_in,,weapons/t6/xpr50/weap_sniper_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # EMC
 wpn_emc_fire_plr,,weapons/iw7/emc/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
@@ -153,14 +153,14 @@ weap_emc_first_raise_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_ope
 weap_emc_reload_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_emc_reload_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# TAC-45
-wpn_fnp45_fire_plr,,weapons/t6/fnp45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_fnp45_fire_npc,,weapons/t6/fnp45/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# XPR-50
+weap_xpr50_fire_plr,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+weap_xpr50_fire_npc,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-fly_fnp45_mag_out,,weapons/t6/fnp45/fly_fnp45_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_bolt_forward,,weapons/t6/xpr50/weap_sniper_bf.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_bolt_back,,weapons/t6/xpr50/weap_sniper_bb.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_mag_out,,weapons/t6/xpr50/weap_sniper_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_as50_mag_in,,weapons/t6/xpr50/weap_sniper_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # PPSH
 wpn_ppsh_fire_plr,,weapons/t4/ppsh/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
@@ -171,54 +171,14 @@ gr_ppsh_mag_out_plr,,weapons/t4/ppsh/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,
 gr_ppsh_slide_back_plr,,weapons/t4/ppsh/slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_ppsh_tap_plr,,weapons/t4/ppsh/mag_tap.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# THOMPSON
-wpn_thompson_fire_plr,,weapons/t4/thompson/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_thompson_fire_npc,,weapons/t4/thompson/fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# TAC-45
+wpn_fnp45_fire_plr,,weapons/t6/fnp45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_fnp45_fire_npc,,weapons/t6/fnp45/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
-# Signal 50
-wpn_iw9_signal_fire_plr,,weapons/iw9/signal/fire_plr.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
-wpn_iw9_signal_fire_npc,,weapons/iw9/signal/fire_npc.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
-
-iw9_signal_mag_in,,weapons/iw9/signal/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_mag_out,,weapons/iw9/signal/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_slide_back,,weapons/iw9/signal/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_slide_forward,,weapons/iw9/signal/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-
-# Wave Gun
-wpn_wavegun_fire_plr,,prestige_weapons/wavegun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_wavegun_fire_npc,,prestige_weapons/wavegun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-
-fly_mgun_rld_rifle_futz,,prestige_weapons/wavegun/wpn_micro_rld_rifle_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_mgun_rld_rifle_mag_in,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_mgun_rld_rifle_mag_out,,prestige_weapons/wavegun/wpn_micro_rld_rifle_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_mgun_rld_rifle_power_up,,prestige_weapons/wavegun/wpn_micro_rld_rifle_power_up.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
-# Raygun
-wpn_t9_raygun_fire_plr,,prestige_weapons/raygun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_t9_raygun_fire_npc,,prestige_weapons/raygun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
-wpn_t9_raygun_loop,,prestige_weapons/raygun/loop.wav,0.75,0.85,explosion,0.7,0.9,50,15000,auto,streamed,,looping,0.5,all_mp,,,,,,,,,
-wpn_t9_raygun_exp,,prestige_weapons/raygun/exp.wav,0.75,0.85,explosion,0.7,0.9,50,15000,auto,streamed,,,0.5,all_mp,,,,,,,,,
-
-t9_raygun_bullet_1,,prestige_weapons/raygun/bullet_1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-t9_raygun_bullet_2,,prestige_weapons/raygun/bullet_2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-t9_raygun_close,,prestige_weapons/raygun/close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-t9_raygun_dial,,prestige_weapons/raygun/dial.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-t9_raygun_open,,prestige_weapons/raygun/open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-t9_raygun_raise_first,,prestige_weapons/raygun/raise_first.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
-# Sickle
-h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-
-# Ballistic Knife
-wpn_b_knife_fire_plr,,weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-
-b_knife_pin,,weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_bal_knife_load,,weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_mag_out,,weapons/t6/fnp45/fly_fnp45_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 

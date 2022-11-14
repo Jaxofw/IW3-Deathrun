@@ -61,6 +61,9 @@ LANG_ENGLISH        "TAC-45"
 REFERENCE           RAYGUN
 LANG_ENGLISH        "Ray Gun"
 
+REFERENCE           GAT
+LANG_ENGLISH        "Blundergat"
+
 REFERENCE           WAVE
 LANG_ENGLISH        "Wave Gun"
 
