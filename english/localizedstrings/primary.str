@@ -34,8 +34,8 @@ LANG_ENGLISH        "Atlas 45"
 REFERENCE           PSD9
 LANG_ENGLISH        "PK-PSD9"
 
-REFERENCE           LYNX
-LANG_ENGLISH        "Signal 50"
+REFERENCE           LOCUS
+LANG_ENGLISH        "Locus"
 
 REFERENCE           1911
 LANG_ENGLISH        "M1911"

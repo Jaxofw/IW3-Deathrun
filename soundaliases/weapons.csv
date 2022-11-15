@@ -101,14 +101,14 @@ pkpsd9_rel_empty_01,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_01.wav,1,1,wpnplyr,
 pkpsd9_rel_empty_02,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_02.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 pkpsd9_rel_empty_03,,weapons/h1/psd9/h1_wpn_pkpsd9_rel_empty_03.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# Signal 50
-wpn_iw9_signal_fire_plr,,weapons/iw9/signal/fire_plr.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
-wpn_iw9_signal_fire_npc,,weapons/iw9/signal/fire_npc.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
+# Locus
+wpn_locus_fire_plr,,weapons/t7/locus/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+wpn_locus_fire_npc,,weapons/t7/locus/fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
 
-iw9_signal_mag_in,,weapons/iw9/signal/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_mag_out,,weapons/iw9/signal/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_slide_back,,weapons/iw9/signal/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
-iw9_signal_slide_forward,,weapons/iw9/signal/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_locus_mag_in,,weapons/t7/locus/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_locus_mag_out,,weapons/t7/locus/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_locus_bolt_back,,weapons/t7/locus/bolt_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+fly_locus_bolt_forward,,weapons/t7/locus/bolt_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
 # 1911
 wpn_m1911_fire_plr,,weapons/t5/m1911/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2

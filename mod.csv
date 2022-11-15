@@ -168,7 +168,7 @@ weapon,mp/iw2_pps43_mp
 weapon,mp/iw5_msr_mp
 weapon,mp/s1_atlas45_mp
 weapon,mp/h1_psd9_mp
-weapon,mp/iw9_signal_mp
+weapon,mp/t7_locus_mp
 weapon,mp/t5_m1911_mp
 weapon,mp/h1_kam12_mp
 weapon,mp/t4_thompson_mp
@@ -215,8 +215,8 @@ xmodel,wpn_s1_atlas45_npc
 xmodel,wpn_h1_psd9_vm
 xmodel,wpn_h1_psd9_npc
 
-xmodel,wpn_iw9_signal_vm
-xmodel,wpn_iw9_signal_npc
+xmodel,wpn_t7_locus_vm
+xmodel,wpn_t7_locus_npc
 
 xmodel,wpn_t5_m1911_vm
 xmodel,wpn_t5_m1911_npc
@@ -362,23 +362,23 @@ xanim,vm_h1_psd9_sprint_in
 xanim,vm_h1_psd9_sprint_loop
 xanim,vm_h1_psd9_sprint_out
 
-xanim,vm_iw9_signal_ads_down
-xanim,vm_iw9_signal_ads_up
-xanim,vm_iw9_signal_drop
-xanim,vm_iw9_signal_drop_quick
-xanim,vm_iw9_signal_fire
-xanim,vm_iw9_signal_fire_ads
-xanim,vm_iw9_signal_idle
-xanim,vm_iw9_signal_raise
-xanim,vm_iw9_signal_raise_first
-xanim,vm_iw9_signal_raise_quick
-xanim,vm_iw9_signal_reload
-xanim,vm_iw9_signal_reload_empty
-xanim,vm_iw9_signal_sprint_in
-xanim,vm_iw9_signal_sprint_loop
-xanim,vm_iw9_signal_sprint_out
-xanim,vm_iw9_signal_stab
-xanim,vm_iw9_signal_swipe
+xanim,vm_t7_locus_ads_down
+xanim,vm_t7_locus_ads_up
+xanim,vm_t7_locus_drop
+xanim,vm_t7_locus_drop_quick
+xanim,vm_t7_locus_fire
+xanim,vm_t7_locus_fire_ads
+xanim,vm_t7_locus_idle
+xanim,vm_t7_locus_raise
+xanim,vm_t7_locus_raise_first
+xanim,vm_t7_locus_raise_quick
+xanim,vm_t7_locus_rechamber
+xanim,vm_t7_locus_rechamber_ads
+xanim,vm_t7_locus_reload
+xanim,vm_t7_locus_reload_empty
+xanim,vm_t7_locus_sprint_in
+xanim,vm_t7_locus_sprint_loop
+xanim,vm_t7_locus_sprint_out
 
 xanim,vm_t5_m1911_ads_down
 xanim,vm_t5_m1911_ads_up
