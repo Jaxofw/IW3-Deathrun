@@ -57,6 +57,34 @@ t6_blundergat_mag_in,,prestige_weapons/blundergat/mag_in.wav,1,1,wpnplyr,1,1,7,5
 t6_blundergat_close,,prestige_weapons/blundergat/close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 t6_blundergat_tap,,prestige_weapons/blundergat/tap.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
+# V-R11
+wpn_vr11_fire_plr,,prestige_weapons/vr11/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_vr11_fire_npc,,prestige_weapons/vr11/fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+
+fly_humangun_arm_close,,prestige_weapons/vr11/arm_close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_arm_open,,prestige_weapons/vr11/arm_open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_battery_close,,prestige_weapons/vr11/battery_close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_battery_eject,,prestige_weapons/vr11/battery_eject.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_battery_insert,,prestige_weapons/vr11/battery_insert.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_battery_open,,prestige_weapons/vr11/battery_open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_humangun_spinner,,prestige_weapons/vr11/spinner.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Tesla
+tesla_clip_in,,prestige_weapons/tesla/tesla_clip_in.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+wpn_tesla_fire_npc,,prestige_weapons/tesla/wpn_tesla_fire_mn_f.wav,0.98,0.99,wpnai,1,1.1,35,6000,weapon,,,,0.85,,,,,weapon4,,,,0.3
+wpn_tesla_fire_plr,,prestige_weapons/tesla/wpn_tesla_fire_st_f.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+wpn_tesla_fire_plr_last,,prestige_weapons/tesla/wpn_tesla_fire_st_lst.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+wpn_tesla_idle,,prestige_weapons/tesla/wpn_tesla_idle_d.wav,0.98,0.99,wpnai,1,1.1,35,6000,weapon,,,,0.85,,,,,weapon4,,,,0.3
+wpn_tesla_idle_npc,,prestige_weapons/tesla/wpn_tesla_idle_d.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+tesla_foley,,prestige_weapons/tesla/gr_tesla_start.wav,0.98,0.99,wpnai,1,1.1,35,6000,weapon,,,,0.85,,,,,weapon4,,,,0.3
+wpn_tesla_proj_loop,,prestige_weapons/tesla/wpn_tesla_flux_l.wav,0.98,0.99,wpnai,1,1.1,35,6000,weapon,,,,0.85,,,,,weapon4,,,,0.3
+
+tesla_switch_flip_off,,prestige_weapons/tesla/tesla_switch_flip_off.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+tesla_switch_flip_on,,prestige_weapons/tesla/tesla_switch_flip_on.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+tesla_handle_release,,prestige_weapons/tesla/tesla_handle_release.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+tesla_handle_pullback,,prestige_weapons/tesla/tesla_handle_pullback.wav,1,1,wpnplyr,1,1.05,500000,,local,,,,0.85,,,,,weapon2,,,
+
+
 # Wave Gun
 wpn_wavegun_fire_plr,,prestige_weapons/wavegun/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 wpn_wavegun_fire_npc,,prestige_weapons/wavegun/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4

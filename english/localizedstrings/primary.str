@@ -64,6 +64,12 @@ LANG_ENGLISH        "Ray Gun"
 REFERENCE           GAT
 LANG_ENGLISH        "Blundergat"
 
+REFERENCE           HUMANGUN
+LANG_ENGLISH        "V-R11"
+
+REFERENCE           WAFFE
+LANG_ENGLISH        "Wunderwaffe DG-2"
+
 REFERENCE           WAVE
 LANG_ENGLISH        "Wave Gun"
 
