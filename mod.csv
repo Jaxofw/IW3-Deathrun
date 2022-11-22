@@ -99,8 +99,12 @@ material,grey_button_shit
 material,menu_lock
 material,hud_notify
 material,hud_notify_footer
+
+# Reticles
 material,knife_ballistic_reticle
 material,melee_weapon_reticle
+material,wunderwaffe_reticle
+material,crosshair_test
 
 # makes shit invisible
 xmodel,tag_origin_bitchface
@@ -265,8 +269,8 @@ xmodel,wpn_t6_blundergat_npc
 xmodel,wpn_t5_vr11_vm
 xmodel,wpn_t5_vr11_npc
 
-xmodel,tesla_viewmodel
-xmodel,weapon_tesla
+xmodel,wpn_t4_tesla_vm
+xmodel,wpn_t4_tesla_npc
 xmodel,projectile_tag
 
 xmodel,wpn_t7_wavegun_vm
@@ -574,7 +578,7 @@ xanim,vm_t5_vr11_drop
 xanim,vm_t5_vr11_drop_quick
 xanim,vm_t5_vr11_fire
 xanim,vm_t5_vr11_fire_ads
-xanim,vm_t5_vr11_first_raise
+xanim,vm_t5_vr11_raise_first
 xanim,vm_t5_vr11_idle
 xanim,vm_t5_vr11_raise
 xanim,vm_t5_vr11_raise_quick
@@ -583,20 +587,20 @@ xanim,vm_t5_vr11_sprint_in
 xanim,vm_t5_vr11_sprint_loop
 xanim,vm_t5_vr11_sprint_out
 
-xanim,viewmodel_tesla_pullout
-xanim,viewmodel_tesla_pullout_fast
-xanim,viewmodel_tesla_putaway
-xanim,viewmodel_tesla_putaway_fast
-xanim,viewmodel_tesla_reload
-xanim,viewmodel_tesla_ADS_down
-xanim,viewmodel_tesla_ADS_fire
-xanim,viewmodel_tesla_ADS_up
-xanim,viewmodel_tesla_fire
-xanim,viewmodel_tesla_first_raise
-xanim,viewmodel_tesla_idle
-xanim,viewmodel_tesla_sprint_in
-xanim,viewmodel_tesla_sprint_loop
-xanim,viewmodel_tesla_sprint_out
+xanim,vm_t4_tesla_ads_down
+xanim,vm_t4_tesla_ads_up
+xanim,vm_t4_tesla_drop
+xanim,vm_t4_tesla_drop_quick
+xanim,vm_t4_tesla_fire
+xanim,vm_t4_tesla_fire_ads
+xanim,vm_t4_tesla_idle
+xanim,vm_t4_tesla_raise
+xanim,vm_t4_tesla_raise_first
+xanim,vm_t4_tesla_raise_quick
+xanim,vm_t4_tesla_reload
+xanim,vm_t4_tesla_sprint_in
+xanim,vm_t4_tesla_sprint_loop
+xanim,vm_t4_tesla_sprint_out
 
 xanim,vm_t7_wavegun_ads_down
 xanim,vm_t7_wavegun_ads_up
