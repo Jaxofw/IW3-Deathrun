@@ -1,5 +1,6 @@
 del mod.ff
 
+xcopy animtrees ..\..\raw\animtrees /SY
 xcopy braxi ..\..\raw\braxi /SY
 xcopy english ..\..\raw\english /SY
 xcopy fx ..\..\raw\fx /SY
