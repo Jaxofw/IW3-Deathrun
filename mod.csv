@@ -199,11 +199,11 @@ weapon,mp/t7_wavegun_mp
 
 # Melee
 weapon,mp/hands_mp
-weapon,mp/knife_mp
+weapon,mp/t5_sog_knife_mp
 weapon,mp/t5_ballistic_knife_mp
 weapon,mp/h1_sickle_mp
 weapon,mp/s2_shovel_mp
-weapon,mp/tomahawk_mp
+weapon,mp/t5_tomahawk_mp
 weapon,mp/t8_coinbag_mp
 weapon,mp/t9_scythe_mp
 weapon,mp/t9_bat_mp
@@ -277,7 +277,8 @@ xmodel,wpn_t7_wavegun_vm
 xmodel,wpn_t7_wavegun_npc
 
 # MeleeModels
-xmodel,weapon_knife
+xmodel,melee_t5_sog_knife_vm
+xmodel,melee_t5_sog_knife_npc
 
 xmodel,melee_t5_b_knife_vm
 xmodel,melee_t5_b_knife_npc
@@ -288,16 +289,22 @@ xmodel,melee_h1_sickle_vm
 xmodel,melee_h1_sickle_npc
 
 xmodel,viewmodel_fox_ww2_shovel
+xmodel,worldmodel_fox_ww2_shovel
 
 xmodel,weapon_bo_tomahawk
+xmodel,world_bo_tomahawk
 
 xmodel,melee_t8_coinbag_vm
+xmodel,melee_t8_coinbag_npc
 
 xmodel,melee_t9_scythe_vm
+xmodel,melee_t9_scythe_npc
 
 xmodel,melee_t9_bat_vm
+xmodel,melee_t9_bat_npc
 
 xmodel,melee_t7_sword_vm
+xmodel,melee_t7_sword_npc
 
 xmodel,melee_t8_toy_vm
 
@@ -616,6 +623,17 @@ xanim,vm_t7_wavegun_sprint_loop
 xanim,vm_t7_wavegun_sprint_out
 
 # MeleeAnims
+xanim,vm_t5_sog_knife_ads_down
+xanim,vm_t5_sog_knife_ads_up
+xanim,vm_t5_sog_knife_drop
+xanim,vm_t5_sog_knife_drop_quick
+xanim,vm_t5_sog_knife_idle
+xanim,vm_t5_sog_knife_raise
+xanim,vm_t5_sog_knife_raise_quick
+xanim,vm_t5_sog_knife_sprint_loop
+xanim,vm_t5_sog_knife_stab
+xanim,vm_t5_sog_knife_swipe
+
 xanim,vm_t5_b_knife_ads_down
 xanim,vm_t5_b_knife_drop
 xanim,vm_t5_b_knife_fire
@@ -770,8 +788,8 @@ xanim,pb_melee_prone_twitch_b
 xanim,pb_melee_prone_twitch_c
 xanim,pb_melee_prone_twitch_d
 xanim,pb_melee_prone_twitch_e
-xanim,pb_melee_runjupb_land
-xanim,pb_melee_runjupb_takeoff
+xanim,pb_melee_runjump_land
+xanim,pb_melee_runjump_takeoff
 xanim,pb_melee_run_2_stand_b
 xanim,pb_melee_run_2_stand_f
 xanim,pb_melee_run_2_stand_l
