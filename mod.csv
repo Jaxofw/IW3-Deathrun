@@ -18,10 +18,11 @@ stringtable,mp/primaryTable.csv
 stringtable,mp/secondaryTable.csv
 
 # Scriptmenus
+menufile,ui_mp/hud.menu
+menufile,ui_mp/connect.menu
 menufile,ui_mp/common/arcane.inc
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
-menufile,ui_mp/hud.menu
 
 # Localized Strings
 localize,glove

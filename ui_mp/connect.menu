@@ -1,0 +1,18 @@
+#include "ui/menudef.h"
+{
+	menuDef
+	{
+		name			"connect"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		
+        itemDef
+		{
+			rect			0 0 1024 512 1 1
+			style 			WINDOW_STYLE_SHADER
+			forecolor 		1 1 1 1
+			exp 			material ( "loadscreen_" + dvarstring( "mapname" ) )
+			visible 		when ( 1 )
+		}
+	}
+}
