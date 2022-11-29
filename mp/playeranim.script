@@ -1562,37 +1562,8 @@ crouch_to_prone
 
 meleeattack
 {
-<<<<<<< Updated upstream
 	//MWR
 	playerAnimType mwr, movetype prone
-=======
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-		playerAnimType mwr
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-	playerAnimType dog
->>>>>>> Stashed changes
 	{
 		torso pt_melee_prone_melee_a
 	}
@@ -1640,37 +1611,8 @@ meleeattack
 
 knife_melee
 {
-<<<<<<< Updated upstream
 	//MWR
 	playerAnimType mwr, movetype prone
-=======
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-		playerAnimType mwr
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-	playerAnimType dog
->>>>>>> Stashed changes
 	{
 		torso pt_melee_prone_melee_a
 	}
@@ -1700,7 +1642,6 @@ knife_melee
 
 knife_melee_charge
 {
-<<<<<<< Updated upstream
 	//MWR
 	playerAnimType mwr, movetype prone
 	{
@@ -1720,33 +1661,6 @@ knife_melee_charge
 		torso pt_melee_melee_b
 		torso pt_melee_melee_c
 	}
-=======
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-		playerAnimType mwr
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
->>>>>>> Stashed changes
 	movetype prone
 	{
 		torso pt_melee_prone_pistol
