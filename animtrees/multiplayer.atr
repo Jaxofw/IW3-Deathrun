@@ -174,9 +174,6 @@ main
 		//
 		// Melee anims
 		//
-		
-		german_shepherd_attack_player
-		german_shepherd_run_attack
 	
 		pt_melee_right2right_1
 		pt_melee_right2right_2
@@ -235,10 +232,6 @@ main
 		//
 		// Idle anims
 		//
-
-		german_shepherd_idle
-		german_shepherd_sitting_looking_idle
-		german_shepherd_sleeping
 		
 		pb_stand_alert_RPG
 		pb_stand_alert
@@ -282,10 +275,6 @@ main
 		//
 		// Movement anims
 		//
-
-		german_shepherd_walk
-		german_shepherd_run
-		german_shepherd_run_jump_40
 		
 		pb_pistol_run_fast
 		pb_run_fast
@@ -426,7 +415,6 @@ main
 		//
 		// Prone anims
 		//
-		german_shepherd_wakeup_fast
 	
 		pb_prone_crawl
 		pb_prone_grenade_crawl
@@ -705,8 +693,6 @@ main
 		//
 		// Death
 		//
-		
-		german_shepherd_death_front
 	
 		// prone
 		pb_prone_death_quickdeath
@@ -775,8 +761,7 @@ main
 		//
 		// Pain
 		//		
-		german_shepherd_run_pain
-		
+
 		// prone
 		pb_prone_painA_holdchest
 		pb_prone_painB_holdhead
@@ -821,7 +806,7 @@ main
 //
 turning
 {
-//MWR
+	//MWR
 	pb_melee_crouch_turn_r
 	pb_melee_crouch_turn_l
 
@@ -829,5 +814,4 @@ turning
 	pl_turn_90right	
 	pl_crouchturn_90right
 	pl_crouchturn_90left
-
 }

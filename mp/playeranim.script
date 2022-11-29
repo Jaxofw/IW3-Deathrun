@@ -94,10 +94,6 @@ STATE COMBAT
 		{
 			both pb_melee_idle
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_idle
-		}
 		mounted mg42, firing
 		{
 			both standSAWgunner_aim turretanim
@@ -157,10 +153,6 @@ STATE COMBAT
 		{
 			both pb_melee_crouch_idle
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_sitting_looking_idle
-		}
 		mounted mg42, firing
 		{
 			both crouchSAWgunner_aim turretanim
@@ -219,10 +211,6 @@ STATE COMBAT
 		playerAnimType mwr
 		{
 			both pb_melee_prone_idle
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_sleeping
 		}
 		mounted mg42, firing
 		{
@@ -574,10 +562,6 @@ STATE COMBAT
 		{
 			both pb_melee_walk_r
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
-		}
 		playerAnimType none
 		{
 			both pb_stand_shoot_walk_forward_unarmed
@@ -650,10 +634,6 @@ STATE COMBAT
 		{
 			both pb_melee_walk_r
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
-		}
 		playerAnimType none
 		{
 			both pb_stand_shoot_walk_forward_unarmed
@@ -709,10 +689,6 @@ STATE COMBAT
 		playerAnimType mwr , strafing right
 		{
 			both pb_melee_crouch_walk_r
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
 		}
 		playerAnimType none
 		{
@@ -783,10 +759,6 @@ STATE COMBAT
 		{
 			both pb_melee_crouch_walk_r
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
-		}
 		playerAnimType none
 		{
 			both pb_crouch_walk_forward_unarmed
@@ -838,10 +810,6 @@ STATE COMBAT
 		playerAnimType mwr , strafing right
 		{
 			both pb_melee_prone_r
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
 		}
 		weaponclass pistol, strafing left
 		{
@@ -907,10 +875,6 @@ STATE COMBAT
 		{
 			both pb_melee_prone_r
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_walk
-		}
 		weaponclass grenade, strafing left, playerAnimType all NOT m203
 		{
 			both pb_prone_grenade_crawl_left
@@ -950,10 +914,6 @@ STATE COMBAT
 		playerAnimType mwr , strafing right
 		{
 			both pb_melee_run_r
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_run
 		}
 		playerAnimType none
 		{
@@ -1035,10 +995,6 @@ STATE COMBAT
 		{
 			both pb_melee_sprint
 		}
-		playerAnimType dog
-		{
-			both german_shepherd_run
-		}
 		playerAnimType none
 		{
 			both pb_sprint
@@ -1078,10 +1034,6 @@ STATE COMBAT
 		playerAnimType mwr , strafing right
 		{
 			both pb_melee_run_r
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_run
 		}
 		playerAnimType none
 		{
@@ -1138,10 +1090,6 @@ STATE COMBAT
 		playerAnimType mwr
 		{
 			both pb_melee_crouch_walk_f
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_run
 		}
 		playerAnimType none
 		{
@@ -1215,10 +1163,6 @@ STATE COMBAT
 		playerAnimType mwr
 		{
 			both pb_melee_crouch_walk_b
-		}
-		playerAnimType dog
-		{
-			both german_shepherd_run
 		}
 		playerAnimType none
 		{
@@ -1590,18 +1534,14 @@ fireweapon
 
 prone_to_crouch
 {
-		playerAnimType mwr
-		{
-			both pb_melee_prone_2_crouch
-		}
-	playerAnimType dog
+	playerAnimType mwr
 	{
-		both german_shepherd_wakeup_fast
+		both pb_melee_prone_2_crouch
 	}
-	 movetype moving
-	 {
+	movetype moving
+	{
 		both pb_prone2crouchrun
-	 }
+	}
 	default
 	{
 		both pb_prone2crouch
@@ -1610,10 +1550,10 @@ prone_to_crouch
 
 crouch_to_prone
 {
-		playerAnimType mwr
-		{
-			both pb_melee_crouch_2_prone
-		}
+	playerAnimType mwr
+	{
+		both pb_melee_crouch_2_prone
+	}
 	default
 	{
 		both pb_crouch2prone
@@ -1622,29 +1562,24 @@ crouch_to_prone
 
 meleeattack
 {
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-	playerAnimType dog
+	//MWR
+	playerAnimType mwr, movetype prone
 	{
-		//torso german_shepherd_attack_player
-		torso german_shepherd_run_attack
+		torso pt_melee_prone_melee_a
+	}
+	playerAnimType mwr, movetype crouching
+	{
+		torso pt_melee_crouch_melee_a
+		torso pt_melee_crouch_melee_b
+		torso pt_melee_crouch_melee_c
+		torso pt_melee_crouch_melee_d
+		torso pt_melee_crouch_melee_e
+	}
+	playerAnimType mwr, movetype moving
+	{
+		torso pt_melee_melee_a
+		torso pt_melee_melee_b
+		torso pt_melee_melee_c
 	}
 	weaponclass pistol AND grenade, movetype prone, playerAnimType all NOT m203
 	{
@@ -1676,29 +1611,24 @@ meleeattack
 
 knife_melee
 {
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
-	playerAnimType dog
+	//MWR
+	playerAnimType mwr, movetype prone
 	{
-		//torso german_shepherd_attack_player
-		torso german_shepherd_run_attack
+		torso pt_melee_prone_melee_a
+	}
+	playerAnimType mwr, movetype crouching
+	{
+		torso pt_melee_crouch_melee_a
+		torso pt_melee_crouch_melee_b
+		torso pt_melee_crouch_melee_c
+		torso pt_melee_crouch_melee_d
+		torso pt_melee_crouch_melee_e
+	}
+	playerAnimType mwr, movetype moving
+	{
+		torso pt_melee_melee_a
+		torso pt_melee_melee_b
+		torso pt_melee_melee_c
 	}
 	movetype prone
 	{
@@ -1712,25 +1642,25 @@ knife_melee
 
 knife_melee_charge
 {
-		//MWR
-		playerAnimType mwr, movetype prone
-		{
-			torso pt_melee_prone_melee_a
-		}
-		playerAnimType mwr, movetype crouching
-		{
-			torso pt_melee_crouch_melee_a
-			torso pt_melee_crouch_melee_b
-			torso pt_melee_crouch_melee_c
-			torso pt_melee_crouch_melee_d
-			torso pt_melee_crouch_melee_e
-		}
-		playerAnimType mwr, movetype moving
-		{
-			torso pt_melee_melee_a
-			torso pt_melee_melee_b
-			torso pt_melee_melee_c
-		}
+	//MWR
+	playerAnimType mwr, movetype prone
+	{
+		torso pt_melee_prone_melee_a
+	}
+	playerAnimType mwr, movetype crouching
+	{
+		torso pt_melee_crouch_melee_a
+		torso pt_melee_crouch_melee_b
+		torso pt_melee_crouch_melee_c
+		torso pt_melee_crouch_melee_d
+		torso pt_melee_crouch_melee_e
+	}
+	playerAnimType mwr, movetype moving
+	{
+		torso pt_melee_melee_a
+		torso pt_melee_melee_b
+		torso pt_melee_melee_c
+	}
 	movetype prone
 	{
 		torso pt_melee_prone_pistol
@@ -1844,17 +1774,13 @@ reload
 
 jump
 {
-		playerAnimType mwr
-		{
-			both pb_melee_standjump_takeoff
-		}
-		playerAnimType mwr, movetype run
-		{
-			both pb_melee_runjump_takeoff
-		}
-	playerAnimType dog
+	playerAnimType mwr
 	{
-		both german_shepherd_run_jump_40
+		both pb_melee_standjump_takeoff
+	}
+	playerAnimType mwr, movetype run
+	{
+		both pb_melee_runjump_takeoff
 	}
 	playerAnimType none, movetype run
 	{
@@ -1884,17 +1810,13 @@ jump
 
 jumpbk
 {
-		playerAnimType mwr
-		{
-			both pb_melee_standjump_takeoff
-		}
-		playerAnimType mwr, movetype run
-		{
-			both pb_melee_runjump_takeoff
-		}
-	playerAnimType dog
+	playerAnimType mwr
 	{
-		both german_shepherd_run_jump_40
+		both pb_melee_standjump_takeoff
+	}
+	playerAnimType mwr, movetype run
+	{
+		both pb_melee_runjump_takeoff
 	}
 	movetype crouching AND prone
 	{
@@ -1939,17 +1861,13 @@ jumpbk
 
 land
 {
-		playerAnimType mwr
-		{
-			both pb_melee_standjump_land duration 100 blendtime 50
-		}
-		playerAnimType mwr, movetype run
-		{
-			both pb_melee_runjump_land duration 100 blendtime 50
-		}
-	playerAnimType dog
+	playerAnimType mwr
 	{
-		both german_shepherd_walk
+		both pb_melee_standjump_land duration 100 blendtime 50
+	}
+	playerAnimType mwr, movetype run
+	{
+		both pb_melee_runjump_land duration 100 blendtime 50
 	}
 	movetype run
 	{
@@ -1987,10 +1905,6 @@ shellshock
 
 DEATH
 {
-	playerAnimType dog
-	{
-		both german_shepherd_death_front
-	}
 	movetype crouching, perk laststand
 	{
 		both pb_laststand_death
@@ -2053,10 +1967,6 @@ DEATH
 
 pain
 {
-	playerAnimType dog
-	{
-		//both german_shepherd_run_pain
-	}
 	movetype prone
 	{
 		both pb_prone_painA_holdchest
