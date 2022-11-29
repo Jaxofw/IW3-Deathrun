@@ -174,8 +174,9 @@ xmodel,viewhands_moh_ranger
 xmodel,viewhands_t6_misty
 
 # WepFiles
-weapon,mp/colt44_mp
 weapon,mp/deserteagle_mp
+weapon,mp/colt44_mp
+weapon,mp/t8_strife_mp
 weapon,mp/t6_fiveseven_mp
 weapon,mp/iw2_pps43_mp
 weapon,mp/iw5_msr_mp
@@ -199,11 +200,11 @@ weapon,mp/t7_wavegun_mp
 
 # Melee
 weapon,mp/hands_mp
-weapon,mp/t5_sog_knife_mp
+weapon,mp/knife_mp
 weapon,mp/t5_ballistic_knife_mp
 weapon,mp/h1_sickle_mp
 weapon,mp/s2_shovel_mp
-weapon,mp/t5_tomahawk_mp
+weapon,mp/tomahawk_mp
 weapon,mp/t8_coinbag_mp
 weapon,mp/t9_scythe_mp
 weapon,mp/t9_bat_mp
@@ -211,11 +212,14 @@ weapon,mp/t7_sword_mp
 weapon,mp/t8_toy_mp
 
 # WepModels
-xmodel,viewmodel_colt_anaconda_44
-xmodel,weapon_colt_anaconda_44
-
 xmodel,viewmodel_desert_eagle_tactical
 xmodel,weapon_desert_eagle_tactical
+
+xmodel,wpn_t4_magnum_vm
+xmodel,wpn_t4_magnum_npc
+
+xmodel,wpn_t8_strife_vm
+xmodel,wpn_t8_strife_npc
 
 xmodel,wpn_t6_fiveseven_npc
 xmodel,wpn_t6_fiveseven_vm
@@ -255,9 +259,6 @@ xmodel,wpn_t4_ppsh_npc
 
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
-
-xmodel,wpn_iw9_stim_pistol_vm
-xmodel,wpn_iw9_stim_pistol_npc
 
 # PrestigeModels
 xmodel,wpn_t9_raygun_vm
@@ -308,7 +309,6 @@ xmodel,melee_t7_sword_npc
 
 xmodel,melee_t8_toy_vm
 
-
 # WepAnims
 xanim,viewmodel_tomahawk_attack
 xanim,viewmodel_tomahawk_attack2
@@ -330,6 +330,21 @@ xanim,st_anaconda_reload
 xanim,st_anaconda_sprint_in
 xanim,st_anaconda_sprint_loop
 xanim,st_anaconda_sprint_out
+
+xanim,vm_t8_strife_ads_down
+xanim,vm_t8_strife_ads_up
+xanim,vm_t8_strife_drop
+xanim,vm_t8_strife_fire
+xanim,vm_t8_strife_fire_last
+xanim,vm_t8_strife_fire_ads
+xanim,vm_t8_strife_fire_ads_last
+xanim,vm_t8_strife_idle
+xanim,vm_t8_strife_raise
+xanim,vm_t8_strife_reload
+xanim,vm_t8_strife_reload_empty
+xanim,vm_t8_strife_sprint_in
+xanim,vm_t8_strife_sprint_loop
+xanim,vm_t8_strife_sprint_out
 
 xanim,vm_t6_fiveseven_ads_down
 xanim,vm_t6_fiveseven_ads_up
@@ -529,22 +544,6 @@ xanim,vm_t6_fnp45_raise_first
 xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
-
-xanim,vm_iw9_stim_pistol_ads_down
-xanim,vm_iw9_stim_pistol_drop
-xanim,vm_iw9_stim_pistol_drop_quick
-xanim,vm_iw9_stim_pistol_fire
-xanim,vm_iw9_stim_pistol_fire_ads
-xanim,vm_iw9_stim_pistol_idle
-xanim,vm_iw9_stim_pistol_raise
-xanim,vm_iw9_stim_pistol_raise_first
-xanim,vm_iw9_stim_pistol_raise_quick
-xanim,vm_iw9_stim_pistol_reload
-xanim,vm_iw9_stim_pistol_sprint_in
-xanim,vm_iw9_stim_pistol_sprint_loop
-xanim,vm_iw9_stim_pistol_sprint_out
-xanim,vm_iw9_stim_pistol_stab
-xanim,vm_iw9_stim_pistol_swipe
 
 # PrestigeAnims
 xanim,vm_t9_raygun_ads_down

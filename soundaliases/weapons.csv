@@ -45,6 +45,15 @@ st_colt44_bullets_out,,weapons/iw4/44/gr_357_empty.wav,1,1,,1,1,7,500,reload,,,,
 st_colt44_bullets_in,,weapons/iw4/44/gr_357_load.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 st_colt44_mag_in,,weapons/iw4/44/gr_357_close.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
 
+# Strife
+wpn_strife_fire_plr,,weapons/t8/strife/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
+wpn_strife_fire_npc,,weapons/t8/strife/fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
+
+t8_strife_mag_in,,weapons/t8/strife/mag_in.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+t8_strife_mag_out,,weapons/t8/strife/mag_out.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+t8_strife_slide_back,,weapons/t8/strife/slide_back.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+t8_strife_slide_forward,,weapons/t8/strife/slide_forward.wav,1,1,,1,1,7,500,reload,,,,0.7,all_mp,,,,weapon2,50
+
 # Five-Seven
 wpn_fiveseven_fire_plr,,weapons/t6/fiveseven/fire.wav,1,1,wpnplyr,1,1,500000,,local,,,,0.85,,,,,weapon2
 wpn_fiveseven_fire_npc,,weapons/t6/fiveseven/fire.wav,0.7,0.8,wpnai,1,1,35,2000,weapon,,,,0.8,all_mp,,,,weapon4
