@@ -44,7 +44,7 @@
 
 		ARCANE_INGAME_MENU( 2 )
 
-		CREATE_TEXT( 125 140 36 36 1 0, "@MENU_ARE_YOU_SURE_QUIT", 1 1 1 1, 0.3, 0, 1 )
+		CREATE_TEXT( 125 130 36 36 1 0, "@MENU_ARE_YOU_SURE_QUIT", 1 1 1 1, 0.3, 0, 1 )
 		CREATE_BUTTON( 1, "@MENU_YES", close self; exec "disconnect";, 1 )
 		CREATE_BUTTON( 2, "@MENU_NO", close self; open "team_marinesopfor";, 1 )
 
