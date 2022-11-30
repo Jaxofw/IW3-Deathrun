@@ -34,4 +34,13 @@ LANG_ENGLISH        "Monkey Staff"
 REFERENCE           AXEZOM
 LANG_ENGLISH        "Zombie Axe"
 
+REFERENCE           KATANA
+LANG_ENGLISH        "Katana"
+
+REFERENCE           SLAYMORE
+LANG_ENGLISH        "Slaymore"
+
+REFERENCE           KARAM
+LANG_ENGLISH        "Karambit"
+
 ENDMARKER

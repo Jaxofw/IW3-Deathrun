@@ -230,6 +230,9 @@ weapon,mp/t8_toy_mp
 # PMFiles
 weapon,mp/ol_bostaff_mp
 weapon,mp/ol_zombieaxe_mp
+weapon,mp/ol_katana_mp
+weapon,mp/ol_slaymore_mp
+weapon,mp/cs_karambit_mp
 
 # WModels
 xmodel,viewmodel_desert_eagle_tactical
@@ -336,6 +339,15 @@ xmodel,melee_ol_bostaff_npc
 
 xmodel,melee_ol_zombieaxe_vm
 xmodel,melee_ol_zombieaxe_npc
+
+xmodel,melee_ol_katana_vm
+xmodel,melee_ol_katana_npc
+
+xmodel,melee_ol_slaymore_vm
+xmodel,melee_ol_slaymore_npc
+
+xmodel,melee_cs_karambit_vm
+xmodel,melee_cs_karambit_npc
 
 # WAnims
 xanim,viewmodel_tomahawk_attack
@@ -746,6 +758,8 @@ xanim,vm_t8_toy_sprint_loop
 xanim,vm_t8_toy_sprint_out
 xanim,vm_t8_toy_swipe
 
+# PMAnims
+
 xanim,vm_ol_bostaff_ads_down
 xanim,vm_ol_bostaff_drop
 xanim,vm_ol_bostaff_drop_quick
@@ -769,6 +783,41 @@ xanim,vm_ol_zombieaxe_sprint_loop
 xanim,vm_ol_zombieaxe_sprint_out
 xanim,vm_ol_zombieaxe_stab
 xanim,vm_ol_zombieaxe_swipe
+
+xanim,vm_ol_katana_ads_down
+xanim,vm_ol_katana_drop
+xanim,vm_ol_katana_drop_quick
+xanim,vm_ol_katana_idle
+xanim,vm_ol_katana_raise
+xanim,vm_ol_katana_raise_quick
+xanim,vm_ol_katana_sprint_in
+xanim,vm_ol_katana_sprint_loop
+xanim,vm_ol_katana_sprint_out
+xanim,vm_ol_katana_stab
+xanim,vm_ol_katana_swipe
+
+xanim,vm_ol_slaymore_drop
+xanim,vm_ol_slaymore_drop_quick
+xanim,vm_ol_slaymore_idle
+xanim,vm_ol_slaymore_raise
+xanim,vm_ol_slaymore_raise_quick
+xanim,vm_ol_slaymore_sprint_in
+xanim,vm_ol_slaymore_sprint_loop
+xanim,vm_ol_slaymore_sprint_out
+xanim,vm_ol_slaymore_stab
+xanim,vm_ol_slaymore_swipe
+
+xanim,vm_cs_karambit_ads_down
+xanim,vm_cs_karambit_drop
+xanim,vm_cs_karambit_drop_quick
+xanim,vm_cs_karambit_idle
+xanim,vm_cs_karambit_raise
+xanim,vm_cs_karambit_raise_quick
+xanim,vm_cs_karambit_sprint_in
+xanim,vm_cs_karambit_sprint_loop
+xanim,vm_cs_karambit_sprint_out
+xanim,vm_cs_karambit_stab
+xanim,vm_cs_karambit_swipe
 
 # Melee Anim Type
 rawfile,animtrees/multiplayer.atr
