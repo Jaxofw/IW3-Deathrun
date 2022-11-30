@@ -190,7 +190,7 @@ xmodel,viewhands_t6_seal6_longsleeve
 xmodel,viewhands_moh_ranger
 xmodel,viewhands_t6_misty
 
-# WepFiles
+# WFiles
 weapon,mp/deserteagle_mp
 weapon,mp/colt44_mp
 weapon,mp/t8_strife_mp
@@ -207,7 +207,6 @@ weapon,mp/iw7_emc_mp
 weapon,mp/t6_xpr50_mp
 weapon,mp/t4_ppsh_mp
 weapon,mp/t6_fnp45_mp
-weapon,mp/iw9_stim_pistol_mp
 
 weapon,mp/t9_raygun_mp
 weapon,mp/t6_blundergat_mp
@@ -215,7 +214,7 @@ weapon,mp/t5_vr11_mp
 weapon,mp/t4_tesla_mp
 weapon,mp/t7_wavegun_mp
 
-# Melee
+# MFiles
 weapon,mp/hands_mp
 weapon,mp/knife_mp
 weapon,mp/t5_ballistic_knife_mp
@@ -228,7 +227,11 @@ weapon,mp/t9_bat_mp
 weapon,mp/t7_sword_mp
 weapon,mp/t8_toy_mp
 
-# WepModels
+# PMFiles
+weapon,mp/ol_bostaff_mp
+weapon,mp/ol_zombieaxe_mp
+
+# WModels
 xmodel,viewmodel_desert_eagle_tactical
 xmodel,weapon_desert_eagle_tactical
 
@@ -277,7 +280,7 @@ xmodel,wpn_t4_ppsh_npc
 xmodel,wpn_t6_fnp45_vm
 xmodel,wpn_t6_fnp45_npc
 
-# PrestigeModels
+# PModels
 xmodel,wpn_t9_raygun_vm
 xmodel,wpn_t9_raygun_npc
 
@@ -294,7 +297,7 @@ xmodel,projectile_tag
 xmodel,wpn_t7_wavegun_vm
 xmodel,wpn_t7_wavegun_npc
 
-# MeleeModels
+# MModels
 xmodel,melee_t5_sog_knife_vm
 xmodel,melee_t5_sog_knife_npc
 
@@ -325,8 +328,16 @@ xmodel,melee_t7_sword_vm
 xmodel,melee_t7_sword_npc
 
 xmodel,melee_t8_toy_vm
+xmodel,melee_t8_toy_npc
 
-# WepAnims
+# PMModels
+xmodel,melee_ol_bostaff_vm
+xmodel,melee_ol_bostaff_npc
+
+xmodel,melee_ol_zombieaxe_vm
+xmodel,melee_ol_zombieaxe_npc
+
+# WAnims
 xanim,viewmodel_tomahawk_attack
 xanim,viewmodel_tomahawk_attack2
 xanim,viewmodel_tomahawk_idle
@@ -562,7 +573,7 @@ xanim,vm_t6_fnp45_reload
 xanim,vm_t6_fnp45_reload_empty
 xanim,vm_t6_fnp45_sprint_loop
 
-# PrestigeAnims
+# PAnims
 xanim,vm_t9_raygun_ads_down
 xanim,vm_t9_raygun_ads_up
 xanim,vm_t9_raygun_drop
@@ -638,7 +649,7 @@ xanim,vm_t7_wavegun_sprint_in
 xanim,vm_t7_wavegun_sprint_loop
 xanim,vm_t7_wavegun_sprint_out
 
-# MeleeAnims
+# MAnims
 xanim,vm_t5_sog_knife_ads_down
 xanim,vm_t5_sog_knife_ads_up
 xanim,vm_t5_sog_knife_drop
@@ -734,6 +745,30 @@ xanim,vm_t8_toy_sprint_in
 xanim,vm_t8_toy_sprint_loop
 xanim,vm_t8_toy_sprint_out
 xanim,vm_t8_toy_swipe
+
+xanim,vm_ol_bostaff_ads_down
+xanim,vm_ol_bostaff_drop
+xanim,vm_ol_bostaff_drop_quick
+xanim,vm_ol_bostaff_idle
+xanim,vm_ol_bostaff_raise
+xanim,vm_ol_bostaff_raise_quick
+xanim,vm_ol_bostaff_sprint_in
+xanim,vm_ol_bostaff_sprint_loop
+xanim,vm_ol_bostaff_sprint_out
+xanim,vm_ol_bostaff_stab
+xanim,vm_ol_bostaff_swipe
+
+xanim,vm_ol_zombieaxe_ads_down
+xanim,vm_ol_zombieaxe_drop
+xanim,vm_ol_zombieaxe_drop_quick
+xanim,vm_ol_zombieaxe_idle
+xanim,vm_ol_zombieaxe_raise
+xanim,vm_ol_zombieaxe_raise_quick
+xanim,vm_ol_zombieaxe_sprint_in
+xanim,vm_ol_zombieaxe_sprint_loop
+xanim,vm_ol_zombieaxe_sprint_out
+xanim,vm_ol_zombieaxe_stab
+xanim,vm_ol_zombieaxe_swipe
 
 # Melee Anim Type
 rawfile,animtrees/multiplayer.atr

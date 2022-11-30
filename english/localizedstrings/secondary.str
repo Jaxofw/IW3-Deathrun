@@ -28,4 +28,10 @@ LANG_ENGLISH        "Tomahawk"
 REFERENCE           SWORD
 LANG_ENGLISH        "Fury's Song"
 
+REFERENCE           BOSTAFF
+LANG_ENGLISH        "Monkey Staff"
+
+REFERENCE           AXEZOM
+LANG_ENGLISH        "Zombie Axe"
+
 ENDMARKER

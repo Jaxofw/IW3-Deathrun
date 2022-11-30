@@ -1534,14 +1534,14 @@ fireweapon
 
 prone_to_crouch
 {
-	playerAnimType mwr
-	{
-		both pb_melee_prone_2_crouch
-	}
-	movetype moving
-	{
+		playerAnimType mwr
+		{
+			both pb_melee_prone_2_crouch
+		}
+	 movetype moving
+	 {
 		both pb_prone2crouchrun
-	}
+	 }
 	default
 	{
 		both pb_prone2crouch
@@ -1550,10 +1550,10 @@ prone_to_crouch
 
 crouch_to_prone
 {
-	playerAnimType mwr
-	{
-		both pb_melee_crouch_2_prone
-	}
+		playerAnimType mwr
+		{
+			both pb_melee_crouch_2_prone
+		}
 	default
 	{
 		both pb_crouch2prone
@@ -1562,25 +1562,31 @@ crouch_to_prone
 
 meleeattack
 {
-	//MWR
-	playerAnimType mwr, movetype prone
-	{
-		torso pt_melee_prone_melee_a
-	}
-	playerAnimType mwr, movetype crouching
-	{
-		torso pt_melee_crouch_melee_a
-		torso pt_melee_crouch_melee_b
-		torso pt_melee_crouch_melee_c
-		torso pt_melee_crouch_melee_d
-		torso pt_melee_crouch_melee_e
-	}
-	playerAnimType mwr, movetype moving
-	{
-		torso pt_melee_melee_a
-		torso pt_melee_melee_b
-		torso pt_melee_melee_c
-	}
+		//MWR
+		playerAnimType mwr, movetype prone
+		{
+			torso pt_melee_prone_melee_a
+		}
+		playerAnimType mwr, movetype crouching
+		{
+			torso pt_melee_crouch_melee_a
+			torso pt_melee_crouch_melee_b
+			torso pt_melee_crouch_melee_c
+			torso pt_melee_crouch_melee_d
+			torso pt_melee_crouch_melee_e
+		}
+		playerAnimType mwr, movetype moving
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
+		playerAnimType mwr
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
 	weaponclass pistol AND grenade, movetype prone, playerAnimType all NOT m203
 	{
 		torso pt_melee_prone_pistol
@@ -1611,25 +1617,31 @@ meleeattack
 
 knife_melee
 {
-	//MWR
-	playerAnimType mwr, movetype prone
-	{
-		torso pt_melee_prone_melee_a
-	}
-	playerAnimType mwr, movetype crouching
-	{
-		torso pt_melee_crouch_melee_a
-		torso pt_melee_crouch_melee_b
-		torso pt_melee_crouch_melee_c
-		torso pt_melee_crouch_melee_d
-		torso pt_melee_crouch_melee_e
-	}
-	playerAnimType mwr, movetype moving
-	{
-		torso pt_melee_melee_a
-		torso pt_melee_melee_b
-		torso pt_melee_melee_c
-	}
+		//MWR
+		playerAnimType mwr, movetype prone
+		{
+			torso pt_melee_prone_melee_a
+		}
+		playerAnimType mwr, movetype crouching
+		{
+			torso pt_melee_crouch_melee_a
+			torso pt_melee_crouch_melee_b
+			torso pt_melee_crouch_melee_c
+			torso pt_melee_crouch_melee_d
+			torso pt_melee_crouch_melee_e
+		}
+		playerAnimType mwr, movetype moving
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
+		playerAnimType mwr
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
 	movetype prone
 	{
 		torso pt_melee_prone_pistol
@@ -1642,25 +1654,31 @@ knife_melee
 
 knife_melee_charge
 {
-	//MWR
-	playerAnimType mwr, movetype prone
-	{
-		torso pt_melee_prone_melee_a
-	}
-	playerAnimType mwr, movetype crouching
-	{
-		torso pt_melee_crouch_melee_a
-		torso pt_melee_crouch_melee_b
-		torso pt_melee_crouch_melee_c
-		torso pt_melee_crouch_melee_d
-		torso pt_melee_crouch_melee_e
-	}
-	playerAnimType mwr, movetype moving
-	{
-		torso pt_melee_melee_a
-		torso pt_melee_melee_b
-		torso pt_melee_melee_c
-	}
+		//MWR
+		playerAnimType mwr, movetype prone
+		{
+			torso pt_melee_prone_melee_a
+		}
+		playerAnimType mwr, movetype crouching
+		{
+			torso pt_melee_crouch_melee_a
+			torso pt_melee_crouch_melee_b
+			torso pt_melee_crouch_melee_c
+			torso pt_melee_crouch_melee_d
+			torso pt_melee_crouch_melee_e
+		}
+		playerAnimType mwr, movetype moving
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
+		playerAnimType mwr
+		{
+			torso pt_melee_melee_a
+			torso pt_melee_melee_b
+			torso pt_melee_melee_c
+		}
 	movetype prone
 	{
 		torso pt_melee_prone_pistol
@@ -1774,14 +1792,14 @@ reload
 
 jump
 {
-	playerAnimType mwr
-	{
-		both pb_melee_standjump_takeoff
-	}
-	playerAnimType mwr, movetype run
-	{
-		both pb_melee_runjump_takeoff
-	}
+		playerAnimType mwr
+		{
+			both pb_melee_standjump_takeoff
+		}
+		playerAnimType mwr, movetype run
+		{
+			both pb_melee_runjump_takeoff
+		}
 	playerAnimType none, movetype run
 	{
 		both pb_runjump_takeoff duration 5 blendtime 100
@@ -1810,14 +1828,14 @@ jump
 
 jumpbk
 {
-	playerAnimType mwr
-	{
-		both pb_melee_standjump_takeoff
-	}
-	playerAnimType mwr, movetype run
-	{
-		both pb_melee_runjump_takeoff
-	}
+		playerAnimType mwr
+		{
+			both pb_melee_standjump_takeoff
+		}
+		playerAnimType mwr, movetype run
+		{
+			both pb_melee_runjump_takeoff
+		}
 	movetype crouching AND prone
 	{
 		both pb_chicken_dance_crouch duration 5 blendtime 100
@@ -1861,14 +1879,14 @@ jumpbk
 
 land
 {
-	playerAnimType mwr
-	{
-		both pb_melee_standjump_land duration 100 blendtime 50
-	}
-	playerAnimType mwr, movetype run
-	{
-		both pb_melee_runjump_land duration 100 blendtime 50
-	}
+		playerAnimType mwr
+		{
+			both pb_melee_standjump_land duration 100 blendtime 50
+		}
+		playerAnimType mwr, movetype run
+		{
+			both pb_melee_runjump_land duration 100 blendtime 50
+		}
 	movetype run
 	{
 		both pb_runjump_land duration 100 blendtime 50
