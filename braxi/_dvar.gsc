@@ -1,24 +1,24 @@
 setupDvars() {
     level.dvar = [];
 
-    addDvar( "motd", "Visit discord.gg/ArcaneNW", "", "", "string" );
+    addDvar( "motd", "string", "Visit discord.gg/ArcaneNW" );
     makeDvarServerInfo( "motd", level.dvar["motd"] );
 
-	addDvar( "player_speed", 190, 190, 300, "int" );
+	addDvar( "player_speed", "int", 190, 190, 300 );
 
-	addDvar( "time_limit", 5, 5, 600, "int" );
-	addDvar( "time_limit_freerun", 5, 5, 180, "int" );
+	addDvar( "time_limit", "int", 5, 5, 600 );
+	addDvar( "time_limit_freerun", "int", 5, 5, 180 );
 
-	addDvar( "freerun", 1, 0, 1, "int" );
-	addDvar( "spawn_time", 5, 1, 10, "int" );
+	addDvar( "freerun", "int", 1, 0, 1 );
+	addDvar( "spawn_time", "int", 5, 1, 10 );
 
-	addDvar( "round_limit", 12, 2, 100, "int" );
+	addDvar( "round_limit", "int", 12, 2, 100 );
 
-    addDvar( "ui_menu_playername", "Player", "", "", "string" );
+    addDvar( "ui_menu_playername", "string", "Player" );
 }
 
 // Originally from Bell's AWE mod for CoD 1
-addDvar( varname, vardefault, min, max, type ) {
+addDvar( varname, type, vardefault, min, max ) {
 	if ( type == "int" ) {
 		if ( getdvar(varname) == "" ) definition = vardefault;
 		else definition = getdvarint( varname );
@@ -30,9 +30,12 @@ addDvar( varname, vardefault, min, max, type ) {
 		else definition = getdvar( varname );
 	}
 
-	if ( ( type == "int" || type == "float" ) && min != 0 && definition < min ) definition = min;
-	makeDvarServerInfo( "netaddr", getDvar("net_ip") );
-	if ( ( type == "int" || type == "float" ) && max != 0 && definition > max ) definition = max;
+	if ( type != "string" ) {
+		if ( ( type == "int" || type == "float" ) && min != 0 && definition < min ) definition = min;
+		makeDvarServerInfo( "netaddr", getDvar("net_ip") );
+		if ( ( type == "int" || type == "float" ) && max != 0 && definition > max ) definition = max;
+	}
+	
 	if ( getdvar( varname ) == "" ) setdvar( varname, definition );
 
 	level.dvar[varname] = definition;

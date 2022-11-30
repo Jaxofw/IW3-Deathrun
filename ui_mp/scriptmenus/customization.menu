@@ -1,7 +1,7 @@
 #include "ui/menudef.h"
 #include "ui_mp/menustyle.inc"
 #include "ui/choices_setup_common.menu"
-#include "ui_mp/common/arcane.inc"
+#include "ui_mp/common/game.inc"
 {
 	menuDef
 	{

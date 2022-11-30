@@ -23,7 +23,8 @@ init() {
 	thread braxi\_menus::init();
 	braxi\_maps::init();
 	thread braxi\_teams::init();
-
+	braxi\_mapvote::init();
+	
 	setDvar( "g_speed", level.dvar["player_speed"] );
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "player_sprintTime", 12.8 );
@@ -83,8 +84,13 @@ gameLogic() {
 
 			if ( !level.freerun ) {
 				if ( level.players.size > 2 && level.jumpersAlive == 1 ) level.jumpers[0] thread lastJumperAlive();
-				if ( !level.jumpersAlive && level.activatorsAlive ) level endRound( "Jumpers Died!", "activator" );
-				else if ( !level.activatorsAlive && level.jumpersAlive ) level endRound( "Activator Died!" , "jumper" );
+				if ( !level.jumpersAlive && level.activatorsAlive ) {
+					level endRound( "Jumpers Died!", "activator" );
+					return;
+				} else if ( !level.activatorsAlive && level.jumpersAlive ) {
+					level endRound( "Activator Died!" , "jumper" );
+					return;
+				}
 			}
 		}
 	}
@@ -202,6 +208,8 @@ spawnPlayer( origin, angles ) {
 	self thread braxi\_teams::setHealth();
 	self thread braxi\_teams::setSpeed();
 
+	self iPrintLnBold( level.dvar["round_limit"] );
+
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
 }
@@ -222,15 +230,15 @@ watchTimeLimit() {
 endRound( string, winner ) {
 	game["rounds_played"]++;
 
-	if ( winner == "activator" ) {
-		if (isDefined( level.activ ) && isPlayer( level.activ )) {
-			level.activ thread braxi\_rank::giveRankXp( "activator" );
-		}
+	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
+		level thread endMap();
+		return;
 	}
 
-	if ( game["rounds_played"] >= level.dvar["round_limit"] ) {
-		level thread endMap( "activator" );
-		return;
+	if ( winner == "activator" ) {
+		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
+			level.activ thread braxi\_rank::giveRankXp( "activator" );
+		}
 	}
 
 	iPrintLnBold( string );
@@ -240,14 +248,10 @@ endRound( string, winner ) {
 	map_restart( true );
 }
 
-endMap( winner ) {
+endMap() {
 	setDvar( "g_deadChat", 1 );
 
-	if ( winner == "activator" ) {
-		if ( isDefined( level.activ ) && isPlayer( level.activ ) ) {
-			level.activ thread braxi\_rank::giveRankXp( "activator", 100 );
-		}
-	}
+	level thread braxi\_mapvote::mapVoteLogic();
 
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
@@ -257,9 +261,8 @@ endMap( winner ) {
 		players[i] allowSpectateTeam( "axis", false );
 		players[i] allowSpectateTeam( "freelook", true );
 		players[i] allowSpectateTeam( "none", true );
+		players[i] thread braxi\_mapvote::playerLogic();
 	}
-
-	iPrintLnBold( "end map triggered" );
 }
 
 spawnSpectator( origin, angles ) {
@@ -288,4 +291,17 @@ respawnPlayer() {
 		self spawnPlayer();
 		return;
 	}
+}
+
+addTextHud( who, x, y, alpha, alignX, alignY, fontScale ) {
+	if ( isPlayer( who ) ) hud = newClientHudElem( who );
+	else hud = newHudElem();
+
+	hud.x = x;
+	hud.y = y;
+	hud.alpha = alpha;
+	hud.alignX = alignX;
+	hud.alignY = alignY;
+	hud.fontScale = fontScale;
+	return hud;
 }

@@ -10,6 +10,7 @@ init() {
     game["menu_secondary2"] = "secondary2";
     game["menu_gloves"] = "gloves";
     game["menu_gloves2"] = "gloves2";
+    game["menu_mapvote"] = "mapvote";
 
     preCacheMenu( game["menu_team"] );
     preCacheMenu( game["menu_customize"] );
@@ -22,6 +23,7 @@ init() {
     preCacheMenu( game["menu_secondary2"] );
     preCacheMenu( game["menu_gloves"] );
     preCacheMenu( game["menu_gloves2"] );
+    preCacheMenu( game["menu_mapvote"] );
 
     level thread onPlayerConnect();
 }

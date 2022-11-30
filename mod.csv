@@ -20,9 +20,11 @@ stringtable,mp/secondaryTable.csv
 # Scriptmenus
 menufile,ui_mp/hud.menu
 menufile,ui_mp/connect.menu
-menufile,ui_mp/common/arcane.inc
+menufile,ui_mp/common/game.inc
+menufile,ui_mp/common/mapvote.inc
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
+menufile,ui_mp/scriptmenus/mapvote.menu
 
 # Localized Strings
 localize,glove
@@ -100,12 +102,26 @@ material,grey_button_shit
 material,menu_lock
 material,hud_notify
 material,hud_notify_footer
+material,menu_mapvote_footer
+material,menu_mapvote_user
 
 # Reticles
 material,knife_ballistic_reticle
 material,melee_weapon_reticle
 material,wunderwaffe_reticle
 material,crosshair_test
+
+# Loadscreens
+material,loadscreen_mp_deathrun_bricky
+material,loadscreen_mp_deathrun_coyote
+material,loadscreen_mp_deathrun_waterworld
+material,loadscreen_mp_dr_anotherworld
+material,loadscreen_mp_dr_caution
+material,loadscreen_mp_dr_crosscode
+material,loadscreen_mp_dr_construct
+material,loadscreen_mp_dr_darmuhv2
+material,loadscreen_mp_dr_nighty
+material,loadscreen_mp_dr_wtf
 
 # makes shit invisible
 xmodel,tag_origin_bitchface

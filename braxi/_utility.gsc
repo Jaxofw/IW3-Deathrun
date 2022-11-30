@@ -148,19 +148,6 @@ spawnCollision( origin, height, width ) {
 	level.colliders[level.colliders.size-1].targetname = "script_collision";
 }
 
-addTextHud( who, x, y, alpha, alignX, alignY, fontScale ) {
-	if ( isPlayer( who ) ) hud = newClientHudElem( who );
-	else hud = newHudElem();
-
-	hud.x = x;
-	hud.y = y;
-	hud.alpha = alpha;
-	hud.alignX = alignX;
-	hud.alignY = alignY;
-	hud.fontScale = fontScale;
-	return hud;
-}
-
 notification( notification ) {
 	self endon( "disconnect" );
 
@@ -179,8 +166,8 @@ showNotification( notification ) {
 	self.notification = [];
 	self.notification[0] = newClientHudElem( self );
 	self.notification[1] = newClientHudElem( self );
-	self.notification[2] = addTextHud( self, -300, 104, 1, "center", "middle", 1.4 );
-	self.notification[3] = addTextHud( self, -300, 122, 1, "center", "middle", 1.4 );
+	self.notification[2] = braxi\_mod::addTextHud( self, -300, 104, 1, "center", "middle", 1.4 );
+	self.notification[3] = braxi\_mod::addTextHud( self, -300, 122, 1, "center", "middle", 1.4 );
 	self playLocalSound( notification.sound );
 
 	if ( notification.levelUp ) {
@@ -272,4 +259,116 @@ moveNotifElements(x1, x2, x3, x4, time) {
 		if ( i == 2 ) self.notification[i].x = x3;
 		if ( i == 3 ) self.notification[i].x = x4;
 	}
+}
+
+toUpper( letter ) {
+	switch ( letter ) {
+		case "a":
+			letter = "A";
+			break;
+		case "b":
+			letter = "B";
+			break;
+		case "c":
+			letter = "C";
+			break;
+		case "d":
+			letter = "D";
+			break;
+		case "e":
+			letter = "E";
+			break;
+		case "f":
+			letter = "F";
+			break;
+		case "g":
+			letter = "G";
+			break;
+		case "h":
+			letter = "H";
+			break;
+		case "i":
+			letter = "I";
+			break;
+		case "j":
+			letter = "J";
+			break;
+		case "k":
+			letter = "K";
+			break;
+		case "l":
+			letter = "L";
+			break;
+		case "m":
+			letter = "M";
+			break;
+		case "n":
+			letter = "N";
+			break;
+		case "o":
+			letter = "O";
+			break;
+		case "p":
+			letter = "P";
+			break;
+		case "q":
+			letter = "Q";
+			break;
+		case "r":
+			letter = "R";
+			break;
+		case "s":
+			letter = "S";
+			break;
+		case "t":
+			letter = "T";
+			break;
+		case "u":
+			letter = "U";
+			break;
+		case "v":
+			letter = "V";
+			break;
+		case "w":
+			letter = "W";
+			break;
+		case "x":
+			letter = "X";
+			break;
+		case "y":
+			letter = "Y";
+			break;
+		case "z":
+			letter = "Z";
+			break;
+	}
+
+	return letter;
+}
+
+foundUnderscore( letter ) {
+	switch ( letter ) {
+		case "_":
+			return true;
+		default:
+			return false;
+	}
+}
+
+formatMapName( map ) {
+    formattedName = "";
+    index = 6;
+
+    if ( map[4] == "e" ) index = 12;
+    for ( j = index; j < map.size; j++ ) {
+        if ( j == index ) formattedName += toUpper(map[j]);
+        else {
+            if ( foundUnderscore( map[j] ) ) {
+                formattedName += " " + toUpper(map[j + 1]);
+                j++;
+            } else formattedName += map[j];
+        }
+    }
+
+    return formattedName;
 }

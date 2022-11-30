@@ -1,0 +1,30 @@
+#include "ui/menudef.h"
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+#include "ui_mp/common/mapvote.inc"
+{
+	menuDef
+	{
+		name			"mapvote"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style 			WINDOW_STYLE_EMPTY
+		focuscolor		1 1 1 1
+		onESC 			{ ; }
+		
+		MAPVOTE_COUNTDOWN
+
+		MAPVOTE_BUTTON( 1, 0, 0, dvarstring( "mapvote_option_1" ), dvarstring( "mapvote_option_1_label" ) )
+		MAPVOTE_BUTTON( 2, 0, 115, dvarstring( "mapvote_option_2" ), dvarstring( "mapvote_option_2_label" ) )
+		MAPVOTE_BUTTON( 3, 0, 230, dvarstring( "mapvote_option_3" ), dvarstring( "mapvote_option_3_label" ) )
+
+		MAPVOTE_BUTTON( 4, MAPVOTE_SPACING, 0, dvarstring( "mapvote_option_4" ), dvarstring( "mapvote_option_4_label" ) )
+		MAPVOTE_BUTTON( 5, MAPVOTE_SPACING, 115, dvarstring( "mapvote_option_5" ), dvarstring( "mapvote_option_5_label" ) )
+		MAPVOTE_BUTTON( 6, MAPVOTE_SPACING, 230, dvarstring( "mapvote_option_6" ), dvarstring( "mapvote_option_6_label" ) )
+
+		MAPVOTE_BUTTON( 7, MAPVOTE_SPACING + MAPVOTE_SPACING, 0, dvarstring( "mapvote_option_7" ), dvarstring( "mapvote_option_7_label" ) )
+		MAPVOTE_BUTTON( 8, MAPVOTE_SPACING + MAPVOTE_SPACING, 115, dvarstring( "mapvote_option_8" ), dvarstring( "mapvote_option_8_label" ) )
+		MAPVOTE_BUTTON( 9, MAPVOTE_SPACING + MAPVOTE_SPACING, 230, dvarstring( "mapvote_option_9" ), dvarstring( "mapvote_option_9_label" ) )
+		
+		MAPVOTE_RESTART
+	}
+}
