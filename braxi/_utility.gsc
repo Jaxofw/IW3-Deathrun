@@ -6,7 +6,6 @@ preCache() {
 	preCacheShader( "hud_notify_footer" );
 	preCacheStatusIcon( "hud_status_connecting" );
 	preCacheStatusIcon( "hud_status_dead" );
-	preCacheModel( "body_mp_sas_urban_sniper" );
 }
 
 init_spawns() {
@@ -29,7 +28,7 @@ buildJumperTable() {
 
 	tableName = "mp/jumperTable.csv";
 
-	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.jumperModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.jumperModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
@@ -46,7 +45,7 @@ buildPrimaryTable() {
 
 	tableName = "mp/primaryTable.csv";
 
-	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.primaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.primaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
@@ -63,7 +62,7 @@ buildSecondaryTable() {
 
 	tableName = "mp/secondaryTable.csv";
 
-	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.secondaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.secondaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
@@ -80,7 +79,7 @@ buildGloveTable() {
 
 	tableName = "mp/gloveTable.csv";
 
-	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.gloveModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.gloveModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
@@ -264,86 +263,60 @@ moveNotifElements( x1, x2, x3, x4, time ) {
 toUpper( letter ) {
 	switch ( letter ) {
 		case "a":
-			letter = "A";
-			break;
+			return "A";
 		case "b":
-			letter = "B";
-			break;
+			return "B";
 		case "c":
-			letter = "C";
-			break;
+			return "C";
 		case "d":
-			letter = "D";
-			break;
+			return "D";
 		case "e":
-			letter = "E";
-			break;
+			return "E";
 		case "f":
-			letter = "F";
-			break;
+			return "F";
 		case "g":
-			letter = "G";
-			break;
+			return "G";
 		case "h":
-			letter = "H";
-			break;
+			return "H";
 		case "i":
-			letter = "I";
-			break;
+			return "I";
 		case "j":
-			letter = "J";
-			break;
+			return "J";
 		case "k":
-			letter = "K";
-			break;
+			return "K";
 		case "l":
-			letter = "L";
-			break;
+			return "L";
 		case "m":
-			letter = "M";
-			break;
+			return "M";
 		case "n":
-			letter = "N";
-			break;
+			return "N";
 		case "o":
-			letter = "O";
-			break;
+			return "O";
 		case "p":
-			letter = "P";
-			break;
+			return "P";
 		case "q":
-			letter = "Q";
-			break;
+			return "Q";
 		case "r":
-			letter = "R";
-			break;
+			return "R";
 		case "s":
-			letter = "S";
-			break;
+			return "S";
 		case "t":
-			letter = "T";
-			break;
+			return "T";
 		case "u":
-			letter = "U";
-			break;
+			return "U";
 		case "v":
-			letter = "V";
-			break;
+			return "V";
 		case "w":
-			letter = "W";
-			break;
+			return "W";
 		case "x":
-			letter = "X";
-			break;
+			return "X";
 		case "y":
-			letter = "Y";
-			break;
+			return "Y";
 		case "z":
-			letter = "Z";
-			break;
+			return "Z";
+		default:
+			return letter;
 	}
-
-	return letter;
 }
 
 foundUnderscore( letter ) {
