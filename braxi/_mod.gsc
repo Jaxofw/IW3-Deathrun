@@ -24,7 +24,7 @@ init() {
 	braxi\_maps::init();
 	thread braxi\_teams::init();
 	braxi\_mapvote::init();
-	
+
 	setDvar( "g_speed", level.dvar["player_speed"] );
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "player_sprintTime", 12.8 );
@@ -88,7 +88,7 @@ gameLogic() {
 					level endRound( "Jumpers Died!", "activator" );
 					return;
 				} else if ( !level.activatorsAlive && level.jumpersAlive ) {
-					level endRound( "Activator Died!" , "jumper" );
+					level endRound( "Activator Died!", "jumper" );
 					return;
 				}
 			}
@@ -100,7 +100,7 @@ tpJumpersToSpawn() {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ ) {
 		if ( players[i] isAlive() ) {
-			randomSpawn = level.spawn["allies"][randomInt(level.spawn["allies"].size)].origin;
+			randomSpawn = level.spawn["allies"][randomInt( level.spawn["allies"].size )].origin;
 			players[i] setOrigin( randomSpawn );
 			players[i] linkTo( level.spawn_link );
 		}
@@ -109,14 +109,14 @@ tpJumpersToSpawn() {
 
 startTimer() {
 	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
-	
+
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "CENTER", 0, -20 );
 	level.matchStartText setText( "Round begins in..." );
 	level.matchStartText.sort = 1001;
 	level.matchStartText.foreground = false;
 	level.matchStartText.hidewheninmenu = true;
-	
+
 	level.matchStartTimer = createServerTimer( "objective", 1.4 );
 	level.matchStartTimer setPoint( "CENTER", "CENTER", 0, 0 );
 	level.matchStartTimer setTimer( level.dvar["spawn_time"] );
@@ -127,7 +127,7 @@ startTimer() {
 	wait level.dvar["spawn_time"];
 
 	releaseJumpers();
-	
+
 	level.matchStartText destroyElem();
 	level.matchStartTimer destroyElem();
 }
@@ -141,7 +141,7 @@ releaseJumpers() {
 pickRandomActivator() {
 	level.players = getAllPlayers();
 	level.activ = level.players[randomInt( level.players.size )];
-	
+
 	if ( level.activ.pers["team"] != "allies" ) level thread pickRandomActivator();
 
 	iPrintLnBold( "^7" + level.activ.name + " was chosen to ^5Activate!" );
@@ -161,7 +161,7 @@ lastJumperAlive() {
 	hud = addTextHud( level, 320, 240, 0, "center", "middle", 2.4 );
 	hud setText( self.name + " is the last Jumper alive" );
 
-	hud.glowColor = (0.7,0,0);
+	hud.glowColor = ( 0.7, 0, 0 );
 	hud.glowAlpha = 1;
 	hud SetPulseFX( 30, 100000, 700 );
 
@@ -208,15 +208,13 @@ spawnPlayer( origin, angles ) {
 	self thread braxi\_teams::setHealth();
 	self thread braxi\_teams::setSpeed();
 
-	self iPrintLnBold( level.dvar["round_limit"] );
-
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
 }
 
 watchTimeLimit() {
 	if ( !level.dvar["time_limit"] ) return;
-	
+
 	time = level.dvar["time_limit"];
 	if ( level.freerun ) time = level.dvar["time_limit_freerun"];
 
@@ -266,8 +264,8 @@ endMap() {
 }
 
 spawnSpectator( origin, angles ) {
-	if ( !isDefined( origin ) ) origin = (0,0,0);
-	if ( !isDefined( angles ) ) angles = (0,0,0);
+	if ( !isDefined( origin ) ) origin = ( 0, 0, 0 );
+	if ( !isDefined( angles ) ) angles = ( 0, 0, 0 );
 
 	self notify( "joined_spectators" );
 

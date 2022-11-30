@@ -13,7 +13,7 @@ playerConnect() {
 
 	self setClientDvars(
 		"show_hud", true,
-		"ip", getDvar(" net_ip" ),
+		"ip", getDvar( "net_ip" ),
 		"port", getDvar( "net_port" ),
 		"cg_drawSpectatorMessages", 1,
 		"ui_menu_playername", self.name,
@@ -21,7 +21,7 @@ playerConnect() {
 	);
 
 	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );
-	
+
 	if ( !isDefined( self.pers["team"] ) ) {
 		iPrintLn( self.name + " ^7entered the game" );
 
@@ -53,26 +53,26 @@ playerDisconnect() {
 }
 
 
-PlayerLastStand(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration) {
+PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
 	self suicide();
 }
 
-PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime) {
+PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime ) {
 	if ( self.sessionteam == "spectator" ) return;
 
 	level notify( "player_damage", self, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 
-	if ( isPlayer(eAttacker) && eAttacker.pers["team"] == self.pers["team"] ) return;
+	if ( isPlayer( eAttacker ) && eAttacker.pers["team"] == self.pers["team"] ) return;
 
-	if (!isDefined( vDir )) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
+	if ( !isDefined( vDir ) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
 
-	if (!( iDFlags & level.iDFLAGS_NO_PROTECTION )) {
+	if ( !( iDFlags & level.iDFLAGS_NO_PROTECTION ) ) {
 		if ( iDamage < 1 ) iDamage = 1;
 		self finishPlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 	}
 }
 
-PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration) {
+PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
 	self notify( "killed_player" );
 	self notify( "death" );
 
@@ -90,7 +90,7 @@ PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLo
 		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
 		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
 	}
-	
+
 	obituary( self, attacker, sWeapon, sMeansOfDeath );
 
 	if ( self.pers["team"] == "axis" ) {

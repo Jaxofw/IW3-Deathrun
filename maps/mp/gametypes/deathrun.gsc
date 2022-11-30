@@ -9,7 +9,7 @@ main() {
 
 	level.script = toLower( getDvar( "mapname" ) );
 	level.gametype = toLower( getDvar( "g_gametype" ) );
-	
+
 	level.allies = ::allies;
 	level.axis = ::axis;
 	level.spectator = ::spectator;
@@ -22,7 +22,7 @@ Callback_StartGameType() {
 	thread braxi\_mod::init();
 
 	allowed[0] = "war";
-	maps\mp\gametypes\_gameobjects::main(allowed);	
+	maps\mp\gametypes\_gameobjects::main( allowed );
 }
 
 notifyConnecting() {

@@ -43,26 +43,24 @@ cd ..\..\bin
 linker_pc.exe -language english -compress -cleanup mod
 cd ..\mods\arcane_deathrun_dev
 copy ..\..\zone\english\mod.ff
-GOTO End
+exit
 
 :BUILD_IWDS
 del arcane.iwd
 7za a -r -tzip arcane.iwd images/
 7za a -r -tzip arcane.iwd weapons/
 7za a -r -tzip arcane.iwd sound/
-GOTO End
+exit
 
 :runMod
 pushd ..\..\
 iw3mp.exe %launchOptions% +set developer 1 +set developer_script 0
-GOTO End
+exit
 
 :RunServer
 pushd ..\..\
 cod4x18_dedrun.exe %launchOptions% +set dedicated 1 +set net_port 28961
-GOTO End
+exit
 
 :CloseAll
 exit
-
-:End

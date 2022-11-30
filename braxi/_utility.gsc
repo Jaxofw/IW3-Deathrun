@@ -14,7 +14,7 @@ init_spawns() {
 	level.spawn["allies"] = getEntArray( "mp_jumper_spawn", "classname" );
 	level.spawn["axis"] = getEntArray( "mp_activator_spawn", "classname" );
 	level.spawn["spectator"] = getEntArray( "mp_global_intermission", "classname" )[0];
-	level.spawn_link = spawn( "script_model", (0,0,0) );
+	level.spawn_link = spawn( "script_model", ( 0, 0, 0 ) );
 
 	if ( !level.spawn["allies"].size ) level.spawn["allies"] = getEntArray( "mp_dm_spawn", "classname" );
 	if ( !level.spawn["axis"].size ) level.spawn["axis"] = getEntArray( "mp_tdm_spawn", "classname" );
@@ -26,15 +26,15 @@ init_spawns() {
 buildJumperTable() {
 	level.jumperModels = [];
 	level.numJumpers = 0;
-	
+
 	tableName = "mp/jumperTable.csv";
 
 	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.jumperModels[id]["rank"] = (int(tableLookup( tableName, 0, idx, 2 )) - 1);
+		level.jumperModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.jumperModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
 		level.jumperModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-		
+
 		preCacheModel( level.jumperModels[id]["model"] );
 		level.numJumpers++;
 	}
@@ -43,15 +43,15 @@ buildJumperTable() {
 buildPrimaryTable() {
 	level.primaryWeaps = [];
 	level.numPrimaries = 0;
-	
+
 	tableName = "mp/primaryTable.csv";
 
 	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.primaryWeaps[id]["rank"] = (int(tableLookup( tableName, 0, idx, 2 )) - 1);
-		level.primaryWeaps[id]["item"] = (tableLookup( tableName, 0, idx, 3 ) + "_mp");
+		level.primaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.primaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
 		level.primaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-		
+
 		preCacheItem( level.primaryWeaps[id]["item"] );
 		level.numPrimaries++;
 	}
@@ -60,15 +60,15 @@ buildPrimaryTable() {
 buildSecondaryTable() {
 	level.secondaryWeaps = [];
 	level.numSecondaries = 0;
-	
+
 	tableName = "mp/secondaryTable.csv";
 
 	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.secondaryWeaps[id]["rank"] = (int(tableLookup( tableName, 0, idx, 2 )) - 1);
-		level.secondaryWeaps[id]["item"] = (tableLookup( tableName, 0, idx, 3 ) + "_mp");
+		level.secondaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.secondaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
 		level.secondaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-		
+
 		preCacheItem( level.secondaryWeaps[id]["item"] );
 		level.numSecondaries++;
 	}
@@ -77,15 +77,15 @@ buildSecondaryTable() {
 buildGloveTable() {
 	level.gloveModels = [];
 	level.numGloves = 0;
-	
+
 	tableName = "mp/gloveTable.csv";
 
 	for ( idx = 1; isdefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.gloveModels[id]["rank"] = (int(tableLookup( tableName, 0, idx, 2 )) - 1);
+		level.gloveModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.gloveModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
 		level.gloveModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-		
+
 		preCacheModel( level.gloveModels[id]["model"] );
 		level.numGloves++;
 	}
@@ -144,8 +144,8 @@ initGame() {
 
 spawnCollision( origin, height, width ) {
 	level.colliders[level.colliders.size] = spawn( "trigger_radius", origin, 0, width, height );
-	level.colliders[level.colliders.size-1] setContents( 1 );
-	level.colliders[level.colliders.size-1].targetname = "script_collision";
+	level.colliders[level.colliders.size - 1] setContents( 1 );
+	level.colliders[level.colliders.size - 1].targetname = "script_collision";
 }
 
 notification( notification ) {
@@ -242,16 +242,16 @@ showNotification( notification ) {
 
 	if ( self.notifications.size > 0 ) {
 		nextNotification = self.notifications[0];
-		
+
 		for ( i = 1; i < self.notifications.size; i++ )
-			self.notifications[i-1] = self.notifications[i];
-			self.notifications[i-1] = undefined;
-		
+			self.notifications[i - 1] = self.notifications[i];
+		self.notifications[i - 1] = undefined;
+
 		self thread showNotification( nextNotification );
 	}
 }
 
-moveNotifElements(x1, x2, x3, x4, time) {
+moveNotifElements( x1, x2, x3, x4, time ) {
 	for ( i = 0; i < self.notification.size; i++ ) {
 		self.notification[i] moveOverTime( time );
 		if ( i == 0 ) self.notification[i].x = x1;
@@ -356,19 +356,19 @@ foundUnderscore( letter ) {
 }
 
 formatMapName( map ) {
-    formattedName = "";
-    index = 6;
+	formattedName = "";
+	index = 6;
 
-    if ( map[4] == "e" ) index = 12;
-    for ( j = index; j < map.size; j++ ) {
-        if ( j == index ) formattedName += toUpper(map[j]);
-        else {
-            if ( foundUnderscore( map[j] ) ) {
-                formattedName += " " + toUpper(map[j + 1]);
-                j++;
-            } else formattedName += map[j];
-        }
-    }
+	if ( map[4] == "e" ) index = 12;
+	for ( j = index; j < map.size; j++ ) {
+		if ( j == index ) formattedName += toUpper( map[j] );
+		else {
+			if ( foundUnderscore( map[j] ) ) {
+				formattedName += " " + toUpper( map[j + 1] );
+				j++;
+			} else formattedName += map[j];
+		}
+	}
 
-    return formattedName;
+	return formattedName;
 }

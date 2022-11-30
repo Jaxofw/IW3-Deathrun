@@ -12,7 +12,7 @@ init() {
 	setDvar( "g_ScoresColor_Spectator", ".25 .25 .25" );
 	setDvar( "g_ScoresColor_Free", ".76 .78 .10" );
 	setDvar( "g_teamColor_MyTeam", "0.2 0.6 0.9" );
-	setDvar( "g_teamColor_EnemyTeam", "1 .45 .5");	
+	setDvar( "g_teamColor_EnemyTeam", "1 .45 .5" );
 }
 
 setSpectatePermissions() {

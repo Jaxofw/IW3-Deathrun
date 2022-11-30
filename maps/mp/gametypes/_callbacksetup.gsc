@@ -12,7 +12,7 @@ CodeCallback_StartGameType() {
 
 	// If the gametype has not beed started, run the startup
 	if ( !isDefined( level.gametypestarted ) || !level.gametypestarted ) {
-		[[level.callbackStartGameType]]();
+		[[level.callbackStartGameType]] ();
 		level.gametypestarted = true; // so we know that the gametype has been started up
 	}
 }
@@ -32,8 +32,8 @@ to the server machine, but qfalse on map changes and tournement
 restarts.
 ================*/
 CodeCallback_PlayerConnect() {
-	self endon("disconnect");
-	[[level.callbackPlayerConnect]]();
+	self endon( "disconnect" );
+	[[level.callbackPlayerConnect]] ();
 }
 
 /*================
@@ -42,8 +42,8 @@ Will not be called between levels.
 self is the player that is disconnecting.
 ================*/
 CodeCallback_PlayerDisconnect() {
-	self notify("disconnect");
-	[[level.callbackPlayerDisconnect]]();
+	self notify( "disconnect" );
+	[[level.callbackPlayerDisconnect]] ();
 }
 
 /*================
@@ -51,8 +51,8 @@ Called when a player has taken damage.
 self is the player that took damage.
 ================*/
 CodeCallback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset ) {
-	self endon("disconnect");
-	[[level.callbackPlayerDamage]](eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset);
+	self endon( "disconnect" );
+	[[level.callbackPlayerDamage]] ( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset );
 }
 
 /*================
@@ -60,8 +60,8 @@ Called when a player has been killed.
 self is the player that was killed.
 ================*/
 CodeCallback_PlayerKilled( eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration ) {
-	self endon("disconnect");
-	[[level.callbackPlayerKilled]](eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration);
+	self endon( "disconnect" );
+	[[level.callbackPlayerKilled]] ( eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration );
 }
 
 /*================
@@ -69,8 +69,8 @@ Called when a player has been killed, but has last stand perk.
 self is the player that was killed.
 ================*/
 CodeCallback_PlayerLastStand( eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration ) {
-	self endon("disconnect");
-	[[level.callbackPlayerLastStand]](eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration );
+	self endon( "disconnect" );
+	[[level.callbackPlayerLastStand]] ( eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration );
 }
 
 //=============================================================================
@@ -80,15 +80,15 @@ Setup any misc callbacks stuff like defines and default callbacks
 ================*/
 SetupCallbacks() {
 	SetDefaultCallbacks();
-	
+
 	// Set defined for damage flags used in the playerDamage callback
-	level.iDFLAGS_RADIUS			= 1;
-	level.iDFLAGS_NO_ARMOR			= 2;
-	level.iDFLAGS_NO_KNOCKBACK		= 4;
-	level.iDFLAGS_PENETRATION		= 8;
+	level.iDFLAGS_RADIUS = 1;
+	level.iDFLAGS_NO_ARMOR = 2;
+	level.iDFLAGS_NO_KNOCKBACK = 4;
+	level.iDFLAGS_PENETRATION = 8;
 	level.iDFLAGS_NO_TEAM_PROTECTION = 16;
-	level.iDFLAGS_NO_PROTECTION		= 32;
-	level.iDFLAGS_PASSTHRU			= 64;
+	level.iDFLAGS_NO_PROTECTION = 32;
+	level.iDFLAGS_PASSTHRU = 64;
 }
 
 /*================
@@ -116,10 +116,10 @@ AbortLevel() {
 	level.callbackPlayerDamage = ::callbackVoid;
 	level.callbackPlayerKilled = ::callbackVoid;
 	level.callbackPlayerLastStand = ::callbackVoid;
-	
+
 	setDvar( "g_gametype", "deathrun" );
 
-	exitLevel(false);
+	exitLevel( false );
 }
 
 /*================
