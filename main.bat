@@ -1,5 +1,5 @@
-set launchOptions="+set fs_game "mods\arcane_deathrun_dev" +g_gametype deathrun" +exec server.cfg +devmap mp_dr_wtf
-
+set launchMap="mp_dr_anotherworld"
+set launchOptions="+set fs_game "mods\arcane_deathrun_dev" +g_gametype deathrun" +exec server.cfg
 @ECHO OFF
 
 :MainMenu
@@ -58,12 +58,12 @@ goto MainMenu
 
 :RunMod
 pushd ..\..\
-iw3mp.exe %launchOptions% +set developer 1 +set developer_script 0
+iw3mp.exe %launchOptions% +set developer 1 +set developer_script 0 +devmap %launchMap%
 exit
 
 :RunServer
 pushd ..\..\
-cod4x18_dedrun.exe %launchOptions% +set dedicated 1 +set net_port 28961
+cod4x18_dedrun.exe %launchOptions% +set dedicated 1 +set net_port 28961 +map %launchMap%
 exit
 
 :CloseAll

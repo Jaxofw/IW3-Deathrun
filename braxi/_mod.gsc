@@ -54,6 +54,7 @@ gameLogic() {
 		startTimer();
 	}
 
+	level notify( "round_started", game["rounds_played"] );
 	game["state"] = "playing";
 
 	if ( !level.freerun ) pickRandomActivator();
@@ -146,7 +147,6 @@ pickRandomActivator() {
 
 	iPrintLnBold( "^7" + level.activ.name + " was chosen to ^5Activate!" );
 
-	level.activ.pers["activator"]++;
 	level.activ braxi\_teams::setTeam( "axis" );
 	level.activ spawnPlayer();
 

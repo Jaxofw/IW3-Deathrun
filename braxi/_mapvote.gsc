@@ -150,6 +150,12 @@ playerLogic() {
 getRandomMap() {
     randomMap = level.maps[randomInt( level.maps.size )];
 
+    // Prevent current map from being put into rotation
+    if ( randomMap == level.script ) {
+        getRandomMap();
+        return;
+    }
+
     for ( i = 1; i <= level.mapsVotable.size; i++ ) {
         if ( isDefined( level.mapsVotable[i]["name"] ) ) {
             if ( randomMap == level.mapsVotable[i]["name"] ) {
@@ -160,8 +166,7 @@ getRandomMap() {
     }
 
     // Replay Map Option
-    if ( i == level.mapsInVote )
-        randomMap = level.script;
+    if ( i == level.mapsInVote ) randomMap = level.script;
 
     level.mapsVotable[i] = [];
     level.mapsVotable[i]["name"] = randomMap;
