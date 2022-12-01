@@ -41,7 +41,8 @@ playerConnect() {
 
 	if ( !isDefined( level.spawn["spectator"] ) ) level.spawn["spectator"] = level.spawn["allies"][0];
 
-	self braxi\_mod::spawnPlayer();
+	if ( self.pers["team"] != "spectator" ) self braxi\_mod::spawnPlayer();
+	else self braxi\_mod::spawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
 }
 
 playerDisconnect() {

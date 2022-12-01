@@ -1,8 +1,3 @@
-#define JUMPER 							"mp/jumperTable.csv"
-#define PRIMARY 						"mp/primaryTable.csv"
-#define SECONDARY 						"mp/secondaryTable.csv"
-#define GLOVE 							"mp/gloveTable.csv"
-
 #define CURRENT_LEVEL 					(stat(2350) + 1)
 #define CURRENT_LEVEL_MT 				tablelookup( "mp/rankIconTable.csv", 0, stat(252), stat(2326) + 1 )
 #define CURRENT_XP 						(tablelookup( "mp/rankTable.csv" , 0, stat(252), 7 ) - stat(2301))

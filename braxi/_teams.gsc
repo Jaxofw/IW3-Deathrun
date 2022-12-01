@@ -1,3 +1,5 @@
+#include braxi\_utility;
+
 init() {
 	setDvar( "g_TeamName_Allies", "^7Jumpers" );
 	setDvar( "g_TeamIcon_Allies", "killiconfalling" );
@@ -27,8 +29,7 @@ setHealth() {
 }
 
 setSpeed() {
-	speed = 1.0;
-	self setMoveSpeedScale( speed );
+	self setMoveSpeedScale( 1.0 );
 }
 
 setTeam( team ) {
@@ -40,4 +41,23 @@ setTeam( team ) {
 	self.pers["team"] = team;
 	self.team = team;
 	self.sessionteam = team;
+}
+
+setLoadout() {
+	model = self getTableStat( level.model_jumper, 979 );
+	if ( self.team == "axis" ) model = self getTableStat( level.weapon_primary, 980 );
+	gloves = self getTableStat( level.model_glove, 983 );
+	primary = self getTableStat( level.weapon_primary, 981 );
+	secondary = self getTableStat( level.weapon_secondary, 982 );
+
+	self setModel( model );
+	self setViewModel( gloves );
+
+	self giveWeapon( primary );
+	self giveWeapon( secondary );
+	self setSpawnWeapon( primary );
+	self giveMaxAmmo( primary );
+
+	self setHealth();
+	self setSpeed();
 }

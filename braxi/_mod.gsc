@@ -14,15 +14,16 @@ init() {
 	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 0;
 
 	buildJumperTable();
+	buildActivatorTable();
 	buildPrimaryTable();
 	buildSecondaryTable();
 	buildGloveTable();
 
-	thread braxi\_dvar::setupDvars();
+	braxi\_dvar::setupDvars();
 	thread braxi\_rank::init();
 	thread braxi\_menus::init();
 	braxi\_maps::init();
-	thread braxi\_teams::init();
+	braxi\_teams::init();
 	braxi\_mapvote::init();
 
 	setDvar( "g_speed", level.dvar["player_speed"] );
@@ -193,20 +194,13 @@ spawnPlayer( origin, angles ) {
 	self.psoffsettime = 0;
 	self.statusicon = "";
 
-	self setModel( "body_mp_sas_urban_sniper" );
-
 	if ( isDefined( origin ) && isDefined( angles ) ) self spawn( origin, angles );
 	else {
 		spawnPoint = level.spawn[self.pers["team"]][randomInt( level.spawn[self.pers["team"]].size )];
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
-	self giveWeapon( "beretta_mp" );
-	self setSpawnWeapon( "beretta_mp" );
-	self giveMaxAmmo( "beretta_mp" );
-
-	self thread braxi\_teams::setHealth();
-	self thread braxi\_teams::setSpeed();
+	if ( self.team != "spectator" ) self braxi\_teams::setLoadout();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );

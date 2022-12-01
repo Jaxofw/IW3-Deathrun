@@ -14,6 +14,7 @@ localize,secondary
 # String Tables
 stringtable,mp/gloveTable.csv
 stringtable,mp/jumperTable.csv
+stringtable,mp/activatorTable.csv
 stringtable,mp/primaryTable.csv
 stringtable,mp/secondaryTable.csv
 

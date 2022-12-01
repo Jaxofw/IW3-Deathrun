@@ -3,6 +3,7 @@ init() {
 	game["menu_customize"] = "customization";
 	game["menu_jumpers"] = "jumpers";
 	game["menu_jumpers2"] = "jumpers2";
+	game["menu_activators"] = "activators";
 	game["menu_primary"] = "primary";
 	game["menu_primary2"] = "primary2";
 	game["menu_primary3"] = "primary3";
@@ -16,6 +17,7 @@ init() {
 	preCacheMenu( game["menu_customize"] );
 	preCacheMenu( game["menu_jumpers"] );
 	preCacheMenu( game["menu_jumpers2"] );
+	preCacheMenu( game["menu_activators"] );
 	preCacheMenu( game["menu_primary"] );
 	preCacheMenu( game["menu_primary2"] );
 	preCacheMenu( game["menu_primary3"] );
@@ -72,25 +74,39 @@ onMenuResponse() {
 			}
 		} else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] ) {
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.jumperModels, id ) ) {
-				self setModel( level.jumperModels[id]["model"] );
+			if ( self braxi\_rank::isItemUnlocked( level.model_jumper, id ) ) {
+				self setStat( 979, id );
+				self setModel( level.model_jumper[id]["item"] );
+			}
+		} else if ( menu == game["menu_activators"] ) {
+			id = int( response ) - 1;
+			if ( self braxi\_rank::isItemUnlocked( level.model_activator, id ) ) {
+				self setStat( 980, id );
+				if ( self.team == "axis" ) self setModel( level.model_activator[id]["item"] );
 			}
 		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] || menu == game["menu_primary3"] ) {
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.primaryWeaps, id ) ) {
-				self giveWeapon( level.primaryWeaps[id]["item"] );
-				self switchToWeapon( level.primaryWeaps[id]["item"] );
+			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) ) {
+				self setStat( 981, id );
+				self takeAllWeapons();
+				self giveWeapon( level.weapon_primary[id]["item"] );
+				self giveWeapon( level.weapon_secondary[self getStat( 982 )]["item"] );
+				self switchToWeapon( level.weapon_primary[id]["item"] );
 			}
 		} else if ( menu == game["menu_secondary"] || menu == game["menu_secondary2"] ) {
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.secondaryWeaps, id ) ) {
-				self giveWeapon( level.secondaryWeaps[id]["item"] );
-				self switchToWeapon( level.secondaryWeaps[id]["item"] );
+			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) ) {
+				self setStat( 982, id );
+				self takeAllWeapons();
+				self giveWeapon( level.weapon_primary[self getStat( 981 )]["item"] );
+				self giveWeapon( level.weapon_secondary[id]["item"] );
+				self switchToWeapon( level.weapon_secondary[id]["item"] );
 			}
 		} else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] ) {
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.gloveModels, id ) ) {
-				self setViewModel( level.gloveModels[id]["model"] );
+			if ( self braxi\_rank::isItemUnlocked( level.model_glove, id ) ) {
+				self setStat( 983, id );
+				self setViewModel( level.model_glove[id]["item"] );
 			}
 		}
 	}

@@ -23,71 +23,75 @@ init_spawns() {
 }
 
 buildJumperTable() {
-	level.jumperModels = [];
-	level.numJumpers = 0;
-
+	level.model_jumper = [];
 	tableName = "mp/jumperTable.csv";
 
 	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.jumperModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
-		level.jumperModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
-		level.jumperModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		level.model_jumper[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.model_jumper[id]["item"] = tableLookup( tableName, 0, idx, 3 );
+		level.model_jumper[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		preCacheModel( level.model_jumper[id]["item"] );
+	}
+}
 
-		preCacheModel( level.jumperModels[id]["model"] );
-		level.numJumpers++;
+buildActivatorTable() {
+	level.activatorModels = [];
+	tableName = "mp/activatorTable.csv";
+
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+		id = int( tableLookup( tableName, 0, idx, 1 ) );
+		level.model_activator[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.model_activator[id]["item"] = tableLookup( tableName, 0, idx, 3 );
+		level.model_activator[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+
+		preCacheModel( level.model_activator[id]["item"] );
 	}
 }
 
 buildPrimaryTable() {
-	level.primaryWeaps = [];
-	level.numPrimaries = 0;
-
+	level.weapon_primary = [];
 	tableName = "mp/primaryTable.csv";
 
 	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.primaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
-		level.primaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
-		level.primaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-
-		preCacheItem( level.primaryWeaps[id]["item"] );
-		level.numPrimaries++;
+		level.weapon_primary[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.weapon_primary[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
+		level.weapon_primary[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		preCacheItem( level.weapon_primary[id]["item"] );
 	}
 }
 
 buildSecondaryTable() {
-	level.secondaryWeaps = [];
-	level.numSecondaries = 0;
-
+	level.weapon_secondary = [];
 	tableName = "mp/secondaryTable.csv";
 
 	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.secondaryWeaps[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
-		level.secondaryWeaps[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
-		level.secondaryWeaps[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-
-		preCacheItem( level.secondaryWeaps[id]["item"] );
-		level.numSecondaries++;
+		level.weapon_secondary[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.weapon_secondary[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
+		level.weapon_secondary[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		preCacheItem( level.weapon_secondary[id]["item"] );
 	}
 }
 
 buildGloveTable() {
-	level.gloveModels = [];
-	level.numGloves = 0;
-
+	level.model_glove = [];
 	tableName = "mp/gloveTable.csv";
 
 	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
-		level.gloveModels[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
-		level.gloveModels[id]["model"] = tableLookup( tableName, 0, idx, 3 );
-		level.gloveModels[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		level.model_glove[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.model_glove[id]["item"] = tableLookup( tableName, 0, idx, 3 );
+		level.model_glove[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 
-		preCacheModel( level.gloveModels[id]["model"] );
-		level.numGloves++;
+		preCacheModel( level.model_glove[id]["item"] );
 	}
+}
+
+getTableStat( table, stat, type ) {
+	return table[self getStat(stat)]["item"];
+	// level.weapon_primary[self getStat(981)]["item"];
 }
 
 getAllPlayers() {
