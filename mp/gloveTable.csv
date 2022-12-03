@@ -1,8 +1,8 @@
-1,0,1,viewmodel_hands_zombie,@GLOVE_ZOMBIE,
+1,0,1,viewhands_t4_zombie,@GLOVE_ZOMBIE,
 2,1,3,viewhands_t5_wounded,@GLOVE_WOUND
 3,2,5,viewhands_black_kit,@GLOVE_BKIT,
 4,3,7,viewmodel_base_viewhands,@GLOVE_BASE,
-5,4,10,viewhands_desert_opfor,@GLOVE_OPFOR,
+5,4,10,viewhands_h1_opfor,@GLOVE_OPFOR,
 6,5,13,viewhands_mw2_tf141,@GLOVE_141,
 7,6,15,viewhands_marine_sniper,@GLOVE_SNIPER,
 8,7,17,viewhands_mw2_militia,@GLOVE_MILITIA,
