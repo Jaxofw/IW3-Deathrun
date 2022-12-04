@@ -2,6 +2,13 @@
 #include "ui_mp/menustyle.inc"
 #include "ui/choices_setup_common.menu"
 #include "ui_mp/common/mapvote.inc"
+
+#define MAP_1		"mapvote_option_1"
+#define MAP_2		"mapvote_option_2"
+#define MAP_3		"mapvote_option_3"
+#define MAP_4		"mapvote_option_4"
+#define MAP_5		"mapvote_option_5"
+
 {
 	menuDef
 	{
@@ -13,17 +20,17 @@
 		
 		MAPVOTE_COUNTDOWN
 
-		MAPVOTE_BUTTON( 1, 0, 0, dvarstring( "mapvote_option_1" ), dvarstring( "mapvote_option_1_label" ) )
-		MAPVOTE_BUTTON( 2, 0, 115, dvarstring( "mapvote_option_2" ), dvarstring( "mapvote_option_2_label" ) )
-		MAPVOTE_BUTTON( 3, 0, 230, dvarstring( "mapvote_option_3" ), dvarstring( "mapvote_option_3_label" ) )
+		MAPVOTE_BUTTON( 1, 0, 0, dvarstring( MAP_1 ), dvarstring( MAP_1 + "_label" ) )
+		MAPVOTE_BUTTON( 2, 0, 115, dvarstring( MAP_2 ), dvarstring( MAP_2 + "_label" ) )
+		MAPVOTE_BUTTON( 3, 0, 230, dvarstring( MAP_3 ), dvarstring( MAP_3 + "_label" ) )
 
-		MAPVOTE_BUTTON( 4, MAPVOTE_SPACING, 0, dvarstring( "mapvote_option_4" ), dvarstring( "mapvote_option_4_label" ) )
-		MAPVOTE_BUTTON( 5, MAPVOTE_SPACING, 115, dvarstring( "mapvote_option_5" ), dvarstring( "mapvote_option_5_label" ) )
-		MAPVOTE_BUTTON( 6, MAPVOTE_SPACING, 230, dvarstring( "mapvote_option_6" ), dvarstring( "mapvote_option_6_label" ) )
+		MAPVOTE_BUTTON( 4, MAPVOTE_SPACING, 0, dvarstring( MAP_4 ), dvarstring( MAP_4 + "_label" ) )
+		MAPVOTE_BUTTON( 5, MAPVOTE_SPACING, 115, dvarstring( MAP_5 ), dvarstring( MAP_5 + "_label" ) )
+		MAPVOTE_BUTTON( 6, MAPVOTE_SPACING, 230, dvarstring( MAP_6 ), dvarstring( MAP_6 + "_label" ) )
 
-		MAPVOTE_BUTTON( 7, MAPVOTE_SPACING + MAPVOTE_SPACING, 0, dvarstring( "mapvote_option_7" ), dvarstring( "mapvote_option_7_label" ) )
-		MAPVOTE_BUTTON( 8, MAPVOTE_SPACING + MAPVOTE_SPACING, 115, dvarstring( "mapvote_option_8" ), dvarstring( "mapvote_option_8_label" ) )
-		MAPVOTE_BUTTON( 9, MAPVOTE_SPACING + MAPVOTE_SPACING, 230, dvarstring( "mapvote_option_9" ), dvarstring( "mapvote_option_9_label" ) )
+		MAPVOTE_BUTTON( 7, MAPVOTE_SPACING + MAPVOTE_SPACING, 0, dvarstring( MAP_7 ), dvarstring( MAP_7 + "_label" ) )
+		MAPVOTE_BUTTON( 8, MAPVOTE_SPACING + MAPVOTE_SPACING, 115, dvarstring( MAP_8 ), dvarstring( MAP_8 + "_label" ) )
+		MAPVOTE_BUTTON( 9, MAPVOTE_SPACING + MAPVOTE_SPACING, 230, dvarstring( MAP_9 ), dvarstring( MAP_9 + "_label" ) )
 		
 		MAPVOTE_RESTART
 	}

@@ -90,8 +90,7 @@ buildGloveTable() {
 }
 
 getTableStat( table, stat, type ) {
-	return table[self getStat(stat)]["item"];
-	// level.weapon_primary[self getStat(981)]["item"];
+	return table[self getStat( stat )]["item"];
 }
 
 getAllPlayers() {

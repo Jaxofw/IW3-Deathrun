@@ -47,9 +47,9 @@ init() {
 
 gameLogic() {
 	waittillframeend;
+	game["state"] = "waiting";
 
 	if ( !level.freerun ) {
-		game["state"] = "waiting";
 		waitForPlayers( 2 );
 		tpJumpersToSpawn();
 		startTimer();
@@ -57,8 +57,6 @@ gameLogic() {
 
 	level notify( "round_started", game["rounds_played"] );
 	game["state"] = "playing";
-
-	if ( !level.freerun ) pickRandomActivator();
 
 	level thread watchTimeLimit();
 
@@ -104,7 +102,6 @@ tpJumpersToSpawn() {
 		if ( players[i] isAlive() ) {
 			randomSpawn = level.spawn["allies"][randomInt( level.spawn["allies"].size )].origin;
 			players[i] setOrigin( randomSpawn );
-			players[i] linkTo( level.spawn_link );
 		}
 	}
 }
@@ -126,6 +123,8 @@ startTimer() {
 	level.matchStartTimer.foreground = false;
 	level.matchStartTimer.hideWhenInMenu = true;
 
+	level thread pickRandomActivator();
+
 	wait level.dvar["spawn_time"];
 
 	releaseJumpers();
@@ -144,7 +143,7 @@ pickRandomActivator() {
 	level.players = getAllPlayers();
 	level.activ = level.players[randomInt( level.players.size )];
 
-	if ( level.activ.pers["team"] != "allies" ) level thread pickRandomActivator();
+	if ( level.activ.pers["team"] != "allies" ) pickRandomActivator();
 
 	iPrintLnBold( "^7" + level.activ.name + " was chosen to ^5Activate!" );
 
@@ -200,6 +199,7 @@ spawnPlayer( origin, angles ) {
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
+	if ( game["state"] == "lobby" ) self linkTo( level.spawn_link );
 	if ( self.team != "spectator" ) self braxi\_teams::setLoadout();
 
 	self notify( "spawned_player" );
