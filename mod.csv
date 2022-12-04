@@ -171,10 +171,10 @@ xmodel,playermodel_kermit_the_frog
 xmodel,playerbody_t6_misty
 
 # Hands
-xmodel,viewmodel_hands_zombie
+xmodel,viewhands_t4_zombie
 xmodel,viewhands_t5_wounded
 xmodel,viewhands_black_kit
-xmodel,viewhands_desert_opfor
+xmodel,viewhands_h1_opfor
 xmodel,viewhands_mw2_tf141
 xmodel,viewhands_marine_sniper
 xmodel,viewhands_mw2_militia
@@ -192,6 +192,8 @@ xmodel,viewhands_moh_ranger
 xmodel,viewhands_t6_misty
 
 # WFiles
+weapon,mp/rpg_mp
+
 weapon,mp/deserteagle_mp
 weapon,mp/colt44_mp
 weapon,mp/t8_strife_mp
@@ -236,6 +238,9 @@ weapon,mp/ol_slaymore_mp
 weapon,mp/cs_karambit_mp
 
 # WModels
+xmodel,viewmodel_fortnite_rpg
+xmodel,worldmodel_fortnite_rpg
+
 xmodel,viewmodel_desert_eagle_tactical
 xmodel,weapon_desert_eagle_tactical
 
