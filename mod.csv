@@ -173,6 +173,7 @@ xmodel,playerbody_t6_misty
 
 # AModels
 xmodel,body_mp_usmc_cqb
+xmodel,playermodel_baa_joker
 
 # Hands
 xmodel,viewhands_t4_zombie
