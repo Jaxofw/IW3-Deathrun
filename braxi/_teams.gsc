@@ -45,7 +45,7 @@ setTeam( team ) {
 
 setLoadout() {
 	model = self getTableStat( level.model_jumper, 979 );
-	if ( self.team == "axis" ) model = self getTableStat( level.weapon_primary, 980 );
+	if ( self.team == "axis" ) model = self getTableStat( level.model_activator, 980 );
 	gloves = self getTableStat( level.model_glove, 983 );
 	primary = self getTableStat( level.weapon_primary, 981 );
 	secondary = self getTableStat( level.weapon_secondary, 982 );
