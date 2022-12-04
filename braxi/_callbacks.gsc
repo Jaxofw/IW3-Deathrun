@@ -39,6 +39,11 @@ playerConnect() {
 		self.deaths = self.pers["deaths"];
 	}
 
+	self setClientDvar( "bg_bobamplitudesprinting", 0 );
+	self setClientDvar( "bg_bobamplitudeducked", 0 );
+	self setClientDvar( "bg_bobamplitudeprone", 0 );
+	self setClientDvar( "bg_bobamplitudestanding", 0 );
+
 	if ( !isDefined( level.spawn["spectator"] ) ) level.spawn["spectator"] = level.spawn["allies"][0];
 
 	if ( self.pers["team"] != "spectator" ) self braxi\_mod::spawnPlayer();

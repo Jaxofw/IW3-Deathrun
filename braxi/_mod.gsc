@@ -30,10 +30,6 @@ init() {
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "player_sprintTime", 12.8 );
 	setDvar( "bullet_penetrationEnabled", 0 );
-	setDvar( "bg_bobamplitudesprinting", 0 );
-	setDvar( "bg_bobamplitudeducked", 0 );
-	setDvar( "bg_bobamplitudeprone", 0 );
-	setDvar( "bg_bobamplitudestanding", 0 );
 
 	if ( game["rounds_played"] == 0 ) {
 		if ( level.dvar["freerun"] ) level.freerun = true;
