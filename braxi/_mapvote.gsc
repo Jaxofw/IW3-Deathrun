@@ -1,6 +1,7 @@
 #include braxi\_utility;
 
-init() {
+init()
+{
     level.maps = [];
     level.mapsVotable = [];
     level.mapsInVote = 10;
@@ -82,18 +83,21 @@ init() {
     level.maps[level.maps.size] = "mp_dr_wtf";
 }
 
-mapVoteLogic() {
+mapVoteLogic()
+{
     for ( i = 0; i < level.mapsInVote; i++ )
         level getRandomMap();
 
     players = getAllPlayers();
-    for ( i = level.voteDuration - 1; i >= 0; i-- ) {
+    for ( i = level.voteDuration - 1; i >= 0; i-- )
+    {
         for ( j = 0; j < players.size; j++ )
             players[j] setClientDvar( "mapvote_duration", i + " Seconds" );
         wait 1;
     }
 
-    for ( i = 0; i < players.size; i++ ) {
+    for ( i = 0; i < players.size; i++ )
+    {
         players[i] closeMenu( game["menu_mapvote"] );
         players[i] closeInGameMenu( game["menu_mapvote"] );
     }
@@ -101,10 +105,12 @@ mapVoteLogic() {
     changeToWinningMap();
 }
 
-changeToWinningMap() {
+changeToWinningMap()
+{
     topVote = level.mapsVotable[randomInt( level.mapsVotable.size )];
 
-    for ( i = 1; i <= level.mapsVotable.size; i++ ) {
+    for ( i = 1; i <= level.mapsVotable.size; i++ )
+    {
         if ( level.mapsVotable[i]["votes"] > topVote["votes"] )
             topVote = level.mapsVotable[i];
     }
@@ -117,22 +123,27 @@ changeToWinningMap() {
     exitLevel( false );
 }
 
-playerLogic() {
+playerLogic()
+{
     self endon( "disconnect" );
     self openMenu( game["menu_mapvote"] );
 
     self.vote = 0;
 
-    for (;;) {
+    for ( ;;)
+    {
         self waittill( "menuresponse", menu, response );
 
-        if ( menu == game["menu_mapvote"] ) {
+        if ( menu == game["menu_mapvote"] )
+        {
             mapId = int( response );
 
-            if ( mapId != self.vote ) {
+            if ( mapId != self.vote )
+            {
                 players = getAllPlayers();
 
-                if ( self.vote != 0 ) {
+                if ( self.vote != 0 )
+                {
                     level.mapsVotable[self.vote]["votes"]--;
                     for ( i = 0; i < players.size; i++ )
                         players[i] setClientDvar( "mapvote_option_" + self.vote + "_votes", level.mapsVotable[self.vote]["votes"] );
@@ -147,18 +158,23 @@ playerLogic() {
     }
 }
 
-getRandomMap() {
+getRandomMap()
+{
     randomMap = level.maps[randomInt( level.maps.size )];
 
     // Prevent current map from being put into rotation
-    if ( randomMap == level.script ) {
+    if ( randomMap == level.script )
+    {
         getRandomMap();
         return;
     }
 
-    for ( i = 1; i <= level.mapsVotable.size; i++ ) {
-        if ( isDefined( level.mapsVotable[i]["name"] ) ) {
-            if ( randomMap == level.mapsVotable[i]["name"] ) {
+    for ( i = 1; i <= level.mapsVotable.size; i++ )
+    {
+        if ( isDefined( level.mapsVotable[i]["name"] ) )
+        {
+            if ( randomMap == level.mapsVotable[i]["name"] )
+            {
                 getRandomMap();
                 return;
             }
@@ -173,7 +189,8 @@ getRandomMap() {
     level.mapsVotable[i]["votes"] = 0;
 
     players = getAllPlayers();
-    for ( j = 0; j < players.size; j++ ) {
+    for ( j = 0; j < players.size; j++ )
+    {
         players[j] setClientDvar( "mapvote_option_" + i, randomMap );
         players[j] setClientDvar( "mapvote_option_" + i + "_label", formatMapName( level.mapsVotable[i]["name"] ) );
         players[j] setClientDvar( "mapvote_option_" + i + "_votes", level.mapsVotable[i]["votes"] );

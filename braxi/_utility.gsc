@@ -1,6 +1,7 @@
 #include maps\mp\gametypes\_hud_util;
 
-preCache() {
+preCache()
+{
 	preCacheShader( "white" );
 	preCacheShader( "hud_notify" );
 	preCacheShader( "hud_notify_footer" );
@@ -8,7 +9,8 @@ preCache() {
 	preCacheStatusIcon( "hud_status_dead" );
 }
 
-init_spawns() {
+init_spawns()
+{
 	level.spawn = [];
 	level.spawn["allies"] = getEntArray( "mp_jumper_spawn", "classname" );
 	level.spawn["axis"] = getEntArray( "mp_activator_spawn", "classname" );
@@ -22,11 +24,13 @@ init_spawns() {
 	for ( i = 0; i < level.spawn["axis"].size; i++ ) level.spawn["axis"][i] placeSpawnPoint();
 }
 
-buildJumperTable() {
+buildJumperTable()
+{
 	level.model_jumper = [];
 	tableName = "mp/jumperTable.csv";
 
-	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.model_jumper[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.model_jumper[id]["item"] = tableLookup( tableName, 0, idx, 3 );
@@ -35,25 +39,28 @@ buildJumperTable() {
 	}
 }
 
-buildActivatorTable() {
+buildActivatorTable()
+{
 	level.activatorModels = [];
 	tableName = "mp/activatorTable.csv";
 
-	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.model_activator[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.model_activator[id]["item"] = tableLookup( tableName, 0, idx, 3 );
 		level.model_activator[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-
 		preCacheModel( level.model_activator[id]["item"] );
 	}
 }
 
-buildPrimaryTable() {
+buildPrimaryTable()
+{
 	level.weapon_primary = [];
 	tableName = "mp/primaryTable.csv";
 
-	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.weapon_primary[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.weapon_primary[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
@@ -62,11 +69,13 @@ buildPrimaryTable() {
 	}
 }
 
-buildSecondaryTable() {
+buildSecondaryTable()
+{
 	level.weapon_secondary = [];
 	tableName = "mp/secondaryTable.csv";
 
-	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.weapon_secondary[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.weapon_secondary[id]["item"] = ( tableLookup( tableName, 0, idx, 3 ) + "_mp" );
@@ -75,34 +84,34 @@ buildSecondaryTable() {
 	}
 }
 
-buildGloveTable() {
+buildGloveTable()
+{
 	level.model_glove = [];
 	tableName = "mp/gloveTable.csv";
 
-	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ ) {
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.model_glove[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.model_glove[id]["item"] = tableLookup( tableName, 0, idx, 3 );
 		level.model_glove[id]["name"] = tableLookup( tableName, 0, idx, 4 );
-
 		preCacheModel( level.model_glove[id]["item"] );
 	}
 }
 
-getTableStat( table, stat, type ) {
-	return table[self getStat( stat )]["item"];
-}
-
-getAllPlayers() {
+getAllPlayers()
+{
 	return getEntArray( "player", "classname" );
 }
 
-isAlive() {
+isAlive()
+{
 	if ( self.sessionstate == "playing" ) return true;
 	return false;
 }
 
-waitForPlayers( required ) {
+waitForPlayers( required )
+{
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "TOP", 0, 10 );
 	level.matchStartText.sort = 1001;
@@ -110,20 +119,21 @@ waitForPlayers( required ) {
 	level.matchStartText.foreground = false;
 	level.matchStartText.hidewheninmenu = true;
 
-	while ( true ) {
+	while ( true )
+	{
 		players = getAllPlayers();
 		players_ready = 0;
 
-		for ( i = 0; i < players.size; i++ ) {
+		for ( i = 0; i < players.size; i++ )
 			if ( players[i] isAlive() && players[i].pers["team"] == "allies" ) players_ready++;
-		}
 
 		if ( players_ready >= required ) break;
-		wait 1;
+		wait 0.1;
 	}
 }
 
-initGame() {
+initGame()
+{
 	level.splitscreen = isSplitScreen();
 	level.xenon = false;
 	level.ps3 = false;
@@ -144,127 +154,166 @@ initGame() {
 	thread maps\mp\gametypes\_quickmessages::init();
 }
 
-spawnCollision( origin, height, width ) {
+spawnCollision( origin, height, width )
+{
 	level.colliders[level.colliders.size] = spawn( "trigger_radius", origin, 0, width, height );
 	level.colliders[level.colliders.size - 1] setContents( 1 );
 	level.colliders[level.colliders.size - 1].targetname = "script_collision";
 }
 
-notification( notification ) {
-	self endon( "disconnect" );
+notification( notification, entity )
+{
+	if ( isPlayer( entity ) ) self endon( "disconnect" );
 
-	if ( !self.notifying ) {
-		self thread showNotification( notification );
+	if ( !entity.notifying )
+	{
+		entity thread showNotification( notification, entity );
 		return;
 	}
 
-	self.notifications[self.notifications.size] = notification;
+	entity.notifications[entity.notifications.size] = notification;
 }
 
-showNotification( notification ) {
-	self endon( "disconnect" );
+showNotification( notification, entity )
+{
+	entity.notifying = true;
+	entity.notification = [];
 
-	self.notifying = true;
-	self.notification = [];
-	self.notification[0] = newClientHudElem( self );
-	self.notification[1] = newClientHudElem( self );
-	self.notification[2] = braxi\_mod::addTextHud( self, -300, 104, 1, "center", "middle", 1.4 );
-	self.notification[3] = braxi\_mod::addTextHud( self, -300, 122, 1, "center", "middle", 1.4 );
-	self playLocalSound( notification.sound );
-
-	if ( notification.levelUp ) {
-		self.notification[0].x = -300;
-		self.notification[0].y = 90;
-		self.notification[1].x = -300;
-		self.notification[1].y = 133;
-	} else {
-		self.notification[0].x = 270;
-		self.notification[0].y = 90;
-		self.notification[1].x = 271;
-		self.notification[1].y = 133;
-		self.notification[2].x = 320;
-		self.notification[3].x = 320;
+	if ( isPlayer( entity ) )
+	{
+		self endon( "disconnect" );
+		self.notification[0] = newClientHudElem( self );
+		self.notification[1] = newClientHudElem( self );
+	}
+	else
+	{
+		level.notification[0] = newHudElem();
+		level.notification[1] = newHudElem();
 	}
 
-	self.notification[0].alpha = .6;
-	self.notification[0].sort = 990;
-	self.notification[0].hideWhenInMenu = true;
-	self.notification[0].horzAlign = "fullscreen";
-	self.notification[0].vertAlign = "fullscreen";
-	self.notification[0] setShader( "hud_notify", 100, 45 );
+	entity.notification[2] = braxi\_mod::addTextHud( entity, -300, 104, 1, "center", "middle", 1.4 );
+	entity.notification[3] = braxi\_mod::addTextHud( entity, -300, 122, 1, "center", "middle", 1.4 );
 
-	self.notification[1].alpha = 1;
-	self.notification[1].sort = 993;
-	self.notification[1].hideWhenInMenu = true;
-	self.notification[1].horzAlign = "fullscreen";
-	self.notification[1].vertAlign = "fullscreen";
-	self.notification[1] setShader( "hud_notify_footer", 98, 2 );
+	if ( notification.levelUp )
+	{
+		entity.notification[0].x = -300;
+		entity.notification[0].y = 90;
+		entity.notification[1].x = -300;
+		entity.notification[1].y = 133;
+	}
+	else
+	{
+		entity.notification[0].x = 270;
+		entity.notification[0].y = 90;
+		entity.notification[1].x = 271;
+		entity.notification[1].y = 133;
+		entity.notification[2].x = 320;
+		entity.notification[3].x = 320;
+	}
 
-	self.notification[2].font = "default";
-	self.notification[2].sort = 993;
-	self.notification[2].hideWhenInMenu = true;
-	self.notification[2].horzAlign = "fullscreen";
-	self.notification[2].vertAlign = "fullscreen";
-	self.notification[2] setText( notification.title );
+	entity playSound( entity, notification.sound );
 
-	self.notification[3].font = "default";
-	self.notification[3].sort = 993;
-	self.notification[3].hideWhenInMenu = true;
-	self.notification[3].horzAlign = "fullscreen";
-	self.notification[3].vertAlign = "fullscreen";
-	self.notification[3] setText( notification.footer );
+	entity.notification[0].alpha = .6;
+	entity.notification[0].sort = 990;
+	entity.notification[0].hideWhenInMenu = true;
+	entity.notification[0].horzAlign = "fullscreen";
+	entity.notification[0].vertAlign = "fullscreen";
+	entity.notification[0] setShader( "hud_notify", 100, 45 );
 
-	if ( notification.levelUp ) {
-		moveNotifElements( 240, 241, 290, 290, 0.2 );
+	entity.notification[1].alpha = 1;
+	entity.notification[1].sort = 993;
+	entity.notification[1].hideWhenInMenu = true;
+	entity.notification[1].horzAlign = "fullscreen";
+	entity.notification[1].vertAlign = "fullscreen";
+	entity.notification[1] setShader( "hud_notify_footer", 98, 2 );
+
+	entity.notification[2].font = "default";
+	entity.notification[2].sort = 993;
+	entity.notification[2].hideWhenInMenu = true;
+	entity.notification[2].horzAlign = "fullscreen";
+	entity.notification[2].vertAlign = "fullscreen";
+	entity.notification[2] setText( notification.title );
+
+	entity.notification[3].font = "default";
+	entity.notification[3].sort = 993;
+	entity.notification[3].hideWhenInMenu = true;
+	entity.notification[3].horzAlign = "fullscreen";
+	entity.notification[3].vertAlign = "fullscreen";
+	entity.notification[3] setText( notification.footer );
+
+	if ( notification.levelUp )
+	{
+		moveNotifElements( entity, 240, 241, 290, 290, 0.2 );
 		wait .3;
-		moveNotifElements( 300, 301, 350, 350, 3.0 );
+		moveNotifElements( entity, 300, 301, 350, 350, 3.0 );
 		wait 2;
-		moveNotifElements( 670, 671, 720, 720, 0.2 );
-	} else {
-		for ( i = 0; i < self.notification.size; i++ ) {
-			self.notification[i].alpha = 0;
-			self.notification[i] fadeOverTime( 1 );
-			if ( i == 0 ) self.notification[i].alpha = 0.6;
-			else self.notification[i].alpha = 1;
+		moveNotifElements( entity, 670, 671, 720, 720, 0.2 );
+	}
+	else
+	{
+		for ( i = 0; i < entity.notification.size; i++ )
+		{
+			entity.notification[i].alpha = 0;
+			entity.notification[i] fadeOverTime( 1 );
+			if ( i == 0 ) entity.notification[i].alpha = 0.6;
+			else entity.notification[i].alpha = 1;
 		}
 
 		wait 4;
 
-		for ( i = 0; i < self.notification.size; i++ ) {
-			self.notification[i] fadeOverTime( 1 );
-			self.notification[i].alpha = 0;
+		for ( i = 0; i < entity.notification.size; i++ )
+		{
+			entity.notification[i] fadeOverTime( 1 );
+			entity.notification[i].alpha = 0;
 		}
 	}
 
 	wait .8;
 
-	for ( i = 0; i < self.notification.size; i++ ) self.notification[i] destroy();
-	self.notification = undefined;
-	self.notifying = false;
+	for ( i = 0; i < entity.notification.size; i++ ) entity.notification[i] destroy();
+	entity.notification = undefined;
+	entity.notifying = false;
 
-	if ( self.notifications.size > 0 ) {
-		nextNotification = self.notifications[0];
+	if ( entity.notifications.size > 0 )
+	{
+		nextNotification = entity.notifications[0];
 
-		for ( i = 1; i < self.notifications.size; i++ )
-			self.notifications[i - 1] = self.notifications[i];
-		self.notifications[i - 1] = undefined;
+		for ( i = 1; i < entity.notifications.size; i++ )
+			entity.notifications[i - 1] = entity.notifications[i];
+		entity.notifications[i - 1] = undefined;
 
-		self thread showNotification( nextNotification );
+		entity thread showNotification( nextNotification );
 	}
 }
 
-moveNotifElements( x1, x2, x3, x4, time ) {
-	for ( i = 0; i < self.notification.size; i++ ) {
-		self.notification[i] moveOverTime( time );
-		if ( i == 0 ) self.notification[i].x = x1;
-		if ( i == 1 ) self.notification[i].x = x2;
-		if ( i == 2 ) self.notification[i].x = x3;
-		if ( i == 3 ) self.notification[i].x = x4;
+moveNotifElements( entity, x1, x2, x3, x4, time )
+{
+	for ( i = 0; i < entity.notification.size; i++ )
+	{
+		entity.notification[i] moveOverTime( time );
+		if ( i == 0 ) entity.notification[i].x = x1;
+		if ( i == 1 ) entity.notification[i].x = x2;
+		if ( i == 2 ) entity.notification[i].x = x3;
+		if ( i == 3 ) entity.notification[i].x = x4;
 	}
 }
 
-toUpper( letter ) {
-	switch ( letter ) {
+playSound( entity, sound )
+{
+	if ( isPlayer( entity ) )
+		self playLocalSound( sound );
+	else
+	{
+		players = getAllPlayers();
+		for ( i = 0; i < players.size; i++ )
+			players[i] playLocalSound( sound );
+	}
+}
+
+toUpper( letter )
+{
+	switch ( letter )
+	{
 		case "a":
 			return "A";
 		case "b":
@@ -322,8 +371,10 @@ toUpper( letter ) {
 	}
 }
 
-foundUnderscore( letter ) {
-	switch ( letter ) {
+foundUnderscore( letter )
+{
+	switch ( letter )
+	{
 		case "_":
 			return true;
 		default:
@@ -331,18 +382,24 @@ foundUnderscore( letter ) {
 	}
 }
 
-formatMapName( map ) {
+formatMapName( map )
+{
 	formattedName = "";
 	index = 6;
 
 	if ( map[4] == "e" ) index = 12;
-	for ( j = index; j < map.size; j++ ) {
+
+	for ( j = index; j < map.size; j++ )
+	{
 		if ( j == index ) formattedName += toUpper( map[j] );
-		else {
-			if ( foundUnderscore( map[j] ) ) {
+		else
+		{
+			if ( foundUnderscore( map[j] ) )
+			{
 				formattedName += " " + toUpper( map[j + 1] );
 				j++;
-			} else formattedName += map[j];
+			}
+			else formattedName += map[j];
 		}
 	}
 

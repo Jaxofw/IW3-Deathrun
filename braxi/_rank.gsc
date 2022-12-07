@@ -2,7 +2,8 @@
 #include maps\mp\gametypes\_hud_util;
 #include braxi\_utility;
 
-init() {
+init()
+{
 	level.rankTable = [];
 	level.scoreInfo = [];
 
@@ -15,7 +16,8 @@ init() {
 	rankName = tableLookup( "mp/rankTable.csv", 0, rankId, 1 );
 	assert( isDefined( rankName ) && rankName != "" );
 
-	while ( isDefined( rankName ) && rankName != "" ) {
+	while ( isDefined( rankName ) && rankName != "" )
+	{
 		level.rankTable[rankId][1] = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
 		level.rankTable[rankId][2] = tableLookup( "mp/ranktable.csv", 0, rankId, 2 );
 		level.rankTable[rankId][3] = tableLookup( "mp/ranktable.csv", 0, rankId, 3 );
@@ -30,8 +32,10 @@ init() {
 	level thread onPlayerConnect();
 }
 
-onPlayerConnect() {
-	for (;;) {
+onPlayerConnect()
+{
+	for ( ;;)
+	{
 		level waittill( "connected", player );
 
 		player.pers["rankxp"] = player maps\mp\gametypes\_persistence::statGet( "rankxp" );
@@ -44,7 +48,8 @@ onPlayerConnect() {
 		player setRank( rankId, prestige );
 		player.pers["prestige"] = prestige;
 
-		if ( !isDefined( player.hud_rankscoreupdate ) ) {
+		if ( !isDefined( player.hud_rankscoreupdate ) )
+		{
 			player.hud_rankscoreupdate = newClientHudElem( player );
 			player.hud_rankscoreupdate.horzAlign = "center";
 			player.hud_rankscoreupdate.vertAlign = "middle";
@@ -62,21 +67,26 @@ onPlayerConnect() {
 	}
 }
 
-processXpReward( sMeansOfDeath, attacker, victim ) {
+processXpReward( sMeansOfDeath, attacker, victim )
+{
 	if ( attacker.pers["team"] == victim.pers["team"] ) return;
 
 	kills = attacker maps\mp\gametypes\_persistence::statGet( "kills" );
 	attacker maps\mp\gametypes\_persistence::statSet( "kills", kills + 1 );
 
-	if ( victim.pers["team"] == "allies" ) {
+	if ( victim.pers["team"] == "allies" )
+	{
 		kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_JUMPERS" );
 		attacker maps\mp\gametypes\_persistence::statSet( "KILLED_JUMPERS", kills + 1 );
-	} else {
+	}
+	else
+	{
 		kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_ACTIVATORS" );
 		attacker maps\mp\gametypes\_persistence::statSet( "KILLED_ACTIVATORS", kills + 1 );
 	}
 
-	switch ( sMeansOfDeath ) {
+	switch ( sMeansOfDeath )
+	{
 		case "MOD_HEAD_SHOT":
 			attacker.pers["headshots"]++;
 			attacker braxi\_rank::giveRankXp( "headshot" );
@@ -97,7 +107,8 @@ processXpReward( sMeansOfDeath, attacker, victim ) {
 	}
 }
 
-giveRankXp( type, value ) {
+giveRankXp( type, value )
+{
 	self endon( "disconnect" );
 
 	if ( !isDefined( value ) ) value = getScoreValue( type );
@@ -112,36 +123,37 @@ giveRankXp( type, value ) {
 	self updateRankScoreHUD( value );
 }
 
-increaseLevelXp( amount ) {
+increaseLevelXp( amount )
+{
 	self.pers["rankxp"] += amount;
 	self maps\mp\gametypes\_persistence::statSet( "rankxp", self.pers["rankxp"] );
 	rankId = self getRankForXp( self.pers["rankxp"] );
 	self updateRank( rankId );
 }
 
-updateRank( rankId ) {
-	if ( getRankMaxXp( self.pers["rank"] ) <= self.pers["rankxp"] && self.pers["rank"] < level.maxRank ) {
+updateRank( rankId )
+{
+	self endon( "disconnect" );
+
+	if ( getRankMaxXp( self.pers["rank"] ) <= self.pers["rankxp"] && self.pers["rank"] < level.maxRank )
+	{
 		self setRank( rankId, 0 );
 		self.pers["rank"] = rankId;
-		self displayRankUp();
+
+		rankUp = spawnStruct();
+		rankUp.title = "You Leveled Up!";
+		rankUp.footer = "Level " + ( self.pers["rank"] + 1 );
+		rankUp.sound = "mp_level_up";
+		rankUp.levelUp = true;
+
+		self thread braxi\_utility::notification( rankUp, self );
 	}
 
 	updateRankStats( self, rankId );
 }
 
-displayRankUp() {
-	self endon( "disconnect" );
-
-	rankUp = spawnStruct();
-	rankUp.title = "You Leveled Up!";
-	rankUp.footer = "Level " + ( self.pers["rank"] + 1 );
-	rankUp.sound = "mp_level_up";
-	rankUp.levelUp = true;
-
-	self thread braxi\_utility::notification( rankUp );
-}
-
-updateRankStats( player, rankId ) {
+updateRankStats( player, rankId )
+{
 	player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
 	player maps\mp\gametypes\_persistence::statSet( "minxp", getRankMinXp( rankId ) );
 	player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankMaxXp( rankId ) );
@@ -150,7 +162,8 @@ updateRankStats( player, rankId ) {
 	else player setStat( 252, rankId );
 }
 
-updateRankScoreHUD( amount ) {
+updateRankScoreHUD( amount )
+{
 	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
@@ -164,11 +177,15 @@ updateRankScoreHUD( amount ) {
 
 	wait .05;
 
-	if ( isDefined( self.hud_rankscoreupdate ) ) {
-		if ( self.rankUpdateTotal < 0 ) {
+	if ( isDefined( self.hud_rankscoreupdate ) )
+	{
+		if ( self.rankUpdateTotal < 0 )
+		{
 			self.hud_rankscoreupdate.label = &"";
 			self.hud_rankscoreupdate.color = ( 1, 0, 0 );
-		} else {
+		}
+		else
+		{
 			self.hud_rankscoreupdate.label = &"MP_PLUS";
 			self.hud_rankscoreupdate.color = ( 1, 1, 0.5 );
 		}
@@ -184,12 +201,14 @@ updateRankScoreHUD( amount ) {
 	}
 }
 
-getRankForXp( xpVal ) {
+getRankForXp( xpVal )
+{
 	rankId = 0;
 	rankName = level.rankTable[rankId][1];
 	assert( isDefined( rankName ) );
 
-	while ( isDefined( rankName ) && rankName != "" ) {
+	while ( isDefined( rankName ) && rankName != "" )
+	{
 		if ( xpVal < getRankMinXp( rankId ) + getRankXpAmount( rankId ) ) return rankId;
 		rankId++;
 		if ( isDefined( level.rankTable[rankId] ) ) rankName = level.rankTable[rankId][1];
@@ -200,35 +219,43 @@ getRankForXp( xpVal ) {
 	return rankId;
 }
 
-getRankXp() {
+getRankXp()
+{
 	return self.pers["rankxp"];
 }
 
-getRankMinXp( rank ) {
+getRankMinXp( rank )
+{
 	return int( level.rankTable[rank][2] );
 }
 
-getRankXpAmount( rank ) {
+getRankXpAmount( rank )
+{
 	return int( level.rankTable[rank][3] );
 }
 
-getRankMaxXp( rank ) {
+getRankMaxXp( rank )
+{
 	return int( level.rankTable[rank][7] );
 }
 
-getRankIcon( rank, prestige ) {
+getRankIcon( rank, prestige )
+{
 	return tableLookup( "mp/rankIconTable.csv", 0, rank, prestige + 1 );
 }
 
-setScoreValue( type, value ) {
+setScoreValue( type, value )
+{
 	level.scoreInfo[type]["value"] = value;
 }
 
-getScoreValue( type ) {
+getScoreValue( type )
+{
 	return ( level.scoreInfo[type]["value"] );
 }
 
-isItemUnlocked( table, id ) {
+isItemUnlocked( table, id )
+{
 	if ( id >= table.size || id <= -1 ) return false;
 	if ( self.pers["rank"] >= table[id]["rank"] ) return true;
 	return false;

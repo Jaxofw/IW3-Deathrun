@@ -1,4 +1,7 @@
-init() {
+#include braxi\_utility;
+
+init()
+{
 	game["menu_team"] = "team_marinesopfor";
 	game["menu_customize"] = "customization";
 	game["menu_jumpers"] = "jumpers";
@@ -30,8 +33,10 @@ init() {
 	level thread onPlayerConnect();
 }
 
-onPlayerConnect() {
-	for (;;) {
+onPlayerConnect()
+{
+	for ( ;;)
+	{
 		level waittill( "connecting", player );
 
 		player setClientDvar( "ui_3dwaypointtext", 1 );
@@ -46,65 +51,84 @@ onPlayerConnect() {
 	}
 }
 
-onMenuResponse() {
+onMenuResponse()
+{
 	self endon( "disconnect" );
 
-	for (;;) {
+	for ( ;;)
+	{
 		self waittill( "menuresponse", menu, response );
 
-		if ( menu == game["menu_team"] ) {
+		if ( menu == game["menu_team"] )
+		{
 			self closeMenu();
 			self closeInGameMenu();
 
-			switch ( response ) {
+			switch ( response )
+			{
 				case "autoassign":
 					if ( self.pers["team"] == "axis" || self.sessionstate == "playing" ) continue;
 					self braxi\_teams::setTeam( "allies" );
-					self braxi\_mod::spawnPlayer();
+					self braxi\_player::playerSpawn();
 					break;
 				case "spectate":
 					if ( self.pers["team"] == "axis" || self.sessionstate == "spectator" ) continue;
 					self braxi\_teams::setTeam( "spectator" );
-					self braxi\_mod::spawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
+					self braxi\_player::playerSpawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
 					break;
 				case "challenges":
 				case "leaderboard":
 					self iPrintLnBold( "Coming Soon..." );
 					break;
 			}
-		} else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] ) {
+		}
+		else if ( menu == game["menu_jumpers"] || menu == game["menu_jumpers2"] )
+		{
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.model_jumper, id ) ) {
+			if ( self braxi\_rank::isItemUnlocked( level.model_jumper, id ) )
+			{
 				self setStat( 979, id );
 				if ( self.team == "allies" ) self braxi\_teams::setPlayerModel();
 			}
-		} else if ( menu == game["menu_activators"] ) {
+		}
+		else if ( menu == game["menu_activators"] )
+		{
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.model_activator, id ) ) {
+			if ( self braxi\_rank::isItemUnlocked( level.model_activator, id ) )
+			{
 				self setStat( 980, id );
 				if ( self.team == "axis" ) self braxi\_teams::setPlayerModel();
 			}
-		} else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] || menu == game["menu_primary3"] ) {
+		}
+		else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] || menu == game["menu_primary3"] )
+		{
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) ) {
+			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) )
+			{
 				self setStat( 981, id );
 				self takeAllWeapons();
 				self giveWeapon( level.weapon_primary[id]["item"] );
 				self giveWeapon( level.weapon_secondary[self getStat( 982 )]["item"] );
 				self switchToWeapon( level.weapon_primary[id]["item"] );
 			}
-		} else if ( menu == game["menu_secondary"] || menu == game["menu_secondary2"] ) {
+		}
+		else if ( menu == game["menu_secondary"] || menu == game["menu_secondary2"] )
+		{
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) ) {
+			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) )
+			{
 				self setStat( 982, id );
 				self takeAllWeapons();
 				self giveWeapon( level.weapon_primary[self getStat( 981 )]["item"] );
 				self giveWeapon( level.weapon_secondary[id]["item"] );
 				self switchToWeapon( level.weapon_secondary[id]["item"] );
 			}
-		} else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] ) {
+		}
+		else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] )
+		{
 			id = int( response ) - 1;
-			if ( self braxi\_rank::isItemUnlocked( level.model_glove, id ) ) {
+			if ( self braxi\_rank::isItemUnlocked( level.model_glove, id ) )
+			{
 				self setStat( 983, id );
 				self setViewModel( level.model_glove[id]["item"] );
 			}

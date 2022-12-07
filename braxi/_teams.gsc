@@ -1,6 +1,7 @@
 #include braxi\_utility;
 
-init() {
+init()
+{
 	setDvar( "g_TeamName_Allies", "^7Jumpers" );
 	setDvar( "g_TeamIcon_Allies", "killiconfalling" );
 	setDvar( "g_TeamColor_Allies", "0.2 0.6 0.9" );
@@ -17,22 +18,26 @@ init() {
 	setDvar( "g_teamColor_EnemyTeam", "1 .45 .5" );
 }
 
-setSpectatePermissions() {
+setSpectatePermissions()
+{
 	self allowSpectateTeam( "allies", true );
 	self allowSpectateTeam( "axis", true );
 	self allowSpectateTeam( "none", false );
 }
 
-setHealth() {
+setHealth()
+{
 	self.maxhealth = 100;
 	self.health = self.maxhealth;
 }
 
-setSpeed() {
+setSpeed()
+{
 	self setMoveSpeedScale( 1.0 );
 }
 
-setTeam( team ) {
+setTeam( team )
+{
 	if ( self.pers["team"] == team ) return;
 
 	if ( isAlive( self ) ) self suicide();
@@ -43,10 +48,11 @@ setTeam( team ) {
 	self.sessionteam = team;
 }
 
-setLoadout() {
-	gloves = self getTableStat( level.model_glove, 983 );
-	primary = self getTableStat( level.weapon_primary, 981 );
-	secondary = self getTableStat( level.weapon_secondary, 982 );
+setLoadout()
+{
+	primary = level.weapon_primary[self getStat( 981 )]["item"];
+	secondary = level.weapon_secondary[self getStat( 982 )]["item"];
+	gloves = level.model_glove[self getStat( 983 )]["item"];
 
 	self setPlayerModel();
 	self setViewModel( gloves );
@@ -60,9 +66,9 @@ setLoadout() {
 	self setSpeed();
 }
 
-setPlayerModel() {
+setPlayerModel()
+{
 	self detachAll();
-	model = self getTableStat( level.model_jumper, 979 );
-	if ( self.team == "axis" ) model = self getTableStat( level.model_activator, 980 );
-	self setModel( model );
+	if ( self.team == "allies" ) self setModel( level.model_jumper[self getStat( 979 )]["item"] );
+	if ( self.team == "axis" ) self setModel( level.model_activator[self getStat( 980 )]["item"] );
 }

@@ -1,4 +1,5 @@
-setupDvars() {
+setupDvars()
+{
 	level.dvar = [];
 
 	addDvar( "motd", "string", "Visit discord.gg/ArcaneNW" );
@@ -18,19 +19,26 @@ setupDvars() {
 }
 
 // Originally from Bell's AWE mod for CoD 1
-addDvar( varname, type, vardefault, min, max ) {
-	if ( type == "int" ) {
+addDvar( varname, type, vardefault, min, max )
+{
+	if ( type == "int" )
+	{
 		if ( getdvar( varname ) == "" ) definition = vardefault;
 		else definition = getdvarint( varname );
-	} else if ( type == "float" ) {
+	}
+	else if ( type == "float" )
+	{
 		if ( getdvar( varname ) == "" ) definition = vardefault;
 		else definition = getdvarfloat( varname );
-	} else {
+	}
+	else
+	{
 		if ( getdvar( varname ) == "" ) definition = vardefault;
 		else definition = getdvar( varname );
 	}
 
-	if ( type != "string" ) {
+	if ( type != "string" )
+	{
 		if ( ( type == "int" || type == "float" ) && min != 0 && definition < min ) definition = min;
 		makeDvarServerInfo( "netaddr", getDvar( "net_ip" ) );
 		if ( ( type == "int" || type == "float" ) && max != 0 && definition > max ) definition = max;

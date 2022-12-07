@@ -1,12 +1,15 @@
 #include braxi\_utility;
 
-init() {
+init()
+{
     handleEndTriggers();
     handleTrapTriggers();
 }
 
-handleEndTriggers() {
-    switch ( level.script ) {
+handleEndTriggers()
+{
+    switch ( level.script )
+    {
         case "mp_dr_apocalypse_v2":
             trigger = spawn( "trigger_radius", ( -7.09212, 3671.36, 976.125 ), 0, 96, 48 );
             trigger.targetname = "endmap_trig";
@@ -250,11 +253,14 @@ handleEndTriggers() {
     }
 }
 
-handleTrapTriggers() {
-    if ( !isDefined( level.trapTriggers ) ) {
+handleTrapTriggers()
+{
+    if ( !isDefined( level.trapTriggers ) )
+    {
         level.trapTriggers = [];
 
-        switch ( level.script ) {
+        switch ( level.script )
+        {
             case "mp_deathrun_darkness":
                 level.trapTriggers[level.trapTriggers.size] = getEnt( "t1", "targetname" );
                 level.trapTriggers[level.trapTriggers.size] = getEnt( "t2", "targetname" );
@@ -426,22 +432,23 @@ handleTrapTriggers() {
         }
     }
 
-    if ( isDefined( level.trapTriggers ) ) {
-        for ( i = 0; i < level.trapTriggers.size; i++ ) {
+    if ( isDefined( level.trapTriggers ) )
+        for ( i = 0; i < level.trapTriggers.size; i++ )
             level.trapTriggers[i] thread giveTrapXp();
-        }
-    }
 }
 
-giveTrapXp() {
+giveTrapXp()
+{
     level endon( "death" );
     level endon( "delete" );
     level endon( "deleted" );
 
-    while ( isDefined( self ) ) {
+    while ( isDefined( self ) )
+    {
         self waittill( "trigger", who );
 
-        if ( who.pers["team"] == "axis" ) {
+        if ( who.pers["team"] == "axis" )
+        {
             if ( game["state"] != "playing" ) return;
             who braxi\_rank::giveRankXP( "trap" );
             break;
