@@ -226,7 +226,7 @@ weapon,mp/t7_wavegun_mp
 weapon,mp/hands_mp
 weapon,mp/knife_mp
 weapon,mp/t5_ballistic_knife_mp
-weapon,mp/h1_sickle_mp
+weapon,mp/t7_butterfly_knife_mp
 weapon,mp/s2_shovel_mp
 weapon,mp/tomahawk_mp
 weapon,mp/t8_coinbag_mp
@@ -320,8 +320,8 @@ xmodel,melee_t5_b_knife_npc
 xmodel,melee_t5_b_knife_blade
 xmodel,melee_t5_b_knife_projectile
 
-xmodel,melee_h1_sickle_vm
-xmodel,melee_h1_sickle_npc
+xmodel,melee_t7_butterfly_vm
+xmodel,melee_t7_butterfly_npc
 
 xmodel,viewmodel_fox_ww2_shovel
 xmodel,worldmodel_fox_ww2_shovel
@@ -698,17 +698,15 @@ xanim,vm_t5_b_knife_sprint_out
 xanim,vm_t5_b_knife_stab
 xanim,vm_t5_b_knife_swipe
 
-xanim,vm_h1_sickle_drop
-xanim,vm_h1_sickle_drop_quick
-xanim,vm_h1_sickle_idle
-xanim,vm_h1_sickle_raise
-xanim,vm_h1_sickle_raise_first
-xanim,vm_h1_sickle_raise_quick
-xanim,vm_h1_sickle_sprint_in
-xanim,vm_h1_sickle_sprint_loop
-xanim,vm_h1_sickle_sprint_out
-xanim,vm_h1_sickle_stab
-xanim,vm_h1_sickle_swipe
+xanim,vm_t7_butterfly_ads_down
+xanim,vm_t7_butterfly_drop
+xanim,vm_t7_butterfly_idle
+xanim,vm_t7_butterfly_raise
+xanim,vm_t7_butterfly_sprint_in
+xanim,vm_t7_butterfly_sprint_loop
+xanim,vm_t7_butterfly_sprint_out
+xanim,vm_t7_butterfly_stab
+xanim,vm_t7_butterfly_swipe
 
 xanim,viewmodel_ww2_shovel_sprint_loop
 xanim,viewmodel_ww2_shovel_swipe
@@ -758,6 +756,7 @@ xanim,vm_t7_sword_raise
 xanim,vm_t7_sword_sprint_in
 xanim,vm_t7_sword_sprint_loop
 xanim,vm_t7_sword_sprint_out
+xanim,vm_t7_sword_stab
 xanim,vm_t7_sword_swipe
 
 xanim,vm_t8_toy_ads_down
@@ -963,3 +962,15 @@ xanim,pt_melee_prone_grenade_throw
 xanim,pt_melee_prone_grenade_throw_throwback
 xanim,pt_melee_prone_melee_a
 xanim,pt_melee_prone_melee_b
+
+weapon,mp/ol_fists_mp
+xanim,vm_ol_fists_drop
+xanim,vm_ol_fists_drop_quick
+xanim,vm_ol_fists_idle
+xanim,vm_ol_fists_raise
+xanim,vm_ol_fists_raise_quick
+xanim,vm_ol_fists_sprint_in
+xanim,vm_ol_fists_sprint_loop
+xanim,vm_ol_fists_sprint_out
+xanim,vm_ol_fists_stab
+xanim,vm_ol_fists_swipe

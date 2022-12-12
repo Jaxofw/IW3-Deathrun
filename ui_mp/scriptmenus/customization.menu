@@ -153,7 +153,7 @@
 
 		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
 		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary3, 1 )
+		//PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary3, 1 )
 	}
 
 	menuDef
