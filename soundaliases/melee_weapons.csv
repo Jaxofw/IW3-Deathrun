@@ -36,14 +36,17 @@
 name,sequence,file,vol_min,vol_max,vol_mod,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage
 
 # Ballistic Knife
-wpn_b_knife_fire_plr,,weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_b_knife_fire_plr,,melee_weapons/t5/ballistic_knife/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
 
-b_knife_pin,,weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_bal_knife_load,,weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+b_knife_pin,,melee_weapons/t5/ballistic_knife/pin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_bal_knife_load,,melee_weapons/t5/ballistic_knife/reload.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# Sickle
-h1_sickle_raise_first1,,weapons/h1/sickle/h1_sickle_raise_first1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-h1_sickle_raise_first2,,weapons/h1/sickle/h1_sickle_raise_first2.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+# Butterfly Knife
+wpn_melee_butterfly_firstraise_plr,,melee_weapons/t7/butterfly_knife/raise_first.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+
+# Monkey Staff
+weap_mkingstaff_firstlift_plr,,melee_weapons/ol/bostaff/raise_first.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_mkingstaff_putaway_plr,,melee_weapons/ol/bostaff/drop.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 
