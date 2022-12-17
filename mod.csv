@@ -243,8 +243,9 @@ weapon,mp/ol_slaymore_mp
 weapon,mp/cs_karambit_mp
 
 # WModels
-xmodel,viewmodel_fortnite_rpg
-xmodel,worldmodel_fortnite_rpg
+xmodel,wpn_ol_rpg_vm
+xmodel,wpn_ol_rpg_vm_mag
+xmodel,wpn_ol_rpg_npc
 
 xmodel,viewmodel_desert_eagle_tactical
 xmodel,weapon_desert_eagle_tactical
@@ -361,6 +362,17 @@ xmodel,melee_cs_karambit_vm
 xmodel,melee_cs_karambit_npc
 
 # WAnims
+xanim,vm_ol_rpg_ads_down
+xanim,vm_ol_rpg_ads_up
+xanim,vm_ol_rpg_drop
+xanim,vm_ol_rpg_fire
+xanim,vm_ol_rpg_idle
+xanim,vm_ol_rpg_raise
+xanim,vm_ol_rpg_reload
+xanim,vm_ol_rpg_sprint_in
+xanim,vm_ol_rpg_sprint_loop
+xanim,vm_ol_rpg_sprint_out
+
 xanim,viewmodel_tomahawk_attack
 xanim,viewmodel_tomahawk_attack2
 xanim,viewmodel_tomahawk_idle
