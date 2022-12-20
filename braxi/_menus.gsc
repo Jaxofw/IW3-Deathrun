@@ -35,7 +35,7 @@ init()
 
 onPlayerConnect()
 {
-	for ( ;;)
+	for (;;)
 	{
 		level waittill( "connecting", player );
 
@@ -55,7 +55,7 @@ onMenuResponse()
 {
 	self endon( "disconnect" );
 
-	for ( ;;)
+	for (;;)
 	{
 		self waittill( "menuresponse", menu, response );
 
@@ -67,14 +67,23 @@ onMenuResponse()
 			switch ( response )
 			{
 				case "autoassign":
-					if ( self.pers["team"] == "axis" || self.sessionstate == "playing" ) continue;
+					if ( self.pers["team"] == "axis" )
+						continue;
+
 					self braxi\_teams::setTeam( "allies" );
-					self braxi\_player::playerSpawn();
+
+					if ( self.sessionstate == "playing" || game["state"] == "endround" )
+						continue;
+
+					if ( self canSpawn() )
+						self braxi\_player::playerSpawn();
 					break;
 				case "spectate":
-					if ( self.pers["team"] == "axis" || self.sessionstate == "spectator" ) continue;
+					if ( self.pers["team"] != "allies" )
+						continue;
+
 					self braxi\_teams::setTeam( "spectator" );
-					self braxi\_player::playerSpawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
+					self braxi\_player::playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
 					break;
 				case "challenges":
 				case "leaderboard":
@@ -88,7 +97,7 @@ onMenuResponse()
 			if ( self braxi\_rank::isItemUnlocked( level.model_jumper, id ) )
 			{
 				self setStat( 979, id );
-				if ( self.team == "allies" ) self braxi\_teams::setPlayerModel();
+				if ( self.pers["team"] == "allies" ) self braxi\_teams::setPlayerModel();
 			}
 		}
 		else if ( menu == game["menu_activators"] )
@@ -97,7 +106,7 @@ onMenuResponse()
 			if ( self braxi\_rank::isItemUnlocked( level.model_activator, id ) )
 			{
 				self setStat( 980, id );
-				if ( self.team == "axis" ) self braxi\_teams::setPlayerModel();
+				if ( self.pers["team"] == "axis" ) self braxi\_teams::setPlayerModel();
 			}
 		}
 		else if ( menu == game["menu_primary"] || menu == game["menu_primary2"] || menu == game["menu_primary3"] )
@@ -106,10 +115,16 @@ onMenuResponse()
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) )
 			{
 				self setStat( 981, id );
-				self takeAllWeapons();
-				self giveWeapon( level.weapon_primary[id]["item"] );
-				self giveWeapon( level.weapon_secondary[self getStat( 982 )]["item"] );
-				self switchToWeapon( level.weapon_primary[id]["item"] );
+				self.pers["primary"] = level.weapon_primary[id]["item"];
+
+				if ( self.pers["team"] == "allies" )
+				{
+					self takeAllWeapons();
+					self giveWeapon( self.pers["primary"] );
+					self giveMaxAmmo( self.pers["primary"] );
+					self giveWeapon( self.pers["secondary"] );
+					self switchToWeapon( self.pers["primary"] );
+				}
 			}
 		}
 		else if ( menu == game["menu_secondary"] || menu == game["menu_secondary2"] )
@@ -118,10 +133,13 @@ onMenuResponse()
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) )
 			{
 				self setStat( 982, id );
+				self.pers["secondary"] = level.weapon_secondary[id]["item"];
+
 				self takeAllWeapons();
-				self giveWeapon( level.weapon_primary[self getStat( 981 )]["item"] );
-				self giveWeapon( level.weapon_secondary[id]["item"] );
-				self switchToWeapon( level.weapon_secondary[id]["item"] );
+				if ( self.pers["team"] == "allies" ) self giveWeapon( self.pers["primary"] );
+				self giveMaxAmmo( self.pers["secondary"] );
+				self giveWeapon( self.pers["secondary"] );
+				self switchToWeapon( self.pers["secondary"] );
 			}
 		}
 		else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] )

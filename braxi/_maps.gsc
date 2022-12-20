@@ -450,7 +450,7 @@ giveTrapXp()
         if ( who.pers["team"] == "axis" )
         {
             if ( game["state"] != "playing" ) return;
-            who braxi\_rank::giveRankXP( "trap" );
+            who braxi\_rank::giveRankXP( "trap_activation" );
             break;
         }
     }

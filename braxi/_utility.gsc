@@ -14,7 +14,7 @@ init_spawns()
 	level.spawn = [];
 	level.spawn["allies"] = getEntArray( "mp_jumper_spawn", "classname" );
 	level.spawn["axis"] = getEntArray( "mp_activator_spawn", "classname" );
-	level.spawn["spectator"] = getEntArray( "mp_global_intermission", "classname" )[0];
+	level.spawn["spectator"] = getEntArray( "mp_global_intermission", "classname" );
 	level.spawn_link = spawn( "script_model", ( 0, 0, 0 ) );
 
 	if ( !level.spawn["allies"].size ) level.spawn["allies"] = getEntArray( "mp_dm_spawn", "classname" );
@@ -112,24 +112,33 @@ isAlive()
 
 waitForPlayers( required )
 {
-	level.matchStartText = createServerFontString( "objective", 1.5 );
-	level.matchStartText setPoint( "CENTER", "TOP", 0, 10 );
-	level.matchStartText.sort = 1001;
-	level.matchStartText setText( "Waiting for players..." );
-	level.matchStartText.foreground = false;
-	level.matchStartText.hidewheninmenu = true;
+	players = getAllPlayers();
+	playersAlive = 0;
 
-	while ( true )
+	for ( i = 0; i < players.size; i++ )
+		if ( players[i] isAlive() && players[i].pers["team"] == "allies" )
+			playersAlive++;
+
+	if ( playersAlive < required )
 	{
-		players = getAllPlayers();
-		players_ready = 0;
+		while ( true )
+		{
+			players = getAllPlayers();
+			players_ready = 0;
 
-		for ( i = 0; i < players.size; i++ )
-			if ( players[i] isAlive() && players[i].pers["team"] == "allies" ) players_ready++;
+			for ( i = 0; i < players.size; i++ )
+				if ( players[i] isAlive() && players[i].pers["team"] == "allies" )
+					players_ready++;
 
-		if ( players_ready >= required ) break;
-		wait 0.1;
-	}
+			if ( players_ready >= required )
+				break;
+
+			wait .05;
+		}
+
+		map_restart( true );
+		return;
+	}	
 }
 
 initGame()
@@ -296,6 +305,20 @@ moveNotifElements( entity, x1, x2, x3, x4, time )
 		if ( i == 2 ) entity.notification[i].x = x3;
 		if ( i == 3 ) entity.notification[i].x = x4;
 	}
+}
+
+canSpawn()
+{
+	if ( level.practice || game["state"] != "playing" )
+		return true;
+
+	if ( game["state"] == "playing" )
+		return false;
+
+	if ( self.died )
+		return false;
+
+	return true;
 }
 
 playSound( entity, sound )

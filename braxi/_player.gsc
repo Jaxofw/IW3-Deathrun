@@ -1,3 +1,5 @@
+#include braxi\_utility;
+
 playerConnect()
 {
 	level notify( "connected", self );
@@ -9,31 +11,20 @@ playerConnect()
 	self.notifying = false;
 	self.notifications = [];
 
-	self setClientDvars(
-		"bg_bobamplitudesprinting", 0,
-		"bg_bobamplitudeducked", 0,
-		"bg_bobamplitudeprone", 0,
-		"bg_bobamplitudestanding", 0,
-		"cg_drawSpectatorMessages", 1,
-		"ip", getDvar( "net_ip" ),
-		"port", getDvar( "net_port" ),
-		"show_hud", true,
-		"ui_menu_playername", self.name,
-		"ui_uav_client", 0 );
-
-	if ( self.name.size > 8 ) self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );
-
 	if ( !isDefined( self.pers["team"] ) )
 	{
-		iPrintLn( self.name + " ^7connected" );
+		iPrintln( self.name + " ^7entered the game" );
 
-		self.sessionstate = "playing";
-		self.team = "allies";
-		self.pers["team"] = "allies";
+		self.sessionstate = "spectator";
+		self.team = "spectator";
+		self.pers["team"] = "spectator";
+
 		self.pers["score"] = 0;
 		self.pers["kills"] = 0;
 		self.pers["deaths"] = 0;
 		self.pers["assists"] = 0;
+		self.pers["headshots"] = 0;
+		self.pers["knifes"] = 0;
 	}
 	else
 	{
@@ -43,19 +34,53 @@ playerConnect()
 		self.deaths = self.pers["deaths"];
 	}
 
-	if ( !isDefined( level.spawn["spectator"] ) )
-		level.spawn["spectator"] = level.spawn["allies"][0];
+	if ( !isDefined( level.spawn["spectator"][0] ) )
+		level.spawn["spectator"][0] = level.spawn["allies"][0];
 
-	if ( self.pers["team"] != "spectator" )
-		self playerSpawn();
+	self setClientDvars(
+		"bg_bobamplitudesprinting", 0,
+		"bg_bobamplitudeducked", 0,
+		"bg_bobamplitudeprone", 0,
+		"bg_bobamplitudestanding", 0,
+		"cg_drawSpectatorMessages", 1,
+		"g_scriptMainMenu", game["menu_team"],
+		"ip", getDvar( "net_ip" ),
+		"player_sprintTime", 12.8,
+		"port", getDvar( "net_port" ),
+		"show_hud", true,
+		"ui_menu_playername", self.name,
+		"ui_uav_client", 0
+	);
+
+	self setClientDvar( "cg_fovscale", 1.15 );
+
+	if ( self.name.size > 8 )
+		self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );
+
+	if ( game["state"] == "endmap" )
+	{
+		self playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
+		return;
+	}
+
+	if ( isDefined( self.pers["weapon"] ) && self.pers["team"] != "spectator" )
+	{
+		self thread braxi\_teams::setTeam( "allies" );
+		playerSpawn();
+	}
 	else
-		self playerSpawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
+	{
+		self playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
+		wait .05;
+		self openMenu( game["menu_team"] );
+		logPrint( "J;" + self.guid + ";" + self.number + ";" + self.name + "\n" );
+	}
 }
 
 playerSpawn( origin, angles )
 {
-	self endon( "spawned_player" );
-	self endon( "joined_spectators" );
+	if ( game["state"] == "endmap" )
+		return;
 
 	level notify( "jumper", self );
 	resettimeout();
@@ -69,6 +94,8 @@ playerSpawn( origin, angles )
 	self.psoffsettime = 0;
 	self.statusicon = "";
 
+	self braxi\_teams::setPlayerModel();
+
 	if ( isDefined( origin ) && isDefined( angles ) )
 		self spawn( origin, angles );
 	else
@@ -77,9 +104,7 @@ playerSpawn( origin, angles )
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
-	if ( game["state"] == "lobby" ) self linkTo( level.spawn_link );
-
-	if ( self.team != "spectator" ) self braxi\_teams::setLoadout();
+	self braxi\_teams::setLoadout();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -87,8 +112,11 @@ playerSpawn( origin, angles )
 
 playerSpawnSpectator( origin, angles )
 {
-	if ( !isDefined( origin ) ) origin = ( 0, 0, 0 );
-	if ( !isDefined( angles ) ) angles = ( 0, 0, 0 );
+	if ( !isDefined( origin ) )
+		origin = ( 0, 0, 0 );
+
+	if ( !isDefined( angles ) )
+		angles = ( 0, 0, 0 );
 
 	self notify( "joined_spectators" );
 
@@ -97,7 +125,7 @@ playerSpawnSpectator( origin, angles )
 	self.spectatorclient = -1;
 	self.statusicon = "";
 	self spawn( origin, angles );
-	self braxi\_teams::setSpectatePermissions();
+	self braxi\_teams::setSpectatePermissions( true, true, true, true );
 
 	level notify( "player_spectator", self );
 }
@@ -110,7 +138,8 @@ PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, v
 
 	if ( isPlayer( eAttacker ) && eAttacker.pers["team"] == self.pers["team"] ) return;
 
-	if ( !isDefined( vDir ) ) iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
+	if ( !isDefined( vDir ) )
+		iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
 
 	if ( !( iDFlags & level.iDFLAGS_NO_PROTECTION ) )
 	{
@@ -137,7 +166,17 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self.sessionstate = "spectator";
 	self.died = true;
 
-	if ( !level.freerun )
+	if ( isPlayer( attacker ) )
+	{
+		if ( attacker != self )
+		{
+			braxi\_rank::processXpReward( sMeansOfDeath, attacker, self );
+			attacker.kills++;
+			attacker.pers["kills"]++;
+		}
+	}
+
+	if ( !level.practice && game["state"] == "playing" )
 	{
 		self.deaths++;
 		self.pers["deaths"]++;
@@ -146,7 +185,8 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		obituary( self, attacker, sWeapon, sMeansOfDeath );
 	}
 
-	if ( level.freerun || game["state"] != "playing" ) {
+	if ( game["state"] != "playing" )
+	{
 		wait .05; // No die handler fix
 		self playerSpawn();
 	}
@@ -155,9 +195,6 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 playerDisconnect()
 {
 	level notify( "disconnected", self );
-
-	if ( !isDefined( self.name ) )
-		iPrintLn( self.name + " ^7disconnected" );
 
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
 }

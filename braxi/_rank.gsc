@@ -9,8 +9,12 @@ init()
 
 	level.maxRank = int( tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 ) );
 
-	setScoreValue( "activator", 200 );
-	setScoreValue( "trap", 200 );
+	setScoreValue( "kill", 200 );
+	setScoreValue( "headshot", 250 );
+	setScoreValue( "melee", 300 );
+	setScoreValue( "trap_activation", 100 );
+	setScoreValue( "activator", 50 );
+	setScoreValue( "win", 100 );
 
 	rankId = 0;
 	rankName = tableLookup( "mp/rankTable.csv", 0, rankId, 1 );
@@ -34,7 +38,7 @@ init()
 
 onPlayerConnect()
 {
-	for ( ;;)
+	for (;;)
 	{
 		level waittill( "connected", player );
 
@@ -90,8 +94,8 @@ processXpReward( sMeansOfDeath, attacker, victim )
 		case "MOD_HEAD_SHOT":
 			attacker.pers["headshots"]++;
 			attacker braxi\_rank::giveRankXp( "headshot" );
-			hs = attacker maps\mp\gametypes\_persistence::statGet( "headshots" );
-			attacker maps\mp\gametypes\_persistence::statSet( "headshots", hs + 1 );
+			headshot = attacker maps\mp\gametypes\_persistence::statGet( "headshots" );
+			attacker maps\mp\gametypes\_persistence::statSet( "headshots", headshot + 1 );
 			break;
 		case "MOD_MELEE":
 			attacker.pers["knifes"]++;

@@ -1,5 +1,6 @@
-set launchMap="mp_dr_anotherworld"
-set launchOptions="+set fs_game "mods\arcane_deathrun_dev" +g_gametype deathrun" +exec server.cfg
+set COMPILEDIR=%CD%
+set map="mp_dr_anotherworld"
+set options="+set fs_game "mods/arcane_deathrun_dev" +g_gametype deathrun" +exec server.cfg
 @ECHO OFF
 
 :MainMenu
@@ -23,6 +24,7 @@ pause
 
 :BuildIwd
 del arcane.iwd
+
 7za a -r -tzip arcane.iwd images/
 7za a -r -tzip arcane.iwd weapons/
 7za a -r -tzip arcane.iwd sound/
@@ -30,6 +32,7 @@ goto MainMenu
 
 :BuildMod
 del mod.ff
+
 xcopy animtrees ..\..\raw\animtrees /SY
 xcopy braxi ..\..\raw\braxi /SY
 xcopy english ..\..\raw\english /SY
@@ -52,18 +55,18 @@ copy /Y mod.csv ..\..\zone_source
 
 cd ..\..\bin
 linker_pc.exe -language english -compress -cleanup mod
-cd ..\mods\arcane_deathrun_dev
+cd %COMPILEDIR%
 copy ..\..\zone\english\mod.ff
 goto MainMenu
 
 :RunMod
 pushd ..\..\
-iw3mp.exe %launchOptions% +set developer 1 +set developer_script 0 +devmap %launchMap%
+iw3mp.exe %options% +set developer 2 +set developer_script 1 +devmap %map%
 exit
 
 :RunServer
 pushd ..\..\
-cod4x18_dedrun.exe %launchOptions% +set dedicated 1 +set net_port 28961 +map %launchMap%
+cod4x18_dedrun.exe %options% +set dedicated 2 +set net_port 28961 +map %map%
 exit
 
 :CloseAll

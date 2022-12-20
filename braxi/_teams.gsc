@@ -18,11 +18,12 @@ init()
 	setDvar( "g_teamColor_EnemyTeam", "1 .45 .5" );
 }
 
-setSpectatePermissions()
+setSpectatePermissions( allies, axis, freelook, none )
 {
-	self allowSpectateTeam( "allies", true );
-	self allowSpectateTeam( "axis", true );
-	self allowSpectateTeam( "none", false );
+	self allowSpectateTeam( "allies", allies );
+	self allowSpectateTeam( "axis", axis );
+	self allowSpectateTeam( "freelook", freelook );
+	self allowSpectateTeam( "none", none );
 }
 
 setHealth()
@@ -38,29 +39,33 @@ setSpeed()
 
 setTeam( team )
 {
-	if ( self.pers["team"] == team ) return;
-
-	if ( isAlive( self ) ) self suicide();
+	if ( self.pers["team"] == team )
+		return;
 
 	self.pers["weapon"] = "none";
 	self.pers["team"] = team;
 	self.team = team;
 	self.sessionteam = team;
+
+	if ( self.pers["team"] == "spectator" )
+		self suicide();
 }
 
 setLoadout()
 {
-	primary = level.weapon_primary[self getStat( 981 )]["item"];
-	secondary = level.weapon_secondary[self getStat( 982 )]["item"];
+	self takeAllWeapons();
+
+	self.pers["primary"] = level.weapon_primary[self getStat( 981 )]["item"];
+	self.pers["secondary"] = level.weapon_secondary[self getStat( 982 )]["item"];
 	gloves = level.model_glove[self getStat( 983 )]["item"];
 
 	self setPlayerModel();
 	self setViewModel( gloves );
 
-	self giveWeapon( primary );
-	self giveWeapon( secondary );
-	self setSpawnWeapon( primary );
-	self giveMaxAmmo( primary );
+	self giveWeapon( self.pers["primary"] );
+	self setSpawnWeapon( self.pers["primary"] );
+	self giveMaxAmmo( self.pers["primary"] );
+	self giveWeapon( self.pers["secondary"] );
 
 	self setHealth();
 	self setSpeed();
@@ -69,6 +74,9 @@ setLoadout()
 setPlayerModel()
 {
 	self detachAll();
-	if ( self.team == "allies" ) self setModel( level.model_jumper[self getStat( 979 )]["item"] );
-	if ( self.team == "axis" ) self setModel( level.model_activator[self getStat( 980 )]["item"] );
+
+	if ( self.pers["team"] == "allies" )
+		self setModel( level.model_jumper[self getStat( 979 )]["item"] );
+	else if ( self.pers["team"] == "axis" )
+		self setModel( level.model_activator[self getStat( 980 )]["item"] );
 }

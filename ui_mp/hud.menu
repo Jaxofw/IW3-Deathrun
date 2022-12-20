@@ -2,6 +2,7 @@
 #include "ui_mp/menustyle.inc"
 #include "ui/choices_setup_common.menu"
 {
+    // iPrintLn
     menuDef
     {
         name                      "gamemessages"
@@ -34,6 +35,7 @@
         }
     }
 
+    // iPrintLnBold
     menuDef
     {
         name                      "boldgamemessages"
@@ -67,6 +69,7 @@
         }
     }
 
+    // XP Bar
 	menuDef
 	{
 		name			"xpbar"

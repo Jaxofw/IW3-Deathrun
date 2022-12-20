@@ -9,11 +9,12 @@ init()
 	preCache();
 	init_spawns();
 
-	level.activ = [];
-	level.freerun = false;
+	level.practice = false;
 	level.lastJumper = false;
-	if ( !isDefined( game["rounds_played"] ) ) game["rounds_played"] = 0;
 	level.notifying = false;
+	level.activ = [];
+	level.jumpers = [];
+	level.activators = [];
 	level.notifications = [];
 
 	buildJumperTable();
@@ -34,91 +35,114 @@ init()
 	setDvar( "player_sprintTime", 12.8 );
 	setDvar( "bullet_penetrationEnabled", 0 );
 
-	if ( game["rounds_played"] == 0 )
-		if ( level.dvar["freerun"] ) level.freerun = true;
-
 	visionSetNaked( level.script, 2.0 );
+
+	if ( !isDefined( game["roundsplayed"] ) )
+	{
+		game["roundsplayed"] = 0;
+		if ( level.dvar["practice"] ) level.practice = true;
+	}
+
+	if ( level.practice )
+	{
+		game["state"] = "practice";
+		level.timeLeft = level.dvar["time_limit_practice"];
+	}
+	else
+		level.timeLeft = level.dvar["time_limit"];
+
+	level thread watchPlayers();
 	level thread gameLogic();
 }
 
-gameLogic()
+watchPlayers()
 {
-	game["state"] = "waiting";
-
-	if ( !level.freerun )
+	while ( true )
 	{
-		waitForPlayers( 2 );
-		tpJumpersToSpawn();
-		visionSetNaked( "mpIntro", 0 );
-		game["state"] = "lobby";
-		startTimer();
-	}
-
-	visionSetNaked( level.script, 2.0 );
-
-	level notify( "round_started", game["rounds_played"] );
-	game["state"] = "playing";
-
-	level thread watchTimeLimit();
-
-	while ( game["state"] == "playing" )
-	{
-		wait .3;
-
-		level.players = getAllPlayers();
 		level.jumpers = [];
 		level.activators = [];
+		level.players = getAllPlayers();
 
 		if ( level.players.size > 0 )
 		{
 			for ( i = 0; i < level.players.size; i++ )
 			{
-				if ( isDefined( level.players[i].team ) )
+				if ( level.players[i] isAlive() )
 				{
-					if ( level.players[i] isAlive() )
-					{
-						if ( level.players[i].team == "allies" )
-							level.jumpers[level.jumpers.size] = level.players[i];
-
-						if ( level.players[i].team == "axis" )
-							level.activators[level.activators.size] = level.players[i];
-					}
+					if ( level.players[i].pers["team"] == "allies" )
+						level.jumpers[level.jumpers.size] = level.players[i];
+					else
+						level.activators[level.activators.size] = level.players[i];
 				}
 			}
 
-			if ( !level.freerun )
+			if ( !level.practice && game["state"] == "playing" )
 			{
-				if ( level.players.size > 2 && level.jumpers.size == 1 )
-					level.jumpers[0] thread lastJumperAlive();
+				if ( level.jumpers.size == 1 && !level.lastJumper )
+					level.jumpers[0] thread lastAlive();
 
 				if ( level.jumpers.size == 0 && level.activators.size > 0 )
+				{
 					level endRound( "Jumpers Died!", "activator" );
-
+					break;
+				}
 				else if ( level.activators.size == 0 && level.jumpers.size > 0 )
-					level endRound( "Activator Died!" );
+				{
+					level endRound( "Activator Died!", "jumper" );
+					break;
+				}
 			}
 		}
+
+		wait .2;
 	}
 }
 
-tpJumpersToSpawn()
+gameLogic()
+{
+	waittillframeend;
+
+	if ( !level.practice )
+	{
+		game["state"] = "waiting";
+		waitForPlayers( 2 );
+		game["state"] = "lobby";
+
+		setupPlayers();
+		startTimer();
+
+		if ( level.jumpers.size + level.activators.size < 2 )
+		{
+			if ( isDefined( level.activ ) && isPlayer( level.activ ) )
+			{
+				level.activ braxi\_teams::setTeam( "allies" );
+				level.activ setOrigin( level.spawn["allies"][randomInt( level.spawn["allies"].size )].origin );
+				level.activ = undefined;
+			}
+
+			level thread gameLogic();
+			return;
+		}
+
+		game["state"] = "playing";
+	}
+
+	level notify( "round_started", game["roundsplayed"] );
+	level thread watchTime();
+}
+
+setupPlayers()
 {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
 	{
-		if ( players[i] isAlive() )
-		{
-			randomSpawn = level.spawn["allies"][randomInt( level.spawn["allies"].size )].origin;
-			players[i] setOrigin( randomSpawn );
-			players[i] linkTo( level.spawn_link );
-		}
+		players[i] linkTo( level.spawn_link );
+		players[i] braxi\_teams::setLoadout();
 	}
 }
 
 startTimer()
 {
-	if ( isDefined( level.matchStartText ) ) level.matchStartText destroyElem();
-
 	level.matchStartText = createServerFontString( "objective", 1.5 );
 	level.matchStartText setPoint( "CENTER", "CENTER", 0, -20 );
 	level.matchStartText setText( "Round begins in..." );
@@ -133,93 +157,109 @@ startTimer()
 	level.matchStartTimer.foreground = false;
 	level.matchStartTimer.hideWhenInMenu = true;
 
+	wait level.dvar["spawn_time"] / 2;
 	level thread pickRandomActivator();
+	wait level.dvar["spawn_time"] / 2;
 
-	wait level.dvar["spawn_time"];
-
-	releasePlayers();
+	// Release jumpers from spawn_link
+	for ( i = 0; i < level.players.size; i++ )
+		level.players[i] unLink();
 
 	level.matchStartText destroyElem();
 	level.matchStartTimer destroyElem();
 }
 
-releasePlayers()
-{
-	players = getAllPlayers();
-	for ( i = 0; i < players.size; i++ )
-		if ( players[i] isAlive() ) players[i] unLink();
-}
-
 pickRandomActivator()
 {
-	level.players = getAllPlayers();
-	level.activ = level.players[randomInt( level.players.size )];
+	player = level.jumpers[randomInt( level.jumpers.size )];
 
-	if ( level.activ.pers["team"] != "allies" ) pickRandomActivator();
+	if ( !isDefined( game["lastActivator"] ) )
+		game["lastActivator"] = player.guid;
+	else
+	{
+		for ( i = 0; i < level.jumpers.size; i++ )
+		{
+			if ( level.jumpers[i].guid != game["lastActivator"] )
+			{
+				game["lastActivator"] = level.jumpers[i].guid;
+				player = level.jumpers[i];
+				break;
+			}
+		}
+	}
 
-	iPrintLnBold( "^7" + level.activ.name + " was chosen to ^5Activate!" );
+	level.activ = player;
 
+	level.activ unLink();
+	level.activ setOrigin( level.spawn["axis"][randomInt( level.spawn["axis"].size )].origin );
+	level.activ linkTo( level.spawn_link );
+	wait .1;
 	level.activ braxi\_teams::setTeam( "axis" );
-	level.activ braxi\_player::playerSpawn();
+	level.activ braxi\_teams::setPlayerModel();
+
+	iPrintLnBold( "^7" + level.activ.name + " ^7was chosen to ^5Activate!" );
+
+	level.activ takeWeapon( level.activ.pers["primary"] );
+	level.activ switchToWeapon( level.activ.pers["secondary"] );
 
 	// Give activator xp being for chosen
 	level.activ braxi\_rank::giveRankXP( "activator" );
 }
 
-lastJumperAlive()
+watchTime()
 {
-	if ( level.lastJumper ) return;
-	level.lastJumper = true;
-	iPrintLnBold( "^1" + self.name + " ^7is the last Jumper alive!" );
-}
+	level.time = level.timeLeft;
 
-watchTimeLimit()
-{
-	if ( !level.dvar["time_limit"] ) return;
-
-	time = level.dvar["time_limit"];
-	if ( level.freerun ) time = level.dvar["time_limit_freerun"];
-
-	iPrintLnBold( "Time Left: " + time );
-
-	wait time;
+	for ( i = level.time; i >= 0; i-- )
+	{
+		level.timeLeft = i;
+		wait 1;
+	}
 
 	level thread endRound( "Time Limit Reached", "activator" );
 }
 
-endRound( string, winner )
+lastAlive()
 {
-	if ( game["state"] == "roundEnd" ) return;
+	level.lastJumper = true;
+	iPrintLnBold( "^5" + self.name + " ^7 is the last Jumper Alive!" );
+}
 
-	game["state"] = "roundEnd";
-	game["rounds_played"]++;
+endRound( reason, winner )
+{
+	game["state"] = "endround";
+	game["roundsplayed"]++;
 
-	if ( game["rounds_played"] >= level.dvar["round_limit"] )
+	if ( game["roundsplayed"] >= level.dvar["rounds_max"] )
 	{
 		level thread endMap();
 		return;
 	}
 
-	if ( winner == "activator" )
+	iPrintLnBold( reason );
+	iPrintLnBold( "Starting Round " + ( game["roundsplayed"] + 1 ) + "/" + level.dvar["rounds_max"] );
+
+	wait 3;
+
+	if ( isDefined( level.activ ) && isPlayer( level.activ ) )
 	{
-		if ( isDefined( level.activ ) && isPlayer( level.activ ) )
-			level.activ thread braxi\_rank::giveRankXp( "activator" );
+		// Set previous activator back to a jumper
+		level.activ braxi\_teams::setTeam( "allies" );
+
+		if ( winner == "activator" )
+			level.activ thread braxi\_rank::giveRankXp( "win" );
 	}
 
-	iPrintLnBold( string );
-	iPrintLnBold( "Starting Round " + ( game["rounds_played"] + 1 ) + "/" + level.dvar["round_limit"] );
-
-	wait 4;
-
-	// Set previous activator back to a jumper
-	if ( isDefined ( level.activ ) && isPlayer( level.activ ) )
-		level.activ braxi\_teams::setTeam( "allies" );
+	if ( winner == "jumper" )
+		for ( i = 0; i < level.jumpers.size; i++ )
+			level.jumpers[i] thread braxi\_rank::giveRankXp( "win" );
 
 	map_restart( true );
 }
 
 endMap()
 {
+	game["state"] = "endmap";
 	setDvar( "g_deadChat", 1 );
 
 	level thread braxi\_mapvote::mapVoteLogic();
@@ -227,20 +267,19 @@ endMap()
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
 	{
-		players[i].sessionstate = "intermission";
-		players[i] braxi\_player::playerSpawnSpectator( level.spawn["spectator"].origin, level.spawn["spectator"].angles );
-		players[i] allowSpectateTeam( "allies", false );
-		players[i] allowSpectateTeam( "axis", false );
-		players[i] allowSpectateTeam( "freelook", true );
-		players[i] allowSpectateTeam( "none", true );
+		players[i].sessionstate = "spectator";
+		players[i] braxi\_player::playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
+		players[i] braxi\_teams::setSpectatePermissions( false, false, true, true );
 		players[i] thread braxi\_mapvote::playerLogic();
 	}
 }
 
 addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
 {
-	if ( isPlayer( who ) ) hud = newClientHudElem( who );
-	else hud = newHudElem();
+	if ( isPlayer( who ) )
+		hud = newClientHudElem( who );
+	else
+		hud = newHudElem();
 
 	hud.x = x;
 	hud.y = y;
@@ -248,5 +287,6 @@ addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
 	hud.alignX = alignX;
 	hud.alignY = alignY;
 	hud.fontScale = fontScale;
+
 	return hud;
 }

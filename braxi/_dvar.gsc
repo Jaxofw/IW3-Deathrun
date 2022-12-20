@@ -8,14 +8,12 @@ setupDvars()
 	addDvar( "player_speed", "int", 190, 190, 300 );
 
 	addDvar( "time_limit", "int", 5, 5, 600 );
-	addDvar( "time_limit_freerun", "int", 5, 5, 180 );
+	addDvar( "time_limit_practice", "int", 5, 5, 180 );
 
-	addDvar( "freerun", "int", 1, 0, 1 );
+	addDvar( "practice", "int", 1, 0, 1 );
 	addDvar( "spawn_time", "int", 5, 1, 10 );
 
-	addDvar( "round_limit", "int", 12, 2, 100 );
-
-	addDvar( "ui_menu_playername", "string", "Player" );
+	addDvar( "rounds_max", "int", 12, 2, 100 );
 }
 
 // Originally from Bell's AWE mod for CoD 1

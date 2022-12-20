@@ -1,4 +1,5 @@
-main() {
+main()
+{
 	thread maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	level.callbackStartGameType = ::Callback_StartGameType;
 	level.callbackPlayerConnect = ::Callback_PlayerConnect;
@@ -15,7 +16,8 @@ main() {
 	level.spectator = ::spectator;
 }
 
-Callback_StartGameType() {
+Callback_StartGameType()
+{
 	if ( !isDefined( game["allies"] ) ) game["allies"] = "marines";
 	if ( !isDefined( game["axis"] ) ) game["axis"] = "opfor";
 
@@ -25,31 +27,37 @@ Callback_StartGameType() {
 	maps\mp\gametypes\_gameobjects::main( allowed );
 }
 
-notifyConnecting() {
+notifyConnecting()
+{
 	waittillframeend;
 	if ( isDefined( self ) ) level notify( "connecting", self );
 }
 
-Callback_PlayerConnect() {
+Callback_PlayerConnect()
+{
 	thread notifyConnecting();
 	self.statusicon = "";
 	self waittill( "begin" );
 	self braxi\_player::playerConnect();
 }
 
-Callback_PlayerDisconnect() {
+Callback_PlayerDisconnect()
+{
 	self braxi\_player::playerDisconnect();
 }
 
-Callback_PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
+Callback_PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration )
+{
 	self braxi\_player::PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
 }
 
-Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime ) {
+Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime )
+{
 	self braxi\_player::PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 }
 
-Callback_PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
+Callback_PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration )
+{
 	self braxi\_player::PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
 }
 
