@@ -38,6 +38,6 @@
 #define MAPVOTE_RESTART \
 	CREATE_SHADER( 453 (MAPVOTE_Y_START + 350) (MAPVOTE_WIDTH / 2) 25 1 1, "gradient_fadein", 0 0 0 1, 1 ) \
 	CREATE_SHADER( 534 (MAPVOTE_Y_START + 350) (MAPVOTE_WIDTH / 2) 25 1 1, "gradient", 0 0 0 1, 1 ) \
-	CREATE_TEXT_EX( 515 (MAPVOTE_Y_START + 350) 36 25 1 1, "Replay Map", 1 1 1 1, 0.4, 1, 1, type ITEM_TYPE_BUTTON; textaligny 21; backcolor 0 0 1 1; action { play "mouse_click"; scriptMenuResponse 10; } ) \
+	CREATE_TEXT_EX( 515 (MAPVOTE_Y_START + 350) 36 25 1 1, "Replay Map", 1 1 1 1, 0.4, 1, 1, type ITEM_TYPE_BUTTON; textaligny 21; backcolor 0 0 1 1; action { play "mouse_click"; scriptMenuResponse 9; } ) \
 	CREATE_SHADER( 580 (MAPVOTE_Y_START + 359) 7 7 1 1, "menu_mapvote_user", 1 1 1 1, 1 ) \
-	CREATE_TEXT( 576 (MAPVOTE_Y_START + 367.5) 36 36 1 1, dvarint( "mapvote_option_10_votes" ), 1 1 1 1, 0.22, 1, 1 )
+	CREATE_TEXT( 576 (MAPVOTE_Y_START + 367.5) 36 36 1 1, dvarint( "mapvote_option_9_votes" ), 1 1 1 1, 0.22, 1, 1 )

@@ -8,10 +8,10 @@ init()
     level.voteDuration = 15;
 
     level.maps[level.maps.size] = "mp_deathrun_bricky";
-    level.maps[level.maps.size] = "mp_deathrun_coyote";
-    level.maps[level.maps.size] = "mp_deathrun_coyotev2";
     level.maps[level.maps.size] = "mp_deathrun_cherry";
     level.maps[level.maps.size] = "mp_deathrun_colourful";
+    level.maps[level.maps.size] = "mp_deathrun_coyote";
+    level.maps[level.maps.size] = "mp_deathrun_coyotev2";
     level.maps[level.maps.size] = "mp_deathrun_crystal";
     level.maps[level.maps.size] = "mp_deathrun_diehard";
     level.maps[level.maps.size] = "mp_deathrun_dragonball";
@@ -19,7 +19,6 @@ init()
     level.maps[level.maps.size] = "mp_deathrun_familyguy";
     level.maps[level.maps.size] = "mp_deathrun_fluxx";
     level.maps[level.maps.size] = "mp_deathrun_framey_v2";
-    level.maps[level.maps.size] = "mp_deathrun_framey_v3";
     level.maps[level.maps.size] = "mp_deathrun_godfather";
     level.maps[level.maps.size] = "mp_deathrun_gold";
     level.maps[level.maps.size] = "mp_deathrun_grassy_v4";
@@ -42,8 +41,8 @@ init()
     level.maps[level.maps.size] = "mp_dr_bananaphone";
     level.maps[level.maps.size] = "mp_dr_bounce";
     level.maps[level.maps.size] = "mp_dr_caution";
-    level.maps[level.maps.size] = "mp_dr_crosscode";
     level.maps[level.maps.size] = "mp_dr_construct";
+    level.maps[level.maps.size] = "mp_dr_crosscode";
     level.maps[level.maps.size] = "mp_dr_darmuhv2";
     level.maps[level.maps.size] = "mp_dr_deadzone";
     level.maps[level.maps.size] = "mp_dr_digital";
@@ -86,13 +85,14 @@ init()
 mapVoteLogic()
 {
     for ( i = 0; i < level.mapsInVote; i++ )
-        level getRandomMap();
+        getRandomMap();
 
     players = getAllPlayers();
-    for ( i = level.voteDuration - 1; i >= 0; i-- )
+    for ( i = level.voteDuration; i >= 0; i-- )
     {
         for ( j = 0; j < players.size; j++ )
-            players[j] setClientDvar( "mapvote_duration", i + " Seconds" );
+            if ( isDefined( players[j] ) )
+                players[j] setClientDvar( "mapvote_duration", i + " Seconds" );
         wait 1;
     }
 
@@ -105,15 +105,47 @@ mapVoteLogic()
     changeToWinningMap();
 }
 
+getRandomMap()
+{
+    currSize = level.mapsVotable.size;
+    randomMap = "";
+
+    if ( ( currSize + 1 ) == level.mapsInVote )
+        randomMap = level.script;
+    else
+    {
+        while ( randomMap == "" || randomMap == level.script || isMapinVotes( randomMap ) )
+            randomMap = level.maps[randomInt( level.maps.size )];
+    }
+
+    level.mapsVotable[currSize]["name"] = randomMap;
+    level.mapsVotable[currSize]["votes"] = 0;
+
+    players = getAllPlayers();
+    for ( j = 0; j < players.size; j++ )
+    {
+        players[j] setClientDvar( "mapvote_option_" + currSize, randomMap );
+        players[j] setClientDvar( "mapvote_option_" + currSize + "_label", formatMapName( level.mapsVotable[currSize]["name"] ) );
+        players[j] setClientDvar( "mapvote_option_" + currSize + "_votes", level.mapsVotable[currSize]["votes"] );
+    }
+}
+
+isMapinVotes( mapName )
+{
+    for ( i = 0; i < level.mapsVotable.size; i++ )
+        if ( mapName == level.mapsVotable[i]["name"] )
+            return true;
+
+    return false;
+}
+
 changeToWinningMap()
 {
-    topVote = level.mapsVotable[randomInt( level.mapsVotable.size )];
+    topVote = level.mapsVotable[0];
 
-    for ( i = 1; i <= level.mapsVotable.size; i++ )
-    {
+    for ( i = 0; i < level.mapsVotable.size; i++ )
         if ( level.mapsVotable[i]["votes"] > topVote["votes"] )
             topVote = level.mapsVotable[i];
-    }
 
     iPrintLnBold( "Changing map to ^5" + formatMapName( topVote["name"] ) );
 
@@ -128,9 +160,9 @@ playerLogic()
     self endon( "disconnect" );
     self openMenu( game["menu_mapvote"] );
 
-    self.vote = 0;
+    self.vote = -1;
 
-    for ( ;;)
+    for (;;)
     {
         self waittill( "menuresponse", menu, response );
 
@@ -142,57 +174,20 @@ playerLogic()
             {
                 players = getAllPlayers();
 
-                if ( self.vote != 0 )
+                if ( self.vote != -1 )
                 {
                     level.mapsVotable[self.vote]["votes"]--;
+
                     for ( i = 0; i < players.size; i++ )
                         players[i] setClientDvar( "mapvote_option_" + self.vote + "_votes", level.mapsVotable[self.vote]["votes"] );
                 }
 
                 self.vote = mapId;
                 level.mapsVotable[mapId]["votes"]++;
+
                 for ( i = 0; i < players.size; i++ )
                     players[i] setClientDvar( "mapvote_option_" + mapId + "_votes", level.mapsVotable[mapId]["votes"] );
             }
         }
-    }
-}
-
-getRandomMap()
-{
-    randomMap = level.maps[randomInt( level.maps.size )];
-
-    // Prevent current map from being put into rotation
-    if ( randomMap == level.script )
-    {
-        getRandomMap();
-        return;
-    }
-
-    for ( i = 1; i <= level.mapsVotable.size; i++ )
-    {
-        if ( isDefined( level.mapsVotable[i]["name"] ) )
-        {
-            if ( randomMap == level.mapsVotable[i]["name"] )
-            {
-                getRandomMap();
-                return;
-            }
-        }
-    }
-
-    // Replay Map Option
-    if ( i == level.mapsInVote ) randomMap = level.script;
-
-    level.mapsVotable[i] = [];
-    level.mapsVotable[i]["name"] = randomMap;
-    level.mapsVotable[i]["votes"] = 0;
-
-    players = getAllPlayers();
-    for ( j = 0; j < players.size; j++ )
-    {
-        players[j] setClientDvar( "mapvote_option_" + i, randomMap );
-        players[j] setClientDvar( "mapvote_option_" + i + "_label", formatMapName( level.mapsVotable[i]["name"] ) );
-        players[j] setClientDvar( "mapvote_option_" + i + "_votes", level.mapsVotable[i]["votes"] );
     }
 }

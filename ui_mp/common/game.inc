@@ -19,10 +19,12 @@
 #define BUTTON_X_POS( idx )				( BUTTON_X_START + BUTTON_X_SPACING * BUTTON_COL( idx ) )
 #define BUTTON_Y_POS( idx )				( BUTTON_Y_START + BUTTON_Y_SPACING * BUTTON_ROW( idx ) )
 
-#define BUTTON_ORIGIN( idx )			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx )
+#define BUTTON_ORIGIN( idx )			(BUTTON_X_POS( idx ) + 2) BUTTON_Y_POS( idx )
 #define BUTTON_HEADER_ORIGIN( idx )		BUTTON_HEADER_X_POS( idx ) BUTTON_Y_POS( idx )
 #define BUTTON_RECT( idx )				BUTTON_ORIGIN( idx ) 170 BUTTON_Y_SIZE 1 1
 #define BUTTON_HEADER_RECT( idx )		BUTTON_HEADER_ORIGIN( idx ) 180 BUTTON_Y_SIZE 1 1
+
+#define COLOR_ARCANE					0.18 0.36 0.82
 
 #define CREATE_SHADER( position, texture, forecolor_, visible_ ) \
 	CREATE_SHADER_EX( position, texture, forecolor_, visible_, ; )
@@ -63,9 +65,9 @@
 	{ \
 		rect 			175 87 55 4 1 0 \
 		style 			WINDOW_STYLE_SHADER \
-		foreColor 		0.2 0.4 0.8 1 \
+		foreColor 		COLOR_ARCANE 1 \
 		background		"menu_rank_bar" \
-		exp 			rect W( 87 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351))) ) \
+		exp 			rect W( ( 87 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351)) ) ) ) \
 		visible 		when ( 1 ) \
 	}
 
@@ -75,9 +77,9 @@
 
 #define ARCANE_INGAME_MENU( blurworld_ ) \
 	focuscolor 			1 1 1 1 \
-	blurworld 			blurworld_ \
+	blurworld 			0 \
 	CREATE_SHADER( 107 -4 200 640 1 0, "white", 0 0 0 0.5, 1 ) \
-	CREATE_SHADER( 307 -4 2 640 1 0, "menu_button_border", 0.2 0.4 0.8 1, 1 ) \
+	CREATE_SHADER( 307 -4 2 640 1 0, "menu_button_border", COLOR_ARCANE 1, 1 ) \
 	CREATE_SHADER( 120 50 48 48 1 0, "menu_rank_bg", 0 0 0 0.5, 1 ) \
 	CREATE_SHADER( 126.5 56.5 35 35 1 0, CURRENT_LEVEL_MT, 1 1 1 1, 1 ) \
 	CREATE_TEXT( 175 71 36 36 1 0, "Welcome " + dvarstring( "ui_menu_playername" ), 1 1 1 1, 0.3, 0, 1 ) \
@@ -88,11 +90,11 @@
 #define CREATE_BUTTON( idx, string, action_, visible_ ) \
 	itemDef \
 	{ \
-		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 5 BUTTON_Y_SIZE 1 1 \
+		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 2 BUTTON_Y_SIZE 1 1 \
 		style			WINDOW_STYLE_SHADER \
 		visible			when ( visible_ ) \
-		forecolor		0 0.502 1 1 \
-		exp 			material ( "menu_button_border" ) \
+		forecolor		COLOR_ARCANE 1 \
+		exp 			material ( "white" ) \
 	} \
 	itemDef \
 	{ \
@@ -128,22 +130,7 @@
 	}
 
 #define UNLOCKABLE( idx, table, action_, visible_ ) \
-	CREATE_SHADER( BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 5 BUTTON_Y_SIZE 1 1, "menu_button_border", 0 0.502 1 1, 1 ) \
-	itemDef \
-	{ \
-		rect 			BUTTON_RECT( idx ) \
-		type			ITEM_TYPE_BUTTON \
-		style			WINDOW_STYLE_FILLED \
-		visible			when ( visible_ ) \
-		exp 			text ( tableLookup( table, 0, action_, 4 ) ) \
-		exp 			material ( "grey_button_shit" ) \
-		forecolor		1 1 1 1 \
-		backcolor		0 0 0 0.5 \
-		textaligny		19 \
-		textalignx		8 \
-		textscale		0.3 \
-		action 			{ play "mouse_click"; scriptMenuResponse action_; } \
-	} \
+	CREATE_BUTTON( idx, tableLookup( table, 0, action_, 4 ), scriptMenuResponse action_, 1 ) \
 	CREATE_TEXT( \
 		(BUTTON_X_POS( idx ) + 119) (BUTTON_Y_POS( idx ) + 17.5) 36 36 1 0, \
 		"^1(" + tableLookup( table, 0, action_, 2 ) + ")", \
