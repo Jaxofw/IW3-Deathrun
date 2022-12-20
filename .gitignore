@@ -2,6 +2,7 @@
 *.ff
 *.iwd
 *.log
+*.cfg
 *.old
 missingasset.csv
 q3config_server.cfg
