@@ -49,6 +49,8 @@ playerConnect()
 		"port", getDvar( "net_port" ),
 		"show_hud", true,
 		"ui_menu_playername", self.name,
+		"ui_rounds_limit", level.dvar["roundslimit"],
+		"ui_rounds_played", game["roundsplayed"],
 		"ui_uav_client", 0
 	);
 
@@ -93,6 +95,7 @@ playerSpawn( origin, angles )
 	self.archivetime = 0;
 	self.psoffsettime = 0;
 	self.statusicon = "";
+	level.jumpersAlive++;
 
 	self braxi\_teams::setPlayerModel();
 
@@ -158,9 +161,12 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self notify( "killed_player" );
 	self notify( "death" );
 
-	if ( self.sessionteam == "spectator" ) return;
+	if ( self isAlive() && self.pers["team"] != "axis" )
+		level.jumpersAlive--;
 
 	level notify( "player_killed", self, eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
+
+	if ( self.sessionteam == "spectator" ) return;
 
 	self.statusicon = "hud_status_dead";
 	self.sessionstate = "spectator";
@@ -176,19 +182,18 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		}
 	}
 
-	if ( !level.practice && game["state"] == "playing" )
+	if ( level.practice )
+	{
+		wait .05; // No die handler fix
+		self playerSpawn();
+	}
+	else if ( !level.practice && game["state"] == "playing" )
 	{
 		self.deaths++;
 		self.pers["deaths"]++;
 		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
 		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
 		obituary( self, attacker, sWeapon, sMeansOfDeath );
-	}
-
-	if ( game["state"] != "playing" )
-	{
-		wait .05; // No die handler fix
-		self playerSpawn();
 	}
 }
 

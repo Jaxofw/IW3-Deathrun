@@ -16,6 +16,7 @@ init()
 	level.jumpers = [];
 	level.activators = [];
 	level.notifications = [];
+	level.jumpersAlive = 0;
 
 	buildJumperTable();
 	buildActivatorTable();
@@ -53,6 +54,7 @@ init()
 
 	level thread watchPlayers();
 	level thread gameLogic();
+	level thread updateJumperHud();
 }
 
 watchPlayers()
@@ -74,6 +76,11 @@ watchPlayers()
 					else
 						level.activators[level.activators.size] = level.players[i];
 				}
+
+				level.players[i] setClientDvars(
+					"ui_game_state", game["state"],
+					"ui_time_left", level.timeLeft
+				);
 			}
 
 			if ( !level.practice && game["state"] == "playing" )
@@ -104,7 +111,6 @@ gameLogic()
 
 	if ( !level.practice )
 	{
-		game["state"] = "waiting";
 		waitForPlayers( 2 );
 		game["state"] = "lobby";
 
@@ -126,6 +132,8 @@ gameLogic()
 
 		game["state"] = "playing";
 	}
+	else
+		game["state"] = "practice";
 
 	level notify( "round_started", game["roundsplayed"] );
 	level thread watchTime();
@@ -195,6 +203,7 @@ pickRandomActivator()
 	level.activ linkTo( level.spawn_link );
 	wait .1;
 	level.activ braxi\_teams::setTeam( "axis" );
+	level notify( "activator_chosen" );
 	level.activ braxi\_teams::setPlayerModel();
 
 	iPrintLnBold( "^7" + level.activ.name + " ^7was chosen to ^5Activate!" );
@@ -230,14 +239,14 @@ endRound( reason, winner )
 	game["state"] = "endround";
 	game["roundsplayed"]++;
 
-	if ( game["roundsplayed"] >= level.dvar["rounds_max"] )
+	if ( game["roundsplayed"] >= level.dvar["roundslimit"] )
 	{
 		level thread endMap();
 		return;
 	}
 
 	iPrintLnBold( reason );
-	iPrintLnBold( "Starting Round " + ( game["roundsplayed"] + 1 ) + "/" + level.dvar["rounds_max"] );
+	iPrintLnBold( "Starting Round " + ( game["roundsplayed"] + 1 ) + "/" + level.dvar["roundslimit"] );
 
 	wait 3;
 

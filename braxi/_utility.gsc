@@ -1,4 +1,6 @@
+#include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
+#include common_scripts\utility;
 
 preCache()
 {
@@ -121,6 +123,8 @@ waitForPlayers( required )
 
 	if ( playersAlive < required )
 	{
+		game["state"] = "waiting";
+
 		while ( true )
 		{
 			players = getAllPlayers();
@@ -138,7 +142,7 @@ waitForPlayers( required )
 
 		map_restart( true );
 		return;
-	}	
+	}
 }
 
 initGame()
@@ -319,6 +323,18 @@ canSpawn()
 		return false;
 
 	return true;
+}
+
+updateJumperHud()
+{
+	for (;;)
+	{
+		level waittill_any( "jumper", "player_killed", "activator_chosen" );		
+		players = getAllPlayers();
+
+		for ( i = 0; i < players.size; i++ )
+			players[i] setClientDvar( "ui_jumpers_alive", level.jumpersAlive );
+	}
 }
 
 playSound( entity, sound )

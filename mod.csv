@@ -23,6 +23,7 @@ stringtable,mp/secondaryTable.csv
 menufile,ui_mp/hud.menu
 menufile,ui_mp/connect.menu
 menufile,ui_mp/common/game.inc
+menufile,ui_mp/common/hud.inc
 menufile,ui_mp/common/mapvote.inc
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
@@ -106,6 +107,12 @@ material,hud_notify
 material,hud_notify_footer
 material,menu_mapvote_footer
 material,menu_mapvote_user
+
+# Hud Assets
+material,hud_notify
+material,hud_notify_footer
+material,hud_square_round_right
+material,hud_placeholder
 
 # Reticles
 material,knife_ballistic_reticle

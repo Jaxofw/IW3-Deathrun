@@ -49,6 +49,8 @@ setTeam( team )
 
 	if ( self.pers["team"] == "spectator" )
 		self suicide();
+	else if ( self.pers["team"] == "axis" )
+		level.jumpersAlive--;
 }
 
 setLoadout()

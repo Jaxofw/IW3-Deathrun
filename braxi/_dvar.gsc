@@ -13,7 +13,7 @@ setupDvars()
 	addDvar( "practice", "int", 1, 0, 1 );
 	addDvar( "spawn_time", "int", 5, 1, 10 );
 
-	addDvar( "rounds_max", "int", 12, 2, 100 );
+	addDvar( "roundslimit", "int", 12, 2, 100 );
 }
 
 // Originally from Bell's AWE mod for CoD 1
