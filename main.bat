@@ -61,7 +61,7 @@ goto MainMenu
 
 :RunMod
 pushd ..\..\
-iw3mp.exe %options% +set developer 2 +set developer_script 1 +devmap %map%
+iw3mp.exe %options% +set developer 2 +set developer_script 0 +devmap %map%
 exit
 
 :RunServer
