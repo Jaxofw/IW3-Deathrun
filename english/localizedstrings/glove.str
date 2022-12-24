@@ -10,8 +10,8 @@ LANG_ENGLISH        "Opfor"
 REFERENCE           SNIPER
 LANG_ENGLISH        "Woodland Sniper"
 
-REFERENCE           RANGER
-LANG_ENGLISH        "Ranger"
+REFERENCE           ROBOT
+LANG_ENGLISH        "Student Robot"
 
 REFERENCE           WOUND
 LANG_ENGLISH        "Wounded"
