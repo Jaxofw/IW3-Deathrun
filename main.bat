@@ -1,6 +1,6 @@
 set COMPILEDIR=%CD%
 set map="mp_dr_anotherworld"
-set options="+set fs_game "mods/arcane_deathrun_dev" +g_gametype deathrun" +exec server.cfg
+set options="+set fs_game "mods/arcane_deathrun_dev" +g_gametype deathrun +set developer 2 +exec server.cfg +devmap %map%"
 @ECHO OFF
 
 :MainMenu
@@ -61,12 +61,12 @@ goto MainMenu
 
 :RunMod
 pushd ..\..\
-iw3mp.exe %options% +set developer 2 +set developer_script 0 +devmap %map%
+iw3mp.exe %options%
 exit
 
 :RunServer
 pushd ..\..\
-cod4x18_dedrun.exe %options% +set dedicated 2 +set net_port 28961 +map %map%
+cod4x18_dedrun.exe %options% +set dedicated 2 +set net_port 28961
 exit
 
 :CloseAll
