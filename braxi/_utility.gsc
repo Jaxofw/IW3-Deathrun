@@ -329,7 +329,7 @@ updateJumperHud()
 {
 	for (;;)
 	{
-		level waittill_any( "jumper", "player_killed", "activator_chosen" );		
+		level waittill_any( "jumper", "player_killed", "activator_chosen" );
 		players = getAllPlayers();
 
 		for ( i = 0; i < players.size; i++ )

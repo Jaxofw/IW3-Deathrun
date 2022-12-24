@@ -112,6 +112,7 @@ material,menu_mapvote_user
 material,hud_notify
 material,hud_notify_footer
 material,hud_square_round_right
+material,hud_square_round_left
 material,hud_placeholder
 
 # Reticles

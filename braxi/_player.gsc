@@ -108,6 +108,7 @@ playerSpawn( origin, angles )
 	}
 
 	self braxi\_teams::setLoadout();
+	self thread braxi\_weapons::watchWeapons();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -166,7 +167,8 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 
 	level notify( "player_killed", self, eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
 
-	if ( self.sessionteam == "spectator" ) return;
+	if ( self.sessionteam == "spectator" || game["state"] == "endmap" )
+		return;
 
 	self.statusicon = "hud_status_dead";
 	self.sessionstate = "spectator";
@@ -182,18 +184,22 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		}
 	}
 
-	if ( level.practice )
-	{
-		wait .05; // No die handler fix
-		self playerSpawn();
-	}
-	else if ( !level.practice && game["state"] == "playing" )
+	if ( game["state"] == "playing" )
 	{
 		self.deaths++;
 		self.pers["deaths"]++;
 		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
 		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
 		obituary( self, attacker, sWeapon, sMeansOfDeath );
+	}
+
+	if ( game["state"] == "endround" )
+		return;
+
+	if ( level.practice )
+	{
+		wait .05; // No die handler fix
+		self playerSpawn();
 	}
 }
 
