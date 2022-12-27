@@ -982,15 +982,3 @@ xanim,pt_melee_prone_grenade_throw
 xanim,pt_melee_prone_grenade_throw_throwback
 xanim,pt_melee_prone_melee_a
 xanim,pt_melee_prone_melee_b
-
-weapon,mp/ol_fists_mp
-xanim,vm_ol_fists_drop
-xanim,vm_ol_fists_drop_quick
-xanim,vm_ol_fists_idle
-xanim,vm_ol_fists_raise
-xanim,vm_ol_fists_raise_quick
-xanim,vm_ol_fists_sprint_in
-xanim,vm_ol_fists_sprint_loop
-xanim,vm_ol_fists_sprint_out
-xanim,vm_ol_fists_stab
-xanim,vm_ol_fists_swipe
