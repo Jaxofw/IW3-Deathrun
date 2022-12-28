@@ -2,12 +2,6 @@
 
 init()
 {
-    handleEndTriggers();
-    handleTrapTriggers();
-}
-
-handleEndTriggers()
-{
     switch ( level.script )
     {
         case "mp_dr_apocalypse_v2":
@@ -251,10 +245,7 @@ handleEndTriggers()
             trigger.targetname = "endmap_trig";
             break;
     }
-}
 
-handleTrapTriggers()
-{
     if ( !isDefined( level.trapTriggers ) )
     {
         level.trapTriggers = [];
@@ -431,13 +422,24 @@ handleTrapTriggers()
                 break;
         }
     }
-
-    if ( isDefined( level.trapTriggers ) )
-        for ( i = 0; i < level.trapTriggers.size; i++ )
-            level.trapTriggers[i] thread giveTrapXp();
+    else
+        level thread checkTrapUsage();
 }
 
-giveTrapXp()
+checkTrapUsage()
+{
+    if ( !level.trapTriggers.size )
+    {
+        iPrintLn( "checkTrapUsage() reported that level.trapTriggers.size is -1, add trap activation triggers to level.trapTriggers array and recompile FF" );
+        iPrintLn( "Map doesn't support free run and XP for activation" );
+        return;
+    }
+
+    for ( i = 0; i < level.trapTriggers.size; i++ )
+        level.trapTriggers[i] thread giveXpIfActivated();
+}
+
+giveXpIfActivated()
 {
     level endon( "death" );
     level endon( "delete" );
