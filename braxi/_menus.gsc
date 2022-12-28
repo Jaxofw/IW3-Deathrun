@@ -114,16 +114,22 @@ onMenuResponse()
 			id = int( response ) - 1;
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) )
 			{
+				prevPrimary = self.pers["primary"];
 				self setStat( 981, id );
 				self.pers["primary"] = level.weapon_primary[id]["item"];
 
-				if ( self.pers["team"] == "allies" )
+				if ( self isAlive() )
 				{
-					self takeAllWeapons();
-					self giveWeapon( self.pers["primary"] );
-					self giveMaxAmmo( self.pers["primary"] );
-					self giveWeapon( self.pers["secondary"] );
-					self switchToWeapon( self.pers["primary"] );
+					if ( self.pers["team"] == "axis" )
+						continue;
+
+					if ( !isDefined( self.finishedMap ) )
+					{
+						self takeWeapon( prevPrimary );
+						self giveWeapon( self.pers["primary"] );
+						self giveMaxAmmo( self.pers["primary"] );
+						self switchToWeapon( self.pers["primary"] );
+					}
 				}
 			}
 		}
@@ -132,14 +138,23 @@ onMenuResponse()
 			id = int( response ) - 1;
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) )
 			{
+				prevSecondary = self.pers["secondary"];
 				self setStat( 982, id );
 				self.pers["secondary"] = level.weapon_secondary[id]["item"];
 
-				self takeAllWeapons();
-				if ( self.pers["team"] == "allies" ) self giveWeapon( self.pers["primary"] );
-				self giveMaxAmmo( self.pers["secondary"] );
-				self giveWeapon( self.pers["secondary"] );
-				self switchToWeapon( self.pers["secondary"] );
+				if ( self isAlive() )
+				{
+					if ( self.pers["team"] == "axis" && level.jumperFinished )
+						continue;
+
+					if ( !isDefined( self.finishedMap ) )
+					{
+						self takeWeapon( prevSecondary );
+						self giveWeapon( self.pers["secondary"] );
+						self giveMaxAmmo( self.pers["secondary"] );
+						self switchToWeapon( self.pers["secondary"] );
+					}
+				}
 			}
 		}
 		else if ( menu == game["menu_gloves"] || menu == game["menu_gloves2"] )
