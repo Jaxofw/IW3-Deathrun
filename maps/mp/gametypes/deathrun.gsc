@@ -38,12 +38,12 @@ Callback_PlayerConnect()
 	thread notifyConnecting();
 	self.statusicon = "";
 	self waittill( "begin" );
-	self braxi\_player::playerConnect();
+	self braxi\_player::PlayerConnect();
 }
 
 Callback_PlayerDisconnect()
 {
-	self braxi\_player::playerDisconnect();
+	self braxi\_player::PlayerDisconnect();
 }
 
 Callback_PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration )

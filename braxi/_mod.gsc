@@ -17,6 +17,8 @@ init()
 	level.activators = [];
 	level.notifications = [];
 	level.jumpersAlive = 0;
+	level.mapHasTimeTrigger = false;
+	level.jumperFinished = false;
 
 	buildJumperTable();
 	buildActivatorTable();
@@ -55,6 +57,7 @@ init()
 	level thread watchPlayers();
 	level thread gameLogic();
 	level thread updateJumperHud();
+	level thread fastestTime();
 }
 
 watchPlayers()
@@ -169,12 +172,15 @@ startTimer()
 	level thread pickRandomActivator();
 	wait level.dvar["spawn_time"] / 2;
 
-	// Release jumpers from spawn_link
-	for ( i = 0; i < level.players.size; i++ )
-		level.players[i] unLink();
-
 	level.matchStartText destroyElem();
 	level.matchStartTimer destroyElem();
+
+	// Release jumpers from spawn_link
+	for ( i = 0; i < level.players.size; i++ )
+	{
+		level.players[i] unLink();
+		level.players[i] thread braxi\_player::playerTimer();
+	}
 }
 
 pickRandomActivator()
@@ -280,6 +286,28 @@ endMap()
 		players[i] braxi\_player::playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
 		players[i] braxi\_teams::setSpectatePermissions( false, false, true, true );
 		players[i] thread braxi\_mapvote::playerLogic();
+	}
+}
+
+fastestTime()
+{
+	trig = getEntArray( "endmap_trig", "targetname" );
+	if ( !trig.size || trig.size > 1 )
+		return;
+
+	level.mapHasTimeTrigger = true;
+
+	trig = trig[0];
+	while ( true )
+	{
+		trig waittill( "trigger", player );
+		if ( player.pers["team"] == "axis" )
+			continue;
+		
+		if ( level.jumperFinished != true )
+			level.jumperFinished = true;
+			
+		player thread braxi\_player::endTimer();
 	}
 }
 

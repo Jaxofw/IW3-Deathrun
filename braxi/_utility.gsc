@@ -349,6 +349,19 @@ playSound( entity, sound )
 	}
 }
 
+formatTimer( msec )
+{
+	msecs = msec % 10;
+	useconds = int( msec / 10 );
+	seconds = useconds % 60;
+	minutes = int( useconds / 60 );
+
+	if ( seconds < 10 )
+		return minutes + ":0" + seconds + "." + msecs;
+	else
+		return minutes + ":" + seconds + "." + msecs;
+}
+
 toUpper( letter )
 {
 	switch ( letter )

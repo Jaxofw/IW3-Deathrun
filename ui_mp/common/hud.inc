@@ -12,6 +12,9 @@
 #define WEAPON_STOCK        (dvarString( "ui_weapon_current_stock" ))
 
 #define VALID_WEAPON        (WEAPON_NAME != "N")
+#define TIMER_TEXT          (dvarString( "ui_player_timer" ))
+#define HEALTH_TEXT         (dvarInt( "ui_health_text" ))
+#define HEALTH_BAR          (dvarFloat( "ui_health_bar" ))
 
 #define ROUND_TEXT \
     CREATE_TEXT( 25 46.5 0 0 1 1, "Practice", 1 1 1 1, 0.3, 0, ROUND_STATUS == "practice" ) \
@@ -48,3 +51,11 @@
     WEAPON_NAME_INFO \
     CREATE_SHADER( 787 430 50 25 1 1, "hud_square_round_right", 0 0 0 0.7, VALID_WEAPON ) \
     CREATE_TEXT( 811.5 450 0 0 1 1, WEAPON_CLIP + "/" + WEAPON_STOCK, 1 1 1 1, 0.32, 1, VALID_WEAPON )
+
+#define PLAYER_INFO \
+    CREATE_SHADER( 17 438 47.5 25 1 1, "hud_square_round_left", 0 0 0 0.6, 1 ) \
+    CREATE_SHADER( 64.5 438 47.5 25 1 1, "hud_square_round_right", 0 0 0 0.6, 1 ) \
+    CREATE_TEXT( 40 456 0 0 1 1, TIMER_TEXT, 1 1 1 1, 0.28, 1, 1 ) \
+    CREATE_SHADER( 64 442 2 15 1 1, "ui_hud_divider", 1 1 1 1, 1 ) \
+    CREATE_TEXT( 88.5 456 0 0 1 1, HEALTH_TEXT, 1 1 1 1, 0.28, 1, 1 ) \
+    CREATE_SHADER_EX( 17 460 95 3 1 1, "hud_notify_footer", 1 1 1 1, 1, exp	rect W( 95 * HEALTH_BAR ) )

@@ -1,6 +1,6 @@
 #include braxi\_utility;
 
-playerConnect()
+PlayerConnect()
 {
 	level notify( "connected", self );
 
@@ -49,6 +49,7 @@ playerConnect()
 		"port", getDvar( "net_port" ),
 		"show_hud", true,
 		"ui_menu_playername", self.name,
+		"ui_player_timer", formatTimer( 0 ),
 		"ui_rounds_limit", level.dvar["roundslimit"],
 		"ui_rounds_played", game["roundsplayed"],
 		"ui_uav_client", 0
@@ -107,8 +108,12 @@ playerSpawn( origin, angles )
 		self spawn( spawnPoint.origin, spawnPoint.angles );
 	}
 
+	if ( game["state"] == "lobby" )
+		self linkTo( level.spawn_link );
+
 	self braxi\_teams::setLoadout();
 	self thread braxi\_weapons::watchWeapons();
+	self thread watchHealth();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -174,6 +179,15 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self.sessionstate = "spectator";
 	self.died = true;
 
+	if ( game["state"] == "playing" )
+	{
+		obituary( self, attacker, sWeapon, sMeansOfDeath );
+		self.deaths++;
+		self.pers["deaths"]++;
+		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
+		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
+	}
+
 	if ( isPlayer( attacker ) )
 	{
 		if ( attacker != self )
@@ -184,28 +198,69 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		}
 	}
 
-	if ( game["state"] == "playing" )
-	{
-		self.deaths++;
-		self.pers["deaths"]++;
-		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
-		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
-		obituary( self, attacker, sWeapon, sMeansOfDeath );
-	}
-
 	if ( game["state"] == "endround" )
 		return;
 
-	if ( level.practice )
+	if ( level.practice || game["state"] == "waiting" || game["state"] == "lobby" )
 	{
 		wait .05; // No die handler fix
 		self playerSpawn();
 	}
 }
 
-playerDisconnect()
+PlayerDisconnect()
 {
 	level notify( "disconnected", self );
 
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
+}
+
+watchHealth()
+{
+	self endon( "disconnect" );
+	self setClientDvar( "ui_health_text", 100 );
+	self setClientDvar( "ui_health_bar", 1 );
+
+	while ( 1 )
+	{
+		self waittill( "damage", amount );
+		health = ( self.health / self.maxhealth );
+		if ( health > 1 ) health = 1;
+
+		self setClientDvars(
+			"ui_health_text", health * 100,
+			"ui_health_bar", health
+		);
+	}
+}
+
+playerTimer()
+{
+	self endon( "disconnect" );
+	self endon( "death" );
+
+	if ( !level.mapHasTimeTrigger || isDefined( self.finishedMap ) || self.pers["team"] == "axis" )
+		return;
+
+	while ( game["state"] != "playing" )
+		wait .05;
+
+	self.time = 0;
+
+	while ( game["state"] == "playing" && !isDefined( self.finishedMap ) )
+	{
+		self.time += 1;
+		self setClientDvar( "ui_player_timer", formatTimer( self.time ) );
+		wait .1;
+	}
+}
+
+endTimer()
+{
+	if ( isDefined( self.finishedMap ) || game["state"] != "playing" )
+		return;
+
+	self.finishedMap = true;
+
+	self iPrintLn( "Your Time: " + formatTimer( self.time ) );
 }

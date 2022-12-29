@@ -130,10 +130,11 @@
 		fullScreen		0
 		visible 		when ( !ui_active() );
 
-        // CREATE_SHADER( 0 8 853 481 1 0 , "hud_placeholder", 1 1 1 1, 1 )
+        // CREATE_SHADER( 0 8 853 481 1 0 , "ui_hud_placeholder", 1 1 1 1, 1 )
 
         HUD_ROUND_INFO
         HUD_JUMPER_INFO
+		PLAYER_INFO
 	}
 
     #define RECT_COMPASS	0 0 COMPASS_SIZE_MP COMPASS_SIZE_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP

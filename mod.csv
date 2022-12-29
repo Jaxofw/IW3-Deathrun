@@ -113,7 +113,8 @@ material,hud_notify
 material,hud_notify_footer
 material,hud_square_round_right
 material,hud_square_round_left
-material,hud_placeholder
+material,ui_hud_divider
+material,ui_hud_placeholder
 
 # Reticles
 material,knife_ballistic_reticle
