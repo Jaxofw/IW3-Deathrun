@@ -27,6 +27,7 @@
 		name			"settings"
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "team_marinesopfor"; }
 
 		ARCANE_INGAME_MENU( 2 )
 
@@ -41,6 +42,7 @@
 		name			"leave"
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "team_marinesopfor"; }
 
 		ARCANE_INGAME_MENU( 2 )
 
