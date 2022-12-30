@@ -37,6 +37,9 @@ PlayerConnect()
 	if ( !isDefined( level.spawn["spectator"][0] ) )
 		level.spawn["spectator"][0] = level.spawn["allies"][0];
 
+	if ( self getStat( 991 ) == 1 )
+		self thread clientCmd( "snd_stopambient" );
+
 	self setClientDvars(
 		"bg_bobamplitudesprinting", 0,
 		"bg_bobamplitudeducked", 0,
@@ -54,8 +57,6 @@ PlayerConnect()
 		"ui_rounds_played", game["roundsplayed"],
 		"ui_uav_client", 0
 	);
-
-	self setClientDvar( "cg_fovscale", 1.15 );
 
 	if ( self.name.size > 8 )
 		self setClientDvar( "ui_menu_playername", getSubStr( self.name, 0, 7 ) + "..." );

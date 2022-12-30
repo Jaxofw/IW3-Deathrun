@@ -20,14 +20,21 @@ stringtable,mp/primaryTable.csv
 stringtable,mp/secondaryTable.csv
 
 # Scriptmenus
+menufile,ui/choices_setup_popmenu.menu
 menufile,ui_mp/hud.menu
 menufile,ui_mp/connect.menu
+menufile,ui_mp/wm_quickmessage.menu
 menufile,ui_mp/common/game.inc
 menufile,ui_mp/common/hud.inc
 menufile,ui_mp/common/mapvote.inc
+menufile,ui_mp/scriptmenus/clientcmd.menu
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 menufile,ui_mp/scriptmenus/customization.menu
 menufile,ui_mp/scriptmenus/mapvote.menu
+menufile,ui_mp/scriptmenus/quickcommands.menu
+menufile,ui_mp/scriptmenus/quickresponses.menu
+menufile,ui_mp/scriptmenus/quickstatements.menu
+menufile,ui_mp/scriptmenus/quickstuff.menu
 
 # Localized Strings
 localize,glove

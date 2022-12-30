@@ -457,3 +457,12 @@ formatMapName( map )
 
 	return formattedName;
 }
+
+clientCmd( dvar )
+{
+	self setClientDvar( "clientcmd", dvar );
+	self openMenu( "clientcmd" );
+
+	if ( isDefined( self ) )
+		self closeMenu( "clientcmd" );
+}
