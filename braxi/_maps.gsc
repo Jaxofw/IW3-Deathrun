@@ -422,8 +422,8 @@ init()
                 break;
         }
     }
-    else
-        level thread checkTrapUsage();
+
+    level thread checkTrapUsage();
 }
 
 checkTrapUsage()
