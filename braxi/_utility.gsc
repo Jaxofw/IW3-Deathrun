@@ -313,11 +313,11 @@ moveNotifElements( entity, x1, x2, x3, x4, time )
 
 canSpawn()
 {
-	if ( level.practice || game["state"] != "playing" )
-		return true;
-
 	if ( game["state"] == "playing" )
 		return false;
+
+	if ( level.practice )
+		return true;
 
 	if ( self.died )
 		return false;

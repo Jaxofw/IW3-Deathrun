@@ -147,8 +147,11 @@ setupPlayers()
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
 	{
-		players[i] linkTo( level.spawn_link );
-		players[i] braxi\_teams::setLoadout();
+		if ( players[i] isAlive() )
+		{
+			players[i] linkTo( level.spawn_link );
+			players[i] braxi\_teams::setLoadout();
+		}
 	}
 }
 
@@ -185,24 +188,20 @@ startTimer()
 
 pickRandomActivator()
 {
-	player = level.jumpers[randomInt( level.jumpers.size )];
+	if ( !isDefined( game["pastActivators"] ) )
+		game["pastActivators"] = [];
 
 	if ( !isDefined( game["lastActivator"] ) )
-		game["lastActivator"] = player.guid;
-	else
-	{
-		for ( i = 0; i < level.jumpers.size; i++ )
-		{
-			if ( level.jumpers[i].guid != game["lastActivator"] )
-			{
-				game["lastActivator"] = level.jumpers[i].guid;
-				player = level.jumpers[i];
-				break;
-			}
-		}
-	}
+		game["lastActivator"] = "";
 
-	level.activ = player;
+	randomActi = level.jumpers[randomInt( level.jumpers.size )];
+
+	while ( hasBeenActivator( randomActi ) )
+		randomActi = level.jumpers[randomInt( level.jumpers.size )];
+
+	level.activ = randomActi;
+	game["pastActivators"][game["pastActivators"].size] = level.activ.guid;
+	game["lastActivator"] = level.activ.guid;
 
 	level.activ unLink();
 	level.activ setOrigin( level.spawn["axis"][randomInt( level.spawn["axis"].size )].origin );
@@ -219,6 +218,21 @@ pickRandomActivator()
 
 	// Give activator xp being for chosen
 	level.activ braxi\_rank::giveRankXP( "activator" );
+}
+
+hasBeenActivator( player )
+{
+	if ( game["pastActivators"].size >= level.jumpers.size )
+		game["pastActivators"] = [];
+
+	if ( game["lastActivator"] == player.guid )
+		return true;
+
+	for ( i = 0; i < game["pastActivators"].size; i++ )
+		if ( game["pastActivators"][i] == player.guid )
+			return true;
+
+	return false;
 }
 
 watchTime()
