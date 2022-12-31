@@ -6,7 +6,6 @@ init()
 {
 	level.rankTable = [];
 	level.scoreInfo = [];
-
 	level.maxRank = int( tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 ) );
 
 	setScoreValue( "kill", 200 );
