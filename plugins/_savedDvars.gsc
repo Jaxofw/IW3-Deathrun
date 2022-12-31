@@ -4,6 +4,7 @@ init()
     {
         level waittill( "connected", player );
         player thread fetchFov();
+        player thread fetchSpeedMeter();
     }
 }
 
@@ -15,4 +16,9 @@ fetchFov()
         self setClientDvar( "cg_fovscale", 2 );
     else
         self setClientDvar( "cg_fovscale", 1 + ( self getStat( 992 ) / 10 ) );
+}
+
+fetchSpeedMeter()
+{
+    self setClientDvar( "ui_player_speed_vis", self getStat( 993 ) );
 }

@@ -17,7 +17,7 @@
 {
 	menuDef
 	{
-		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 7, CHOICE_POPUP_START_X, 272, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 8, CHOICE_POPUP_START_X, 252, ;, setDvar cl_bypassMouseInput "1";, 0 )
 		onClose{ setDvar cl_bypassMouseInput "0" }
 		
 		CHOICE_POPMENU_TITLE( "Player Menu" )
@@ -26,7 +26,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			1
+			visible			when ( dvarInt( "cg_thirdperson" ) == 1 )
 			rect			16 20 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -34,7 +34,21 @@
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textscale		TEXTSIZE_SMALL
 			textaligny		8
-			text			"1. Third Person On/Off"
+			text			"1. Third Person ^2On"
+			decoration
+		}
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "cg_thirdperson" ) == 0 )
+			rect			16 20 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"1. Third Person ^1Off"
 			decoration
 		}
 		execKey "1" { scriptMenuResponse "3rdperson"; close quickstuff }
@@ -58,7 +72,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			1
+			visible			when ( dvarInt( "r_fullbright" ) == 1 )
 			rect			16 52 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -66,7 +80,21 @@
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textscale		TEXTSIZE_SMALL
 			textaligny		8
-			text			"3. Fullbright On/Off"
+			text			"3. Fullbright ^2On"
+			decoration
+		}
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "r_fullbright" ) == 0 )
+			rect			16 52 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"3. Fullbright ^1Off"
 			decoration
 		}
 		execKey "3" { scriptMenuResponse "fullbright"; close quickstuff }
@@ -74,7 +102,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			1
+			visible			when ( dvarInt( "fx_enable" ) == 1 )
 			rect			16 68 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -82,7 +110,21 @@
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textscale		TEXTSIZE_SMALL
 			textaligny		8
-			text			"4. Effects On/Off"
+			text			"4. Effects ^2On"
+			decoration
+		}
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "fx_enable" ) == 0 )
+			rect			16 68 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"4. Effects ^1Off"
 			decoration
 		}
 		execKey "4" { scriptMenuResponse "effects"; close quickstuff }
@@ -90,7 +132,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			1
+			visible			when ( dvarInt( "ui_player_speed_vis" ) == 1 )
 			rect			16 84 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -98,16 +140,46 @@
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textscale		TEXTSIZE_SMALL
 			textaligny		8
-			text			"5. Stop Music"
+			text			"5. Speed Meter ^2On"
 			decoration
 		}
-		execKey "5" { scriptMenuResponse "stopmusic"; close quickstuff }
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "ui_player_speed_vis" ) == 0 )
+			rect			16 84 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"5. Speed Meter ^1Off"
+			decoration
+		}
+		execKey "5" { scriptMenuResponse "speedmeter"; close quickstuff }
 
 		itemDef
 		{
 			name			"window"
 			visible			1
-			rect			16 108 0 0
+			rect			16 100 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"6. Stop Music"
+			decoration
+		}
+		execKey "6" { scriptMenuResponse "stopmusic"; close quickstuff }
+
+		itemDef
+		{
+			name			"window"
+			visible			1
+			rect			16 124 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL

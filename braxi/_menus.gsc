@@ -256,6 +256,20 @@ onMenuResponse()
 						self setStat( 991, 0 );
 					}
 					break;
+				case "speedmeter":
+					if ( self getStat( 993 ) == 0 )
+					{
+						self iPrintln( "Meter ^2Enabled" );
+						self setClientDvar( "ui_player_speed_vis", 1 );
+						self setStat( 993, 1 );
+					}
+					else
+					{
+						self iPrintln( "Meter ^1Disabled" );
+						self setClientDvar( "ui_player_speed_vis", 0 );
+						self setStat( 993, 0 );
+					}
+					break;
 			}
 		}
 		else if ( !level.console )

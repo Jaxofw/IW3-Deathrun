@@ -16,6 +16,9 @@
 #define HEALTH_TEXT         (dvarInt( "ui_health_text" ))
 #define HEALTH_BAR          (dvarFloat( "ui_health_bar" ))
 
+#define SPEEDMETER_TEXT     (dvarString( "ui_player_speed" ))
+#define SPEEDMETER_VIS      (dvarInt( "ui_player_speed_vis" ))
+
 #define ROUND_TEXT \
     CREATE_TEXT( 25 46.5 0 0 1 1, "Practice", 1 1 1 1, 0.3, 0, ROUND_STATUS == "practice" ) \
     CREATE_TEXT( 25 46.5 0 0 1 1, "Round " + ROUND_CURRENT + "/" + ROUND_MAX, 1 1 1 1, 0.3, 0, ROUND_STATUS != "practice" )
@@ -59,3 +62,6 @@
     CREATE_SHADER( 64 442 2 15 1 1, "ui_hud_divider", 1 1 1 1, 1 ) \
     CREATE_TEXT( 88.5 456 0 0 1 1, HEALTH_TEXT, 1 1 1 1, 0.28, 1, 1 ) \
     CREATE_SHADER_EX( 17 460 95 3 1 1, "hud_notify_footer", 1 1 1 1, 1, exp	rect W( 95 * HEALTH_BAR ) )
+
+#define SPEED_METER \
+    CREATE_TEXT_EX( 426 475 0 0 1 1, SPEEDMETER_TEXT, COLOR_ARCANE 1, 0.36, 1, SPEEDMETER_VIS, textstyle ITEM_TEXTSTYLE_SHADOWED )
