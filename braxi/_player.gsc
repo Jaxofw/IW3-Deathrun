@@ -146,7 +146,20 @@ PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, v
 
 	level notify( "player_damage", self, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 
-	if ( isPlayer( eAttacker ) && eAttacker.pers["team"] == self.pers["team"] ) return;
+	if ( isDefined( eAttacker ) && isPlayer( eAttacker ) )
+	{
+		if ( eAttacker.pers["team"] == self.pers["team"] )
+		{
+			if ( eAttacker getStat( 994 ) == 0 || eAttacker getStat( 994 ) == 2 )
+				eAttacker thread hitmarker();
+			return;
+		}
+		else
+		{
+			if ( eAttacker getStat( 994 ) == 0 || eAttacker getStat( 994 ) == 1 )
+				eAttacker thread hitmarker();
+		}
+	}
 
 	if ( !isDefined( vDir ) )
 		iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
@@ -264,4 +277,12 @@ endTimer()
 	self.finishedMap = true;
 
 	self iPrintLn( "Your Time: " + formatTimer( self.time ) );
+}
+
+hitmarker()
+{
+	self playLocalSound( "MP_hit_alert" );
+	self.hud_damagefeedback.alpha = 1;
+	self.hud_damagefeedback fadeOverTime( 1 );
+	self.hud_damagefeedback.alpha = 0;
 }

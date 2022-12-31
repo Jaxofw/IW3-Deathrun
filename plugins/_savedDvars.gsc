@@ -5,6 +5,7 @@ init()
         level waittill( "connected", player );
         player thread fetchFov();
         player thread fetchSpeedMeter();
+        player thread fetchHitmarkers();
     }
 }
 
@@ -21,4 +22,9 @@ fetchFov()
 fetchSpeedMeter()
 {
     self setClientDvar( "ui_player_speed_vis", self getStat( 993 ) );
+}
+
+fetchHitmarkers()
+{
+    self setClientDvar( "ui_hitmarkers", self getStat( 994 ) );
 }

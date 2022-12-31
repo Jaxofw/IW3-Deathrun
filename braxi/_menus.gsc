@@ -270,6 +270,26 @@ onMenuResponse()
 						self setStat( 993, 0 );
 					}
 					break;
+				case "hitmarkers":
+					if ( self getStat( 994 ) == 0 )
+					{
+						self setClientDvar( "ui_hitmarkers", 0 );
+						self setStat( 994, 1 );
+						self iPrintln( "Hitmarkers ^9Enemy" );
+					}
+					else if ( self getStat( 994 ) == 1 )
+					{
+						self setClientDvar( "ui_hitmarkers", 1 );
+						self setStat( 994, 2 );
+						self iPrintln( "Hitmarkers ^8Friendly" );
+					}
+					else if ( self getStat( 994 ) == 2 )
+					{
+						self setClientDvar( "ui_hitmarkers", 2 );
+						self setStat( 994, 0 );
+						self iPrintln( "Hitmarkers ^2All" );
+					}
+					break;
 			}
 		}
 		else if ( !level.console )

@@ -17,7 +17,7 @@
 {
 	menuDef
 	{
-		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 8, CHOICE_POPUP_START_X, 252, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 9, CHOICE_POPUP_START_X, 232, ;, setDvar cl_bypassMouseInput "1";, 0 )
 		onClose{ setDvar cl_bypassMouseInput "0" }
 		
 		CHOICE_POPMENU_TITLE( "Player Menu" )
@@ -162,7 +162,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			1
+			visible			when ( dvarInt( "ui_hitmarkers" ) == 2 )
 			rect			16 100 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -170,16 +170,60 @@
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textscale		TEXTSIZE_SMALL
 			textaligny		8
-			text			"6. Stop Music"
+			text			"6. Hitmarkers ^2All"
 			decoration
 		}
-		execKey "6" { scriptMenuResponse "stopmusic"; close quickstuff }
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "ui_hitmarkers" ) == 0 )
+			rect			16 100 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"6. Hitmarkers ^9Enemy"
+			decoration
+		}
+		itemDef
+		{
+			name			"window"
+			visible			when ( dvarInt( "ui_hitmarkers" ) == 1 )
+			rect			16 100 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"6. Hitmarkers ^8Friendly"
+			decoration
+		}
+		execKey "6" { scriptMenuResponse "hitmarkers"; close quickstuff }
 
 		itemDef
 		{
 			name			"window"
 			visible			1
-			rect			16 124 0 0
+			rect			16 116 0 0
+			origin			ORIGIN_QUICKSTUFFWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"7. Stop Music"
+			decoration
+		}
+		execKey "7" { scriptMenuResponse "stopmusic"; close quickstuff }
+
+		itemDef
+		{
+			name			"window"
+			visible			1
+			rect			16 140 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL
