@@ -120,9 +120,7 @@ onMenuResponse()
 			id = int( response ) - 1;
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_primary, id ) )
 			{
-				prevPrimary = self.pers["primary"];
 				self setStat( 981, id );
-				self.pers["primary"] = level.weapon_primary[id]["item"];
 
 				if ( self isAlive() )
 				{
@@ -131,6 +129,9 @@ onMenuResponse()
 
 					if ( !isDefined( self.finishedMap ) )
 					{
+						prevPrimary = self.pers["primary"];
+						self.pers["primary"] = level.weapon_primary[id]["item"];
+
 						self takeWeapon( prevPrimary );
 						self giveWeapon( self.pers["primary"] );
 						self giveMaxAmmo( self.pers["primary"] );
@@ -144,9 +145,7 @@ onMenuResponse()
 			id = int( response ) - 1;
 			if ( self braxi\_rank::isItemUnlocked( level.weapon_secondary, id ) )
 			{
-				prevSecondary = self.pers["secondary"];
 				self setStat( 982, id );
-				self.pers["secondary"] = level.weapon_secondary[id]["item"];
 
 				if ( self isAlive() )
 				{
@@ -155,6 +154,9 @@ onMenuResponse()
 
 					if ( !isDefined( self.finishedMap ) )
 					{
+						prevSecondary = self.pers["secondary"];
+						self.pers["secondary"] = level.weapon_secondary[id]["item"];
+
 						self takeWeapon( prevSecondary );
 						self giveWeapon( self.pers["secondary"] );
 						self giveMaxAmmo( self.pers["secondary"] );
