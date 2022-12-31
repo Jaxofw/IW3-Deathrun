@@ -58,6 +58,7 @@ init()
 	level thread gameLogic();
 	level thread updateJumperHud();
 	level thread fastestTime();
+	thread plugins\_plugins::init();
 }
 
 watchPlayers()

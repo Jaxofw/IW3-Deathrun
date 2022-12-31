@@ -24,6 +24,10 @@
 #define BUTTON_RECT( idx )				BUTTON_ORIGIN( idx ) 170 BUTTON_Y_SIZE 1 1
 #define BUTTON_HEADER_RECT( idx )		BUTTON_HEADER_ORIGIN( idx ) 180 BUTTON_Y_SIZE 1 1
 
+#define BUTTON_BORDER_WIDTH				2
+#define BUTTON_SLIDER_WIDTH				95
+#define BUTTON_SLIDER_HEIGHT			20
+
 #define COLOR_ARCANE					0.18 0.36 0.82
 
 #define CREATE_SHADER( position, texture, forecolor_, visible_ ) \
@@ -90,7 +94,7 @@
 #define CREATE_BUTTON( idx, string, action_, visible_ ) \
 	itemDef \
 	{ \
-		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) 2 BUTTON_Y_SIZE 1 1 \
+		rect 			BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) BUTTON_BORDER_WIDTH BUTTON_Y_SIZE 1 1 \
 		style			WINDOW_STYLE_SHADER \
 		visible			when ( visible_ ) \
 		forecolor		COLOR_ARCANE 1 \
@@ -103,7 +107,7 @@
 		style			WINDOW_STYLE_FILLED \
 		visible			when ( visible_ ) \
 		exp 			text ( string ) \
-		exp 			material ( "grey_button_shit" ) \
+		exp 			material ( "ui_menu_button" ) \
 		forecolor		1 1 1 1 \
 		backcolor		0 0 0 0.5 \
 		textaligny		19 \
@@ -138,3 +142,20 @@
 		CURRENT_LEVEL < tableLookup( table, 0, action_, 2 ) \
 	) \
 	CREATE_SHADER( (BUTTON_X_POS( idx ) + 150) (BUTTON_Y_POS( idx ) + 7) 10 10 1 1, "menu_lock", 1 1 1 1, CURRENT_LEVEL < tableLookup( table, 0, action_, 2 ) )
+
+#define CREATE_DVARSLIDER( idx, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, extraArg, visArg ) \
+		CREATE_SHADER( BUTTON_X_POS( idx ) BUTTON_Y_POS( idx ) BUTTON_BORDER_WIDTH BUTTON_Y_SIZE 1 0, "white", COLOR_ARCANE 1, 1 ) \
+		CREATE_SHADER( BUTTON_RECT( idx ), "ui_menu_button", 0 0 0 0.5, 1 ) \
+		CREATE_TEXT( (BUTTON_X_POS( idx ) + 10) (BUTTON_Y_POS( idx ) + 20) 0 0 1 0, textArg, 1 1 1 1, 0.3, 0, 1 ) \
+		itemDef \
+		{ \
+			type			ITEM_TYPE_SLIDER \
+			dvarfloat		dvarArg defaultArg minArg maxArg \
+			rect			(BUTTON_X_POS( idx ) + 70) BUTTON_Y_POS( idx ) BUTTON_SLIDER_WIDTH BUTTON_SLIDER_HEIGHT 1 0 \
+			textaligny		4 \
+			style			WINDOW_STYLE_FILLED \
+			forecolor		CHOICE_TEXTCOLOR \
+			visible			visArg \
+			extraArg 		\
+			CHOICE_SCRIPTS_ACTION( idx, actionArg ) \
+		}

@@ -4,6 +4,7 @@ init()
 {
 	game["menu_team"] = "team_marinesopfor";
 	game["menu_customize"] = "customization";
+	game["menu_settings"] = "settings";
 	game["menu_jumpers"] = "jumpers";
 	game["menu_jumpers2"] = "jumpers2";
 	game["menu_activators"] = "activators";
@@ -20,6 +21,7 @@ init()
 
 	preCacheMenu( game["menu_team"] );
 	preCacheMenu( game["menu_customize"] );
+	preCacheMenu( game["menu_settings"] );
 	preCacheMenu( game["menu_jumpers"] );
 	preCacheMenu( game["menu_jumpers2"] );
 	preCacheMenu( game["menu_activators"] );
@@ -168,6 +170,24 @@ onMenuResponse()
 			{
 				self setStat( 983, id );
 				self setViewModel( level.model_glove[id]["item"] );
+			}
+		}
+		else if ( menu == game["menu_settings"] )
+		{
+			wait .3;
+			if ( response == "updateFovScale" )
+			{
+				fov = getDvarFloat( "cg_fovscale" );
+
+				if ( fov == 1.0 )
+					self setStat( 992, 0 );
+				else if ( fov == 2.0 )
+					self setStat( 992, 2 );
+				else
+				{
+					fov = int( fov * 10 ) % 10;
+					self setStat( 992, fov );
+				}
 			}
 		}
 		else if ( menu == game["menu_quickstuff"] )

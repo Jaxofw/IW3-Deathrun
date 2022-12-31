@@ -108,7 +108,7 @@ material,rank_49
 material,menu_rank_bg
 material,menu_rank_bar
 material,menu_button_border
-material,grey_button_shit
+material,ui_menu_button
 material,menu_lock
 material,hud_notify
 material,hud_notify_footer
