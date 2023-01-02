@@ -4,7 +4,6 @@
 *.log
 *.cfg
 *.old
-*.bat
 missingasset.csv
 q3config_server.cfg
 .vscode
