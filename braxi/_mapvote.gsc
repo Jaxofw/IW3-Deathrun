@@ -96,12 +96,6 @@ mapVoteLogic()
         wait 1;
     }
 
-    for ( i = 0; i < players.size; i++ )
-    {
-        players[i] closeMenu( game["menu_mapvote"] );
-        players[i] closeInGameMenu( game["menu_mapvote"] );
-    }
-
     changeToWinningMap();
 }
 
@@ -142,10 +136,25 @@ isMapinVotes( mapName )
 changeToWinningMap()
 {
     topVote = level.mapsVotable[0];
+    players = getAllPlayers();
 
     for ( i = 0; i < level.mapsVotable.size; i++ )
+    {
         if ( level.mapsVotable[i]["votes"] > topVote["votes"] )
+        {
             topVote = level.mapsVotable[i];
+            for ( j = 0; j < players.size; j++ )
+                players[j] setClientDvar( "mapvote_option_" + i + "_winner", true );
+        }
+    }
+
+    wait 2;
+
+    for ( i = 0; i < players.size; i++ )
+    {
+        players[i] closeMenu( game["menu_mapvote"] );
+        players[i] closeInGameMenu( game["menu_mapvote"] );
+    }
 
     iPrintLnBold( "Changing map to ^5" + formatMapName( topVote["name"] ) );
 
@@ -177,6 +186,7 @@ playerLogic()
                 if ( self.vote != -1 )
                 {
                     level.mapsVotable[self.vote]["votes"]--;
+                    self setClientDvar( "mapvote_option_" + self.vote + "_selected", false );
 
                     for ( i = 0; i < players.size; i++ )
                         players[i] setClientDvar( "mapvote_option_" + self.vote + "_votes", level.mapsVotable[self.vote]["votes"] );
@@ -184,6 +194,7 @@ playerLogic()
 
                 self.vote = mapId;
                 level.mapsVotable[mapId]["votes"]++;
+                self setClientDvar( "mapvote_option_" + self.vote + "_selected", true );
 
                 for ( i = 0; i < players.size; i++ )
                     players[i] setClientDvar( "mapvote_option_" + mapId + "_votes", level.mapsVotable[mapId]["votes"] );
