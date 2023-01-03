@@ -114,7 +114,11 @@ giveRankXp( type, value )
 {
 	self endon( "disconnect" );
 
-	if ( !isDefined( value ) ) value = getScoreValue( type );
+	if ( level.practice || game["state"] != "playing" )
+		return;
+
+	if ( !isDefined( value ) )
+		value = getScoreValue( type );
 
 	self.score += value;
 	self.pers["score"] = self.score;
@@ -161,8 +165,10 @@ updateRankStats( player, rankId )
 	player maps\mp\gametypes\_persistence::statSet( "minxp", getRankMinXp( rankId ) );
 	player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankMaxXp( rankId ) );
 
-	if ( rankId > level.maxRank ) player setStat( 252, level.maxRank );
-	else player setStat( 252, rankId );
+	if ( rankId > level.maxRank )
+		player setStat( 252, level.maxRank );
+	else
+		player setStat( 252, rankId );
 }
 
 updateRankScoreHUD( amount )
@@ -198,6 +204,7 @@ updateRankScoreHUD( amount )
 		self.hud_rankscoreupdate thread maps\mp\gametypes\_hud::fontPulse( self );
 
 		wait 2;
+
 		self.hud_rankscoreupdate fadeOverTime( 0.75 );
 		self.hud_rankscoreupdate.alpha = 0;
 		self.rankUpdateTotal = 0;
@@ -212,10 +219,15 @@ getRankForXp( xpVal )
 
 	while ( isDefined( rankName ) && rankName != "" )
 	{
-		if ( xpVal < getRankMinXp( rankId ) + getRankXpAmount( rankId ) ) return rankId;
+		if ( xpVal < getRankMinXp( rankId ) + getRankXpAmount( rankId ) )
+			return rankId;
+
 		rankId++;
-		if ( isDefined( level.rankTable[rankId] ) ) rankName = level.rankTable[rankId][1];
-		else rankName = undefined;
+
+		if ( isDefined( level.rankTable[rankId] ) )
+			rankName = level.rankTable[rankId][1];
+		else
+			rankName = undefined;
 	}
 
 	rankId--;
@@ -247,19 +259,31 @@ getRankIcon( rank, prestige )
 	return tableLookup( "mp/rankIconTable.csv", 0, rank, prestige + 1 );
 }
 
-setScoreValue( type, value )
+setScoreValue( type, value, id )
 {
-	level.scoreInfo[type]["value"] = value;
+	index = level.scoreInfo.size;
+
+	if ( isDefined( id ) )
+		index = id;
+
+	level.scoreInfo[index]["type"] = type;
+	level.scoreInfo[index]["value"] = value;
 }
 
 getScoreValue( type )
 {
-	return ( level.scoreInfo[type]["value"] );
+	for ( i = 0; i < level.scoreInfo.size; i++ )
+		if ( level.scoreInfo[i]["type"] == type )
+			return level.scoreInfo[i]["value"];
 }
 
 isItemUnlocked( table, id )
 {
-	if ( id >= table.size || id <= -1 ) return false;
-	if ( self.pers["rank"] >= table[id]["rank"] ) return true;
+	if ( id >= table.size || id <= -1 )
+		return false;
+
+	if ( self.pers["rank"] >= table[id]["rank"] )
+		return true;
+
 	return false;
 }

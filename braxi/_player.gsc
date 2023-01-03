@@ -51,6 +51,7 @@ PlayerConnect()
 		"player_sprintTime", 12.8,
 		"port", getDvar( "net_port" ),
 		"show_hud", true,
+		"ui_exp_event", level.xpEvent,
 		"ui_menu_playername", self.name,
 		"ui_player_timer", formatTimer( 0 ),
 		"ui_rounds_limit", level.dvar["roundslimit"],

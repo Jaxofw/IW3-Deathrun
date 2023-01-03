@@ -29,6 +29,11 @@
 #define BUTTON_SLIDER_HEIGHT			20
 
 #define COLOR_ARCANE					0.18 0.36 0.82
+#define COLOR_XP_BAR_NORMAL				0 0.5 1
+#define COLOR_XP_BAR_EVENT				1 0.8 0.4
+
+#define XP_BAR_MENU_ALPHA				1
+#define XP_BAR_HUD_ALPHA				0.7
 
 #define CREATE_SHADER( position, texture, forecolor_, visible_ ) \
 	CREATE_SHADER_EX( position, texture, forecolor_, visible_, ; )
@@ -65,15 +70,8 @@
 	CREATE_TEXT_EX( 125 427 170 36 1 0, dvarstring( "motd" ), 1 1 1 1, 0.26, 0, 1, autowrapped )
 
 #define MENU_XP_BAR \
-	itemDef \
-	{ \
-		rect 			175 87 55 4 1 0 \
-		style 			WINDOW_STYLE_SHADER \
-		foreColor 		COLOR_ARCANE 1 \
-		background		"menu_rank_bar" \
-		exp 			rect W( ( 87 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351)) ) ) ) \
-		visible 		when ( 1 ) \
-	}
+	CREATE_SHADER_EX( 175 87 55 4 1 0, "menu_rank_bar", COLOR_XP_BAR_NORMAL XP_BAR_MENU_ALPHA, !dvarInt( "ui_exp_event" ), exp rect W( ( 87 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351)) ) ) ) ) \
+	CREATE_SHADER_EX( 175 87 55 4 1 0, "menu_rank_bar", COLOR_XP_BAR_EVENT XP_BAR_MENU_ALPHA, dvarInt( "ui_exp_event" ), exp rect W( ( 87 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351)) ) ) ) )
 
 #define XP_UNTIL_NEXT_LEVEL \
 	CREATE_TEXT( 175 83 36 36 1 0, CURRENT_XP + " XP Left Until Level " + NEXT_LEVEL, 1 1 1 1, 0.24, 0, CURRENT_LEVEL < MAX_LEVEL ) \
