@@ -55,8 +55,8 @@ LANG_ENGLISH        "XPR-50"
 REFERENCE           PPSH
 LANG_ENGLISH        "PPSH"
 
-REFERENCE           FNP45
-LANG_ENGLISH        "TAC-45"
+REFERENCE           GLOCK
+LANG_ENGLISH        "Kendall 44"
 
 REFERENCE           RAYGUN
 LANG_ENGLISH        "Ray Gun"
