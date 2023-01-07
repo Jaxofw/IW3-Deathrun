@@ -230,7 +230,7 @@ weapon,mp/t4_thompson_mp
 weapon,mp/iw7_emc_mp
 weapon,mp/t6_xpr50_mp
 weapon,mp/t4_ppsh_mp
-weapon,mp/t6_fnp45_mp
+weapon,mp/iw7_kendall_mp
 
 weapon,mp/t9_raygun_mp
 weapon,mp/t6_blundergat_mp
@@ -308,8 +308,8 @@ xmodel,worldmodel_bo2_xpr50
 xmodel,wpn_t4_ppsh_vm
 xmodel,wpn_t4_ppsh_npc
 
-xmodel,wpn_t6_fnp45_vm
-xmodel,wpn_t6_fnp45_npc
+xmodel,wpn_iw7_glock_vm
+xmodel,wpn_iw7_glock_npc
 
 # PModels
 xmodel,wpn_t9_raygun_vm
@@ -611,18 +611,21 @@ xanim,vm_t4_ppsh_sprint_in
 xanim,vm_t4_ppsh_sprint_loop
 xanim,vm_t4_ppsh_sprint_out
 
-xanim,vm_t6_fnp45_ads_down
-xanim,vm_t6_fnp45_ads_up
-xanim,vm_t6_fnp45_drop
-xanim,vm_t6_fnp45_fire
-xanim,vm_t6_fnp45_fire_ads
-xanim,vm_t6_fnp45_fire_last
-xanim,vm_t6_fnp45_idle
-xanim,vm_t6_fnp45_raise
-xanim,vm_t6_fnp45_raise_first
-xanim,vm_t6_fnp45_reload
-xanim,vm_t6_fnp45_reload_empty
-xanim,vm_t6_fnp45_sprint_loop
+xanim,vm_iw7_glock_ads_down
+xanim,vm_iw7_glock_ads_up
+xanim,vm_iw7_glock_drop
+xanim,vm_iw7_glock_fire
+xanim,vm_iw7_glock_fire_ads
+xanim,vm_iw7_glock_fire_ads_last
+xanim,vm_iw7_glock_fire_last
+xanim,vm_iw7_glock_idle
+xanim,vm_iw7_glock_raise
+xanim,vm_iw7_glock_raise_first
+xanim,vm_iw7_glock_reload
+xanim,vm_iw7_glock_reload_empty
+xanim,vm_iw7_glock_sprint_in
+xanim,vm_iw7_glock_sprint_loop
+xanim,vm_iw7_glock_sprint_out
 
 # PAnims
 xanim,vm_t9_raygun_ads_down
