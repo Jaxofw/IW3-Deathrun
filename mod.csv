@@ -37,6 +37,7 @@ menufile,ui_mp/scriptmenus/quickstatements.menu
 menufile,ui_mp/scriptmenus/quickstuff.menu
 
 # Localized Strings
+localize,menu
 localize,glove
 localize,jumper
 localize,rank

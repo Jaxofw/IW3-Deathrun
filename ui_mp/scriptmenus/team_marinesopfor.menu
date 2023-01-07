@@ -11,13 +11,13 @@
 
 		ARCANE_INGAME_MENU( 2 )
 
-		CREATE_BUTTON( 1, "Auto-Assign", scriptMenuResponse "autoassign";, 1 )
-		CREATE_BUTTON( 2, "Spectate", scriptMenuResponse "spectate";, 1 )
-		CREATE_BUTTON( 3, "Customization", close self; open "customization";, 1 )
-		CREATE_BUTTON( 4, "Challenges", scriptMenuResponse "challenges";, 1 )
-		CREATE_BUTTON( 5, "Leaderboard", scriptMenuResponse "leaderboard";, 1 )
-		CREATE_BUTTON( 6, "Settings", close self; open "settings";, 1 )
-		CREATE_BUTTON( 7, "Leave Game", close self; open "leave";, 1 )
+		CREATE_BUTTON( 1, "@MENU_PLAY", scriptMenuResponse "autoassign", 1 )
+		CREATE_BUTTON( 2, "@MENU_SPECTATE", scriptMenuResponse "spectate", 1 )
+		CREATE_BUTTON( 3, "@MENU_CUSTOMIZE", close self; open "customization", 1 )
+		CREATE_BUTTON( 4, "@MENU_CHALLENGES", scriptMenuResponse "challenges", 1 )
+		CREATE_BUTTON( 5, "@MENU_LEADERBOARD", scriptMenuResponse "leaderboard", 1 )
+		CREATE_BUTTON( 6, "@MENU_SETTINGS", close self; open "settings", 1 )
+		CREATE_BUTTON( 7, "@MENU_LEAVE", close self; open "leave", 1 )
 
 		CREATE_FOOTER
 	}
@@ -31,12 +31,30 @@
 
 		ARCANE_INGAME_MENU( 2 )
 
-		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls";, 1 )
-		CREATE_BUTTON( 2, "Options", close self; open "options_graphics";, 1 )
-		CREATE_DVARSLIDER( 3, "FOV", cg_fov, 65.0, 65.0, 80.0, ;, ;, 1 )
-		CREATE_DVARSLIDER( 4, "FOV Scale", cg_fovscale, 1.0, 1.0, 2.0, scriptMenuResponse "updateFovScale";, ;, 1 )
+		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls", 1 )
+		CREATE_BUTTON( 2, "@MENU_OPTIONS", close self; open "options_graphics", 1 )
+		CREATE_DVARSLIDER( 3, "@MENU_FOV", cg_fov, 65.0, 65.0, 80.0, ;, ;, 1 )
+		CREATE_DVARSLIDER( 4, "@MENU_FOVSCALE", cg_fovscale, 1.0, 1.0, 2.0, scriptMenuResponse "fovscale", ;, 1 )
+		CREATE_DVARFLOATLIST( 5, "@MENU_TOGGLE_HUD", show_hud, { "@MENU_YES" 1 "@MENU_NO" 0 }, ; )
+		CREATE_DVARFLOATLIST( 6, "@MENU_TOGGLE_ROUND", ui_rounds_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "round" )
+		CREATE_DVARFLOATLIST( 7, "@MENU_TOGGLE_JUMPER", ui_jumpers_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "jumper" )
+		CREATE_DVARFLOATLIST( 8, "@MENU_TOGGLE_PLAYER", ui_player_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "player" )
+		CREATE_DVARFLOATLIST( 9, "@MENU_TOGGLE_WEAPON", ui_weapon_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "weapon" )
+		CREATE_DVARFLOATLIST( 10, "@MENU_TOGGLE_XP_BAR", ui_exp_bar_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "xpbar" )
+		BUTTON_PAGE_NEXT( 11, team_marinesopfor, settings2 )
+	}
 
-		CREATE_FOOTER
+	menuDef
+	{
+		name			"settings2"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open "team_marinesopfor"; }
+
+		ARCANE_INGAME_MENU( 2 )
+
+		CREATE_DVARFLOATLIST( 1, "@MENU_TOGGLE_COMPASS", ui_compass_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "compass" )
+		BUTTON_PAGE_PREVIOUS( 2, settings )
 	}
 
 	menuDef
@@ -49,8 +67,8 @@
 		ARCANE_INGAME_MENU( 2 )
 
 		CREATE_TEXT( 125 130 36 36 1 0, "@MENU_ARE_YOU_SURE_QUIT", 1 1 1 1, 0.3, 0, 1 )
-		CREATE_BUTTON( 1, "@MENU_YES", close self; exec "disconnect";, 1 )
-		CREATE_BUTTON( 2, "@MENU_NO", close self; open "team_marinesopfor";, 1 )
+		CREATE_BUTTON( 1, "@MENU_YES", close self; exec "disconnect", 1 )
+		CREATE_BUTTON( 2, "@MENU_NO", close self; open "team_marinesopfor", 1 )
 
 		CREATE_FOOTER
 	}

@@ -466,3 +466,32 @@ clientCmd( dvar )
 	if ( isDefined( self ) )
 		self closeMenu( "clientcmd" );
 }
+
+toFloat( in )
+{
+	// Don't accept arrays or undefined, return 0
+	if ( isArray( in ) || !isDefined( in ) )
+		return 0;
+
+	// Return original argument, it's not a string so doesn't need any special type conversion algorithm
+	if ( !isString( in ) )
+		return in;
+
+	// Split string into 2 seperate strings
+	if ( isSubStr( in, "," ) ) // Would be great if people wouldn't use fucking commas for decimals where I live
+		num = strTok( in, "," );
+	else
+		num = strTok( in, "." );
+
+	// Don't need to execute extra logic if the number isn't a decimal and therefore wasn't split into a multi-element array
+	if ( num.size <= 1 )
+		return int( num[0] );
+
+	pwr = 10;
+	// Multiply by 10 for each extra character
+	// Initialize i as 1, we don't need to multiply on the first index
+	for ( i = 1; i < num[1].size; i++ )
+		pwr *= 10;
+
+	return int( num[0] ) + int( num[1] ) / pwr;
+}

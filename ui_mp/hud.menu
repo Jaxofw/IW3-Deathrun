@@ -18,7 +18,7 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( ( !inkillcam( ) ) )
+        visible                   when ( !ui_active() && !inkillcam() && !scoped() && dvarInt( "show_hud" ) )
 
         itemDef
         {
@@ -32,7 +32,7 @@
             textScale                 0.24375
             textStyle                 ITEM_TEXTSTYLE_SHADOWED
             gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
-            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && !ui_active() ) )
+            visible                   when ( dvarInt( "ui_hud_obituaries" ) == 1 )
         }
     }
 
@@ -51,7 +51,8 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( ( !inkillcam( ) ) )
+        visible                   when ( !ui_active() && !inkillcam() && !scoped() && dvarInt( "show_hud" ) )
+
         itemDef
         {
             borderSize                1
@@ -66,7 +67,7 @@
             textStyle                 ITEM_TEXTSTYLE_SHADOWED
             gameMsgWindowIndex        1
             gameMsgWindowMode         MODE_BOTTOMUP_ALIGN_BOTTOM
-            visible                   when ( ( dvarint( "ui_hud_obituaries" ) == 1 && !ui_active() ) )
+            visible                   when ( dvarint( "ui_hud_obituaries" ) == 1 )
         }
     }
 
@@ -76,7 +77,7 @@
 		name			"xpbar"
 		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
-		visible 		when ( !ui_active() )
+		visible 		when ( !ui_active() && !scoped() && dvarInt( "show_hud" ) && dvarInt( "ui_exp_bar_vis" ) )
 
 		CREATE_SHADER( 0 0 640 8 1 3, "white", 0 0 0 0.25, !dvarInt( "wideScreen" ) )
 		CREATE_SHADER_EX( 0 2 540 4 1 3, "white", COLOR_XP_BAR_NORMAL XP_BAR_HUD_ALPHA, !dvarInt( "wideScreen" ) && !dvarInt( "ui_exp_event" ), exp rect W( 640 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351))) ) )
@@ -92,7 +93,7 @@
 		name			"scorebar"
 		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
-		visible 		when ( !ui_active() );
+		visible 		when ( !ui_active() && !scoped() && dvarInt( "show_hud" ) );
 
         // CREATE_SHADER( 0 8 853 481 1 0 , "ui_hud_placeholder", 1 1 1 1, 1 )
 
@@ -102,125 +103,67 @@
 		SPEED_METER
 	}
 
-    #define RECT_COMPASS	0 0 COMPASS_SIZE_MP COMPASS_SIZE_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	#undef MINIMAP_ORIGIN
-	#define MINIMAP_ORIGIN 	6 6 //2 2
+	#define COMPASS_OFFSET	0 -430
 
     // Compass
 	menuDef
 	{
-        name			"Compass_old"
-        rect			RECT_COMPASS
-        fullScreen		0
-        visible 		0
+		name			"Compass_old"
+ 	   	rect			0 0 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+ 	   	fullScreen		0
+ 	   	hiddenDuringScope
+		hiddenDuringFlashbang
+		visible 		when ( !inkillcam() && !flashbanged() && !scoped() && !ui_active() && dvarInt( "show_hud" ) && dvarInt( "ui_compass_vis" ) );
 
-        itemDef
-        {
-			name			"minimapBG"
-			rect			(MINIMAP_X_MP - 14) (MINIMAP_Y_MP - 6) COMPASS_SIZE_MP COMPASS_SIZE_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			background		"minimap_background"
-			ownerdraw		CG_PLAYER_COMPASS_BACK
-			visible         when ( !selecting_location() );
-			decoration
-		}
 		itemDef
         {
-            name			"minimapTickerBorder"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 15) MINIMAP_W_MP 14
-	 	   	origin 			MINIMAP_ORIGIN
+            name			"TickerBorder"
+            rect			-110 -24 220 20
+            origin			COMPASS_OFFSET
             forecolor		1 1 1 1
             background		"minimap_tickertape_background"
             ownerdraw		CG_PLAYER_COMPASS_BACK
-			visible         when ( !selecting_location() );
+			visible			1
 			decoration
         }
+
 		itemDef
         {
-            name			"minimapTicker"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9
-	 	   	origin 			MINIMAP_ORIGIN
+            name			"Ticker"
+            rect			-108 -20 216 16
+            origin			COMPASS_OFFSET
             forecolor		1 1 1 1
-            background		"minimap_tickertape_mp"
-            ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ
-			visible         when ( !selecting_location() );
+            background		"minimap_tickertape"
+            ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			visible			1
+			decoration
+		}
+
+		itemDef
+        {
+            name			"TickerPipUp"
+            rect			-0.5 -24 1 12
+            origin			COMPASS_OFFSET
+            forecolor		1 1 1 .8
+            background		"white"
+            ownerdraw		CG_PLAYER_COMPASS_BACK
+			visible			1
 			decoration
         }
+
 		itemDef
- 	   	{
-			name			"mini_map"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			background		"compass_map_default"
-			ownerdraw		CG_PLAYER_COMPASS_MAP
-			visible         when ( !selecting_location() );
+        {
+            name			"TickerPipDown"
+            rect			-0.5 -11.5 1 12
+            origin			COMPASS_OFFSET
+            forecolor		1 1 1 .8
+            background		"white"
+            ownerdraw		CG_PLAYER_COMPASS_BACK
+			visible			1
 			decoration
- 	   	}     
-		// Objective pointers
-		itemDef
-		{
-			name			"compasspointers"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			background		"objective_line"
-			ownerdraw		CG_PLAYER_COMPASS_POINTERS
-			visible         when ( !selecting_location() && dvarint( ui_hud_showobjicons ) > 0 );
-			decoration
-		}
- 	   	// Friendlies pointers
-		itemDef
-		{
-			name			"compassfriendlies"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			ownerdraw		CG_PLAYER_COMPASS_FRIENDS
-			visible         when ( !selecting_location() );
-		}
-		// Enemy pings
-		itemDef
-		{
-			name			"compassenemies"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			ownerdraw		CG_PLAYER_COMPASS_ENEMIES
-			visible         when ( !selecting_location() );
-		}
- 	   	// Helicopter pointers
-		itemDef
-		{
-			name			"compasshelicopters"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			ownerdraw		CG_PLAYER_COMPASS_HELICOPTERS
-			visible         when ( !selecting_location() );
-		}
- 	   	// Plane pointers
-		itemDef
-		{
-			name			"compassplanes"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1
-			ownerdraw		CG_PLAYER_COMPASS_PLANES
-			visible         when ( !selecting_location() );
-		}
-		// Player direction indicator
-		itemDef
-		{
-			name			"compassplayer"
-			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
-			forecolor		1 1 1 1 //HUD_FOREGROUND_ALPHA
-			background		"compassping_player"
-			ownerdraw		CG_PLAYER_COMPASS_PLAYER
-			visible         when ( !selecting_location() );
-		}
+        }
 	}
 	
 	#define	BOTTOM_RECT_X 0
@@ -238,8 +181,6 @@
 		visible 		0
 	}
 
-	#define WEAPINFO_X -4
-	#define WEAPINFO_Y -36
 	#define HUD_ALPHA 0.65
 	#define HUD_FOREGROUND_ALPHA 0.75
 
@@ -249,55 +190,8 @@
 		rect			BOTTOM_RECT_X BOTTOM_RECT_Y 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
 		exp				rect Y( BOTTOM_RECT_Y - (ONLINEGAME * ONLINEGAME_OFFSET) );
 		fullScreen		0
-		visible			when( !inkillcam() && dvarBool( ammoCounterHide ) == 0 && !flashbanged() && !ui_active() && dvarint( ui_hud_hardcore ) == 0 && NOT_SPECTATING );
+		visible			when( !inkillcam() && !flashbanged() && !scoped() && !ui_active() && dvarInt( "show_hud" ) && dvarInt( "ui_weapon_vis" ) );
 
 		WEAPON_INFO
-
-		itemDef
-		{
-			name			"offhandFragIcon"
-			rect			(WEAPINFO_X -36) (WEAPINFO_Y -5) 24 24
-			forecolor		1 1 1 HUD_ALPHA
-			ownerdraw		CG_OFFHAND_WEAPON_ICON_FRAG
-			background		"hud_us_grenade" // default texture
-			visible			1
-			decoration
-		}
-
-		itemDef
-		{
-			name			"offhandSmokeIcon"
-			rect			(WEAPINFO_X -66) (WEAPINFO_Y -5) 24 24
-			forecolor		1 1 1 HUD_ALPHA
-			ownerdraw		CG_OFFHAND_WEAPON_ICON_SMOKEFLASH
-			background		"hud_us_smokegrenade" // default texture
-			visible			1
-			decoration
-		}
-		itemDef
-		{
-			name			"offHandSmokeAmmo"
-			rect			(WEAPINFO_X -45) (WEAPINFO_Y +20) 25 25
-			textscale		TEXTSIZE_SMALL
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textfont		UI_FONT_OBJECTIVE
-			forecolor		1 1 1 HUD_FOREGROUND_ALPHA
-			ownerdraw		CG_OFFHAND_WEAPON_AMMO_SMOKEFLASH
-			visible			1
-			decoration
-		}
-
-		itemDef
-		{
-			name			"offHandFragAmmo"
-			rect			(WEAPINFO_X -14) (WEAPINFO_Y +20) 25 25
-			textscale		TEXTSIZE_SMALL
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textfont		UI_FONT_OBJECTIVE
-			forecolor		1 1 1 HUD_FOREGROUND_ALPHA
-			ownerdraw		CG_OFFHAND_WEAPON_AMMO_FRAG
-			visible			1
-			decoration
-		}
 	}
 }

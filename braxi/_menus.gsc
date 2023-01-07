@@ -5,6 +5,7 @@ init()
 	game["menu_team"] = "team_marinesopfor";
 	game["menu_customize"] = "customization";
 	game["menu_settings"] = "settings";
+	game["menu_settings2"] = "settings2";
 	game["menu_jumpers"] = "jumpers";
 	game["menu_jumpers2"] = "jumpers2";
 	game["menu_activators"] = "activators";
@@ -22,6 +23,7 @@ init()
 	preCacheMenu( game["menu_team"] );
 	preCacheMenu( game["menu_customize"] );
 	preCacheMenu( game["menu_settings"] );
+	preCacheMenu( game["menu_settings2"] );
 	preCacheMenu( game["menu_jumpers"] );
 	preCacheMenu( game["menu_jumpers2"] );
 	preCacheMenu( game["menu_activators"] );
@@ -51,6 +53,7 @@ onPlayerConnect()
 		player.enableDeathIcons = false;
 		player.classType = undefined;
 		player.selectedClass = false;
+		player.changingFov = false;
 
 		player setClientDvar( "g_scriptMainMenu", game["menu_team"] );
 		player thread onMenuResponse();
@@ -176,20 +179,76 @@ onMenuResponse()
 		}
 		else if ( menu == game["menu_settings"] )
 		{
-			wait .3;
-			if ( response == "updateFovScale" )
+			switch ( response )
 			{
-				fov = getDvarFloat( "cg_fovscale" );
+				case "fovscale":
+					if ( self.changingFov )
+						return;
 
-				if ( fov == 1.0 )
-					self setStat( 992, 0 );
-				else if ( fov == 2.0 )
-					self setStat( 992, 2 );
-				else
-				{
-					fov = int( fov * 10 ) % 10;
-					self setStat( 992, fov );
-				}
+					self.changingFov = true;
+					wait .8;
+					fov = toFloat( self getUserInfo( "cg_fovscale" ) );
+
+					if ( fov == 1 )
+						self setStat( 992, 0 );
+					else if ( fov == 2 )
+						self setStat( 992, 2 );
+					else
+					{
+						fov = int( fov * 10 ) % 10;
+						self setStat( 992, fov );
+					}
+
+					self.changingFov = false;
+					break;
+				case "round":
+					if ( self getStat( 995 ) == 0 )
+						self setStat( 995, 1 );
+					else
+						self setStat( 995, 0 );
+
+					self setClientDvar( "ui_rounds_vis", self getStat( 995 ) );
+					break;
+				case "jumper":
+					if ( self getStat( 996 ) == 0 )
+						self setStat( 996, 1 );
+					else
+						self setStat( 996, 0 );
+
+					self setClientDvar( "ui_jumpers_vis", self getStat( 996 ) );
+					break;
+				case "player":
+					if ( self getStat( 997 ) == 0 )
+						self setStat( 997, 1 );
+					else
+						self setStat( 997, 0 );
+
+					self setClientDvar( "ui_player_vis", self getStat( 997 ) );
+					break;
+				case "weapon":
+					if ( self getStat( 998 ) == 0 )
+						self setStat( 998, 1 );
+					else
+						self setStat( 998, 0 );
+
+					self setClientDvar( "ui_weapon_vis", self getStat( 998 ) );
+					break;
+				case "xpbar":
+					if ( self getStat( 999 ) == 0 )
+						self setStat( 999, 1 );
+					else
+						self setStat( 999, 0 );
+
+					self setClientDvar( "ui_exp_bar_vis", self getStat( 999 ) );
+					break;
+				case "compass":
+					if ( self getStat( 1000 ) == 0 )
+						self setStat( 1000, 1 );
+					else
+						self setStat( 1000, 0 );
+
+					self setClientDvar( "ui_compass_vis", self getStat( 1000 ) );
+					break;
 			}
 		}
 		else if ( menu == game["menu_quickstuff"] )

@@ -20,14 +20,14 @@
 
 		ARCANE_INGAME_MENU( 2 )
 
-		CREATE_BUTTON( 1, "Jumpers", close self; open "jumpers";, 1 )
-		CREATE_BUTTON( 2, "Activators", close self; open "activators";, 1 )
-		CREATE_BUTTON( 3, "Primary", close self; open "primary";, 1 )
-		CREATE_BUTTON( 4, "Secondary", close self; open "secondary";, 1 )
-		CREATE_BUTTON( 5, "Gloves", close self; open "gloves";, 1 )
-		CREATE_BUTTON( 6, "Sprays", close self; open "sprays";, 1 )
-		CREATE_BUTTON( 7, "Trails", close self; open "trails";, 1 )
-		CREATE_BUTTON( 8, "Go Back", close self; open "team_marinesopfor";, 1 )
+		CREATE_BUTTON( 1, "@MENU_JUMPER", close self; open "jumpers";, 1 )
+		CREATE_BUTTON( 2, "@MENU_ACTIVATOR", close self; open "activators";, 1 )
+		CREATE_BUTTON( 3, "@MENU_PRIMARY", close self; open "primary";, 1 )
+		CREATE_BUTTON( 4, "@MENU_MELEE", close self; open "secondary";, 1 )
+		CREATE_BUTTON( 5, "@MENU_GLOVE", close self; open "gloves";, 1 )
+		CREATE_BUTTON( 6, "@MENU_SPRAY", close self; open "sprays";, 1 )
+		CREATE_BUTTON( 7, "@MENU_TRAIL", close self; open "trails";, 1 )
+		CREATE_BUTTON( 8, "@MENU_GO_BACK", close self; open "team_marinesopfor";, 1 )
 	}
 
 	menuDef
@@ -50,10 +50,7 @@
 		UNLOCKABLE( 8, JUMPER, 8, 1 )
 		UNLOCKABLE( 9, JUMPER, 9, 1 )
 		UNLOCKABLE( 10, JUMPER, 10, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open jumpers2, 1 )
+		BUTTON_PAGE_NEXT( 11, customization, jumpers2 )
 	}
 
 	menuDef
@@ -76,9 +73,7 @@
 		UNLOCKABLE( 8, JUMPER, 18, 1 )
 		UNLOCKABLE( 9, JUMPER, 19, 1 )
 		UNLOCKABLE( 10, JUMPER, 20, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open jumpers, 1 )
+		BUTTON_PAGE_PREVIOUS( 11, jumpers )
 	}
 
 	menuDef
@@ -101,9 +96,7 @@
 		UNLOCKABLE( 8, ACTIVATOR, 8, 1 )
 		UNLOCKABLE( 9, ACTIVATOR, 9, 1 )
 		UNLOCKABLE( 10, ACTIVATOR, 10, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
+		BUTTON_PAGE_PREVIOUS( 11, customization )
 	}
 
 	menuDef
@@ -125,10 +118,7 @@
 		UNLOCKABLE( 8, PRIMARY, 8, 1 )
 		UNLOCKABLE( 9, PRIMARY, 9, 1 )
 		UNLOCKABLE( 10, PRIMARY, 10, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary2, 1 )
+		BUTTON_PAGE_NEXT( 11, customization, primary2 )
 	}
 
 	menuDef
@@ -150,10 +140,7 @@
 		UNLOCKABLE( 8, PRIMARY, 18, 1 )
 		UNLOCKABLE( 9, PRIMARY, 19, 1 )
 		UNLOCKABLE( 10, PRIMARY, 20, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary, 1 )
-		//PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open primary3, 1 )
+		BUTTON_PAGE_PREVIOUS( 11, primary )
 	}
 
 	menuDef
@@ -170,9 +157,7 @@
 		UNLOCKABLE( 3, PRIMARY, 23, 1 )
 		UNLOCKABLE( 4, PRIMARY, 24, 1 )
 		UNLOCKABLE( 5, PRIMARY, 25, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open primary2, 1 )
+		BUTTON_PAGE_PREVIOUS( 6, primary2 )
 	}
 
 	menuDef
@@ -194,10 +179,7 @@
 		UNLOCKABLE( 8, SECONDARY, 8, 1 )
 		UNLOCKABLE( 9, SECONDARY, 9, 1 )
 		UNLOCKABLE( 10, SECONDARY, 10, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open secondary2, 1 )
+		BUTTON_PAGE_NEXT( 11, customization, secondary2 )
 	}
 
 	menuDef
@@ -214,9 +196,7 @@
 		UNLOCKABLE( 3, SECONDARY, 13, 1 )
 		UNLOCKABLE( 4, SECONDARY, 14, 1 )
 		UNLOCKABLE( 5, SECONDARY, 15, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open secondary, 1 )
+		BUTTON_PAGE_PREVIOUS( 6, secondary )
 	}
 
 	menuDef
@@ -238,10 +218,7 @@
 		UNLOCKABLE( 8, GLOVE, 8, 1 )
 		UNLOCKABLE( 9, GLOVE, 9, 1 )
 		UNLOCKABLE( 10, GLOVE, 10, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient_center", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open customization, 1 )
-		PAGE_BUTTON( 238 440 52 17 1 0, "Next Page", open gloves2, 1 )
+		BUTTON_PAGE_NEXT( 11, customization, gloves2 )
 	}
 
 	menuDef
@@ -263,8 +240,6 @@
 		UNLOCKABLE( 8, GLOVE, 18, 1 )
 		UNLOCKABLE( 9, GLOVE, 19, 1 )
 		UNLOCKABLE( 10, GLOVE, 20, 1 )
-
-		CREATE_SHADER( 118 440 172 17 1 0, "gradient", 0 0 0 0.5, 1 )
-		PAGE_BUTTON( 118 440 46 17 1 0, "Previous", open gloves, 1 )
+		BUTTON_PAGE_PREVIOUS( 11, gloves )
 	}
 }
