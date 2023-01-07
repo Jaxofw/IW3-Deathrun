@@ -180,14 +180,14 @@ gr_ppsh_mag_out_plr,,weapons/t4/ppsh/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,
 gr_ppsh_slide_back_plr,,weapons/t4/ppsh/slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_ppsh_tap_plr,,weapons/t4/ppsh/mag_tap.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# TAC-45
-wpn_fnp45_fire_plr,,weapons/t6/fnp45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_fnp45_fire_npc,,weapons/t6/fnp45/fire.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# Kendall 44
+wpn_kendall_fire_plr,,weapons/iw7/kendall/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_kendall_fire_npc,,weapons/iw7/kendall/fire_npc.wav,0.8,1,wpnai,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-fly_fnp45_mag_out,,weapons/t6/fnp45/fly_fnp45_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_mag_in,,weapons/t6/fnp45/fly_fnp45_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_futz,,weapons/t6/fnp45/fly_fnp45_futz.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-fly_fnp45_slide_forward,,weapons/t6/fnp45/fly_fnp45_slide_forward.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_glock_fly_chamber,,weapons/iw7/kendall/chamber.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_glock_fly_mag_in,,weapons/iw7/kendall/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_glock_fly_mag_out,,weapons/iw7/kendall/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+wpn_glock_fly_raise_first,,weapons/iw7/kendall/raise_first.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 ## END,,,,,,,,,,,,,,,,,,,
 
