@@ -34,7 +34,7 @@
 		CREATE_BUTTON( 1, "@MENU_CONTROLS", close self; open "main_controls", 1 )
 		CREATE_BUTTON( 2, "@MENU_OPTIONS", close self; open "options_graphics", 1 )
 		CREATE_DVARSLIDER( 3, "@MENU_FOV", cg_fov, 65.0, 65.0, 80.0, ;, ;, 1 )
-		CREATE_DVARSLIDER( 4, "@MENU_FOVSCALE", cg_fovscale, 1.0, 1.0, 2.0, scriptMenuResponse "fovscale", ;, 1 )
+		CREATE_DVARFLOATLIST( 4, "@MENU_FOVSCALE", cg_fovscale, { "1" 1 "1.1" 1.1 "1.2" 1.2 "1.3" 1.3 "1.4" 1.4 "1.5" 1.5 "1.6" 1.6 "1.7" 1.7 "1.8" 1.8 "1.9" 1.9 "2" 2 }, scriptMenuResponse "fovscale" )
 		CREATE_DVARFLOATLIST( 5, "@MENU_TOGGLE_HUD", show_hud, { "@MENU_YES" 1 "@MENU_NO" 0 }, ; )
 		CREATE_DVARFLOATLIST( 6, "@MENU_TOGGLE_ROUND", ui_rounds_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "round" )
 		CREATE_DVARFLOATLIST( 7, "@MENU_TOGGLE_JUMPER", ui_jumpers_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "jumper" )

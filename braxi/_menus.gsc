@@ -43,7 +43,7 @@ init()
 
 onPlayerConnect()
 {
-	for ( ;;)
+	for (;;)
 	{
 		level waittill( "connecting", player );
 
@@ -53,7 +53,6 @@ onPlayerConnect()
 		player.enableDeathIcons = false;
 		player.classType = undefined;
 		player.selectedClass = false;
-		player.changingFov = false;
 
 		player setClientDvar( "g_scriptMainMenu", game["menu_team"] );
 		player thread onMenuResponse();
@@ -64,7 +63,7 @@ onMenuResponse()
 {
 	self endon( "disconnect" );
 
-	for ( ;;)
+	for (;;)
 	{
 		self waittill( "menuresponse", menu, response );
 
@@ -182,10 +181,6 @@ onMenuResponse()
 			switch ( response )
 			{
 				case "fovscale":
-					if ( self.changingFov )
-						return;
-
-					self.changingFov = true;
 					wait .8;
 					fov = toFloat( self getUserInfo( "cg_fovscale" ) );
 
@@ -198,8 +193,6 @@ onMenuResponse()
 						fov = int( fov * 10 ) % 10;
 						self setStat( 992, fov );
 					}
-
-					self.changingFov = false;
 					break;
 				case "round":
 					if ( self getStat( 995 ) == 0 )
