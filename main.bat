@@ -1,6 +1,6 @@
 set COMPILEDIR=%CD%
 set map="mp_dr_iceworld"
-set options="+set fs_game "mods/arcane_deathrun_dev" +g_gametype deathrun +set developer 2 +exec server.cfg +devmap %map%"
+set options="+set fs_game "mods/arcane_deathrun_dev" +g_gametype deathrun +set developer 0 +exec server.cfg +map %map%"
 @ECHO OFF
 
 :MainMenu
