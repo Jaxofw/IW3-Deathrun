@@ -11,7 +11,7 @@
 			rect			0 0 1024 512 1 1
 			style 			WINDOW_STYLE_SHADER
 			forecolor 		1 1 1 1
-			exp 			material ( "loadscreen_" + dvarstring( "mapname" ) )
+			exp 			material ( "loadscreen_" + dvarstring( "mapname" ) + "_1" )
 			visible 		when ( 1 )
 		}
 	}
