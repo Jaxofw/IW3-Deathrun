@@ -63,8 +63,6 @@ setXpValues( number )
             level.xpPrevious[xpId]["value"] = level.scoreInfo[i]["value"];
         }
 
-        iPrintLn( number );
-
         if ( isDefined( number ) )
             braxi\_rank::setScoreValue( level.scoreInfo[i]["type"], level.scoreInfo[i]["value"] * number, i );
         else
