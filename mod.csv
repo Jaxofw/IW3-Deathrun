@@ -248,7 +248,7 @@ weapon,mp/s2_shovel_mp
 weapon,mp/tomahawk_mp
 weapon,mp/t8_coinbag_mp
 weapon,mp/t9_scythe_mp
-weapon,mp/t9_bat_mp
+weapon,mp/cs_m9bayo_mp
 weapon,mp/t7_sword_mp
 weapon,mp/t8_toy_mp
 
@@ -353,8 +353,8 @@ xmodel,melee_t8_coinbag_npc
 xmodel,melee_t9_scythe_vm
 xmodel,melee_t9_scythe_npc
 
-xmodel,melee_t9_bat_vm
-xmodel,melee_t9_bat_npc
+xmodel,melee_cs_m9bayonet_vm
+xmodel,melee_cs_m9bayonet_npc
 
 xmodel,melee_t7_sword_vm
 xmodel,melee_t7_sword_npc
@@ -770,16 +770,6 @@ xanim,vm_t9_scythe_sprint_loop
 xanim,vm_t9_scythe_sprint_out
 xanim,vm_t9_scythe_stab
 xanim,vm_t9_scythe_swipe
-
-xanim,vm_t9_bat_ads_down
-xanim,vm_t9_bat_drop
-xanim,vm_t9_bat_idle
-xanim,vm_t9_bat_raise
-xanim,vm_t9_bat_sprint_in
-xanim,vm_t9_bat_sprint_loop
-xanim,vm_t9_bat_sprint_out
-xanim,vm_t9_bat_stab
-xanim,vm_t9_bat_swipe
 
 xanim,vm_t7_sword_ads_down
 xanim,vm_t7_sword_drop
