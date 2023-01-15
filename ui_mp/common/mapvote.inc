@@ -25,7 +25,7 @@
 		type			ITEM_TYPE_BUTTON \
 		style			WINDOW_STYLE_FILLED \
 		visible			1 \
-		exp 			material ( loadscreen + "_" + dvarString( "mapvote_option_" + id ) ) \
+		exp 			material ( "loadscreen" + "_" + dvarString( "mapvote_option_" + id ) + "_1") \
 		backcolor		1 1 1 1 \
 		action 			{ play "mouse_click"; scriptMenuResponse id; } \
 		mouseEnter		{ setitemcolor id forecolor MAPVOTE_COLOR_SELECT; } \
