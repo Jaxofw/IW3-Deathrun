@@ -10,6 +10,7 @@
 		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style 			WINDOW_STYLE_EMPTY
 		focuscolor		1 1 1 1
+		blurworld 		2
 		onESC 			{ ; }
 
 		MAPVOTE_COUNTDOWN

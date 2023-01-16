@@ -101,10 +101,10 @@ mapVoteLogic()
 
 getRandomMap()
 {
-    currSize = level.mapsVotable.size;
+    id = level.mapsVotable.size;
     randomMap = "";
 
-    if ( ( currSize + 1 ) == level.mapsInVote )
+    if ( ( id + 1 ) == level.mapsInVote )
         randomMap = level.script;
     else
     {
@@ -112,15 +112,19 @@ getRandomMap()
             randomMap = level.maps[randomInt( level.maps.size )];
     }
 
-    level.mapsVotable[currSize]["name"] = randomMap;
-    level.mapsVotable[currSize]["votes"] = 0;
+    level.mapsVotable[id]["name"] = randomMap;
+    level.mapsVotable[id]["votes"] = 0;
 
     players = getAllPlayers();
     for ( j = 0; j < players.size; j++ )
     {
-        players[j] setClientDvar( "mapvote_option_" + currSize, randomMap );
-        players[j] setClientDvar( "mapvote_option_" + currSize + "_label", formatMapName( level.mapsVotable[currSize]["name"] ) );
-        players[j] setClientDvar( "mapvote_option_" + currSize + "_votes", level.mapsVotable[currSize]["votes"] );
+        players[j] setClientDvars(
+            "mapvote_option_" + id, randomMap,
+            "mapvote_option_" + id + "_label", formatMapName( level.mapsVotable[id]["name"] ),
+            "mapvote_option_" + id + "_votes", level.mapsVotable[id]["votes"],
+            "mapvote_option_" + id + "_selected", false,
+            "mapvote_option_" + id + "_winner", false
+        );
     }
 }
 
