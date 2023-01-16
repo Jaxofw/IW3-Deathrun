@@ -457,3 +457,29 @@ giveXpIfActivated()
         }
     }
 }
+
+saveMapRecords()
+{
+    setDvar( level.statDvar, "" );
+
+    for ( i = 0; i < level.mapRecords.size; i++ )
+    {
+        records = ";" + level.mapRecords[i]["name"] + ",";
+        records += level.mapRecords[i]["value"] + ",";
+        records += level.mapRecords[i]["player"];
+        appendToDvar( level.statDvar, records );
+        level.dvar["best_scores"] = getDvar( level.statDvar );
+    }
+
+    logPrint( "MAP_STATS: set dr_info_" + level.script + " \"" + level.dvar["best_scores"] + "\"\n" );
+}
+
+saveAllScores()
+{
+    logPrint( "===== BEGIN SCORES =====\n" );
+
+    for ( i = 0; i < game["playedmaps"].size; i++ )
+        logPrint( "set dr_info_" + game["playedmaps"][i] + " \"" + getDvar( "dr_info_" + game["playedmaps"][i] ) + "\"\n" );
+
+    logPrint( "===== END SCORES =====\n" );
+}

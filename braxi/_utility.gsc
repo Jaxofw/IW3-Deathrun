@@ -495,3 +495,8 @@ toFloat( in )
 
 	return int( num[0] ) + int( num[1] ) / pwr;
 }
+
+appendToDvar( dvar, string )
+{
+	setDvar( dvar, getDvar( dvar ) + string );
+}

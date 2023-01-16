@@ -25,6 +25,7 @@ PlayerConnect()
 		self.pers["assists"] = 0;
 		self.pers["headshots"] = 0;
 		self.pers["knifes"] = 0;
+		self.pers["time"] = 99999;
 	}
 	else
 	{
@@ -46,7 +47,6 @@ PlayerConnect()
 		"bg_bobamplitudeprone", 0,
 		"bg_bobamplitudestanding", 0,
 		"cg_drawSpectatorMessages", 1,
-		"g_scriptMainMenu", game["menu_team"],
 		"ip", getDvar( "net_ip" ),
 		"player_sprintTime", 12.8,
 		"port", getDvar( "net_port" ),
@@ -194,6 +194,9 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self.sessionstate = "spectator";
 	self.died = true;
 
+	if ( sHitLoc == "head" && sMeansOfDeath != "MOD_MELEE" )
+		sMeansOfDeath = "MOD_HEAD_SHOT";
+
 	if ( game["state"] == "playing" )
 	{
 		obituary( self, attacker, sWeapon, sMeansOfDeath );
@@ -278,6 +281,9 @@ endTimer()
 	self.finishedMap = true;
 
 	self iPrintLn( "Your Time: " + formatTimer( self.time ) );
+
+	if ( self.time < self.pers["time"] )
+		self.pers["time"] = self.time;
 }
 
 hitmarker()

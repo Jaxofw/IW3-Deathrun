@@ -1,0 +1,27 @@
+#include "ui/menudef.h"
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+#include "ui_mp/common/maprecords.inc"
+
+{
+	menuDef
+	{
+		name			"maprecords"
+		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style 			WINDOW_STYLE_EMPTY
+		focuscolor		1 1 1 1
+		blurworld 		2
+		onESC 			{ ; }
+
+		RECORD_HEADER
+
+		RECORD( 0, 0, 0, "ui_record_kill" )
+		RECORD( 1, 0, 1, "ui_record_death" )
+		RECORD( 2, 0, 2, "ui_record_headshot" )
+		RECORD( 3, 2, 0, "ui_record_score" )
+		RECORD( 4, 2, 1, "ui_record_knife" )
+		RECORD( 5, 2, 2, "ui_record_time" )
+
+		RECORD_COUNTDOWN
+	}
+}

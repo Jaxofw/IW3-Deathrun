@@ -32,6 +32,7 @@ init()
 	braxi\_maps::init();
 	braxi\_teams::init();
 	braxi\_mapvote::init();
+	braxi\_records::init();
 
 	setDvar( "g_speed", level.dvar["player_speed"] );
 	setDvar( "jump_slowdownEnable", 0 );
@@ -44,6 +45,28 @@ init()
 	{
 		game["roundsplayed"] = 0;
 		if ( level.dvar["practice"] ) level.practice = true;
+
+		game["playedmaps"] = strTok( level.dvar["playedmaps"], ";" );
+		addMap = true;
+
+		if ( game["playedmaps"].size )
+		{
+			for ( i = 0; i < game["playedmaps"].size; i++ )
+			{
+				if ( game["playedmaps"][i] == level.script )
+				{
+					addMap = false;
+					break;
+				}
+			}
+		}
+
+		if ( addMap )
+		{
+			appendToDvar( "playedmaps", level.script + ";" );
+			level.dvar["playedmaps"] = getDvar( "playedmaps" );
+			game["playedmaps"] = strTok( level.dvar["playedmaps"], ";" );
+		}
 	}
 
 	if ( level.practice )
@@ -292,16 +315,24 @@ endMap()
 	game["state"] = "endmap";
 	setDvar( "g_deadChat", 1 );
 
-	level thread braxi\_mapvote::mapVoteLogic();
-
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
 	{
 		players[i].sessionstate = "spectator";
 		players[i] braxi\_player::playerSpawnSpectator( level.spawn["spectator"][0].origin, level.spawn["spectator"][0].angles );
 		players[i] braxi\_teams::setSpectatePermissions( false, false, true, true );
-		players[i] thread braxi\_mapvote::playerLogic();
 	}
+
+	wait 4; // Give the server time to fetch persistent stats
+
+	braxi\_records::fetchMapRecords();
+	braxi\_maps::saveMapRecords();
+	braxi\_maps::saveAllScores();
+	level thread braxi\_mapvote::mapVoteLogic();
+
+	players = getAllPlayers();
+	for ( i = 0; i < players.size; i++ )
+		players[i] thread braxi\_mapvote::playerLogic();
 }
 
 fastestTime()
