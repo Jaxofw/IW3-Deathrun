@@ -1,13 +1,10 @@
 #include "ui/menudef.h"
-#include "ui_mp/menustyle.inc"
-#include "ui/choices_setup_common.menu"
-#include "ui_mp/common/mapvote.inc"
-
+#include "ui_mp/includes/mapvote.inc"
 {
 	menuDef
 	{
 		name			"mapvote"
-		rect			-107 0 854 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		style 			WINDOW_STYLE_EMPTY
 		focuscolor		1 1 1 1
 		blurworld 		2
@@ -15,18 +12,18 @@
 
 		MAPVOTE_COUNTDOWN
 
-		MAPVOTE_BUTTON( 0, 0, 0 )
-		MAPVOTE_BUTTON( 1, 0, 115 )
-		MAPVOTE_BUTTON( 2, 0, 230 )
+		MAPVOTE( 0, 0, 0 )
+		MAPVOTE( 1, 0, 1 )
+		MAPVOTE( 2, 0, 2 )
 
-		MAPVOTE_BUTTON( 3, MAPVOTE_SPACING, 0 )
-		MAPVOTE_BUTTON( 4, MAPVOTE_SPACING, 115 )
-		MAPVOTE_BUTTON( 5, MAPVOTE_SPACING, 230 )
+		MAPVOTE( 3, 1, 0 )
+		MAPVOTE( 4, 1, 1 )
+		MAPVOTE( 5, 1, 2 )
 
-		MAPVOTE_BUTTON( 6, MAPVOTE_SPACING * 2, 0 )
-		MAPVOTE_BUTTON( 7, MAPVOTE_SPACING * 2, 115 )
-		MAPVOTE_BUTTON( 8, MAPVOTE_SPACING * 2, 230 )
+		MAPVOTE( 6, 2, 0 )
+		MAPVOTE( 7, 2, 1 )
+		MAPVOTE( 8, 2, 2 )
 
-		MAPVOTE_RESTART
+		MAPVOTE_REPLAY
 	}
 }

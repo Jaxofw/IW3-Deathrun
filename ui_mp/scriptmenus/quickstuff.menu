@@ -17,7 +17,7 @@
 {
 	menuDef
 	{
-		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 9, CHOICE_POPUP_START_X, 232, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		IMPROVED_POPUP_SETUP_ONOPEN( quickstuff, 9, 4, 232, ;, setDvar cl_bypassMouseInput "1";, 0 )
 		onClose{ setDvar cl_bypassMouseInput "0" }
 		
 		CHOICE_POPMENU_TITLE( "Player Menu" )
@@ -26,7 +26,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "cg_thirdperson" ) == 1 )
+			visible			when ( dvarBool( "cg_thirdperson" ) )
 			rect			16 20 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -40,7 +40,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "cg_thirdperson" ) == 0 )
+			visible			when ( !dvarBool( "cg_thirdperson" ) )
 			rect			16 20 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -72,7 +72,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "r_fullbright" ) == 1 )
+			visible			when ( dvarBool( "r_fullbright" ) )
 			rect			16 52 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -86,7 +86,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "r_fullbright" ) == 0 )
+			visible			when ( !dvarBool( "r_fullbright" ) )
 			rect			16 52 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -102,7 +102,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "fx_enable" ) == 1 )
+			visible			when ( dvarBool( "fx_enable" ) )
 			rect			16 68 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -116,7 +116,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "fx_enable" ) == 0 )
+			visible			when ( !dvarBool( "fx_enable" ) )
 			rect			16 68 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -132,7 +132,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "ui_player_speed_vis" ) == 1 )
+			visible			when ( dvarBool( "ui_player_speed_vis" ) )
 			rect			16 84 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
@@ -146,7 +146,7 @@
 		itemDef
 		{
 			name			"window"
-			visible			when ( dvarInt( "ui_player_speed_vis" ) == 0 )
+			visible			when ( !dvarBool( "ui_player_speed_vis" ) )
 			rect			16 84 0 0
 			origin			ORIGIN_QUICKSTUFFWINDOW
 			forecolor		1 1 1 1
