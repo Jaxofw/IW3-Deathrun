@@ -8,7 +8,7 @@
 #define RANK_SHADER									tablelookup( "mp/rankIconTable.csv", 0, stat(252), stat(2326) + 1 )
 #define REQUIRED_XP 								(tablelookup( "mp/rankTable.csv" , 0, stat(252), 7 ) - stat(2301))
 #define GAINED_XP									(stat(2301) - stat(2351)) / (stat(2352) - stat(2351))
-#define ITEM_UNLOCKED( table, itemId )				( (RANK + 1) < tableLookup( table, 0, itemId, 2 ) )
+#define ITEM_UNLOCKED( table, itemId )				( RANK < tableLookup( table, 0, itemId, 2 ) )
 
 #define SLIDER_W									95
 #define SLIDER_H									20
