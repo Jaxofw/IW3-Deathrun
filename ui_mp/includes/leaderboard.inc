@@ -1,0 +1,33 @@
+#include "ui_mp/includes/arcane.inc"
+
+#define PLACEMENT_Y                             135
+#define PLACEMENT_H								25
+#define PLACEMENT_Y_SPACING						(PLACEMENT_H + 5)
+#define PLACEMENT_Y_POS( idx )					(PLACEMENT_Y + PLACEMENT_Y_SPACING * ARCANE_BUTTON_ROW( idx ))
+#define PLACEMENT_ORIGIN( idx )					ARCANE_BUTTON_X_POS PLACEMENT_Y_POS( idx )
+#define PLACEMENT_RECT( idx )					PLACEMENT_ORIGIN( idx ) ARCANE_BUTTON_W PLACEMENT_H ITEM_ALIGN
+#define PLACEMENT_BORDER_RECT( idx )			PLACEMENT_ORIGIN( idx ) 2 PLACEMENT_H ITEM_ALIGN
+#define PLACEMENT_PLAYER_X                      (ARCANE_BUTTON_X_POS + 30)
+#define PLACEMENT_SCORE_X                       (ARCANE_BUTTON_X_POS + 155)
+#define PLACEMENT_SCORE_Y( idx )                (PLACEMENT_Y_POS( idx ) + 19)
+#define PLACEMENT_SCORE_RECT( idx )             (ARCANE_BUTTON_X_POS + 155) PLACEMENT_SCORE_Y( idx ) 0 0 ITEM_ALIGN
+#define PLACEMENT_FIRST_Y                       (PLACEMENT_Y_POS( 0 ) - 10)
+#define PLACEMENT_FIRST_TEXT_Y					(PLACEMENT_SCORE_Y( 0 ) - 4.5)
+
+#define PLACEMENT_PLAYER( place )				dvarString( "ui_lb_place_" + place + "_player" )
+#define PLACEMENT_VALUE( place )				dvarString( "ui_lb_place_" + place + "_value" )
+
+#define PLACEMENT_FIRST \
+    CREATE_SHADER( ARCANE_BUTTON_X_POS PLACEMENT_FIRST_Y ARCANE_BUTTON_W 35 ITEM_ALIGN, "ui_menu_button", 0 0 0 0.5 ) \
+	CREATE_SHADER( ARCANE_BUTTON_X_POS PLACEMENT_FIRST_Y 2 35 ITEM_ALIGN, "white", 0.89 0.75 0.24 0.78 ) \
+	CREATE_SHADER( (PLACEMENT_PLAYER_X - 20) PLACEMENT_Y_POS( 0 ) 16 16 ITEM_ALIGN, "ui_crown", 1 1 1 1 ) \
+	CREATE_TEXT( PLACEMENT_PLAYER_X PLACEMENT_FIRST_TEXT_Y 0 0 ITEM_ALIGN, PLACEMENT_PLAYER( 1 ), 1 1 1 1, 0.28, 0 ) \
+	CREATE_TEXT( (PLACEMENT_SCORE_X + 1) PLACEMENT_FIRST_TEXT_Y 0 0 ITEM_ALIGN, PLACEMENT_VALUE( 1 ), 1 1 1 1, 0.28, 2 )
+
+#define PLACEMENT( idx, place ) \
+	CREATE_SHADER( PLACEMENT_RECT( idx ), "ui_menu_button", 0 0 0 0.5 ) \
+	CREATE_SHADER_VIS( PLACEMENT_BORDER_RECT( idx ), "white", 0.58 0.58 0.58 0.78, place == 2 ) \
+	CREATE_SHADER_VIS( PLACEMENT_BORDER_RECT( idx ), "white", 0.49 0.37 0.29 1, place == 3 ) \
+	CREATE_SHADER_VIS( PLACEMENT_BORDER_RECT( idx ), "white", COLOR_ARCANE 1, place > 3 ) \
+    CREATE_TEXT( (PLACEMENT_PLAYER_X - 20) PLACEMENT_SCORE_Y( idx ) 0 0 ITEM_ALIGN, PLACEMENT_PLAYER( place ), 1 1 1 1, 0.28, 0 ) \
+	CREATE_TEXT( PLACEMENT_SCORE_RECT( idx ), PLACEMENT_VALUE( place ), 1 1 1 1, 0.26, 2 )

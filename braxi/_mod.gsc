@@ -42,7 +42,8 @@ init()
 	braxi\_maps::init();
 	braxi\_teams::init();
 	braxi\_mapvote::init();
-	braxi\_records::init();
+	thread braxi\_records::init();
+	braxi\_leaderboard::init();
 
 	setDvar( "g_speed", level.dvar["player_speed"] );
 	setDvar( "jump_slowdownEnable", 0 );

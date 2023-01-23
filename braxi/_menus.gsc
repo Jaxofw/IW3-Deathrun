@@ -18,6 +18,8 @@ init()
 	game["menu_gloves2"] = "gloves2";
 	game["menu_maprecords"] = "maprecords";
 	game["menu_mapvote"] = "mapvote";
+	game["menu_leaderboard"] = "leaderboard";
+	game["menu_leaderboard2"] = "leaderboard2";
 	game["menu_quickstuff"] = "quickstuff";
 	game["menu_clientcmd"] = "clientcmd";
 
@@ -37,6 +39,8 @@ init()
 	preCacheMenu( game["menu_gloves2"] );
 	preCacheMenu( game["menu_maprecords"] );
 	preCacheMenu( game["menu_mapvote"] );
+	preCacheMenu( game["menu_leaderboard"] );
+	preCacheMenu( game["menu_leaderboard2"] );
 	preCacheMenu( game["menu_quickstuff"] );
 	preCacheMenu( game["menu_clientcmd"] );
 

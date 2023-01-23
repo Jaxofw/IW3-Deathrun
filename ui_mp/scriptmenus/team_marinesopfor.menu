@@ -14,7 +14,7 @@
 		BUTTON_ARCANE( 2, "@MENU_SPECTATE", scriptMenuResponse "spectate" )
 		BUTTON_ARCANE( 3, "@MENU_CUSTOMIZE", close self; open customization )
 		BUTTON_ARCANE( 4, "@MENU_CHALLENGES", scriptMenuResponse "challenges" )
-		BUTTON_ARCANE( 5, "@MENU_LEADERBOARD", scriptMenuResponse "leaderboard" )
+		BUTTON_ARCANE( 5, "@MENU_LEADERBOARD", close self; open leaderboard )
 		BUTTON_ARCANE( 6, "@MENU_SETTINGS", close self; open settings )
 		BUTTON_ARCANE( 7, "@MENU_LEAVE", close self; open leave )
 

@@ -1,0 +1,51 @@
+#include "ui/menudef.h"
+#include "ui_mp/includes/leaderboard.inc"
+{
+	menuDef
+	{
+		name			"leaderboard"
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open team_marinesopfor; }
+
+		ARCANE_MENU( 2 )
+		HEADER
+
+		PLACEMENT_FIRST
+		PLACEMENT( 1, 2 )
+		PLACEMENT( 2, 3 )
+		PLACEMENT( 3, 4 )
+		PLACEMENT( 4, 5 )
+		PLACEMENT( 5, 6 )
+		PLACEMENT( 6, 7 )
+		PLACEMENT( 7, 8 )
+		PLACEMENT( 8, 9 )
+		PLACEMENT( 9, 10 )
+
+		BUTTON_PAGE_NEXT( 11, team_marinesopfor, leaderboard2 )
+	}
+
+	menuDef
+	{
+		name			"leaderboard2"
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+		onESC 			{ close self; open team_marinesopfor; }
+
+		ARCANE_MENU( 2 )
+		HEADER
+
+		PLACEMENT( 0, 11 )
+		PLACEMENT( 1, 12 )
+		PLACEMENT( 2, 13 )
+		PLACEMENT( 3, 14 )
+		PLACEMENT( 4, 15 )
+		PLACEMENT( 5, 16 )
+		PLACEMENT( 6, 17 )
+		PLACEMENT( 7, 18 )
+		PLACEMENT( 8, 19 )
+		PLACEMENT( 9, 20 )
+
+		BUTTON_PAGE_PREV( 11, leaderboard )
+	}
+}

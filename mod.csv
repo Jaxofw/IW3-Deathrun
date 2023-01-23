@@ -26,6 +26,7 @@ menufile,ui_mp/includes/arcane.inc
 menufile,ui_mp/includes/hud.inc
 menufile,ui_mp/includes/maprecords.inc
 menufile,ui_mp/includes/mapvote.inc
+menufile,ui_mp/includes/leaderboard.inc
 menufile,ui_mp/connect.menu
 menufile,ui_mp/hud.menu
 menufile,ui_mp/wm_quickmessage.menu
@@ -38,6 +39,7 @@ menufile,ui_mp/scriptmenus/quickstatements.menu
 menufile,ui_mp/scriptmenus/quickstuff.menu
 menufile,ui_mp/scriptmenus/maprecords.menu
 menufile,ui_mp/scriptmenus/mapvote.menu
+menufile,ui_mp/scriptmenus/leaderboard.menu
 
 # Localized Strings
 localize,menu
@@ -118,6 +120,7 @@ material,hud_notify
 material,hud_notify_footer
 material,menu_mapvote_footer
 material,menu_mapvote_user
+material,ui_crown
 
 # Map Record Assets
 material,ui_record_kill
