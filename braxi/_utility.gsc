@@ -500,3 +500,30 @@ appendToDvar( dvar, string )
 {
 	setDvar( dvar, getDvar( dvar ) + string );
 }
+
+critical(id)
+{
+	CriticalSection(id);
+}
+
+critical_enter(id)
+{
+	while (!EnterCriticalSection(id))
+		wait 0.05;
+}
+
+critical_leave(id)
+{
+	LeaveCriticalSection(id);
+}
+
+AsyncWait(request)
+{
+	status = AsyncStatus(request);
+	while (status <= 1)
+	{
+		wait 0.05;
+		status = AsyncStatus(request);
+	}
+	return status;
+}

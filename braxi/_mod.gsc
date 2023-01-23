@@ -19,6 +19,16 @@ init()
 	level.jumpersAlive = 0;
 	level.mapHasTimeTrigger = false;
 	level.jumperFinished = false;
+	level.MYSQL_TYPE_LONG = 3;
+	level.MYSQL_TYPE_VAR_STRING = 253;
+
+	if ( !isDefined( game["db_connection"] ) )
+	{
+		game["db_connection"] = SQL_Connect( "127.0.0.1", 3306, "root", "123456" );
+		SQL_SelectDB( "deathrun" );
+	}
+
+	critical( "mysql" );
 
 	buildJumperTable();
 	buildActivatorTable();
@@ -45,28 +55,6 @@ init()
 	{
 		game["roundsplayed"] = 0;
 		if ( level.dvar["practice"] ) level.practice = true;
-
-		game["playedmaps"] = strTok( level.dvar["playedmaps"], ";" );
-		addMap = true;
-
-		if ( game["playedmaps"].size )
-		{
-			for ( i = 0; i < game["playedmaps"].size; i++ )
-			{
-				if ( game["playedmaps"][i] == level.script )
-				{
-					addMap = false;
-					break;
-				}
-			}
-		}
-
-		if ( addMap )
-		{
-			appendToDvar( "playedmaps", level.script + ";" );
-			level.dvar["playedmaps"] = getDvar( "playedmaps" );
-			game["playedmaps"] = strTok( level.dvar["playedmaps"], ";" );
-		}
 	}
 
 	if ( level.practice )
@@ -323,16 +311,17 @@ endMap()
 		players[i] braxi\_teams::setSpectatePermissions( false, false, true, true );
 	}
 
-	wait 4; // Give the server time to fetch persistent stats
+	wait 4;
 
-	braxi\_records::fetchMapRecords();
-	braxi\_maps::saveMapRecords();
-	braxi\_maps::saveAllScores();
+	braxi\_records::displayMapRecords();
 	level thread braxi\_mapvote::mapVoteLogic();
 
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
 		players[i] thread braxi\_mapvote::playerLogic();
+
+	if ( isDefined( game["db_connection"] ) )
+		SQL_Close(); // Disconnect from database
 }
 
 fastestTime()

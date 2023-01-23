@@ -14,8 +14,6 @@ setupDvars()
 	addDvar( "spawn_time", "dr_spawn_time", "int", 5, 1, 10 );
 
 	addDvar( "roundslimit", "dr_roundslimit", "int", 12, 2, 100 );
-
-	addDvar( "playedmaps", "dr_playedmaps", "string", "" );
 }
 
 // Originally from Bell's AWE mod for CoD 1
