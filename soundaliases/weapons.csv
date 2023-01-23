@@ -162,14 +162,15 @@ weap_emc_first_raise_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_ope
 weap_emc_reload_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_emc_reload_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# XPR-50
-weap_xpr50_fire_plr,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
-weap_xpr50_fire_npc,,weapons/t6/xpr50/weap_xpr50_fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# L118A
+wpn_l96_fire_plr,,weapons/iw5/l96/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_l96_fire_npc,,weapons/iw5/l96/fire_npc.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-weap_as50_bolt_forward,,weapons/t6/xpr50/weap_sniper_bf.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_bolt_back,,weapons/t6/xpr50/weap_sniper_bb.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_mag_out,,weapons/t6/xpr50/weap_sniper_mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_as50_mag_in,,weapons/t6/xpr50/weap_sniper_mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_l96a1_chamber_close_plr,,weapons/iw5/l96/close.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_l96a1_chamber_open_plr,,weapons/iw5/l96/open.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_l96a1_clipin_plr,,weapons/iw5/l96/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_l96a1_clipout_plr,,weapons/iw5/l96/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_l96a1_lift_plr,,weapons/iw5/l96/lift.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # PPSH
 wpn_ppsh_fire_plr,,weapons/t4/ppsh/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
