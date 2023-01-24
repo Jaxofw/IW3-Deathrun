@@ -166,9 +166,6 @@ sound,melee_weapons,,all_mp
 sound,prestige_weapons,,all_mp
 
 # WepFX
-fx,weapon\emc\emc_muzzleflash
-fx,weapon\emc\emc_trail
-
 fx,weapon\raygun\raygun_trail
 fx,weapon\raygun\raygun_muzzle
 fx,weapon\raygun\raygun_impact
@@ -243,7 +240,7 @@ weapon,mp/t7_locus_mp
 weapon,mp/t5_m1911_mp
 weapon,mp/h1_kam12_mp
 weapon,mp/t4_thompson_mp
-weapon,mp/iw7_emc_mp
+weapon,mp/t7_mauser_mp
 weapon,mp/iw5_l96_mp
 weapon,mp/t4_ppsh_mp
 weapon,mp/iw7_kendall_mp
@@ -315,8 +312,8 @@ xmodel,wpn_h1_kam12_npc
 xmodel,wpn_t4_thompson_vm
 xmodel,wpn_t4_thompson_npc
 
-xmodel,wpn_iw7_emc_vm
-xmodel,wpn_iw7_emc_npc
+xmodel,wpn_t7_mauser_vm
+xmodel,wpn_t7_mauser_npc
 
 xmodel,wpn_iw5_l96_vm
 xmodel,wpn_iw5_l96_npc
@@ -579,21 +576,19 @@ xanim,vm_t4_thompson_sprint_in
 xanim,vm_t4_thompson_sprint_loop
 xanim,vm_t4_thompson_sprint_out
 
-xanim,vm_iw7_emc_ads_down
-xanim,vm_iw7_emc_ads_up
-xanim,vm_iw7_emc_drop
-xanim,vm_iw7_emc_drop_quick
-xanim,vm_iw7_emc_fire
-xanim,vm_iw7_emc_fire_ads
-xanim,vm_iw7_emc_fire_last
-xanim,vm_iw7_emc_idle
-xanim,vm_iw7_emc_raise
-xanim,vm_iw7_emc_raise_first
-xanim,vm_iw7_emc_reload
-xanim,vm_iw7_emc_reload_empty
-xanim,vm_iw7_emc_sprint_in
-xanim,vm_iw7_emc_sprint_loop
-xanim,vm_iw7_emc_sprint_out
+xanim,vm_t7_mauser_ads_down
+xanim,vm_t7_mauser_ads_up
+xanim,vm_t7_mauser_drop
+xanim,vm_t7_mauser_fire
+xanim,vm_t7_mauser_fire_ads
+xanim,vm_t7_mauser_idle
+xanim,vm_t7_mauser_raise
+xanim,vm_t7_mauser_raise_first
+xanim,vm_t7_mauser_reload
+xanim,vm_t7_mauser_reload_empty
+xanim,vm_t7_mauser_sprint_in
+xanim,vm_t7_mauser_sprint_loop
+xanim,vm_t7_mauser_sprint_out
 
 xanim,vm_iw5_l96_ads_down
 xanim,vm_iw5_l96_ads_up

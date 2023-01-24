@@ -148,19 +148,14 @@ gr_thompson_charge_plr,,weapons/t4/thompson/charge.wav,1,1,wpnplyr,1,1,7,500,rel
 gr_thompson_mag_out_plr,,weapons/t4/thompson/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 gr_thompson_mag_in_plr,,weapons/t4/thompson/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# EMC
-wpn_emc_fire_plr,,weapons/iw7/emc/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_emc_fire_npc,,weapons/iw7/emc/fire_npc.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# MC96
+wpn_mauser_fire_plr,,weapons/t7/mauser/fire.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_mauser_fire_npc,,weapons/t7/mauser/fire.wav,0.90,0.95,max,1,1.1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-weap_emc_clipin_plr,,weapons/iw7/emc/wpfoly_emc_reload_clipin_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_clipout_plr,,weapons/iw7/emc/wpfoly_emc_reload_clipout_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_empty_clipin_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_clipin_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_empty_clipout_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_clipout_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_empty_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_empty_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_first_raise_close_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_close_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_first_raise_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_first_raise_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_reload_hit_plr,,weapons/iw7/emc/wpfoly_emc_reload_hit_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-weap_emc_reload_open_plr,,weapons/iw7/emc/wpfoly_emc_reload_open_v3.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_c96_mag_in,,weapons/t7/mauser/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_c96_mag_out,,weapons/t7/mauser/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_c96_slide_back,,weapons/t7/mauser/bolt_back.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+fly_c96_slide_forward,,weapons/t7/mauser/bolt_release.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # L118A
 wpn_l96_fire_plr,,weapons/iw5/l96/fire_plr.wav,0.9,0.95,wpnplyr,1,1.1,500000,,local,,,,0.85,,,,,weapon2,,,,
