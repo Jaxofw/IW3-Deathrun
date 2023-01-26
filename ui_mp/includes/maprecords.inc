@@ -72,7 +72,7 @@
 #define RECORD( id, row, column, material ) \
 	CREATE_SHADER( RECORD_RECT( row, column ), "hud_notify", 1 1 1 0.65 ) \
 	CREATE_SHADER( RECORD_FOOTER_RECT( row, column ), "ui_footer_round", RECORD_COLOR 1 ) \
-	CREATE_SHADER( RECORD_MT_BG_RECT( row, column ), "menu_rank_bg", 0 0 0 0.3 ) \
+	CREATE_SHADER( RECORD_MT_BG_RECT( row, column ), "ui_square_round", 0 0 0 0.3 ) \
 	CREATE_SHADER( RECORD_MT_RECT( row, column ), material, 1 1 1 1 ) \
 	CREATE_TEXT( RECORD_TITLE_ORIGIN( row, column ) RECORD_TITLE_RECT, dvarString( "ui_record_name_" + id ), 1 1 1 1, 0.28, 0 ) \
 	CREATE_TEXT( RECORD_HOLDER_ORIGIN( row, column ) RECORD_TITLE_RECT, dvarString( "ui_record_holder_" + id ), 1 1 1 1, 0.28, 0 ) \

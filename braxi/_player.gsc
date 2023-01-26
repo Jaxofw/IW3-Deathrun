@@ -1,3 +1,4 @@
+#include maps\mp\_utility;
 #include braxi\_utility;
 
 PlayerConnect()
@@ -56,6 +57,7 @@ PlayerConnect()
 		"ui_player_timer", formatTimer( 0 ),
 		"ui_rounds_limit", level.dvar["roundslimit"],
 		"ui_rounds_played", game["roundsplayed"],
+		"ui_spray_selected", self getStat( 984 ),
 		"ui_uav_client", 0
 	);
 
@@ -116,6 +118,7 @@ playerSpawn( origin, angles )
 	self braxi\_teams::setLoadout();
 	self thread braxi\_weapons::watchWeapons();
 	self thread watchHealth();
+	self thread sprayLogo();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -292,4 +295,51 @@ hitmarker()
 	self.hud_damagefeedback.alpha = 1;
 	self.hud_damagefeedback fadeOverTime( 1 );
 	self.hud_damagefeedback.alpha = 0;
+}
+
+sprayLogo()
+{
+	self endon( "disconnect" );
+
+	while ( game["state"] != "playing" )
+		wait .05;
+
+	while ( self isAlive() )
+	{
+		while ( !self fragButtonPressed() )
+			wait .2;
+
+		if ( !self isOnGround() )
+		{
+			wait .2;
+			continue;
+		}
+
+		angles = self getPlayerAngles();
+		eye = self getTagOrigin( "j_head" );
+		forward = eye + vector_scale( anglesToForward( angles ), 70 );
+		trace = bulletTrace( eye, forward, false, self );
+
+		// Didn't hit a wall or floor
+		if ( trace["fraction"] == 1 )
+		{
+			wait .1;
+			continue;
+		}
+
+		position = trace["position"] - vector_scale( anglesToForward( angles ), -2 );
+		angles = vectorToAngles( eye - position );
+		forward = anglesToForward( angles );
+		up = anglesToUp( angles );
+
+		sprayNum = self getStat( 984 );
+		playFx( level.fx_spray[sprayNum]["item"], position, forward, up );
+		self playSound( "sprayer" );
+
+		if ( sprayNum == 10 ) // Level up spray
+			self thread braxi\_rank::giveRankXP( "", 1 );
+
+		self notify( "spray", sprayNum, position, forward, up );
+		wait level.dvar["spray_delay"];
+	}
 }

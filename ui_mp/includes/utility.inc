@@ -1,14 +1,17 @@
-#define JUMPER 										"mp/jumperTable.csv"
-#define ACTIVATOR 									"mp/activatorTable.csv"
-#define PRIMARY 									"mp/primaryTable.csv"
-#define SECONDARY 									"mp/secondaryTable.csv"
-#define GLOVE 										"mp/gloveTable.csv"
+#define ITEM_JUMPER 								"mp/jumperTable.csv"
+#define ITEM_ACTIVATOR 								"mp/activatorTable.csv"
+#define ITEM_PRIMARY 								"mp/primaryTable.csv"
+#define ITEM_SECONDARY 								"mp/secondaryTable.csv"
+#define ITEM_GLOVE 									"mp/gloveTable.csv"
+#define ITEM_SPRAY	 								"mp/sprayTable.csv"
 
 #define RANK										int( tablelookup( "mp/rankIconTable.csv", 0, stat(252) + 1, stat(2326) ) )
 #define RANK_SHADER									tablelookup( "mp/rankIconTable.csv", 0, stat(252), stat(2326) + 1 )
 #define REQUIRED_XP 								(tablelookup( "mp/rankTable.csv" , 0, stat(252), 7 ) - stat(2301))
 #define GAINED_XP									(stat(2301) - stat(2351)) / (stat(2352) - stat(2351))
-#define ITEM_UNLOCKED( table, itemId )				( RANK < tableLookup( table, 0, itemId, 2 ) )
+
+#define ITEM_LEVEL( table, idx )					tableLookup( table, 0, idx, 2 )
+#define ITEM_LOCKED( table, idx )					( RANK < tableLookup( table, 0, idx, 2 ) )
 
 #define SLIDER_W									95
 #define SLIDER_H									20
@@ -16,6 +19,7 @@
 #define COLOR_ARCANE								0.18 0.36 0.82
 #define COLOR_XP_BAR_NORMAL							0 0.5 1
 #define COLOR_XP_BAR_EVENT							1 0.8 0.4
+#define COLOR_ITEM_SELECTED							0.35 0.82 0.18 1
 
 #define CREATE_SHADER( position, texture, color ) \
 	CREATE_SHADER_VIS( position, texture, color, 1 )
@@ -70,6 +74,7 @@
 		forecolor		1 1 1 1 \
 		exp 			text ( string ) \
 		visible			when ( visibility ) \
+		mouseEnter 		{ play "mouse_over"; } \
 		action 			{ play "mouse_click"; action_; } \
 		extra			\
 	}

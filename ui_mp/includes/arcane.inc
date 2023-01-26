@@ -42,6 +42,31 @@
 #define ARCANE_UNLOCKABLE_RANK_RECT( idx )					(ARCANE_BUTTON_X_POS + 145) (ARCANE_BUTTON_Y_POS( idx ) + 18) 0 0 ITEM_ALIGN
 #define ARCANE_UNLOCKABLE_LOCK_SHADER_RECT( idx )			(ARCANE_BUTTON_X_POS + 149) (ARCANE_BUTTON_Y_POS( idx ) + 6) 13 12 ITEM_ALIGN
 
+#define SPRAY_ALIGN											1 1
+#define SPRAY_X												268
+#define SPRAY_Y												93
+#define SPRAY_W												92
+#define SPRAY_H												81
+#define SPRAY_X_SPACING										(SPRAY_W + 18)
+#define SPRAY_Y_SPACING										(SPRAY_H + 26)
+
+#define SPRAY_COL( column )									(( column - 0 ) % 24)
+#define SPRAY_ROW( row )					    			(( row - 0 ) % 24)
+#define SPRAY_X_POS( row )									(SPRAY_X + SPRAY_X_SPACING * SPRAY_COL( row ))
+#define SPRAY_Y_POS( column )								(SPRAY_Y + SPRAY_Y_SPACING * SPRAY_ROW( column ))
+#define SPRAY_ORIGIN( row, column )							SPRAY_X_POS( row ) SPRAY_Y_POS( column )
+#define SPRAY_RECT( row, column )							SPRAY_ORIGIN( row, column ) SPRAY_W SPRAY_H SPRAY_ALIGN
+
+#define SPRAY_MT_W											70
+#define SPRAY_MT_H											55
+#define SPRAY_MT_ORIGIN( row, column )						(SPRAY_X_POS( row ) + 11) (SPRAY_Y_POS( column ) + 13)
+#define SPRAY_MT_RECT( row, column )						SPRAY_MT_ORIGIN( row, column ) SPRAY_MT_W SPRAY_MT_H SPRAY_ALIGN
+#define SPRAY_LEVEL_RECT( row, column )						(SPRAY_X_POS( row ) + (SPRAY_W / 2)) (SPRAY_Y_POS( column ) + (SPRAY_H / 2) + 7) 0 0 ITEM_ALIGN
+
+#define SPRAY_FOOTER_H										3
+#define SPRAY_FOOTER_Y_POS( column )						(SPRAY_Y_POS( column ) + SPRAY_H - SPRAY_FOOTER_H)
+#define SPRAY_FOOTER_RECT( row, column )					SPRAY_X_POS( row ) SPRAY_FOOTER_Y_POS( column ) SPRAY_W SPRAY_FOOTER_H SPRAY_ALIGN
+
 #define ARCANE_MENU( blurworld_ ) \
 	focuscolor 			1 1 1 1 \
 	blurworld 			blurworld_ \
@@ -49,7 +74,7 @@
 	CREATE_SHADER( MENU_BORDER_RECT, "menu_button_border", COLOR_ARCANE 1 )
 
 #define HEADER \
-	CREATE_SHADER( HEADER_RANK_BG_RECT, "menu_rank_bg", 0 0 0 0.5 ) \
+	CREATE_SHADER( HEADER_RANK_BG_RECT, "ui_square_round", 0 0 0 0.5 ) \
 	CREATE_SHADER( HEADER_RANK_MT_RECT, RANK_SHADER, 1 1 1 1 ) \
 	CREATE_TEXT( HEADER_TEXT_RECT, HEADER_TEXT, 1 1 1 1, 0.3, 0 ) \
 	CREATE_TEXT_VIS( HEADER_NEXT_RANK_RECT, REQUIRED_XP + " XP Left Until Level " + (RANK + 1), 1 1 1 1, 0.24, 0, CAN_RANK_UP && PRESTIGE_NEXT == 0 ) \
@@ -81,9 +106,32 @@
 #define BUTTON_UNLOCKABLE( idx, table, itemId ) \
 	BUTTON_ARCANE_SHADER( idx ) \
 	CREATE_BUTTON_EX( ARCANE_BUTTON_RECT( idx ), tableLookup( table, 0, itemId, 4 ), 0.3, scriptMenuResponse itemId, 1, textalignx 10 textaligny 19.5 ) \
-	CREATE_TEXT_VIS( ARCANE_UNLOCKABLE_RANK_RECT( idx ), "^1(" + tableLookup( table, 0, itemId, 2 ) + ")", 1 1 1 1, 0.25, 2, ITEM_UNLOCKED( table, itemId ) ) \
-	CREATE_SHADER_VIS( ARCANE_UNLOCKABLE_LOCK_SHADER_RECT( idx ), "menu_lock", 1 1 1 1, ITEM_UNLOCKED( table, itemId ) )
+	CREATE_TEXT_VIS( ARCANE_UNLOCKABLE_RANK_RECT( idx ), "^1(" + ITEM_LEVEL( table, itemId ) + ")", 1 1 1 1, 0.25, 2, ITEM_LOCKED( table, itemId ) ) \
+	CREATE_SHADER_VIS( ARCANE_UNLOCKABLE_LOCK_SHADER_RECT( idx ), "menu_lock", 1 1 1 1, ITEM_LOCKED( table, itemId ) )
 
+#define SPRAY_BUTTON_PAGE_PREV( previousMenu ) \
+	CREATE_SHADER_EX( 163 210 50 60 SPRAY_ALIGN, "ui_square_round", 0 0 0 0.4, 1, group "left" ) \
+	CREATE_SHADER( 172 203 30 75 SPRAY_ALIGN, "ui_arrow_left", 1 1 1 1 ) \
+	CREATE_BUTTON_EX( 107 0 161 640 SPRAY_ALIGN, "", 0.26, close self; open previousMenu;, 1, mouseEnter { show "left"; }; mouseExit { hide "left"; } )
+
+#define SPRAY_BUTTON_PAGE_NEXT( nextMenu ) \
+	CREATE_SHADER_EX( 854 210 50 60 SPRAY_ALIGN, "ui_square_round", 0 0 0 0.4, 1, group "right" ) \
+	CREATE_SHADER( 865 203 30 75 SPRAY_ALIGN, "ui_arrow_right", 1 1 1 1 ) \
+	CREATE_BUTTON_EX( 800 0 161 640 SPRAY_ALIGN, "", 0.26, close self; open nextMenu;, 1, mouseEnter { show "right"; }; mouseExit { hide "right"; } )
+
+#define SPRAY( idx, row, column ) \
+	CREATE_SHADER( SPRAY_RECT( row, column ), "ui_spray_bg", 0 0 0 0.4 ) \
+	CREATE_SHADER( SPRAY_MT_RECT( row, column ), "ui_spray" + (idx - 1), 1 1 1 1 ) \
+	CREATE_SHADER_EX( SPRAY_FOOTER_RECT( row, column ), "ui_footer_round", COLOR_ARCANE 1, 1, group idx ) \
+	CREATE_SHADER_VIS( SPRAY_FOOTER_RECT( row, column ), "ui_footer_round", COLOR_ITEM_SELECTED, dvarInt( "ui_spray_selected" ) == (idx - 1) ) \
+	CREATE_BUTTON_EX( SPRAY_RECT( row, column ), "", 0.26, scriptMenuResponse idx, 1, mouseEnter { setitemcolor idx forecolor 1 1 1 1; }; mouseExit { setitemcolor idx forecolor COLOR_ARCANE 1; } ) \
+	CREATE_SHADER_VIS( SPRAY_RECT( row, column ), "ui_spray_bg", 0 0 0 0.4, ITEM_LOCKED( ITEM_SPRAY, idx ) ) \
+	CREATE_TEXT_VIS( SPRAY_LEVEL_RECT( row, column ), "^1(" + ITEM_LEVEL( ITEM_SPRAY, idx ) + ")", 1 1 1 1, 0.3, 1, ITEM_LOCKED( ITEM_SPRAY, idx ) )
+
+#define SPRAY_PAGE_NUM \
+	CREATE_SHADER( 511 414 44 30 ITEM_ALIGN, "ui_square_round", 0 0 0 0.4 ) \
+	CREATE_TEXT( 533 439 0 0 ITEM_ALIGN, localVarInt( "ui_spray_page" ) + "/2", 1 1 1 1, 0.42, 1 )
+	
 #define ARCANE_DVARSLIDER( idx, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, extraArg, visArg ) \
 	BUTTON_ARCANE_SHADER( idx ) \
 	CREATE_TEXT( (ARCANE_BUTTON_X_POS + 10) (ARCANE_BUTTON_Y_POS( idx ) + 19.5) 0 0 ITEM_ALIGN, textArg, 1 1 1 1, 0.3, 0 ) \
@@ -97,6 +145,6 @@
 #define FOOTER \
 	CREATE_SHADER( ARCANE_BUTTON_X FOOTER_Y (FOOTER_W / 2) FOOTER_H ITEM_ALIGN, "hud_square_round_left", 0 0 0 0.5 ) \
 	CREATE_SHADER( ( ARCANE_BUTTON_X + (FOOTER_W / 2) ) FOOTER_Y (FOOTER_W / 2) FOOTER_H ITEM_ALIGN, "hud_square_round_right", 0 0 0 0.5 ) \
-	CREATE_SHADER( ARCANE_BUTTON_X (FOOTER_Y + FOOTER_H - 3) FOOTER_W 3 ITEM_ALIGN, "hud_notify_footer", 1 1 1 1 ) \
+	CREATE_SHADER( ARCANE_BUTTON_X (FOOTER_Y + FOOTER_H - 3) FOOTER_W 3 ITEM_ALIGN, "ui_footer", 1 1 1 1 ) \
 	CREATE_TEXT( (ARCANE_BUTTON_X + 10) FOOTER_TEXT_Y 0 0 ITEM_ALIGN, "Message of the Day", 1 1 1 1, 0.32, 0 ) \
 	CREATE_TEXT_EX( (ARCANE_BUTTON_X + 5) (FOOTER_TEXT_Y + FOOTER_H + 3) 170 0 ITEM_ALIGN, dvarString( "motd" ), 1 1 1 1, 0.26, 0, 1, autowrapped )

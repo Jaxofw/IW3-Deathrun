@@ -93,8 +93,6 @@
 		fullScreen		0
 		visible 		when ( !ui_active() && !scoped() && dvarBool( "show_hud" ) );
 
-        // CREATE_SHADER( 0 8 853 481 1 0 , "ui_hud_placeholder", 1 1 1 1, 1 )
-
         HUD_ROUND_INFO
         HUD_JUMPER_INFO
 		PLAYER_INFO

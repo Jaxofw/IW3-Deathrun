@@ -16,6 +16,8 @@ init()
 	game["menu_secondary2"] = "secondary2";
 	game["menu_gloves"] = "gloves";
 	game["menu_gloves2"] = "gloves2";
+	game["menu_sprays"] = "sprays";
+	game["menu_sprays2"] = "sprays2";
 	game["menu_maprecords"] = "maprecords";
 	game["menu_mapvote"] = "mapvote";
 	game["menu_leaderboard"] = "leaderboard";
@@ -37,6 +39,8 @@ init()
 	preCacheMenu( game["menu_secondary2"] );
 	preCacheMenu( game["menu_gloves"] );
 	preCacheMenu( game["menu_gloves2"] );
+	preCacheMenu( game["menu_sprays"] );
+	preCacheMenu( game["menu_sprays2"] );
 	preCacheMenu( game["menu_maprecords"] );
 	preCacheMenu( game["menu_mapvote"] );
 	preCacheMenu( game["menu_leaderboard"] );
@@ -180,6 +184,16 @@ onMenuResponse()
 			{
 				self setStat( 983, id );
 				self setViewModel( level.model_glove[id]["item"] );
+			}
+		}
+		else if ( menu == game["menu_sprays"] || menu == game["menu_sprays2"] )
+		{
+			id = int( response ) - 1;
+
+			if ( self braxi\_rank::isItemUnlocked( level.fx_spray, id ) )
+			{
+				self setStat( 984, id );
+				self setClientDvar( "ui_spray_selected", id );
 			}
 		}
 		else if ( menu == game["menu_settings"] )

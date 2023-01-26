@@ -6,7 +6,7 @@ preCache()
 {
 	preCacheShader( "white" );
 	preCacheShader( "hud_notify" );
-	preCacheShader( "hud_notify_footer" );
+	preCacheShader( "ui_footer" );
 	preCacheStatusIcon( "hud_status_connecting" );
 	preCacheStatusIcon( "hud_status_dead" );
 }
@@ -98,6 +98,19 @@ buildGloveTable()
 		level.model_glove[id]["item"] = tableLookup( tableName, 0, idx, 3 );
 		level.model_glove[id]["name"] = tableLookup( tableName, 0, idx, 4 );
 		preCacheModel( level.model_glove[id]["item"] );
+	}
+}
+
+buildSprayTable()
+{
+	level.fx_spray = [];
+	tableName = "mp/sprayTable.csv";
+
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
+		id = int( tableLookup( tableName, 0, idx, 1 ) );
+		level.fx_spray[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.fx_spray[id]["item"] = loadFx( tableLookup( tableName, 0, idx, 3 ) );
 	}
 }
 
@@ -238,7 +251,7 @@ showNotification( notification, entity )
 	entity.notification[1].hideWhenInMenu = true;
 	entity.notification[1].horzAlign = "fullscreen";
 	entity.notification[1].vertAlign = "fullscreen";
-	entity.notification[1] setShader( "hud_notify_footer", 98, 2 );
+	entity.notification[1] setShader( "ui_footer", 98, 2 );
 
 	entity.notification[2].font = "default";
 	entity.notification[2].sort = 993;

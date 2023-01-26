@@ -2,7 +2,6 @@
 
 #define MAPVOTE_ALIGN										1 1
 #define MAPVOTE_COLOR										0.35 0.4 1 0.6
-#define MAPVOTE_COLOR_SELECT								0.1 0.8 0.5 0.6
 #define MAPVOTE_COLOR_WINNER								0.95 0.38 0.38 0.6
 
 #define MAPVOTE_X											278
@@ -28,7 +27,7 @@
 
 #define MAPVOTE( idx, row, column ) \
 	CREATE_SHADER_EX( MAPVOTE_HEADER_RECT( row, column ) MAPVOTE_W MAPVOTE_HEADER_H MAPVOTE_ALIGN, "white", MAPVOTE_COLOR, 1, group idx ) \
-	CREATE_SHADER_VIS( MAPVOTE_HEADER_RECT( row, column ) MAPVOTE_W MAPVOTE_HEADER_H MAPVOTE_ALIGN, "white", MAPVOTE_COLOR_SELECT, dvarBool( "mapvote_option_" + idx + "_selected" ) ) \
+	CREATE_SHADER_VIS( MAPVOTE_HEADER_RECT( row, column ) MAPVOTE_W MAPVOTE_HEADER_H MAPVOTE_ALIGN, "white", COLOR_ITEM_SELECTED, dvarBool( "mapvote_option_" + idx + "_selected" ) ) \
 	CREATE_SHADER_VIS( MAPVOTE_HEADER_RECT( row, column ) MAPVOTE_W MAPVOTE_HEADER_H MAPVOTE_ALIGN, "white", MAPVOTE_COLOR_WINNER, dvarBool( "mapvote_option_" + idx + "_winner" ) ) \
 	CREATE_SHADER( MAPVOTE_X_POS( row ) MAPVOTE_FOOTER_Y( column ) MAPVOTE_W 11 MAPVOTE_ALIGN, "menu_mapvote_footer", MAPVOTE_COLOR ) \
 	CREATE_TEXT( (MAPVOTE_X_POS( row ) + 4) (MAPVOTE_FOOTER_Y( column ) + 10) 0 0 MAPVOTE_ALIGN, dvarString( "mapvote_option_" + idx + "_label" ), 1 1 1 1, 0.22, 0 ) \
