@@ -1,4 +1,5 @@
 #include maps\mp\_utility;
+#include common_scripts\utility;
 #include braxi\_utility;
 
 PlayerConnect()
@@ -119,6 +120,7 @@ playerSpawn( origin, angles )
 	self thread braxi\_weapons::watchWeapons();
 	self thread watchHealth();
 	self thread sprayLogo();
+	self thread trailFx();
 
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -187,6 +189,12 @@ PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 
 	if ( self isAlive() && self.pers["team"] != "axis" )
 		level.jumpersAlive--;
+
+	if ( isDefined( self.trail ) )
+	{
+		self.trail unlink();
+		self.trail delete();
+	}
 
 	level notify( "player_killed", self, eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration );
 
@@ -341,5 +349,46 @@ sprayLogo()
 
 		self notify( "spray", sprayNum, position, forward, up );
 		wait level.dvar["spray_delay"];
+	}
+}
+
+trailFx()
+{
+	self endon( "disconnect" );
+
+	if ( self.pers["team"] == "spectator" )
+		return;
+
+	id = self getStat( 985 );
+	self.pers["trail"] = level.fx_trail[id];
+
+	if ( isDefined( self.trail ) )
+	{
+		self.trail unlink();
+		self.trail delete();
+	}
+
+	if ( self.pers["trail"]["geo"] )
+	{
+		self.trail = spawn( "script_model", self.origin );
+		self.trail setModel( "tag_origin_bitchface" );
+		self.trail linkTo( self );
+
+		wait .05;
+
+		if ( isDefined( self.trail ) )
+			playFxOnTag( self.pers["trail"]["item"], self.trail, "tag_origin" );
+	}
+	else
+	{
+		while ( self isAlive() && level.fx_trail[id] == self.pers["trail"] && id > 0 )
+		{
+			playFx( self.pers["trail"]["item"], ( self.origin + ( 0, 0, 8 ) ) );
+
+			if ( id == 5 || id == 6 || id == 9 )
+				wait .4;
+			else
+				wait .05;
+		}
 	}
 }

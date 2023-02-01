@@ -4,6 +4,7 @@
 #define ITEM_SECONDARY 								"mp/secondaryTable.csv"
 #define ITEM_GLOVE 									"mp/gloveTable.csv"
 #define ITEM_SPRAY	 								"mp/sprayTable.csv"
+#define ITEM_TRAIL	 								"mp/trailTable.csv"
 
 #define RANK										int( tablelookup( "mp/rankIconTable.csv", 0, stat(252) + 1, stat(2326) ) )
 #define RANK_SHADER									tablelookup( "mp/rankIconTable.csv", 0, stat(252), stat(2326) + 1 )

@@ -36,6 +36,7 @@ init()
 	buildSecondaryTable();
 	buildGloveTable();
 	buildSprayTable();
+	buildTrailTable();
 
 	braxi\_dvar::setupDvars();
 	thread braxi\_rank::init();

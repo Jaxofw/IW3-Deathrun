@@ -24,6 +24,7 @@ stringtable,mp/activatorTable.csv
 stringtable,mp/primaryTable.csv
 stringtable,mp/secondaryTable.csv
 stringtable,mp/sprayTable.csv
+stringtable,mp/trailTable.csv
 
 # Scriptmenus
 menufile,ui/choices_setup_popmenu.menu
@@ -1078,6 +1079,37 @@ fx,spray/spray26
 fx,spray/spray27
 fx,spray/spray28
 fx,spray/spray29
+
+# Trail Assets
+material,gfx_trail_dolan
+material,gfx_trail_dragon_fire
+material,gfx_trail_geo
+material,gfx_trail_mushroom
+material,gfx_trail_nuke
+material,gfx_trail_pepe
+material,gfx_trail_spooderman
+
+# Trail FX
+fx,trail/trail_dolan
+fx,trail/trail_dots
+fx,trail/trail_dragon_fire
+fx,trail/trail_fire
+fx,trail/trail_mushroom
+fx,trail/trail_nuke
+fx,trail/trail_pepe
+fx,trail/trail_smoke
+fx,trail/trail_spooderman
+fx,trail/trail_stars
+fx,trail/trail_water
+fx,trail/trail_watermelon
+fx,trail/trail_geo_black_white
+fx,trail/trail_geo_blue
+fx,trail/trail_geo_green
+fx,trail/trail_geo_orange
+fx,trail/trail_geo_purple
+fx,trail/trail_geo_rainbow
+fx,trail/trail_geo_red
+fx,trail/trail_geo_yellow
 
 # Sounds
 rawfile,sound/misc/sprayer.wav

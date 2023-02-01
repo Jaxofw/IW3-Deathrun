@@ -4,6 +4,7 @@
 
 preCache()
 {
+	preCacheModel( "tag_origin_bitchface" );
 	preCacheShader( "white" );
 	preCacheShader( "hud_notify" );
 	preCacheShader( "ui_footer" );
@@ -111,6 +112,21 @@ buildSprayTable()
 		id = int( tableLookup( tableName, 0, idx, 1 ) );
 		level.fx_spray[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
 		level.fx_spray[id]["item"] = loadFx( tableLookup( tableName, 0, idx, 3 ) );
+	}
+}
+
+buildTrailTable()
+{
+	level.fx_trail = [];
+	tableName = "mp/trailTable.csv";
+
+	for ( idx = 1; isDefined( tableLookup( tableName, 0, idx, 0 ) ) && tableLookup( tableName, 0, idx, 0 ) != ""; idx++ )
+	{
+		id = int( tableLookup( tableName, 0, idx, 1 ) );
+		level.fx_trail[id]["rank"] = ( int( tableLookup( tableName, 0, idx, 2 ) ) - 1 );
+		level.fx_trail[id]["item"] = loadFx( tableLookup( tableName, 0, idx, 3 ) );
+		level.fx_trail[id]["name"] = tableLookup( tableName, 0, idx, 4 );
+		level.fx_trail[id]["geo"] = int( tableLookup( tableName, 0, idx, 5 ) );
 	}
 }
 

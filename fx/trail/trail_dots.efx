@@ -1,0 +1,197 @@
+iwfx 2
+
+{
+	name "center";
+	editorFlags useRandRotDelta modColorByAlpha useBackCompatVel boundingSphere;
+	flags spawnRelative spawnOffsetNone runRelToWorld useCollision;
+	spawnRange 0 0;
+	fadeInRange 0 0;
+	fadeOutRange 0 0;
+	spawnFrustumCullRadius 0;
+	spawnLooping 300 0;
+	spawnOneShot 1 0;
+	spawnDelayMsec 0 0;
+	lifeSpanMsec 700 0;
+	spawnOrgX 0 0;
+	spawnOrgY 0 0;
+	spawnOrgZ 0 0;
+	spawnOffsetRadius 3 3;
+	spawnOffsetHeight 3 3;
+	spawnAnglePitch 0 0;
+	spawnAngleYaw 0 0;
+	spawnAngleRoll 0 0;
+	angleVelPitch 0 0;
+	angleVelYaw 0 0;
+	angleVelRoll 0 0;
+	initialRot 0 0;
+	gravity 10 0;
+	elasticity 1 0;
+	atlasBehavior startRandom;
+	atlasIndex 0;
+	atlasFps 18;
+	atlasLoopCount 0;
+	atlasColIndexBits 0;
+	atlasRowIndexBits 0;
+	atlasEntryCount 0;
+	velGraph0X 0
+	{
+		{
+			0 0.00717705
+			1 0.0119617
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	velGraph0Y 0
+	{
+		{
+			0 0
+			1 0
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	velGraph0Z 0
+	{
+		{
+			0 0
+			1 0
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	velGraph1X 0
+	{
+		{
+			0 0
+			1 0
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	velGraph1Y 0
+	{
+		{
+			0 0
+			1 0
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	velGraph1Z 0
+	{
+		{
+			0 0
+			1 0
+		}
+		{
+			0 0
+			1 0
+		}
+	};
+	rotGraph 0
+	{
+		{
+			0 -0.5
+			1 -0.2727
+		}
+		{
+			0 0.5
+			1 0.3409
+		}
+	};
+	sizeGraph0 80
+	{
+		{
+			0 1
+			0.752941 0.746753
+			1 0
+		}
+		{
+			0 0.136364
+			0.07267 0.6582
+			0.1628 0.538
+			0.2151 0.8734
+			0.3256 0.6076
+			0.4186 0.9873
+			0.5698 0.7278
+			0.7442 0.8924
+			0.8314 0.5949
+			0.9012 0.6519
+			1 0
+		}
+	};
+	sizeGraph1 100
+	{
+		{
+			0 1
+			1 1
+		}
+		{
+			0 1
+			1 0
+		}
+	};
+	scaleGraph 1
+	{
+		{
+			0 1
+			1 0
+		}
+		{
+			0 1
+			1 0
+		}
+	};
+	colorGraph 1
+	{
+		{
+			0 0 0 1
+			0.119186 0.466321 0.243523 1
+			0.444767 0.476684 0.150259 0.476684
+			1 1 0.481865 0.5412
+		}
+		{
+			0 1 1 1
+			1 0 0 0
+		}
+	};
+	alphaGraph 1
+	{
+		{
+			0 1
+			1 1
+		}
+		{
+			0 0.535885
+			0.90407 0.545455
+			1 0
+		}
+	};
+	lightingFrac 0;
+	collOffset 0 0 0;
+	collRadius 10;
+	fxOnImpact "";
+	fxOnDeath "";
+	sortOrder 5;
+	emission "";
+	emitDist 40 0;
+	emitDistVariance 4 0;
+	trailSplitDist 100;
+	trailScrollTime 0;
+	trailRepeatDist 10;
+	tail
+	{
+		"gfx_spotlight_lensflare"
+	};
+}
