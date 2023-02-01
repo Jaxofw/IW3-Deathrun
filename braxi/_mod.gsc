@@ -196,8 +196,11 @@ startTimer()
 	// Release jumpers from spawn_link
 	for ( i = 0; i < level.players.size; i++ )
 	{
-		level.players[i] unLink();
-		level.players[i] thread braxi\_player::playerTimer();
+		if ( level.players[i] isAlive() )
+		{
+			level.players[i] unLink();
+			level.players[i] thread braxi\_player::playerTimer();
+		}
 	}
 }
 
