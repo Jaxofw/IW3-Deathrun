@@ -1,10 +1,14 @@
 #include "ui_mp/includes/utility.inc"
 
+#define SPECTATING                  spectatingclient()
+
 #define ITEM_ALIGN					HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_SUBTOP
 #define PLAYER_VIS                  dvarBool( "ui_player_vis" )
 #define JUMPERS_VIS                 dvarBool( "ui_jumpers_vis" )
 #define WEAPON_VIS                  dvarBool( "ui_weapon_vis" )
 #define ROUNDS_VIS                  dvarBool( "ui_rounds_vis" )
+#define KEYS_VIS                    dvarBool( "ui_spec_keys_vis" )
+#define FPS_VIS                     dvarBool( "ui_spec_fps_vis" )
 
 #define GAME_STATE                  dvarString( "ui_game_state" )
 #define ROUND_CURRENT               (dvarInt( "ui_rounds_played" ) + 1)
@@ -94,3 +98,38 @@
 
 #define SPEED_METER \
     CREATE_TEXT_EX( 427 475 0 0 ITEM_ALIGN, SPEEDMETER_TEXT, COLOR_ARCANE 1, 0.36, 1, SPEEDMETER_VIS, textstyle ITEM_TEXTSTYLE_SHADOWED )
+
+#define KEY_W \
+    CREATE_SHADER_VIS( 414 340 25 22 ITEM_ALIGN, "ui_key_w", 0 0 0 0.6, KEYS_VIS && SPECTATING && !dvarBool( "ui_key_w_active" ) ) \
+    CREATE_SHADER_VIS( 414 340 25 22 ITEM_ALIGN, "ui_key_w", 0 0 0 1, KEYS_VIS && SPECTATING && dvarBool( "ui_key_w_active" ) ) \
+    CREATE_TEXT_VIS( 426 358 0 0 ITEM_ALIGN, "W", 1 1 1 1, .28, 1, KEYS_VIS && SPECTATING )
+
+#define KEY_A \
+    CREATE_SHADER_VIS( 385 366 25 22 ITEM_ALIGN, "ui_key_a", 0 0 0 0.6, KEYS_VIS && SPECTATING && !dvarBool( "ui_key_a_active" ) ) \
+    CREATE_SHADER_VIS( 385 366 25 22 ITEM_ALIGN, "ui_key_a", 0 0 0 1, KEYS_VIS && SPECTATING && dvarBool( "ui_key_a_active" ) ) \
+    CREATE_TEXT_VIS( 397 384 0 0 ITEM_ALIGN, "A", 1 1 1 1, .28, 1, KEYS_VIS && SPECTATING )
+
+#define KEY_S \
+    CREATE_SHADER_VIS( 414 366 25 22 ITEM_ALIGN, "ui_key_s", 0 0 0 0.6, KEYS_VIS && SPECTATING && !dvarBool( "ui_key_s_active" ) ) \
+    CREATE_SHADER_VIS( 414 366 25 22 ITEM_ALIGN, "ui_key_s", 0 0 0 1, KEYS_VIS && SPECTATING && dvarBool( "ui_key_s_active" ) ) \
+    CREATE_TEXT_VIS( 426 384 0 0 ITEM_ALIGN, "S", 1 1 1 1, .28, 1, KEYS_VIS && SPECTATING )
+
+#define KEY_D \
+    CREATE_SHADER_VIS( 443 366 25 22 ITEM_ALIGN, "ui_key_d", 0 0 0 0.6, KEYS_VIS && SPECTATING && !dvarBool( "ui_key_d_active" ) ) \
+    CREATE_SHADER_VIS( 443 366 25 22 ITEM_ALIGN, "ui_key_d", 0 0 0 1, KEYS_VIS && SPECTATING && dvarBool( "ui_key_d_active" ) ) \
+    CREATE_TEXT_VIS( 455 384 0 0 ITEM_ALIGN, "D", 1 1 1 1, .28, 1, KEYS_VIS && SPECTATING )
+
+#define KEY_SPACE \
+    CREATE_SHADER_VIS( 385 392 84 20 ITEM_ALIGN, "ui_key_space", 0 0 0 0.6, KEYS_VIS && SPECTATING && !dvarBool( "ui_key_space_active" ) ) \
+    CREATE_SHADER_VIS( 385 392 84 20 ITEM_ALIGN, "ui_key_space", 0 0 0 1, KEYS_VIS && SPECTATING && dvarBool( "ui_key_space_active" ) ) \
+    CREATE_TEXT_VIS( 427 409 0 0 ITEM_ALIGN, "SPACE", 1 1 1 1, .28, 1, KEYS_VIS && SPECTATING )
+
+#define SPECTATOR_KEYS \
+    KEY_W \
+    KEY_A \
+    KEY_S \
+    KEY_D \
+    KEY_SPACE
+
+#define SPECTATOR_FPS \
+    CREATE_TEXT_VIS( 120 458 0 0 ITEM_ALIGN, dvarInt( "ui_fps_counter" ), 1 1 1 1, 0.36, 0, FPS_VIS && SPECTATING )

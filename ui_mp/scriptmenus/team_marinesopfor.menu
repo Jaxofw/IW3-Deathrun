@@ -55,7 +55,9 @@
 		HEADER
 
 		ARCANE_DVARFLOATLIST( 1, "@MENU_TOGGLE_COMPASS", ui_compass_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "compass" )
-		BUTTON_PAGE_PREV( 2, settings )
+		ARCANE_DVARFLOATLIST( 2, "@MENU_TOGGLE_KEYS", ui_spec_keys_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "keys" )
+		ARCANE_DVARFLOATLIST( 3, "@MENU_TOGGLE_FPS", ui_spec_fps_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "fps_counter" )
+		BUTTON_PAGE_PREV( 4, settings )
 	}
 
 	menuDef

@@ -126,6 +126,11 @@ material,hud_square_round_right
 material,hud_square_round_left
 material,ui_hud_divider
 material,ui_footer_round
+material,ui_key_w
+material,ui_key_a
+material,ui_key_s
+material,ui_key_d
+material,ui_key_space
 
 # Reticles
 material,knife_ballistic_reticle

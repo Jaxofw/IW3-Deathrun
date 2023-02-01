@@ -3422,10 +3422,16 @@ LANG_ENGLISH        "Show Player Info"
 REFERENCE           TOGGLE_WEAPON
 LANG_ENGLISH        "Show Weapon Info"
 
+REFERENCE           TOGGLE_XP_BAR
+LANG_ENGLISH        "Show XP Bar"
+
 REFERENCE           TOGGLE_COMPASS
 LANG_ENGLISH        "Show Compass"
 
-REFERENCE           TOGGLE_XP_BAR
-LANG_ENGLISH        "Show XP Bar"
+REFERENCE           TOGGLE_KEYS
+LANG_ENGLISH        "Show Keys"
+
+REFERENCE           TOGGLE_FPS
+LANG_ENGLISH        "Show FPS Counter"
 
 ENDMARKER

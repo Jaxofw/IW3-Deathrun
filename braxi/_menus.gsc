@@ -210,7 +210,7 @@ onMenuResponse()
 				self thread braxi\_player::trailFx();
 			}
 		}
-		else if ( menu == game["menu_settings"] )
+		else if ( menu == game["menu_settings"] || menu == game["menu_settings2"] )
 		{
 			switch ( response )
 			{
@@ -275,6 +275,22 @@ onMenuResponse()
 						self setStat( 1000, 0 );
 
 					self setClientDvar( "ui_compass_vis", self getStat( 1000 ) );
+					break;
+				case "keys":
+					if ( self getStat( 1001 ) == 0 )
+						self setStat( 1001, 1 );
+					else
+						self setStat( 1001, 0 );
+
+					self setClientDvar( "ui_spec_keys_vis", self getStat( 1001 ) );
+					break;
+				case "fps_counter":
+					if ( self getStat( 1002 ) == 0 )
+						self setStat( 1002, 1 );
+					else
+						self setStat( 1002, 0 );
+
+					self setClientDvar( "ui_spec_fps_vis", self getStat( 1002 ) );
 					break;
 			}
 		}
