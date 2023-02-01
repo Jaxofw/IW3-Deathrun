@@ -1,2 +1,6 @@
-1,0,1,body_mp_usmc_cqb,@ACTIVATOR_PRICE,
-2,1,3,playermodel_baa_joker,@ACTIVATOR_JOKER,
+1,0,1,body_mp_usmc_cqb,@ACTIVATOR_PRICE
+2,1,9,playermodel_baa_joker,@ACTIVATOR_JOKER
+3,2,17,plr_bo_zom_mil_police,@ACTIVATOR_ZOMBIE
+4,3,25,predator,@ACTIVATOR_PREDATOR
+5,4,33,fox_chiller,@ACTIVATOR_CHILLER
+6,5,41,cm_clone,@ACTIVATOR_CLONETROOPER

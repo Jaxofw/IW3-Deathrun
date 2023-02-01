@@ -4,4 +4,16 @@ LANG_ENGLISH        "Captain Price"
 REFERENCE           JOKER
 LANG_ENGLISH        "The Joker"
 
+REFERENCE           ZOMBIE
+LANG_ENGLISH        "Zombie"
+
+REFERENCE           PREDATOR
+LANG_ENGLISH        "The Predator"
+
+REFERENCE           CHILLER
+LANG_ENGLISH        "Chiller"
+
+REFERENCE           CLONETROOPER
+LANG_ENGLISH        "Clone Trooper"
+
 ENDMARKER

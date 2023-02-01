@@ -191,6 +191,10 @@ xmodel,playerbody_t6_misty
 # AModels
 xmodel,body_mp_usmc_cqb
 xmodel,playermodel_baa_joker
+xmodel,plr_bo_zom_mil_police
+xmodel,predator
+xmodel,fox_chiller
+xmodel,cm_clone
 
 # Hands
 xmodel,viewhands_t4_zombie
