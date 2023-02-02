@@ -75,7 +75,7 @@
 		name			"xpbar"
 		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
-		visible 		when ( !ui_active() && !scoped() && dvarBool( "show_hud" ) && dvarBool( "ui_exp_bar_vis" ) )
+		visible 		when ( !ui_active() && !scoped() && !inkillcam() && dvarBool( "show_hud" ) && dvarBool( "ui_exp_bar_vis" ) )
 
 		CREATE_SHADER_VIS( 0 0 640 8 1 3, "white", 0 0 0 0.25, !dvarInt( "wideScreen" ) )
 		CREATE_SHADER_EX( 0 2 540 4 1 3, "white", COLOR_XP_BAR_NORMAL 0.7, !dvarInt( "wideScreen" ) && !dvarBool( "ui_exp_event" ), exp rect W( 640 * ((stat(2301) - stat(2351)) / (stat(2352) - stat(2351))) ) )
@@ -91,7 +91,7 @@
 		name			"scorebar"
 		rect			0 -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
-		visible 		when ( !ui_active() && !scoped() && dvarBool( "show_hud" ) );
+		visible 		when ( !ui_active() && !scoped() && !inkillcam() && dvarBool( "show_hud" ) );
 
         HUD_ROUND_INFO
         HUD_JUMPER_INFO
@@ -192,4 +192,18 @@
 
 		WEAPON_INFO
 	}
+
+    menuDef
+    {
+        name                      "killcam"
+        rect                      FULLSCREEN HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+        foreColor                 1 1 1 1
+        fadeCycle                 1
+        fadeClamp                 1
+        fadeAmount                0.1
+        visible                   when ( inkillcam() )
+
+        CREATE_SHADER( 0 0 854 30 ITEM_ALIGN, "white", 0 0 0 0.6 )
+        CREATE_TEXT( 427 25 0 0 ITEM_ALIGN, "Killcam", 1 1 1 1, 0.4, 1 )
+    }
 }

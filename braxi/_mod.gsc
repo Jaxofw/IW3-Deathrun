@@ -46,6 +46,7 @@ init()
 	braxi\_mapvote::init();
 	thread braxi\_records::init();
 	braxi\_leaderboard::init();
+	thread braxi\_killcam::init();
 
 	setDvar( "g_speed", level.dvar["player_speed"] );
 	setDvar( "jump_slowdownEnable", 0 );
@@ -300,6 +301,14 @@ endRound( reason, winner )
 	if ( winner == "jumper" )
 		for ( i = 0; i < level.jumpers.size; i++ )
 			level.jumpers[i] thread braxi\_rank::giveRankXp( "win" );
+
+	if ( isDefined( level.killcamStarted ) )
+	{
+		if ( level.killcamStarted )
+			wait 7;
+		else
+			wait 4;
+	}
 
 	map_restart( true );
 }
