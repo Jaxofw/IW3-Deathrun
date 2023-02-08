@@ -242,12 +242,6 @@ weapon,mp/iw5_l96_mp
 weapon,mp/t4_ppsh_mp
 weapon,mp/iw7_kendall_mp
 
-weapon,mp/t9_raygun_mp
-weapon,mp/t6_blundergat_mp
-weapon,mp/t5_vr11_mp
-weapon,mp/t4_tesla_mp
-weapon,mp/t7_wavegun_mp
-
 # MFiles
 weapon,mp/hands_mp
 weapon,mp/knife_mp
@@ -320,23 +314,6 @@ xmodel,wpn_t4_ppsh_npc
 
 xmodel,wpn_iw7_glock_vm
 xmodel,wpn_iw7_glock_npc
-
-# PModels
-xmodel,wpn_t9_raygun_vm
-xmodel,wpn_t9_raygun_npc
-
-xmodel,wpn_t6_blundergat_vm
-xmodel,wpn_t6_blundergat_npc
-
-xmodel,wpn_t5_vr11_vm
-xmodel,wpn_t5_vr11_npc
-
-xmodel,wpn_t4_tesla_vm
-xmodel,wpn_t4_tesla_npc
-xmodel,projectile_tag
-
-xmodel,wpn_t7_wavegun_vm
-xmodel,wpn_t7_wavegun_npc
 
 # MModels
 xmodel,melee_t5_sog_knife_vm
@@ -632,82 +609,6 @@ xanim,vm_iw7_glock_reload_empty
 xanim,vm_iw7_glock_sprint_in
 xanim,vm_iw7_glock_sprint_loop
 xanim,vm_iw7_glock_sprint_out
-
-# PAnims
-xanim,vm_t9_raygun_ads_down
-xanim,vm_t9_raygun_ads_up
-xanim,vm_t9_raygun_drop
-xanim,vm_t9_raygun_fire
-xanim,vm_t9_raygun_fire_ads
-xanim,vm_t9_raygun_idle
-xanim,vm_t9_raygun_raise
-xanim,vm_t9_raygun_raise_first
-xanim,vm_t9_raygun_reload
-xanim,vm_t9_raygun_sprint_in
-xanim,vm_t9_raygun_sprint_loop
-xanim,vm_t9_raygun_sprint_out
-xanim,vm_t9_raygun_swipe
-
-xanim,vm_t6_blundergat_ads_down
-xanim,vm_t6_blundergat_ads_up
-xanim,vm_t6_blundergat_drop
-xanim,vm_t6_blundergat_drop_quick
-xanim,vm_t6_blundergat_fire
-xanim,vm_t6_blundergat_fire_ads
-xanim,vm_t6_blundergat_fire_ads_last
-xanim,vm_t6_blundergat_fire_last
-xanim,vm_t6_blundergat_idle
-xanim,vm_t6_blundergat_raise
-xanim,vm_t6_blundergat_raise_first
-xanim,vm_t6_blundergat_raise_quick
-xanim,vm_t6_blundergat_reload
-xanim,vm_t6_blundergat_reload_empty
-xanim,vm_t6_blundergat_sprint_in
-xanim,vm_t6_blundergat_sprint_loop
-xanim,vm_t6_blundergat_sprint_out
-
-xanim,vm_t5_vr11_ads_down
-xanim,vm_t5_vr11_ads_up
-xanim,vm_t5_vr11_drop
-xanim,vm_t5_vr11_drop_quick
-xanim,vm_t5_vr11_fire
-xanim,vm_t5_vr11_fire_ads
-xanim,vm_t5_vr11_raise_first
-xanim,vm_t5_vr11_idle
-xanim,vm_t5_vr11_raise
-xanim,vm_t5_vr11_raise_quick
-xanim,vm_t5_vr11_reload
-xanim,vm_t5_vr11_sprint_in
-xanim,vm_t5_vr11_sprint_loop
-xanim,vm_t5_vr11_sprint_out
-
-xanim,vm_t4_tesla_ads_down
-xanim,vm_t4_tesla_ads_up
-xanim,vm_t4_tesla_drop
-xanim,vm_t4_tesla_drop_quick
-xanim,vm_t4_tesla_fire
-xanim,vm_t4_tesla_fire_ads
-xanim,vm_t4_tesla_idle
-xanim,vm_t4_tesla_raise
-xanim,vm_t4_tesla_raise_first
-xanim,vm_t4_tesla_raise_quick
-xanim,vm_t4_tesla_reload
-xanim,vm_t4_tesla_sprint_in
-xanim,vm_t4_tesla_sprint_loop
-xanim,vm_t4_tesla_sprint_out
-
-xanim,vm_t7_wavegun_ads_down
-xanim,vm_t7_wavegun_ads_up
-xanim,vm_t7_wavegun_drop
-xanim,vm_t7_wavegun_drop_quick
-xanim,vm_t7_wavegun_fire
-xanim,vm_t7_wavegun_fire_ads
-xanim,vm_t7_wavegun_raise
-xanim,vm_t7_wavegun_raise_quick
-xanim,vm_t7_wavegun_reload
-xanim,vm_t7_wavegun_sprint_in
-xanim,vm_t7_wavegun_sprint_loop
-xanim,vm_t7_wavegun_sprint_out
 
 # MAnims
 xanim,vm_t5_sog_knife_ads_down
