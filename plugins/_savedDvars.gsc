@@ -21,12 +21,7 @@ fetchFov()
         self.pers["init_fov_save"] = true;
     }
 
-    if ( self getStat( 992 ) == 0 )
-        self setClientDvar( "cg_fovscale", 1 );
-    else if ( self getStat( 992 ) == 2 )
-        self setClientDvar( "cg_fovscale", 2 );
-    else
-        self setClientDvar( "cg_fovscale", 1 + ( self getStat( 992 ) / 10 ) );
+    self setClientDvar( "cg_fovscale", self getStat( 992 ) / 100 );
 }
 
 fetchSpeedMeter()

@@ -212,18 +212,8 @@ onMenuResponse()
 			switch ( response )
 			{
 				case "fovscale":
-					wait .8;
 					fov = toFloat( self getUserInfo( "cg_fovscale" ) );
-
-					if ( fov == 1 )
-						self setStat( 992, 0 );
-					else if ( fov == 2 )
-						self setStat( 992, 2 );
-					else
-					{
-						fov = int( fov * 10 ) % 10;
-						self setStat( 992, fov );
-					}
+					self setStat( 992, int( fov * 100 ) );
 					break;
 				case "round":
 					if ( self getStat( 995 ) == 0 )
