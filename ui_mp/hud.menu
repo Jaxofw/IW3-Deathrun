@@ -16,7 +16,7 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( !ui_active() && !inkillcam() && !scoped() && dvarBool( "show_hud" ) )
+        visible                   when ( !ui_active() && !inkillcam() && !scoped() )
 
         itemDef
         {
@@ -49,7 +49,7 @@
         fadeAmount                0.1
         focusColor                0 0 0 0
         disableColor              0 0 0 0
-        visible                   when ( !ui_active() && !inkillcam() && !scoped() && dvarBool( "show_hud" ) )
+        visible                   when ( !ui_active() && !inkillcam() && !scoped() )
 
         itemDef
         {
