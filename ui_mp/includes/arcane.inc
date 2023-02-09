@@ -124,7 +124,7 @@
 	CREATE_SHADER( SPRAY_MT_RECT( row, column ), "ui_spray" + (idx - 1), 1 1 1 1 ) \
 	CREATE_SHADER_EX( SPRAY_FOOTER_RECT( row, column ), "ui_footer_round", COLOR_ARCANE 1, 1, group idx ) \
 	CREATE_SHADER_VIS( SPRAY_FOOTER_RECT( row, column ), "ui_footer_round", COLOR_ITEM_SELECTED, dvarInt( "ui_spray_selected" ) == (idx - 1) ) \
-	CREATE_BUTTON_EX( SPRAY_RECT( row, column ), "", 0.26, scriptMenuResponse idx, 1, mouseEnter { setitemcolor idx forecolor 1 1 1 1; }; mouseExit { setitemcolor idx forecolor COLOR_ARCANE 1; } ) \
+	CREATE_BUTTON_EX( SPRAY_RECT( row, column ), "", 0.26, scriptMenuResponse idx, 1, mouseEnter { setitemcolor idx forecolor COLOR_ITEM_HOVER; }; mouseExit { setitemcolor idx forecolor COLOR_ARCANE 1; } ) \
 	CREATE_SHADER_VIS( SPRAY_RECT( row, column ), "ui_spray_bg", 0 0 0 0.4, ITEM_LOCKED( ITEM_SPRAY, idx ) ) \
 	CREATE_TEXT_VIS( SPRAY_LEVEL_RECT( row, column ), "^1(" + ITEM_LEVEL( ITEM_SPRAY, idx ) + ")", 1 1 1 1, 0.3, 1, ITEM_LOCKED( ITEM_SPRAY, idx ) )
 

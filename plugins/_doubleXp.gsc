@@ -1,71 +1,58 @@
+#include braxi\_common;
+
 init()
 {
     level.xpEvent = false;
-    level.xpPrevious = [];
-
-    // Index is amount to multiply xp by
-    level.xpPlayersNeeded[2] = 2;
-    level.xpPlayersNeeded[3] = 20;
-    level.xpPlayersNeeded[4] = 30;
+    level.xpMultipliedBy = 1;
 
     if ( !level.xpEvent )
         thread watchPlayerCount();
-    else
-        setXpValues( 2 );
 }
 
 watchPlayerCount()
 {
     while ( true )
     {
-        if ( level.players.size >= level.xpPlayersNeeded[2] )
+        players = getAllPlayers();
+        playersPlaying = 0;
+
+        for ( i = 0; i < players.size; i++ )
+        {
+            if ( players[i] isPlaying() )
+                playersPlaying++;
+        }
+
+        xpEvent = isXpEventAvailable( playersPlaying );
+
+        if ( xpEvent )
         {
             if ( !level.xpEvent )
-            {
                 level.xpEvent = true;
-
-                for ( i = level.xpPlayersNeeded.size + 2; i > 1; i-- )
-                {
-                    if ( isDefined( level.xpPlayersNeeded[i] ) )
-                    {
-                        if ( level.players.size == level.xpPlayersNeeded[i] )
-                        {
-                            for ( j = 0; j < level.players.size; j++ )
-                                level.players[j] setClientDvar( "ui_exp_event", true );
-                            
-                            level waittill( "round_started" );
-                            setXpValues( i );
-                        }
-                    }
-                }
-            }
         }
         else
         {
             if ( level.xpEvent )
-            {
                 level.xpEvent = false;
-                setXpValues();
-            }
         }
 
-        wait .5;
+        for ( i = 0; i < players.size; i++ )
+            players[i] setClientDvar( "ui_exp_event", xpEvent );
+
+        wait 0.5;
     }
 }
 
-setXpValues( number )
+isXpEventAvailable( players )
 {
-    for ( i = 0; i < level.scoreInfo.size; i++ )
-    {
-        if ( !isDefined( level.xpPrevious[level.xpPrevious.size] ) )
-        {
-            xpId = level.xpPrevious.size;
-            level.xpPrevious[xpId]["value"] = level.scoreInfo[i]["value"];
-        }
+    if ( players < 10 )
+        return false;
 
-        if ( isDefined( number ) )
-            braxi\_rank::setScoreValue( level.scoreInfo[i]["type"], level.scoreInfo[i]["value"] * number, i );
-        else
-            braxi\_rank::setScoreValue( level.scoreInfo[i]["type"], level.xpPrevious[i]["value"], i );
-    }
+    if ( players >= 10 && players <= 20 )
+        level.xpMultipliedBy = 2;
+    else if ( players >= 20 && players <= 30 )
+        level.xpMultipliedBy = 3;
+    else if ( players > 30 )
+        level.xpMultipliedBy = 4;
+
+    return true;
 }

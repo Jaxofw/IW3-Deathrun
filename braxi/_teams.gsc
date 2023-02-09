@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -18,59 +18,17 @@ init()
 	setDvar( "g_teamColor_EnemyTeam", "1 .45 .5" );
 }
 
-setSpectatePermissions( allies, axis, freelook, none )
-{
-	self allowSpectateTeam( "allies", allies );
-	self allowSpectateTeam( "axis", axis );
-	self allowSpectateTeam( "freelook", freelook );
-	self allowSpectateTeam( "none", none );
-}
-
-setHealth()
-{
-	self.maxhealth = 100;
-	self.health = self.maxhealth;
-}
-
-setSpeed()
-{
-	self setMoveSpeedScale( 1.0 );
-}
-
 setTeam( team )
 {
-	if ( self.pers["team"] == team )
-		return;
+    if ( self.pers["team"] == team )
+        return;
 
-	self.pers["weapon"] = "none";
-	self.pers["team"] = team;
+    self.pers["team"] = team;
 	self.team = team;
 	self.sessionteam = team;
 
-	if ( self.pers["team"] == "spectator" )
-		self suicide();
-	else if ( self.pers["team"] == "axis" )
-		level.jumpersAlive--;
-}
-
-setLoadout()
-{
-	self takeAllWeapons();
-
-	self.pers["primary"] = level.weapon_primary[self getStat( 981 )]["item"];
-	self.pers["secondary"] = level.weapon_secondary[self getStat( 982 )]["item"];
-	gloves = level.model_glove[self getStat( 983 )]["item"];
-
-	self setPlayerModel();
-	self setViewModel( gloves );
-
-	self giveWeapon( self.pers["primary"] );
-	self setSpawnWeapon( self.pers["primary"] );
-	self giveMaxAmmo( self.pers["primary"] );
-	self giveWeapon( self.pers["secondary"] );
-
-	self setHealth();
-	self setSpeed();
+	if ( !self isPlaying() )
+		self.statusicon = "hud_status_dead";
 }
 
 setPlayerModel()
@@ -81,4 +39,50 @@ setPlayerModel()
 		self setModel( level.model_jumper[self getStat( 979 )]["item"] );
 	else if ( self.pers["team"] == "axis" )
 		self setModel( level.model_activator[self getStat( 980 )]["item"] );
+}
+
+setLoadout()
+{
+	self takeAllWeapons();
+
+	self.pers["secondary"] = level.weapon_secondary[self getStat( 982 )]["item"];
+	gloves = level.model_glove[self getStat( 983 )]["item"];
+
+	self giveWeapon( self.pers["secondary"] );
+	self setViewModel( gloves );
+
+	self thread braxi\_weapons::watchWeapons();
+
+	if ( self.pers["team"] == "allies" )
+	{
+		self.pers["primary"] = level.weapon_primary[self getStat( 981 )]["item"];
+		self giveWeapon( self.pers["primary"] );
+		self setSpawnWeapon( self.pers["primary"] );
+		self giveMaxAmmo( self.pers["primary"] );
+	}
+	else if ( self.pers["team"] == "axis" )
+	{
+		level.activ takeWeapon( self.pers["primary"] );
+		level.activ switchToWeapon( self.pers["secondary"] );
+		level.activ giveWeapon( "t5_ballistic_knife_mp" );
+	}
+}
+
+setHealth()
+{
+	self.maxhealth = 100;
+	self.health = self.maxhealth;
+	self setClientDvars( "ui_health_value", self.health, "ui_health_bar", 1 );
+}
+
+setSpeed()
+{
+	self setMoveSpeedScale( 1.0 );
+}
+
+setSpectatePermissions()
+{
+	self allowSpectateTeam( "allies", true );
+	self allowSpectateTeam( "axis", true );
+	self allowSpectateTeam( "none", false );
 }

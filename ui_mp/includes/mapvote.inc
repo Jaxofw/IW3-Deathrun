@@ -2,7 +2,7 @@
 
 #define MAPVOTE_ALIGN										1 1
 #define MAPVOTE_COLOR										0.35 0.4 1 0.6
-#define MAPVOTE_COLOR_WINNER								0.95 0.38 0.38 0.6
+#define MAPVOTE_COLOR_WINNER								0.95 0.38 0.38 1
 
 #define MAPVOTE_X											278
 #define MAPVOTE_Y											75
@@ -33,7 +33,7 @@
 	CREATE_TEXT( (MAPVOTE_X_POS( row ) + 4) (MAPVOTE_FOOTER_Y( column ) + 10) 0 0 MAPVOTE_ALIGN, dvarString( "mapvote_option_" + idx + "_label" ), 1 1 1 1, 0.22, 0 ) \
 	CREATE_SHADER( (MAPVOTE_X_POS( row ) + 142) (MAPVOTE_FOOTER_Y( column ) + 2.5) 6 6 MAPVOTE_ALIGN, "menu_mapvote_user", 1 1 1 1 ) \
 	CREATE_TEXT( (MAPVOTE_X_POS( row ) + 154) (MAPVOTE_FOOTER_Y( column ) + 10.5) 0 0 MAPVOTE_ALIGN, dvarInt( "mapvote_option_" + idx + "_votes" ), 1 1 1 1, 0.22, 1 ) \
-	CREATE_SHADER_EX( MAPVOTE_RECT( row, column ), "loadscreen" + "_" + dvarString( "mapvote_option_" + idx ) + "_1", 1 1 1 1, 1, type ITEM_TYPE_BUTTON; action { play "mouse_click"; scriptMenuResponse idx; }; mouseEnter { setitemcolor idx forecolor MAPVOTE_COLOR_SELECT; }; mouseExit { setitemcolor idx forecolor MAPVOTE_COLOR; } )
+	CREATE_SHADER_EX( MAPVOTE_RECT( row, column ), "loadscreen" + "_" + dvarString( "mapvote_option_" + idx ) + "_1", 1 1 1 1, 1, type ITEM_TYPE_BUTTON; action { play "mouse_click"; scriptMenuResponse idx; }; mouseEnter { setitemcolor idx forecolor COLOR_ITEM_HOVER; }; mouseExit { setitemcolor idx forecolor MAPVOTE_COLOR; } )
 
 #define MAPVOTE_REPLAY \
 	CREATE_SHADER( 453 (MAPVOTE_Y + 350) (MAPVOTE_W / 2) 25 1 1, "gradient_fadein", 0 0 0 1 ) \

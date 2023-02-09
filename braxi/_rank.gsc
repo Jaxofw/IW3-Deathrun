@@ -1,280 +1,348 @@
 #include common_scripts\utility;
 #include maps\mp\gametypes\_hud_util;
-#include braxi\_utility;
 
 init()
 {
-	level.rankTable = [];
-	level.scoreInfo = [];
-	level.maxRank = int( tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 ) );
+    level.scoreInfo = [];
+    level.rankTable = [];
 
-	setScoreValue( "kill", 200 );
-	setScoreValue( "headshot", 250 );
-	setScoreValue( "melee", 300 );
-	setScoreValue( "trap_activation", 100 );
-	setScoreValue( "activator", 50 );
-	setScoreValue( "win", 100 );
+    preCacheString( &"MP_PLUS" );
 
-	rankId = 0;
-	rankName = tableLookup( "mp/rankTable.csv", 0, rankId, 1 );
-	assert( isDefined( rankName ) && rankName != "" );
+    setScoreValue( "kill", 100 );
+	setScoreValue( "headshot", 200 );
+	setScoreValue( "melee", 150 );
+	setScoreValue( "trap_activation", 50 );
+	setScoreValue( "activator", 300 );
+	setScoreValue( "win", 25 );
+    setScoreValue( "jumper_died", 50 );
+    setScoreValue( "finished_map", 200 );
 
-	while ( isDefined( rankName ) && rankName != "" )
-	{
-		level.rankTable[rankId][1] = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
-		level.rankTable[rankId][2] = tableLookup( "mp/ranktable.csv", 0, rankId, 2 );
-		level.rankTable[rankId][3] = tableLookup( "mp/ranktable.csv", 0, rankId, 3 );
-		level.rankTable[rankId][7] = tableLookup( "mp/ranktable.csv", 0, rankId, 7 );
+    level.maxRank = int( tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 ) );
+    level.maxPrestige = int( tableLookup( "mp/rankIconTable.csv", 0, "maxprestige", 1 ) );
 
-		preCacheString( tableLookupIString( "mp/ranktable.csv", 0, rankId, 16 ) );
+    rankId = 0;
+    rankName = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
+    assert( isDefined( rankName ) && rankName != "" );
 
-		rankId++;
-		rankName = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
-	}
+    while ( isDefined( rankName ) && rankName != "" )
+    {
+        level.rankTable[rankId][1] = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
+        level.rankTable[rankId][2] = tableLookup( "mp/ranktable.csv", 0, rankId, 2 );
+        level.rankTable[rankId][3] = tableLookup( "mp/ranktable.csv", 0, rankId, 3 );
+        level.rankTable[rankId][7] = tableLookup( "mp/ranktable.csv", 0, rankId, 7 );
 
-	level thread onPlayerConnect();
+        precacheString( tableLookupIString( "mp/ranktable.csv", 0, rankId, 16 ) );
+
+        rankId++;
+        rankName = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
+    }
+
+    level thread onPlayerConnect();
 }
 
 onPlayerConnect()
 {
-	for (;;)
-	{
-		level waittill( "connected", player );
+    for (;;)
+    {
+        level waittill( "connected", player );
 
-		player.pers["rankxp"] = player maps\mp\gametypes\_persistence::statGet( "rankxp" );
-		rankId = player getRankForXp( player.pers["rankxp"] );
-		player.pers["rank"] = rankId;
+        player.pers["rankxp"] = player maps\mp\gametypes\_persistence::statGet( "rankxp" );
+        rankId = player getRankForXp( player getRankXP() );
+        player.pers["rank"] = rankId;
 
-		player.rankUpdateTotal = 0;
+        player.rankUpdateTotal = 0;
 
-		prestige = 0;
-		player setRank( rankId, prestige );
-		player.pers["prestige"] = prestige;
+        prestige = 0;
+        player setRank( rankId, prestige );
+        player.pers["prestige"] = prestige;
 
-		if ( !isDefined( player.hud_rankscoreupdate ) )
-		{
-			player.hud_rankscoreupdate = newClientHudElem( player );
-			player.hud_rankscoreupdate.horzAlign = "center";
-			player.hud_rankscoreupdate.vertAlign = "middle";
-			player.hud_rankscoreupdate.alignX = "center";
-			player.hud_rankscoreupdate.alignY = "middle";
-			player.hud_rankscoreupdate.x = 0;
-			player.hud_rankscoreupdate.y = -60;
-			player.hud_rankscoreupdate.font = "default";
-			player.hud_rankscoreupdate.fontscale = 2.0;
-			player.hud_rankscoreupdate.archived = false;
-			player.hud_rankscoreupdate.color = ( 0.5, 0.5, 0.5 );
-			player.hud_rankscoreupdate maps\mp\gametypes\_hud::fontPulseInit();
-			player.hud_rankscoreupdate.alpha = 0;
-		}
-	}
+        if ( !isDefined( player.hud_rankscoreupdate ) )
+        {
+            player.hud_rankscoreupdate = newClientHudElem( player );
+            player.hud_rankscoreupdate.horzAlign = "center";
+            player.hud_rankscoreupdate.vertAlign = "middle";
+            player.hud_rankscoreupdate.alignX = "center";
+            player.hud_rankscoreupdate.alignY = "middle";
+            player.hud_rankscoreupdate.x = 0;
+            player.hud_rankscoreupdate.y = -60;
+            player.hud_rankscoreupdate.font = "default";
+            player.hud_rankscoreupdate.fontscale = 2.0;
+            player.hud_rankscoreupdate.archived = false;
+            player.hud_rankscoreupdate.color = ( 0.5, 0.5, 0.5 );
+            player.hud_rankscoreupdate maps\mp\gametypes\_hud::fontPulseInit();
+        }
+
+        player thread onJoinedTeam();
+		player thread onJoinedSpectators();
+    }
 }
 
-processXpReward( sMeansOfDeath, attacker, victim )
+onJoinedTeam()
 {
-	if ( attacker.pers["team"] == victim.pers["team"] ) return;
+    self endon( "disconnect" );
 
-	kills = attacker maps\mp\gametypes\_persistence::statGet( "kills" );
-	attacker maps\mp\gametypes\_persistence::statSet( "kills", kills + 1 );
-
-	if ( victim.pers["team"] == "allies" )
-	{
-		kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_JUMPERS" );
-		attacker maps\mp\gametypes\_persistence::statSet( "KILLED_JUMPERS", kills + 1 );
-	}
-	else
-	{
-		kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_ACTIVATORS" );
-		attacker maps\mp\gametypes\_persistence::statSet( "KILLED_ACTIVATORS", kills + 1 );
-	}
-
-	switch ( sMeansOfDeath )
-	{
-		case "MOD_HEAD_SHOT":
-			attacker.pers["headshots"]++;
-			attacker braxi\_rank::giveRankXp( "headshot" );
-			headshot = attacker maps\mp\gametypes\_persistence::statGet( "headshots" );
-			attacker maps\mp\gametypes\_persistence::statSet( "headshots", headshot + 1 );
-			break;
-		case "MOD_MELEE":
-			attacker.pers["knifes"]++;
-			attacker braxi\_rank::giveRankXp( "melee" );
-			knife = attacker maps\mp\gametypes\_persistence::statGet( "MELEE_KILLS" );
-			attacker maps\mp\gametypes\_persistence::statSet( "MELEE_KILLS", knife + 1 );
-			break;
-		default:
-			pistol = attacker maps\mp\gametypes\_persistence::statGet( "PISTOL_KILLS" );
-			attacker maps\mp\gametypes\_persistence::statSet( "PISTOL_KILLS", pistol + 1 );
-			attacker braxi\_rank::giveRankXp( "kill" );
-			break;
-	}
+    for (;;)
+    {
+        self waittill( "joined_team" );
+        self thread removeRankHUD();
+    }
 }
 
-giveRankXp( type, value )
+onJoinedSpectators()
 {
-	self endon( "disconnect" );
+    self endon( "disconnect" );
 
-	if ( level.practice || game["state"] != "playing" )
-		return;
-
-	if ( !isDefined( value ) )
-		value = getScoreValue( type );
-
-	self.score += value;
-	self.pers["score"] = self.score;
-
-	score = self maps\mp\gametypes\_persistence::statGet( "score" );
-	self maps\mp\gametypes\_persistence::statSet( "score", score + value );
-
-	self increaseLevelXp( value );
-	self updateRankScoreHUD( value );
+    for (;;)
+    {
+        self waittill( "joined_spectators" );
+        self thread removeRankHUD();
+    }
 }
 
-increaseLevelXp( amount )
+removeRankHUD()
 {
-	self.pers["rankxp"] += amount;
-	self maps\mp\gametypes\_persistence::statSet( "rankxp", self.pers["rankxp"] );
-	rankId = self getRankForXp( self.pers["rankxp"] );
-	self updateRank( rankId );
+    if ( isDefined( self.hud_rankscoreupdate ) )
+        self.hud_rankscoreupdate.alpha = 0;
 }
 
-updateRank( rankId )
+giveRankXP( type, value )
 {
-	self endon( "disconnect" );
+    self endon( "disconnect" );
 
-	if ( getRankMaxXp( self.pers["rank"] ) <= self.pers["rankxp"] && self.pers["rank"] < level.maxRank )
-	{
-		self setRank( rankId, 0 );
-		self.pers["rank"] = rankId;
+    if ( !isDefined( value ) )
+        value = getScoreInfoValue( type );
 
-		rankUp = spawnStruct();
-		rankUp.title = "You Leveled Up!";
-		rankUp.footer = "Level " + ( self.pers["rank"] + 1 );
-		rankUp.sound = "mp_level_up";
-		rankUp.levelUp = true;
+    // Mod isn't devmappable but just incase
+    if ( value > 6000 || getDvar( "dedicated" ) == "listen server" )
+        return;
 
-		self thread braxi\_utility::notification( rankUp, self );
-	}
+    if ( level.freeRun )
+        value = int( value * 0.5 );
+    else if ( game["state"] != "playing" )
+        value = 0;
 
-	updateRankStats( self, rankId );
-}
+    // XP Events
+    value = value * level.xpMultipliedBy;
 
-updateRankStats( player, rankId )
-{
-	player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
-	player maps\mp\gametypes\_persistence::statSet( "minxp", getRankMinXp( rankId ) );
-	player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankMaxXp( rankId ) );
+    self.score += value;
+    self.pers["score"] = self.score;
 
-	if ( rankId > level.maxRank )
-		player setStat( 252, level.maxRank );
-	else
-		player setStat( 252, rankId );
+    score = self maps\mp\gametypes\_persistence::statGet( "score" );
+    self maps\mp\gametypes\_persistence::statSet( "score", score + value );
+
+    self incRankXP( value );
+    self thread updateRankScoreHUD( value );
 }
 
 updateRankScoreHUD( amount )
 {
-	self endon( "disconnect" );
-	self endon( "joined_team" );
-	self endon( "joined_spectators" );
+    self endon( "disconnect" );
+    self endon( "joined_team" );
+    self endon( "joined_spectators" );
 
-	if ( amount == 0 ) return;
+    if ( amount == 0 )
+        return;
 
-	self notify( "update_score" );
-	self endon( "update_score" );
+    self notify( "update_score" );
+    self endon( "update_score" );
 
-	self.rankUpdateTotal += amount;
+    self.rankUpdateTotal += amount;
 
-	wait .05;
+    wait( 0.05 );
 
-	if ( isDefined( self.hud_rankscoreupdate ) )
-	{
-		if ( self.rankUpdateTotal < 0 )
-		{
-			self.hud_rankscoreupdate.label = &"";
-			self.hud_rankscoreupdate.color = ( 1, 0, 0 );
-		}
-		else
-		{
-			self.hud_rankscoreupdate.label = &"MP_PLUS";
-			self.hud_rankscoreupdate.color = ( 1, 1, 0.5 );
-		}
+    if ( isDefined( self.hud_rankscoreupdate ) )
+    {
+        if ( self.rankUpdateTotal < 0 )
+        {
+            self.hud_rankscoreupdate.label = &"";
+            self.hud_rankscoreupdate.color = ( 1, 0, 0 );
+        }
+        else
+        {
+            self.hud_rankscoreupdate.label = &"MP_PLUS";
+            self.hud_rankscoreupdate.color = ( 1, 1, 0.5 );
+        }
 
-		self.hud_rankscoreupdate setValue( self.rankUpdateTotal );
-		self.hud_rankscoreupdate.alpha = 0.85;
-		self.hud_rankscoreupdate thread maps\mp\gametypes\_hud::fontPulse( self );
+        self.hud_rankscoreupdate setValue( self.rankUpdateTotal );
+        self.hud_rankscoreupdate.alpha = 0.85;
+        self.hud_rankscoreupdate thread maps\mp\gametypes\_hud::fontPulse( self );
 
-		wait 2;
+        wait 1;
 
-		self.hud_rankscoreupdate fadeOverTime( 0.75 );
-		self.hud_rankscoreupdate.alpha = 0;
-		self.rankUpdateTotal = 0;
-	}
+        self.hud_rankscoreupdate fadeOverTime( 0.75 );
+        self.hud_rankscoreupdate.alpha = 0;
+
+        self.rankUpdateTotal = 0;
+    }
+}
+
+getRank()
+{
+    rankXp = self.pers["rankxp"];
+    rankId = self.pers["rank"];
+
+    if ( rankXp < ( getRankInfoMinXP( rankId ) + getRankInfoXPAmt( rankId ) ) )
+        return rankId;
+    else
+        return self getRankForXp( rankXp );
 }
 
 getRankForXp( xpVal )
 {
-	rankId = 0;
-	rankName = level.rankTable[rankId][1];
-	assert( isDefined( rankName ) );
+    rankId = 0;
+    rankName = level.rankTable[rankId][1];
+    assert( isDefined( rankName ) );
 
-	while ( isDefined( rankName ) && rankName != "" )
-	{
-		if ( xpVal < getRankMinXp( rankId ) + getRankXpAmount( rankId ) )
-			return rankId;
+    while ( isDefined( rankName ) && rankName != "" )
+    {
+        if ( xpVal < getRankInfoMinXP( rankId ) + getRankInfoXPAmt( rankId ) )
+            return rankId;
 
-		rankId++;
+        rankId++;
 
-		if ( isDefined( level.rankTable[rankId] ) )
-			rankName = level.rankTable[rankId][1];
-		else
-			rankName = undefined;
-	}
+        if ( isDefined( level.rankTable[rankId] ) )
+            rankName = level.rankTable[rankId][1];
+        else
+            rankName = undefined;
+    }
 
-	rankId--;
-	return rankId;
+    rankId--;
+    return rankId;
 }
 
-getRankXp()
+incRankXP( amount )
 {
-	return self.pers["rankxp"];
+    xp = self getRankXP();
+    newXp = ( xp + amount );
+
+    if ( self.pers["rank"] == level.maxRank && newXp >= getRankInfoMaxXP( level.maxRank ) )
+        newXp = getRankInfoMaxXP( level.maxRank );
+
+    self.pers["rankxp"] = newXp;
+    self maps\mp\gametypes\_persistence::statSet( "rankxp", newXp );
+
+    rankId = self getRankForXp( self getRankXP() );
+
+    self updateRank( rankId );
 }
 
-getRankMinXp( rank )
+updateRank( rankId )
 {
-	return int( level.rankTable[rank][2] );
+    if ( getRankInfoMaxXP( self.pers["rank"] ) <= self getRankXP() && self.pers["rank"] < level.maxRank )
+    {
+        rankId = self getRankForXp( self getRankXP() );
+        self setRank( rankId, 0 );
+        self.pers["rank"] = rankId;
+        self updateRankAnnounceHUD();
+    }
+
+    updateRankStats( self, rankId );
 }
 
-getRankXpAmount( rank )
+updateRankStats( player, rankId )
 {
-	return int( level.rankTable[rank][3] );
+    player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
+    player maps\mp\gametypes\_persistence::statSet( "minxp", getRankInfoMinXp( rankId ) );
+    player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankInfoMaxXp( rankId ) );
+
+    if ( rankId > level.maxRank )
+        player setStat( 252, level.maxRank );
+    else
+        player setStat( 252, rankId );
 }
 
-getRankMaxXp( rank )
+updateRankAnnounceHUD()
 {
-	return int( level.rankTable[rank][7] );
+    self endon( "disconnect" );
+
+    self notify( "update_rank" );
+    self endon( "update_rank" );
+
+    team = self.pers["team"];
+
+    if ( !isdefined( team ) )
+        return;
+
+    rankUp = spawnStruct();
+    rankUp.title = "You Leveled Up!";
+    rankUp.footer = "Level " + ( self.pers["rank"] + 1 );
+    rankUp.sound = "mp_level_up";
+    rankUp.levelUp = true;
+
+    self thread braxi\_common::notification( rankUp );
+
+    iPrintLn( self.name + " ^7was promoted to ^8Level " + ( self.pers["rank"] + 1 ) + "^7!" );
 }
 
-getRankIcon( rank, prestige )
+processXpReward( sMeansOfDeath, attacker, victim )
 {
-	return tableLookup( "mp/rankIconTable.csv", 0, rank, prestige + 1 );
+    if ( attacker.pers["team"] == victim.pers["team"] )
+        return;
+
+    kills = attacker maps\mp\gametypes\_persistence::statGet( "kills" );
+    attacker maps\mp\gametypes\_persistence::statSet( "kills", kills + 1 );
+
+    if ( victim.pers["team"] == "allies" )
+    {
+        kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_JUMPERS" );
+        attacker maps\mp\gametypes\_persistence::statSet( "KILLED_JUMPERS", kills + 1 );
+    }
+    else
+    {
+        kills = attacker maps\mp\gametypes\_persistence::statGet( "KILLED_ACTIVATORS" );
+        attacker maps\mp\gametypes\_persistence::statSet( "KILLED_ACTIVATORS", kills + 1 );
+    }
+
+    switch ( sMeansOfDeath )
+    {
+        case "MOD_HEAD_SHOT":
+            attacker.pers["headshots"]++;
+            attacker braxi\_rank::giveRankXP( "headshot" );
+            hs = attacker maps\mp\gametypes\_persistence::statGet( "headshots" );
+            attacker maps\mp\gametypes\_persistence::statSet( "headshots", hs + 1 );
+            break;
+        case "MOD_MELEE":
+            attacker.pers["knifes"]++;
+            attacker braxi\_rank::giveRankXP( "melee" );
+            knife = attacker maps\mp\gametypes\_persistence::statGet( "MELEE_KILLS" );
+            attacker maps\mp\gametypes\_persistence::statSet( "MELEE_KILLS", knife + 1 );
+            break;
+        default:
+            pistol = attacker maps\mp\gametypes\_persistence::statGet( "PISTOL_KILLS" );
+            attacker maps\mp\gametypes\_persistence::statSet( "PISTOL_KILLS", pistol + 1 );
+            attacker braxi\_rank::giveRankXP( "kill" );
+            break;
+    }
 }
 
-setScoreValue( type, value, id )
+setScoreValue( type, value )
 {
-	index = level.scoreInfo.size;
-
-	if ( isDefined( id ) )
-		index = id;
-
-	level.scoreInfo[index]["type"] = type;
-	level.scoreInfo[index]["value"] = value;
+    level.scoreInfo[type]["value"] = value;
 }
 
-getScoreValue( type )
+getRankXP()
 {
-	for ( i = 0; i < level.scoreInfo.size; i++ )
-		if ( level.scoreInfo[i]["type"] == type )
-			return level.scoreInfo[i]["value"];
+    return self.pers["rankxp"];
+}
+
+getScoreInfoValue( type )
+{
+    return ( level.scoreInfo[type]["value"] );
+}
+
+getRankInfoMinXP( rankId )
+{
+    return int( level.rankTable[rankId][2] );
+}
+
+getRankInfoXPAmt( rankId )
+{
+    return int( level.rankTable[rankId][3] );
+}
+
+getRankInfoMaxXp( rankId )
+{
+    return int( level.rankTable[rankId][7] );
 }
 
 isItemUnlocked( table, id )

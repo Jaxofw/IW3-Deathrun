@@ -21,6 +21,7 @@
 #define COLOR_XP_BAR_NORMAL							0 0.5 1
 #define COLOR_XP_BAR_EVENT							1 0.8 0.4
 #define COLOR_ITEM_SELECTED							0.35 0.82 0.18 1
+#define COLOR_ITEM_HOVER							1 1 1 1
 
 #define CREATE_SHADER( position, texture, color ) \
 	CREATE_SHADER_VIS( position, texture, color, 1 )

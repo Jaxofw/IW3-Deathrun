@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -430,8 +430,9 @@ checkTrapUsage()
 {
     if ( !level.trapTriggers.size )
     {
-        iPrintLn( "checkTrapUsage() reported that level.trapTriggers.size is -1, add trap activation triggers to level.trapTriggers array and recompile FF" );
-        iPrintLn( "Map doesn't support free run and XP for activation" );
+        iPrintLn( "^1ERROR: ^7Traps not found!" );
+        iPrintLn( "^1ERROR: ^7Traps not found!" );
+        iPrintLn( "^1ERROR: ^7Traps not found!" );
         return;
     }
 
@@ -444,16 +445,35 @@ giveXpIfActivated()
     level endon( "death" );
     level endon( "delete" );
     level endon( "deleted" );
+    level endon( "traps_disabled" );
 
     while ( isDefined( self ) )
     {
         self waittill( "trigger", who );
 
+        if ( game["state"] != "playing" )
+            break;
+
         if ( who.pers["team"] == "axis" )
         {
-            if ( game["state"] != "playing" ) return;
+            level.canCallFreerun = false;
             who braxi\_rank::giveRankXP( "trap_activation" );
             break;
         }
     }
+}
+
+disableTraps()
+{
+    level notify( "traps_disabled" );
+    level.trapsDisabled = true;
+
+    for ( i = 0; i < level.trapTriggers.size; i++ )
+    {
+        if ( isDefined( level.trapTriggers[i] ) )
+            level.trapTriggers[i].origin = level.trapTriggers[i].origin - ( 0, 0, 10000 );
+    }
+
+    iPrintLnBold( "Traps have been disabled!" );
+    // TODO: Use notification system to display
 }

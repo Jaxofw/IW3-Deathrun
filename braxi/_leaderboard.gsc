@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -10,11 +10,9 @@ init()
         return;
     }
 
-    level.max_placements = 20;
+    level.maxPlacement = 20;
 
-    critical_enter( "mysql" );
-
-    request = SQL_Prepare( "SELECT player, value FROM records WHERE map = ? AND name = ? ORDER BY value ASC LIMIT " + level.max_placements );
+    request = SQL_Prepare( "SELECT player, value FROM records WHERE map = ? AND name = ? ORDER BY value ASC LIMIT " + level.maxPlacement );
     SQL_BindParam( request, level.script, level.MYSQL_TYPE_VAR_STRING );
     SQL_BindParam( request, "time", level.MYSQL_TYPE_VAR_STRING );
     SQL_BindResult( request, level.MYSQL_TYPE_VAR_STRING, 50 );
@@ -27,7 +25,7 @@ init()
     if ( !isDefined( rows ) && !isDefined( rows.size ) )
         return;
 
-    for ( j = 0; j < level.max_placements; j++ )
+    for ( j = 0; j < level.maxPlacement; j++ )
     {
         placement = rows[j];
         player = "None";
@@ -39,12 +37,11 @@ init()
             value = placement["value"];
         }
 
-        game["leaderboard"][j + 1]["player"] = player;
-        game["leaderboard"][j + 1]["value"] = value;
+        game["leaderboard"][j]["player"] = player;
+        game["leaderboard"][j]["value"] = value;
     }
 
     SQL_Free( request );
-    critical_leave( "mysql" );
 
     level thread onPlayerConnect();
 }
@@ -55,7 +52,7 @@ onPlayerConnect()
     {
         level waittill( "connecting", player );
 
-        for ( i = 1; i <= game["leaderboard"].size; i++ )
+        for ( i = 0; i < game["leaderboard"].size; i++ )
         {
             player setClientDvars(
                 "ui_lb_place_" + i + "_player", game["leaderboard"][i]["player"],
@@ -63,4 +60,13 @@ onPlayerConnect()
             );
         }
     }
+}
+
+getLeaderboardEntry()
+{
+    for ( i = 0; i < 20; i++ )
+        if ( self.time < game["leaderboard"][i]["value"] || game["leaderboard"][i]["value"] == 0 )
+            return i;
+
+    return -1;
 }

@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -16,7 +16,7 @@ drawSpeedMeter()
 
     while ( true )
     {
-        if ( self isAlive() && self getStat( 993 ) == 1 )
+        if ( self isPlaying() && self getStat( 993 ) == 1 )
         {
             speed = self getPlayerSpeed();
             self setClientDvar( "ui_player_speed", speed );

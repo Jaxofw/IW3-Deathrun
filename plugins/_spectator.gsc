@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -27,31 +27,31 @@ watchSpectatorClient()
 
     while ( true )
     {
-        if ( !self isAlive() )
+        if ( !self isPlaying() )
         {
-            player_spectating = self getSpectatorClient();
+            playerSpectating = self getSpectatorClient();
 
-            if ( isDefined( player_spectating ) )
+            if ( isDefined( playerSpectating ) )
             {
                 self setClientDvars(
-                    "ui_key_w_active", player_spectating forwardbuttonpressed(),
-                    "ui_key_a_active", player_spectating moveleftbuttonpressed(),
-                    "ui_key_s_active", player_spectating backbuttonpressed(),
-                    "ui_key_d_active", player_spectating moverightbuttonpressed(),
-                    "ui_key_space_active", player_spectating jumpbuttonpressed(),
-                    "ui_player_timer", player_spectating getUserInfo( "ui_player_timer" ),
-                    "ui_health_text", player_spectating.health,
-                    "ui_health_bar", player_spectating.health / 100,
-                    "ui_fps_counter", player_spectating getUserInfo( "com_maxfps" ),
-                    "ui_weapon_current_name", player_spectating getUserInfo( "ui_weapon_current_name" ),
-                    "ui_weapon_current_size", player_spectating getUserInfo( "ui_weapon_current_size" ),
-                    "ui_weapon_current_clip", player_spectating getUserInfo( "ui_weapon_current_clip" ),
-                    "ui_weapon_current_stock", player_spectating getUserInfo( "ui_weapon_current_stock" ),
-                    "ui_player_speed", player_spectating getUserInfo( "ui_player_speed" )
+                    "ui_key_w_active", playerSpectating forwardbuttonpressed(),
+                    "ui_key_a_active", playerSpectating moveleftbuttonpressed(),
+                    "ui_key_s_active", playerSpectating backbuttonpressed(),
+                    "ui_key_d_active", playerSpectating moverightbuttonpressed(),
+                    "ui_key_space_active", playerSpectating jumpbuttonpressed(),
+                    "ui_player_timer", playerSpectating getUserInfo( "ui_player_timer" ),
+                    "ui_health_value", playerSpectating.health,
+                    "ui_health_bar", playerSpectating.health / 100,
+                    "ui_fps_counter", playerSpectating getUserInfo( "com_maxfps" ),
+                    "ui_weapon_current_name", playerSpectating getUserInfo( "ui_weapon_current_name" ),
+                    "ui_weapon_current_size", playerSpectating getUserInfo( "ui_weapon_current_size" ),
+                    "ui_weapon_current_clip", playerSpectating getUserInfo( "ui_weapon_current_clip" ),
+                    "ui_weapon_current_stock", playerSpectating getUserInfo( "ui_weapon_current_stock" ),
+                    "ui_player_speed", playerSpectating getUserInfo( "ui_player_speed" )
                 );
             }
 
-            wait .05;
+            wait 0.05;
         }
         else
             wait 1;

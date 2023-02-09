@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -8,14 +8,8 @@ init()
 
 watchForKillcam()
 {
-	if ( level.practice )
+	if ( level.freeRun )
 		return;
-
-	if ( isDefined( game["roundsplayed"] ) )
-	{
-		if ( game["roundsplayed"] >= level.dvar["roundslimit"] )
-			return;
-	}
 
 	while ( true )
 	{
@@ -25,7 +19,7 @@ watchForKillcam()
 			continue;
 
 		// Needed for level.jumpers and level.activators to calculate correctly
-		wait .2;
+		wait 0.2;
 
 		if ( level.jumpers.size > 0 && level.activators.size > 0 )
 			continue;

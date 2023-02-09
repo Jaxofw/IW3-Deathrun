@@ -1,10 +1,11 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
     for (;;)
     {
         level waittill( "connected", player );
+
         player thread fetchFov();
         player thread fetchSpeedMeter();
         player thread fetchHitmarkers();
@@ -14,10 +15,10 @@ init()
 
 fetchFov()
 {
-    if ( !isDefined( self.pers["init_fov"] ) )
+    if ( !isDefined( self.pers["init_fov_save"] ) )
     {
         self clientCmd( "setfromdvar temp cg_fovscale; setu cg_fovscale 1; setfromdvar cg_fovscale temp" );
-        self.pers["init_fov"] = true;
+        self.pers["init_fov_save"] = true;
     }
 
     if ( self getStat( 992 ) == 0 )

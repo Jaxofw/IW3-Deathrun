@@ -11,7 +11,7 @@
 #define FPS_VIS                     dvarBool( "ui_spec_fps_vis" )
 
 #define GAME_STATE                  dvarString( "ui_game_state" )
-#define ROUND_CURRENT               (dvarInt( "ui_rounds_played" ) + 1)
+#define ROUND_CURRENT               dvarInt( "ui_rounds_played" )
 #define ROUND_MAX                   dvarInt( "ui_rounds_limit" )
 #define TIME_LEFT                   secondsAsCountdown( dvarInt( "ui_time_left" ) )
 #define JUMPERS_ALIVE               dvarInt( "ui_jumpers_alive" )
@@ -23,7 +23,7 @@
 
 #define VALID_WEAPON                (WEAPON_NAME != "N")
 #define TIMER_TEXT                  dvarString( "ui_player_timer" )
-#define HEALTH_TEXT                 dvarInt( "ui_health_text" )
+#define HEALTH_TEXT                 dvarInt( "ui_health_value" )
 #define HEALTH_BAR                  dvarFloat( "ui_health_bar" )
 
 #define SPEEDMETER_TEXT             dvarString( "ui_player_speed" )

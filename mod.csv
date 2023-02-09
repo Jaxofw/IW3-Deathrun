@@ -1,5 +1,4 @@
 # Scripts
-rawfile,maps/mp/gametypes/_callbacksetup.gsc
 rawfile,maps/mp/gametypes/_gametypes.txt
 rawfile,maps/mp/gametypes/_persistence.gsc
 rawfile,maps/mp/gametypes/deathrun.gsc
@@ -138,19 +137,7 @@ material,melee_weapon_reticle
 material,wunderwaffe_reticle
 material,crosshair_test
 
-# Loadscreens
-material,loadscreen_mp_deathrun_bricky
-material,loadscreen_mp_deathrun_coyote
-material,loadscreen_mp_deathrun_waterworld
-material,loadscreen_mp_dr_anotherworld
-material,loadscreen_mp_dr_caution
-material,loadscreen_mp_dr_crosscode
-material,loadscreen_mp_dr_construct
-material,loadscreen_mp_dr_darmuhv2
-material,loadscreen_mp_dr_nighty
-material,loadscreen_mp_dr_wtf
-
-# makes shit invisible
+# A way to hide tag_origin
 xmodel,tag_origin_bitchface
 
 # WepSounds
@@ -1021,11 +1008,26 @@ fx,trail/trail_geo_rainbow
 fx,trail/trail_geo_red
 fx,trail/trail_geo_yellow
 
+# Death FX Assets
+material,drgibs
+
+# Death FX Models
+xmodel,gib_abdomen
+xmodel,gib_arm
+xmodel,gib_chest
+xmodel,gib_forearm
+xmodel,gib_leg
+
+# Death FX
+fx,death/gib_splat
+
 # Sounds
 rawfile,sound/misc/sprayer.wav
 
 # Sound Aliases
+sound,death,,all_mp
 sound,deathrun,,all_mp
+sound,spray,,all_mp
 
 # Custom Loadscreens
 material,loadscreen_mp_deathrun_bricky_1

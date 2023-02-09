@@ -1,6 +1,6 @@
 #include common_scripts\utility;
 #include maps\mp\_utility;
-#include braxi\_utility;
+#include braxi\_common;
 
 watchWeapons()
 {
@@ -16,8 +16,9 @@ watchWeaponChange()
 
     while ( true )
     {
-        self waittill( "weapon_change", newWeapon );
-        self.weapon = newWeapon;
+        self waittill( "weapon_change", weapon );
+
+        self.weapon = weapon;
 
         self setClientDvars(
             "ui_weapon_current_name", formatWeaponName( self.weapon ),
@@ -35,6 +36,7 @@ watchWeaponUsage()
     while ( true )
     {
         self waittill_any( "weapon_fired", "reload" );
+
         self setClientDvars(
             "ui_weapon_current_clip", self getWeaponAmmoClip( self.weapon ),
             "ui_weapon_current_stock", self getWeaponAmmoStock( self.weapon )

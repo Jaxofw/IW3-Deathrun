@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -61,7 +61,6 @@ init()
     level.maps[level.maps.size] = "mp_dr_laboratory";
     level.maps[level.maps.size] = "mp_dr_lovelyplanet";
     level.maps[level.maps.size] = "mp_dr_lucidskyv2";
-    level.maps[level.maps.size] = "mp_dr_meatboy";
     level.maps[level.maps.size] = "mp_dr_merry_xmas";
     level.maps[level.maps.size] = "mp_dr_mew";
     level.maps[level.maps.size] = "mp_dr_mirrors_edge";
@@ -88,11 +87,15 @@ mapVoteLogic()
         getRandomMap();
 
     players = getAllPlayers();
+
+    for ( i = 0; i < players.size; i++ )
+        players[i] thread braxi\_mapvote::playerLogic();
+
     for ( i = level.voteDuration; i >= 0; i-- )
     {
         for ( j = 0; j < players.size; j++ )
-            if ( isDefined( players[j] ) )
-                players[j] setClientDvar( "mapvote_duration", i + " Seconds" );
+            players[j] setClientDvar( "mapvote_duration", i + " Seconds" );
+
         wait 1;
     }
 
@@ -156,11 +159,11 @@ changeToWinningMap()
 
     for ( i = 0; i < players.size; i++ )
     {
-        players[i] closeMenu( game["menu_mapvote"] );
-        players[i] closeInGameMenu( game["menu_mapvote"] );
+        players[i] closeMenu();
+        players[i] closeInGameMenu();
     }
 
-    iPrintLnBold( "Changing map to ^5" + formatMapName( topVote["name"] ) );
+    iPrintLnBold( "Changing map to ^8" + formatMapName( topVote["name"] ) );
 
     wait 4;
 

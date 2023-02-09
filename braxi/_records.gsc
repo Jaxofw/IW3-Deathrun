@@ -1,4 +1,4 @@
-#include braxi\_utility;
+#include braxi\_common;
 
 init()
 {
@@ -17,17 +17,17 @@ init()
     queries[0] = "SELECT name, player, MAX(value) AS value FROM records WHERE name != ? AND map = ? GROUP BY name, player";
     queries[1] = "SELECT name, player, MIN(value) AS value FROM records WHERE name = ? AND map = ? GROUP BY name, player";
 
-    critical_enter( "mysql" );
-
     for ( i = 0; i < queries.size; i++ )
     {
         request = SQL_Prepare( queries[i] );
+
         SQL_BindParam( request, "time", level.MYSQL_TYPE_VAR_STRING );
         SQL_BindParam( request, level.script, level.MYSQL_TYPE_VAR_STRING );
         SQL_BindResult( request, level.MYSQL_TYPE_VAR_STRING, 10 );
         SQL_BindResult( request, level.MYSQL_TYPE_VAR_STRING, 50 );
         SQL_BindResult( request, level.MYSQL_TYPE_LONG );
         SQL_Execute( request );
+
         status = AsyncWait( request );
         rows = SQL_FetchRowsDict( request );
 
@@ -43,7 +43,8 @@ init()
 
             for ( k = 0; k < game["records"].size; k++ )
             {
-                if ( i == 1 ) k = game["records"].size - 1;
+                if ( i == 1 )
+                    k = game["records"].size - 1;
 
                 if ( record["name"] == game["records"][k]["name"] )
                 {
@@ -55,8 +56,6 @@ init()
 
         SQL_Free( request );
     }
-
-    critical_leave( "mysql" );
 }
 
 createRecord( name )
@@ -75,14 +74,14 @@ displayMapRecords()
     for ( i = 0; i < game["records"].size; i++ )
     {
         record = game["records"][i]["name"];
-        current_holder = game["records"][i]["player"];
+        currentHolder = game["records"][i]["player"];
         value = game["records"][i]["value"];
-        best_player = getRecordBestPlayer( record );
+        bestPlayer = getRecordBestPlayer( record );
         text = "None";
 
-        if ( current_holder != " " )
+        if ( currentHolder != " " )
         {
-            text = current_holder + " - ";
+            text = currentHolder + " - ";
 
             if ( record == "time" )
                 text += formatTimer( value );
@@ -93,22 +92,22 @@ displayMapRecords()
         if ( record == "time" && value == 0 )
             value = 99999;
 
-        if ( isDefined( best_player ) && isDefined( best_player.pers[record] ) )
+        if ( isDefined( bestPlayer ) && isDefined( bestPlayer.pers[record] ) )
         {
-            new_value = best_player.pers[record];
+            new_value = bestPlayer.pers[record];
 
             if ( ( record == "time" && new_value < value ) || ( record != "time" && new_value > value ) )
             {
-                updateRecord( i, best_player );
-                text = best_player.name + " - ";
+                updateRecord( i, bestPlayer );
+                text = bestPlayer.name + " - ";
 
                 if ( record == "time" )
-                    text += formatTimer( best_player.pers[record] );
+                    text += formatTimer( bestPlayer.pers[record] );
                 else
-                    text += best_player.pers[record];
+                    text += bestPlayer.pers[record];
             }
         }
-        
+
         for ( j = 0; j < players.size; j++ )
         {
             players[j] setClientDvars(
@@ -123,16 +122,19 @@ displayMapRecords()
 
     for ( i = 0; i < players.size; i++ )
     {
+        players[i] closeMenu();
+        players[i] closeInGameMenu();
         players[i] setClientDvars( "ui_records_map", formatMapName( level.script ) );
         players[i] openMenu( game["menu_maprecords"] );
     }
 
-    display_duration = 10;
+    mapvoteDuration = 10;
 
-    for ( i = display_duration; i >= 0; i-- )
+    for ( i = mapvoteDuration; i >= 0; i-- )
     {
         for ( j = 0; j < players.size; j++ )
             players[j] setClientDvar( "ui_records_countdown", "Mapvote in " + i + " sec(s)" );
+
         wait 1;
     }
 }
@@ -140,10 +142,13 @@ displayMapRecords()
 getRecordBestPlayer( stat )
 {
     value = 0;
-    if ( stat == "time" ) value = 99999;
-    player = undefined;
 
+    if ( stat == "time" )
+        value = 99999;
+
+    player = undefined;
     players = getAllPlayers();
+
     for ( i = 0; i < players.size; i++ )
     {
         if ( ( stat == "time" && players[i].pers[stat] >= value ) || ( stat != "time" && players[i].pers[stat] <= value ) )
@@ -162,16 +167,15 @@ updateRecord( id, player )
     game["records"][id]["value"] = player.pers[game["records"][id]["name"]];
     game["records"][id]["updated"] = true;
 
-    critical_enter( "mysql" );
     request = SQL_Prepare( "INSERT INTO records (name, player, value, map) VALUES (?, ?, ?, ?)" );
     SQL_BindParam( request, game["records"][id]["name"], level.MYSQL_TYPE_VAR_STRING );
     SQL_BindParam( request, game["records"][id]["player"], level.MYSQL_TYPE_VAR_STRING );
     SQL_BindParam( request, game["records"][id]["value"], level.MYSQL_TYPE_LONG );
     SQL_BindParam( request, level.script, level.MYSQL_TYPE_VAR_STRING );
     SQL_Execute( request );
-    status = AsyncWait(request);
+
+    status = AsyncWait( request );
     SQL_Free( request );
-    critical_leave( "mysql" );
 }
 
 statToString( stat )
