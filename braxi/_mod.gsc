@@ -101,8 +101,13 @@ gameLogic()
             // Unlink players from level.spawn_link
             players[i] unLink();
 
-            if ( level.mapHasTimeTrigger && players[i].pers["team"] == "allies" )
-                players[i] thread playerTimer();
+            if ( players[i].pers["team"] == "allies" )
+            {
+                if ( level.mapHasTimeTrigger )
+                    players[i] thread playerTimer();
+
+                players[i] thread antiAFK();
+            }
         }
     }
 
@@ -822,6 +827,40 @@ deathEffect( fx, sound )
     playFx( fx, self.origin + ( 0, 0, 20 ) );
     self playSound( sound );
     self delete();
+}
+
+antiAFK()
+{
+    self endon( "disconnect" );
+    self endon( "spawned_player" );
+    self endon( "joined_spectators" );
+
+    time = 0;
+    oldOrigin = self.origin - ( 0, 0, 50 );
+    warnDelay = 20;
+    killDelay = 25;
+
+    while ( self isPlaying() )
+    {
+        wait 0.2;
+
+        if ( distance( oldOrigin, self.origin ) <= 10 )
+            time++;
+        else
+            time = 0;
+
+        if ( time == ( warnDelay * 5 ) )
+            self iPrintlnBold( "Move or you will be killed due to AFK" );
+
+        if ( time == ( killDelay * 5 ) )
+        {
+            iPrintln( self.name + " was killed due to AFK." );
+            self suicide();
+            break;
+        }
+
+        oldOrigin = self.origin;
+    }
 }
 
 addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
