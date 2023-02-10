@@ -28,8 +28,8 @@ LANG_ENGLISH        "PPS-42"
 REFERENCE           MSR
 LANG_ENGLISH        "MSR"
 
-REFERENCE           ATLAS
-LANG_ENGLISH        "Atlas 45"
+REFERENCE           G18
+LANG_ENGLISH        "G18"
 
 REFERENCE           PSD9
 LANG_ENGLISH        "PK-PSD9"

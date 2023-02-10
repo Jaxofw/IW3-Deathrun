@@ -143,20 +143,6 @@ xmodel,tag_origin_bitchface
 # WepSounds
 sound,weapons,,all_mp
 sound,melee_weapons,,all_mp
-sound,prestige_weapons,,all_mp
-
-# WepFX
-fx,weapon\raygun\raygun_trail
-fx,weapon\raygun\raygun_muzzle
-fx,weapon\raygun\raygun_impact
-
-fx,weapon\wunderwaffe\wunderwaffe_muzzle
-fx,weapon\wunderwaffe\wunderwaffe_trail
-fx,weapon\wunderwaffe\wunderwaffe_impact
-
-fx,weapon\wavegun\wavegun_view
-fx,weapon\wavegun\wavegun_trail
-fx,weapon\wavegun\wavegun_impact
 
 # JModels
 xmodel,body_mp_sas_urban_sniper
@@ -218,7 +204,7 @@ weapon,mp/t8_strife_mp
 weapon,mp/t6_fiveseven_mp
 weapon,mp/iw2_pps43_mp
 weapon,mp/iw5_msr_mp
-weapon,mp/s1_atlas45_mp
+weapon,mp/iw4_g18_mp
 weapon,mp/h1_psd9_mp
 weapon,mp/t7_locus_mp
 weapon,mp/t5_m1911_mp
@@ -272,8 +258,8 @@ xmodel,weapon_pps43
 xmodel,viewmodel_msr
 xmodel,weapon_msr
 
-xmodel,wpn_s1_atlas45_vm
-xmodel,wpn_s1_atlas45_npc
+xmodel,wpn_iw4_g18_vm
+xmodel,wpn_iw4_g18_npc
 
 xmodel,wpn_h1_psd9_vm
 xmodel,wpn_h1_psd9_npc
@@ -445,18 +431,18 @@ xanim,viewmodel_msr_sprint_in
 xanim,viewmodel_msr_sprint_loop
 xanim,viewmodel_msr_sprint_out
 
-xanim,vm_s1_atlas45_ads_down
-xanim,vm_s1_atlas45_ads_up
-xanim,vm_s1_atlas45_drop
-xanim,vm_s1_atlas45_fire
-xanim,vm_s1_atlas45_fire_ads
-xanim,vm_s1_atlas45_idle
-xanim,vm_s1_atlas45_raise
-xanim,vm_s1_atlas45_reload
-xanim,vm_s1_atlas45_reload_empty
-xanim,vm_s1_atlas45_sprint_in
-xanim,vm_s1_atlas45_sprint_loop
-xanim,vm_s1_atlas45_sprint_out
+xanim,vm_iw4_g18_ads_down
+xanim,vm_iw4_g18_ads_up
+xanim,vm_iw4_g18_drop
+xanim,vm_iw4_g18_fire
+xanim,vm_iw4_g18_fire_ads
+xanim,vm_iw4_g18_idle
+xanim,vm_iw4_g18_raise
+xanim,vm_iw4_g18_reload
+xanim,vm_iw4_g18_reload_empty
+xanim,vm_iw4_g18_sprint_in
+xanim,vm_iw4_g18_sprint_loop
+xanim,vm_iw4_g18_sprint_out
 
 xanim,vm_h1_psd9_ads_down
 xanim,vm_h1_psd9_ads_up

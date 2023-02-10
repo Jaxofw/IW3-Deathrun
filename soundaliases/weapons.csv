@@ -81,20 +81,14 @@ weap_msr_clipout_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipout_v1.wav,1,1,wpnpl
 weap_msr_clipin_plr,,weapons/iw5/msr/wpfoly_msr_reload_clipin_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 weap_msr_chamber_close_plr,,weapons/iw5/msr/wpfoly_msr_reload_boltclose_v1.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
-# ATLAS 45
-wpn_atlas45_fire_plr,,weapons/s1/atlas45/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
-wpn_atlas45_fire_npc,,weapons/s1/atlas45/fire.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
+# G18
+wpn_g18_fire_plr,,weapons/iw4/g18/fire_plr.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
+wpn_g18_fire_npc,,weapons/iw4/g18/fire_npc.wav,0.8,1,max,1,1,35,13780,weapon,,,,0.7,all_mp,,,,weapon4
 
-wpn_titan45_charge,,weapons/s1/atlas45/wpn_titan45_charge.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_foley_start,,weapons/s1/atlas45/wpn_titan45_foley_start.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_magin,,weapons/s1/atlas45/wpn_titan45_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_magout,,weapons/s1/atlas45/wpn_titan45_magout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_settle,,weapons/s1/atlas45/wpn_titan45_settle.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_tac_foley_start,,weapons/s1/atlas45/wpn_titan45_tac_foley_start.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_tac_magin,,weapons/s1/atlas45/wpn_titan45_tac_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_tac_magout,,weapons/s1/atlas45/wpn_titan45_tac_magout.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_tac_pre_magin,,weapons/s1/atlas45/wpn_titan45_tac_pre_magin.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
-wpn_titan45_tac_settle,,weapons/s1/atlas45/wpn_titan45_tac_settle.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_glock_chamber_plr,,weapons/iw4/g18/chamber.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_glock_clipin_plr,,weapons/iw4/g18/mag_in.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_glock_clipout_plr,,weapons/iw4/g18/mag_out.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
+weap_glock_lift_plr,,weapons/iw4/g18/lift.wav,1,1,wpnplyr,1,1,7,500,reload2d,,,,0.85,,,,,weapon2,
 
 # PSD9
 wpn_psd9_fire_plr,,weapons/h1/psd9/fire.wav,0.9,1,max,1,1,5000,,local,,,,0.85,,,,,weapon2,,,,
