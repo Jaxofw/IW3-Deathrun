@@ -7,7 +7,7 @@ init()
 
     addDvar( "spawn_time", "int", 5, 1, 10 );
 
-    addDvar( "time_limit_freerun", "int", 5000, 5000, 5000 );
+    addDvar( "time_limit_freerun", "int", 5, 5, 180 );
     addDvar( "time_limit", "int", 5, 5, 600 );
 
     addDvar( "round_limit", "int", 12, 2, 100 );
