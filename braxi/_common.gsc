@@ -180,6 +180,20 @@ isPlaying()
 	return self.sessionstate == "playing";
 }
 
+getPlayingPlayers()
+{
+	players = getAllPlayers();
+	array = [];
+
+	for ( i = 0; i < players.size; i++ )
+	{
+		if ( players[i] isPlaying() && players[i].pers["team"] != "spectator" )
+			array[array.size] = players[i];
+	}
+
+	return array;
+}
+
 canSpawn()
 {
 	if ( level.freeRun || self.pers["lifes"] )
