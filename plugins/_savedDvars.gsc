@@ -37,11 +37,11 @@ fetchHitmarkers()
 fetchHud()
 {
     self setClientDvars(
-        // "ui_rounds_vis", self getStat( 995 ),
-        // "ui_jumpers_vis", self getStat( 996 ),
-        // "ui_player_vis", self getStat( 997 ),
-        // "ui_weapon_vis", self getStat( 998 ),
-        // "ui_exp_bar_vis", self getStat( 999 ),
+        "ui_rounds_vis", 1,
+        "ui_jumpers_vis", 1,
+        "ui_player_vis", 1,
+        "ui_weapon_vis", 1,
+        "ui_exp_bar_vis", 1,
         "ui_compass_vis", self getStat( 1000 ),
         "ui_spec_keys_vis", self getStat( 1001 ),
         "ui_spec_fps_vis", self getStat( 1002 ),
