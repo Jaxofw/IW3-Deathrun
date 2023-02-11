@@ -1,0 +1,14 @@
+name,sequence,file,vol_min,vol_max,vol_mod,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage
+
+end_round_0,,music/endround1.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_1,,music/endround2.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_2,,music/endround3.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_3,,music/endround4.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_4,,music/endround5.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_5,,music/endround6.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_6,,music/endround7.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_7,,music/endround8.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_8,,music/endround9.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+end_round_9,,music/endround10.mp3,1,1,na,1,1,,,auto2d,streamed,,,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,
+
+end_map,,music/endmap.mp3,1,1,na,1,1,,,auto2d,streamed,,nonlooping,,all_mp,,,,,,,nowetlevel fulldrylevel,,,,,,

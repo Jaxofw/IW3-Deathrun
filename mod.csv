@@ -1013,6 +1013,7 @@ rawfile,sound/misc/sprayer.wav
 # Sound Aliases
 sound,death,,all_mp
 sound,deathrun,,all_mp
+sound,music,,all_mp
 sound,spray,,all_mp
 
 # Custom Loadscreens

@@ -198,12 +198,10 @@ endRound( reason, winner )
             players[i] setClientDvars( "ui_rounds_played", game["roundsplayed"] );
     }
 
-    wait 1;
+    ambientStop( 0 );
+    playSound( "end_round_" + randomIntRange( 0, 9 ) );
 
-    if ( level.killcamStarted )
-        wait 8;
-    else
-        wait 4;
+    wait 10;
 
 	map_restart( true );
 }
@@ -215,6 +213,9 @@ endMap()
     setDvar( "g_deadChat", 1 );
     
     wait 1;
+
+    ambientStop( 0 );
+    playSound( "end_map" );
 
     if ( level.killcamStarted )
         wait 8;
@@ -352,6 +353,8 @@ roundBeginCountdown()
 
 pickActivator()
 {
+    level endon( "round_started" );
+
     if ( !isDefined( game["pastActivators"] ) )
         game["pastActivators"] = [];
 
@@ -360,8 +363,8 @@ pickActivator()
 
     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
-    while ( hasBeenActivator( level.activ ) )
-        level.activ = level.jumpers[randomInt( level.jumpers.size )];
+    // while ( hasBeenActivator( level.activ ) )
+    //     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
     wait level.dvar["spawn_time"] / 2;
 
