@@ -96,6 +96,8 @@ onMenuResponse()
 
                     if ( self canSpawn() )
                         self braxi\_mod::spawnPlayer();
+					else
+						self thread plugins\_ghostrun::spawnGhost();
                     break;
                 case "spectate":
 					if ( self.pers["team"] != "allies" )
@@ -278,6 +280,14 @@ onMenuResponse()
 						self setStat( 1002, 0 );
 
 					self setClientDvar( "ui_spec_fps_vis", self getStat( 1002 ) );
+					break;
+				case "ghost_controls":
+					if ( self getStat( 1003 ) == 0 )
+						self setStat( 1003, 1 );
+					else
+						self setStat( 1003, 0 );
+
+					self setClientDvar( "ui_practice_controls_vis", self getStat( 1003 ) );
 					break;
 			}
 		}

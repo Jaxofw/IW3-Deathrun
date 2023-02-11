@@ -10,11 +10,21 @@ onPlayerConnect()
     for (;;)
     {
         level waittill( "connected", player );
-        
+
         if ( !isDefined( player.init_spec_hud ) )
         {
             player clientCmd( "setfromdvar temp ui_player_timer; setu ui_player_timer 1; setfromdvar ui_player_timer temp; setfromdvar temp ui_player_speed; setu ui_player_speed 1; setfromdvar ui_player_speed temp; setfromdvar temp ui_weapon_current_name; setu ui_weapon_current_name 1; setfromdvar ui_weapon_current_name temp; setfromdvar temp ui_weapon_current_size; setu ui_weapon_current_size 1; setfromdvar ui_weapon_current_size temp; setfromdvar temp ui_weapon_current_clip; setu ui_weapon_current_clip 1; setfromdvar ui_weapon_current_clip temp; setfromdvar temp ui_weapon_current_stock; setu ui_weapon_current_stock 1; setfromdvar ui_weapon_current_stock temp; setfromdvar temp com_maxfps; setu com_maxfps 1; setfromdvar com_maxfps temp;" );
             player.init_spec_hud = true;
+        }
+
+        if ( !isDefined( player.ghostIndicator ) )
+        {
+            player.ghostIndicator = braxi\_mod::addTextHud( player, 0, 35, 0, "center", "top", 1.5 );
+            player.ghostIndicator.horzalign = "center";
+            player.ghostIndicator.vertalign = "top";
+            player.ghostIndicator.font = "default";
+            player.ghostIndicator.archived = false;
+            player.ghostIndicator setText( "^8Practicing" );
         }
 
         player thread watchSpectatorClient();
@@ -49,7 +59,11 @@ watchSpectatorClient()
                     "ui_weapon_current_stock", playerSpectating getUserInfo( "ui_weapon_current_stock" ),
                     "ui_player_speed", playerSpectating getUserInfo( "ui_player_speed" )
                 );
+
+                self.ghostIndicator.alpha = playerSpectating.ghost;
             }
+            else
+                self.ghostIndicator.alpha = 0;
 
             wait 0.05;
         }

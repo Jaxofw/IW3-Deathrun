@@ -1,14 +1,17 @@
 #include "ui_mp/includes/utility.inc"
 
 #define SPECTATING                  spectatingclient()
+#define PRACTICING                  dvarBool( "ui_practice_state" )
 
 #define ITEM_ALIGN					HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_SUBTOP
+
 #define PLAYER_VIS                  dvarBool( "ui_player_vis" )
 #define JUMPERS_VIS                 dvarBool( "ui_jumpers_vis" )
 #define WEAPON_VIS                  dvarBool( "ui_weapon_vis" )
 #define ROUNDS_VIS                  dvarBool( "ui_rounds_vis" )
 #define KEYS_VIS                    dvarBool( "ui_spec_keys_vis" )
 #define FPS_VIS                     dvarBool( "ui_spec_fps_vis" )
+#define PRACTICE_CTRLS_VIS          dvarBool( "ui_practice_controls_vis" )
 
 #define GAME_STATE                  dvarString( "ui_game_state" )
 #define ROUND_CURRENT               dvarInt( "ui_rounds_played" )
@@ -133,3 +136,10 @@
 
 #define SPECTATOR_FPS \
     CREATE_TEXT_VIS( 120 458 0 0 ITEM_ALIGN, dvarInt( "ui_fps_counter" ), 1 1 1 1, 0.36, 0, FPS_VIS && SPECTATING )
+
+#define SPECTATOR_CONTROLS \
+    CREATE_SHADER_VIS( 10 100 60 50 ITEM_ALIGN, "gradient_fadein", 0 0 0 0.7, PRACTICE_CTRLS_VIS && PRACTICING ) \
+    CREATE_SHADER_VIS( 70 100 60 50 ITEM_ALIGN, "gradient", 0 0 0 0.7, PRACTICE_CTRLS_VIS && PRACTICING ) \
+    CREATE_TEXT_VIS( 20 117 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+melee" ) + "] ^7to ^1Save ^7Position", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING ) \
+    CREATE_TEXT_VIS( 20 131 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+frag" ) + "] ^7to ^2Load ^7Position", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING ) \
+    CREATE_TEXT_VIS( 20 145 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+smoke" ) + "] ^7to Stop Practicing", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING )

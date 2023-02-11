@@ -49,7 +49,6 @@ main()
     }
 
     level thread gameLogic();
-    level thread firstBlood();
     level thread fastestTime();
     level thread updateJumpersHud();
     level thread plugins\_plugins::init();
@@ -89,6 +88,7 @@ gameLogic()
         }
 
         thread updateGameState( "playing" );
+        level thread firstBlood();
     }
     else
         thread updateGameState( "practice" );
@@ -102,12 +102,7 @@ gameLogic()
             players[i] unLink();
 
             if ( players[i].pers["team"] == "allies" )
-            {
-                if ( level.mapHasTimeTrigger )
-                    players[i] thread playerTimer();
-
                 players[i] thread antiAFK();
-            }
         }
     }
 
@@ -133,7 +128,7 @@ watchPlayers()
             {
                 level.players[i] setClientDvar( "ui_time_left", level.timeLimit );
 
-                if ( isAlive( level.players[i] ) && level.players[i] isPlaying() )
+                if ( isAlive( level.players[i] ) && level.players[i] isPlaying() && !level.players[i].ghost )
                 {
                     if ( level.players[i].pers["team"] == "allies" )
                         level.jumpers[level.jumpers.size] = level.players[i];
@@ -247,12 +242,17 @@ endMap()
 
 firstBlood()
 {
-    level waittill( "round_started" );
     level waittill( "player_killed", who );
 
     // Prevent activator from showing as first blood
     if ( level.activ == who )
         return;
+
+    if ( who.ghost )
+    {
+        level thread firstBlood();
+        return;
+    }
 
     level thread playSound( "first_blood" );
 
@@ -359,8 +359,8 @@ pickActivator()
 
     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
-    while ( hasBeenActivator( level.activ ) )
-        level.activ = level.jumpers[randomInt( level.jumpers.size )];
+    // while ( hasBeenActivator( level.activ ) )
+    //     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
     wait level.dvar["spawn_time"] / 2;
 
@@ -502,6 +502,7 @@ spawnPlayer( origin, angles )
     self.psoffsettime = 0;
     self.statusicon = "";
     self.finishedMap = false;
+    self.ghost = false;
 
     self braxi\_teams::setPlayerModel();
 
@@ -538,6 +539,7 @@ afterFirstFrame()
     if ( game["state"] == "lobby" )
         self linkTo( level.spawn_link );
 
+    self thread playerTimer();
     self thread watchPlayerHealth();
     self thread drawSpray();
     self thread drawTrail();
@@ -577,22 +579,35 @@ respawnPlayer()
         return;
     }
 
-    if ( self canSpawn() && self.pers["team"] == "allies" )
+    if ( game["state"] != "playing" )
+        return;
+
+    self iPrintLnBold( "Press ^8G ^7to Practice" );
+
+    if ( self canSpawn() )
     {
-        wait 0.5;
+        self iPrintLnBold( "Press ^8F ^7to Spawn" );
 
-        if ( game["state"] != "playing" )
-            return;
+        while ( true )
+        {
+            if ( self useButtonPressed() )
+                self spawnPlayer();
 
-        self setLowerMessage( &"PLATFORM_PRESS_TO_SPAWN" );
+            if ( self fragButtonPressed() )
+                self thread plugins\_ghostrun::spawnGhost();
 
-        while ( !self useButtonPressed() )
-            wait .05;
+            wait 0.05;
+        }
+    }
+    else
+    {
+        while ( true )
+        {
+            if ( self fragButtonPressed() )
+                self thread plugins\_ghostrun::spawnGhost();
 
-        if ( game["state"] != "playing" )
-            return;
-
-        // self thread useLife();
+            wait 0.05;
+        }
     }
 }
 
@@ -601,17 +616,23 @@ playerTimer()
 	self endon( "disconnect" );
 	self endon( "death" );
 
-	if ( !level.mapHasTimeTrigger || self.finishedMap || self.pers["team"] == "axis" )
-		return;
+    if ( !level.mapHasTimeTrigger || self.finishedMap )
+        return;
 
-	self.time = 0;
+    self.time = 0;
 
-	while ( game["state"] == "playing" && !self.finishedMap )
-	{
-		self.time += 1;
-		self setClientDvar( "ui_player_timer", formatTimer( self.time ) );
-		wait .1;
-	}
+    while ( game["state"] != "playing" )
+        wait 0.05;
+
+    if ( level.activ == self )
+        return;
+
+    while ( game["state"] == "playing" && !self.finishedMap )
+    {
+        self.time += 1;
+        self setClientDvar( "ui_player_timer", formatTimer( self.time ) );
+        wait .1;
+    }
 }
 
 endTimer()
@@ -623,8 +644,22 @@ endTimer()
 
     // TODO: FINISHING PLACE IN PRINTLN
 
-    self braxi\_rank::giveRankXP( "finished_map" );
     self iPrintLnBold( "You finished the map in ^8" + formatTimer( self.time ) + " ^7seconds" );
+
+    if ( self.ghost )
+    {
+        // Prevent ghosts from getting finishing xp more than once
+        if ( !isDefined( self.finishedMapOnce ) )
+        {
+            self.finishedMapOnce = true;
+            self braxi\_rank::giveRankXP( "finished_map" );
+        }
+
+        self suicide();
+        return;
+    }
+
+    self braxi\_rank::giveRankXP( "finished_map" );
 
     if ( self.time < self.pers["time"] )
         self.pers["time"] = self.time;
@@ -691,7 +726,7 @@ updateJumpersHud()
 
         for ( i = 0; i < players.size; i++ )
         {
-            if ( players[i] isPlaying() && players[i].pers["team"] == "allies" )
+            if ( players[i] isPlaying() && players[i].pers["team"] == "allies" && !players[i].ghost )
                 jumpersAlive++;
         }
 
@@ -704,17 +739,19 @@ drawSpray()
 {
 	self endon( "disconnect" );
 
-	while ( game["state"] != "playing" )
-		wait .05;
+    level waittill( "round_started" );
 
 	while ( isAlive( self ) && self isPlaying() )
 	{
 		while ( !self fragButtonPressed() )
-			wait .2;
+			wait 0.2;
+
+        if ( self.ghost )
+            break;
 
 		if ( !self isOnGround() )
 		{
-			wait .2;
+			wait 0.2;
 			continue;
 		}
 
@@ -726,7 +763,7 @@ drawSpray()
 		// Didn't hit a wall or floor
 		if ( trace["fraction"] == 1 )
 		{
-			wait .1;
+			wait 0.1;
 			continue;
 		}
 
@@ -751,7 +788,7 @@ drawTrail()
 {
 	self endon( "disconnect" );
 
-	if ( self.pers["team"] == "spectator" )
+	if ( self.pers["team"] == "spectator" || self.ghost )
 		return;
 
 	id = self getStat( 985 );
@@ -863,7 +900,7 @@ antiAFK()
     }
 }
 
-addTextHud( who, x, y, alpha, alignX, alignY, fontScale )
+addTextHud( who, x, y, alpha, alignX, alignY, fontScale, fontType )
 {
     if ( isPlayer( who ) )
         hud = newClientHudElem( who );

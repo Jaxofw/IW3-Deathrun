@@ -70,7 +70,6 @@ playerConnect()
 		"bg_bobamplitudeprone", 0,
 		"bg_bobamplitudestanding", 0,
 		"cg_drawSpectatorMessages", 1,
-		"cg_drawSpectatorMessages", 1,
 		"motd", level.dvar["motd"],
 		"player_sprintTime", 12.8,
 		"show_hud", true,
@@ -96,8 +95,20 @@ playerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, v
 	if ( self.sessionteam == "spectator" || game["state"] == "endmap" )
 		return;
 
-	if ( isPlayer( eAttacker ) && sMeansOfDeath == "MOD_MELEE" && isKnifingWall( eAttacker, self ) )
-		return;
+	if ( self.ghost )
+	{
+		if ( sMeansOfDeath == "MOD_FALLING" || sMeansOfDeath == "MOD_UNKNOWN" || sMeansofDeath == "MOD_TRIGGER_HURT" || sMeansofDeath == "MOD_SUICIDE" )
+		{
+			if ( sMeansOfDeath == "MOD_FALLING" && iDamage < 50 )
+				return;
+
+			origin = level.spawn["allies"][randomInt( level.spawn["allies"].size )].origin;
+			self setOrigin( origin );
+			return;
+		}
+		else
+			return;
+	}
 
 	if ( isPlayer( eAttacker ) )
 	{
@@ -105,6 +116,7 @@ playerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, v
 		{
 			if ( eAttacker getStat( 994 ) == 0 || eAttacker getStat( 994 ) == 2 )
 				eAttacker thread drawHitmarker();
+
 			return;
 		}
 		else
@@ -113,6 +125,9 @@ playerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, v
 				eAttacker thread drawHitmarker();
 		}
 	}
+
+	if ( isPlayer( eAttacker ) && sMeansOfDeath == "MOD_MELEE" && isKnifingWall( eAttacker, self ) )
+		return;
 
 	// Prevent taking damage before round starts
 	if ( !game["roundStarted"] )
@@ -144,6 +159,12 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		self.trail delete();
 	}
 
+	if ( self.ghost )
+	{
+		self.ghost = false;
+		self setClientDvar( "ui_practice_state", false );
+	}
+
 	if ( self.sessionteam == "spectator" || game["state"] == "endmap" )
 		return;
 
@@ -151,9 +172,9 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 
 	if ( !level.trapsDisabled )
 	{
-		if ( isDefined( level.activ ) && level.activ != self && level.activ isPlaying() )
+		if ( isDefined( level.activ ) && level.activ != self && level.activ isPlaying() && !self.ghost )
 		{
-			if ( sMeansOfDeath == "MOD_UNKNOWN" || sMeansOfDeath == "MOD_FALLING" || sMeansOfDeath == "MOD_SUICIDE" )
+			if ( sMeansOfDeath == "MOD_UNKNOWN" || sMeansOfDeath == "MOD_FALLING" || sMeansOfDeath == "MOD_SUICIDE" || sMeansOfDeath == "MOD_TRIGGER_HURT" )
 				level.activ braxi\_rank::giveRankXP( "jumper_died" );
 		}
 	}
@@ -176,11 +197,8 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self.statusicon = "hud_status_dead";
 	self.sessionstate = "spectator";
 
-	if ( isPlayer( attacker ) )
+	if ( isPlayer( attacker ) && attacker == self )
 	{
-		if ( attacker == self )
-			return;
-
 		braxi\_rank::processXpReward( sMeansOfDeath, attacker, self );
 
 		attacker.kills++;
@@ -189,7 +207,7 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 
 	self.died = true;
 
-	if ( !level.freeRun )
+	if ( !level.freeRun && !self.ghost )
 	{
 		deaths = self maps\mp\gametypes\_persistence::statGet( "deaths" );
 		self maps\mp\gametypes\_persistence::statSet( "deaths", deaths + 1 );
@@ -207,6 +225,6 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 		}
 	}
 
-	if ( self.pers["team"] != "axis" )
+	if ( self.pers["team"] == "allies" )
 		self thread braxi\_mod::respawnPlayer();
 }
