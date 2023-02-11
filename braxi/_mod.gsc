@@ -360,8 +360,8 @@ pickActivator()
 
     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
-    // while ( hasBeenActivator( level.activ ) )
-    //     level.activ = level.jumpers[randomInt( level.jumpers.size )];
+    while ( hasBeenActivator( level.activ ) )
+        level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
     wait level.dvar["spawn_time"] / 2;
 
@@ -544,6 +544,7 @@ afterFirstFrame()
     self thread watchPlayerHealth();
     self thread drawSpray();
     self thread drawTrail();
+    self thread watchItems();
 }
 
 spawnSpectator( origin, angles )
@@ -592,7 +593,7 @@ respawnPlayer()
         while ( true )
         {
             if ( self useButtonPressed() )
-                self spawnPlayer();
+                self useLife();
 
             if ( self fragButtonPressed() )
                 self thread plugins\_ghostrun::spawnGhost();
@@ -826,6 +827,52 @@ drawTrail()
 	}
 }
 
+watchItems()
+{
+    if ( self.pers["team"] == "axis" )
+        return;
+
+    self endon( "spawned_player" );
+    self endon( "disconnect" );
+
+    insertionItem = "claymore_mp";
+    self giveWeapon( insertionItem );
+    self giveMaxAmmo( insertionItem );
+    self setActionSlot( 3, "weapon", insertionItem );
+
+    while ( self isPlaying() )
+    {
+        self waittill( "grenade_fire", entity, weapName );
+
+        if ( weapName != insertionItem )
+            continue;
+
+        self giveMaxAmmo( insertionItem );
+
+        entity waitTillNotMoving();
+        pos = entity.origin;
+        angle = entity.angles;
+
+        if ( !self isOnGround() || distance( self.origin, pos ) > 48 )
+        {
+            self iPrintlnBold( "^1You can't use insertion here" );
+            entity delete();
+            continue;
+        }
+
+        self cleanUpInsertion();
+        self.insertion = entity;
+
+        self iPrintlnBold( "Insertion at ^8" + pos );
+    }
+}
+
+cleanUpInsertion()
+{
+    if ( isDefined( self.insertion ) )
+        self.insertion delete( );
+}
+
 delayStartRagdoll( ent, sHitLoc, vDir, sWeapon, eInflictor, sMeansOfDeath )
 {
     if ( isDefined( ent ) )
@@ -936,4 +983,32 @@ drawInformation( start_offset, movetime, mult, text )
 	wait movetime;
 
 	hud destroy();
+}
+
+giveLife()
+{
+    if ( self.pers["lifes"] >= 3 )
+        return;
+
+    self.pers["lifes"]++;
+}
+
+useLife()
+{
+	if( !self.pers["lifes"] || self isPlaying() )
+		return; 
+
+	self.pers["lifes"]--;
+
+	if( !self.pers["lifes"] )
+		self iPrintlnBold( "This was your last life, don't waste it" );
+	else
+		self iprintlnBold( "You used one of your additional lifes" );
+
+    if ( isDefined( self.insertion ) )
+        self spawnPlayer( self.insertion.origin, ( 0, self.insertion.angles[1], 0 ) );
+    else
+        self spawnPlayer();
+
+	self.usedLife = true;
 }

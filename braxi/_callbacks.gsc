@@ -26,6 +26,7 @@ playerConnect()
 		self.pers["headshots"] = 0;
 		self.pers["knifes"] = 0;
 		self.pers["time"] = 99999;
+		self.pers["lifes"] = 0;
 	}
 	else
 	{
@@ -197,12 +198,15 @@ playerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitL
 	self.statusicon = "hud_status_dead";
 	self.sessionstate = "spectator";
 
-	if ( isPlayer( attacker ) && attacker == self )
+	if ( isPlayer( attacker ) && attacker != self )
 	{
 		braxi\_rank::processXpReward( sMeansOfDeath, attacker, self );
 
 		attacker.kills++;
 		attacker.pers["kills"]++;
+
+		if ( self.pers["team"] == "axis" )
+			attacker braxi\_mod::giveLife();
 	}
 
 	self.died = true;

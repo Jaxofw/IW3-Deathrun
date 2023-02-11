@@ -87,15 +87,21 @@ onMenuResponse()
 			{
 				case "autoassign":
                     if ( self.pers["team"] == "axis" )
-                        continue;
+						continue;
 
-                    self braxi\_teams::setTeam( "allies" );
+					self braxi\_teams::setTeam( "allies" );
 
-                    if ( self.sessionstate == "playing" )
-                        continue;
+					if ( self.pers["team"] == "allies" && !self isPlaying() && self.pers["lifes"] )
+					{
+						self braxi\_mod::useLife();
+						continue;
+					}
 
-                    if ( self canSpawn() )
-                        self braxi\_mod::spawnPlayer();
+					if ( self.sessionstate == "playing" || game["state"] == "endround" )
+						continue;
+
+					if ( self canSpawn() )
+						self braxi\_mod::spawnPlayer();
 					else
 						self thread plugins\_ghostrun::spawnGhost();
                     break;

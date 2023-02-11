@@ -1,5 +1,6 @@
 preCache()
 {
+	preCacheItem( "claymore_mp" );
 	preCacheShader( "white" );
 	preCacheShader( "hud_notify" );
 	preCacheShader( "ui_footer" );
@@ -181,7 +182,7 @@ isPlaying()
 
 canSpawn()
 {
-	if ( level.freeRun )
+	if ( level.freeRun || self.pers["lifes"] )
 		return true;
 
 	if ( game["state"] == "playing" || game["state"] == "endround" || game["state"] == "endmap" )
@@ -613,6 +614,20 @@ toUpper( letter )
 			return "Z";
 		default:
 			return letter;
+	}
+}
+
+waitTillNotMoving()
+{
+	prevorigin = self.origin;
+	while ( isDefined( self ) )
+	{
+		wait .15;
+
+		if ( self.origin == prevorigin )
+			break;
+
+		prevorigin = self.origin;
 	}
 }
 
