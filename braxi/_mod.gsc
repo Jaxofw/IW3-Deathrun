@@ -189,21 +189,19 @@ endRound( reason, winner )
         level endMap();
         return;
     }
-    else
-    {
-        iPrintLnBold( reason );
-        iPrintLnBold( "Starting Round ^8" + game["roundsplayed"] + "/" + level.dvar["round_limit"] );
 
-        for ( i = 0; i < players.size; i++ )
-            players[i] setClientDvars( "ui_rounds_played", game["roundsplayed"] );
-    }
+    iPrintLnBold( reason );
+    iPrintLnBold( "Starting Round ^8" + game["roundsplayed"] + "/" + level.dvar["round_limit"] );
+
+    for ( i = 0; i < players.size; i++ )
+        players[i] setClientDvars( "ui_rounds_played", game["roundsplayed"] );
 
     ambientStop( 0 );
     playSound( "end_round_" + randomIntRange( 0, 9 ) );
 
     wait 10;
 
-	map_restart( true );
+    map_restart( true );
 }
 
 endMap()
