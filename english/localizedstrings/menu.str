@@ -3437,7 +3437,10 @@ LANG_ENGLISH        "Show Keys"
 REFERENCE           TOGGLE_FPS
 LANG_ENGLISH        "Show FPS Counter"
 
-REFERENCE           "TOGGLE_GHOST_CTRLS
+REFERENCE           TOGGLE_GHOST_CTRLS
 LANG_ENGLISH        "Show Practice Controls"
+
+REFERENCE           TOGGLE_TIME_WR
+LANG_ENGLISH        "Show WR Time"
 
 ENDMARKER

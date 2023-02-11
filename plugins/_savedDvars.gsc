@@ -45,6 +45,7 @@ fetchHud()
         "ui_compass_vis", self getStat( 1000 ),
         "ui_spec_keys_vis", self getStat( 1001 ),
         "ui_spec_fps_vis", self getStat( 1002 ),
-        "ui_practice_controls_vis", self getStat( 1003 )
+        "ui_practice_controls_vis", self getStat( 1003 ),
+        "ui_time_wr_vis", self getStat( 1004 )
     );
 }

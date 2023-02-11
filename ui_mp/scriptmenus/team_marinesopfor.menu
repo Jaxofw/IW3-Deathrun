@@ -58,7 +58,8 @@
 		ARCANE_DVARFLOATLIST( 2, "@MENU_TOGGLE_KEYS", ui_spec_keys_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "keys" )
 		ARCANE_DVARFLOATLIST( 3, "@MENU_TOGGLE_FPS", ui_spec_fps_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "fps_counter" )
 		ARCANE_DVARFLOATLIST( 4, "@MENU_TOGGLE_GHOST_CTRLS", ui_practice_controls_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "ghost_controls" )
-		BUTTON_PAGE_PREV( 5, settings )
+		ARCANE_DVARFLOATLIST( 5, "@MENU_TOGGLE_TIME_WR", ui_time_wr_vis, { "@MENU_YES" 1 "@MENU_NO" 0 }, scriptMenuResponse "time_wr" )
+		BUTTON_PAGE_PREV( 6, settings )
 	}
 
 	menuDef

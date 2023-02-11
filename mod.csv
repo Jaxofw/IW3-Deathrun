@@ -109,6 +109,7 @@ material,ui_menu_button
 material,menu_lock
 material,hud_notify
 material,ui_footer
+material,ui_footer_wr
 material,menu_mapvote_footer
 material,menu_mapvote_user
 material,ui_crown

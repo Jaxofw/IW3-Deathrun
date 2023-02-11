@@ -12,6 +12,7 @@
 #define KEYS_VIS                    dvarBool( "ui_spec_keys_vis" )
 #define FPS_VIS                     dvarBool( "ui_spec_fps_vis" )
 #define PRACTICE_CTRLS_VIS          dvarBool( "ui_practice_controls_vis" )
+#define TIME_WR_VIS                 dvarBool( "ui_time_wr_vis" )
 
 #define GAME_STATE                  dvarString( "ui_game_state" )
 #define ROUND_CURRENT               dvarInt( "ui_rounds_played" )
@@ -143,3 +144,9 @@
     CREATE_TEXT_VIS( 20 117 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+melee" ) + "] ^7to ^1Save ^7Position", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING ) \
     CREATE_TEXT_VIS( 20 131 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+frag" ) + "] ^7to ^2Load ^7Position", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING ) \
     CREATE_TEXT_VIS( 20 145 0 0 ITEM_ALIGN, "Press ^8[" + KeyBinding( "+smoke" ) + "] ^7to Stop Practicing", 1 1 1 1, 0.26, 0, PRACTICE_CTRLS_VIS && PRACTICING )
+
+#define TIME_RECORD \
+    CREATE_SHADER_VIS( 17 415 25 20 ITEM_ALIGN, "hud_square_round_left", 0 0 0 0.6, TIME_WR_VIS ) \
+    CREATE_SHADER_VIS( 42 415 25 20 ITEM_ALIGN, "hud_square_round_right", 0 0 0 0.6, TIME_WR_VIS ) \
+    CREATE_SHADER_VIS( 17 432.8 50 2 ITEM_ALIGN, "ui_footer_wr", 1 1 1 1, TIME_WR_VIS ) \
+    CREATE_TEXT_VIS( 41 430 0 0 ITEM_ALIGN, dvarString( "ui_lb_place_0_value" ), 1 1 1 1, 0.24, 1, TIME_WR_VIS )

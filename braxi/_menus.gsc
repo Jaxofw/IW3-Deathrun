@@ -295,6 +295,14 @@ onMenuResponse()
 
 					self setClientDvar( "ui_practice_controls_vis", self getStat( 1003 ) );
 					break;
+				case "time_wr":
+					if ( self getStat( 1004 ) == 0 )
+						self setStat( 1004, 1 );
+					else
+						self setStat( 1004, 0 );
+
+					self setClientDvar( "ui_time_wr_vis", self getStat( 1004 ) );
+					break;
 			}
 		}
 		else if ( menu == game["menu_quickstuff"] )
