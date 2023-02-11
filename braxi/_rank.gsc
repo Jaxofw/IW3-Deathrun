@@ -118,7 +118,8 @@ giveRankXP( type, value )
 
     if ( level.freeRun )
         value = int( value * 0.5 );
-    else if ( game["state"] != "playing" )
+
+    if ( game["state"] != "playing" )
         value = 0;
 
     // XP Events
