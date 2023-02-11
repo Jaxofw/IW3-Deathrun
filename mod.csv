@@ -33,6 +33,7 @@ menufile,ui_mp/includes/hud.inc
 menufile,ui_mp/includes/maprecords.inc
 menufile,ui_mp/includes/mapvote.inc
 menufile,ui_mp/includes/leaderboard.inc
+menufile,ui_mp/main.menu
 menufile,ui_mp/connect.menu
 menufile,ui_mp/hud.menu
 menufile,ui_mp/wm_quickmessage.menu
@@ -100,6 +101,7 @@ material,rank_48
 material,rank_49
 
 # Menu Assets
+material,ui_menu_main_bg
 material,ui_square_round
 material,menu_rank_bar
 material,menu_button_border

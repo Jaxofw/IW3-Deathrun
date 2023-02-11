@@ -1,0 +1,36 @@
+#include "ui/menudef.h"
+#include "ui_mp/includes/arcane.inc"
+
+#undef	FOG_SCROLL_TIME
+#define FOG_SCROLL_TIME 60000 //30000
+
+#undef	THINFOG_SCROLL_TIME
+#define THINFOG_SCROLL_TIME 100000 //50000
+
+{
+    menuDef
+	{
+		name			"main_text"
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		style			WINDOW_STYLE_EMPTY
+        focuscolor 		1 1 1 1
+        soundloop 		"music_mainmenu_mp"
+        onEsc           {}
+		
+        itemDef
+		{
+			rect			107 0 854 480 1 0
+			style 			WINDOW_STYLE_SHADER
+			forecolor 		1 1 1 1
+			background		"ui_menu_main_bg"
+			visible 		1
+		}
+
+        BUTTON_ARCANE( 1, "Join Arcane Deathrun", exec "connect 51.68.121.71:28960"; )
+		BUTTON_ARCANE( 2, "@MENU_SELECT_PROFILE", setdvar ui_playerProfileAlreadyChosen 0; open player_profile )
+		BUTTON_ARCANE( 3, "@MENU_CONTROLS", open main_controls )
+		BUTTON_ARCANE( 4, "@MENU_OPTIONS", open main_options )
+		BUTTON_ARCANE( 5, "@MENU_UNLOAD_MOD", uitScript ClearMods )
+		BUTTON_ARCANE( 6, "@MENU_QUIT", open quit_popmenu )
+	}
+}
