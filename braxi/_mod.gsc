@@ -33,6 +33,7 @@ main()
 
     thread braxi\_rank::init();
     thread braxi\_menus::init();
+    thread braxi\_admin::init();
     braxi\_maps::init();
     braxi\_teams::init();
     braxi\_killcam::init();

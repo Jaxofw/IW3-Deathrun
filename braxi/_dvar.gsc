@@ -18,6 +18,9 @@ init()
     addDvar( "spray_delay", "int", 4, 1, 5 );
 
     addDvar( "motd", "string", "Visit discord.gg/ArcaneNW" );
+
+    addDvar( "warns_stat", "int", 2360, 1, 9999 );
+    addDvar( "warns_max", "int", 5, 2, 20 );
 }
 
 // From Bell's CoD1 AWE mod

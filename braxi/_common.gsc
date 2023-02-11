@@ -470,6 +470,23 @@ new_ending_hud( align, fade_in_time, x_off, y_off )
 	return hud;
 }
 
+bounce( pos, power )
+{
+	oldhp = self.health;
+	self.health = self.health + power;
+	self setClientDvars( "bg_viewKickMax", 0, "bg_viewKickMin", 0, "bg_viewKickRandom", 0, "bg_viewKickScale", 0 );
+	self finishPlayerDamage( self, self, power, 0, "MOD_PROJECTILE", "none", undefined, pos, "none", 0 );
+	self.health = oldhp;
+	self thread bounce2();
+}
+
+bounce2()
+{
+	self endon( "disconnect" );
+	wait .05;
+	self setClientDvars( "bg_viewKickMax", 90, "bg_viewKickMin", 5, "bg_viewKickRandom", 0.4, "bg_viewKickScale", 0.2 );
+}
+
 getHitLocHeight( sHitLoc )
 {
     switch ( sHitLoc )
