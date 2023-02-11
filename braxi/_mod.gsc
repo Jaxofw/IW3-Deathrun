@@ -361,8 +361,8 @@ pickActivator()
 
     level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
-    // while ( hasBeenActivator( level.activ ) )
-    //     level.activ = level.jumpers[randomInt( level.jumpers.size )];
+    while ( hasBeenActivator( level.activ ) )
+        level.activ = level.jumpers[randomInt( level.jumpers.size )];
 
     wait level.dvar["spawn_time"] / 2;
 
