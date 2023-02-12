@@ -26,11 +26,12 @@
 			visible 		1
 		}
 
-        BUTTON_ARCANE( 1, "Join Arcane Deathrun", exec "connect 51.68.121.71:28960"; )
-		BUTTON_ARCANE( 2, "@MENU_SELECT_PROFILE", setdvar ui_playerProfileAlreadyChosen 0; open player_profile )
-		BUTTON_ARCANE( 3, "@MENU_CONTROLS", open main_controls )
-		BUTTON_ARCANE( 4, "@MENU_OPTIONS", open main_options )
-		BUTTON_ARCANE( 5, "@MENU_UNLOAD_MOD", uitScript ClearMods )
-		BUTTON_ARCANE( 6, "@MENU_QUIT", open quit_popmenu )
+        BUTTON_ARCANE( 1, "Join Arcane Deathrun", exec "connect 51.68.121.71:28960" )
+        BUTTON_ARCANE( 2, "@MENU_SERVER_BROWSER", open pc_join_unranked )
+		BUTTON_ARCANE( 3, "@MENU_SELECT_PROFILE", setdvar ui_playerProfileAlreadyChosen 0; open player_profile )
+		BUTTON_ARCANE( 4, "@MENU_CONTROLS", open main_controls )
+		BUTTON_ARCANE( 5, "@MENU_OPTIONS", open main_options )
+		BUTTON_ARCANE( 6, "@MENU_UNLOAD_MOD", uitScript ClearMods )
+		BUTTON_ARCANE( 7, "@MENU_QUIT", open quit_popmenu )
 	}
 }

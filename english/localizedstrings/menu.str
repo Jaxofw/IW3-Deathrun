@@ -3347,6 +3347,9 @@ LANG_ENGLISH        "Winning with &&1 of &&2 points."
 REFERENCE           100PERCENT
 LANG_ENGLISH        "100%"
 
+REFERENCE           SERVER_BROWSER
+LANG_ENGLISH        "Server Browser"
+
 REFERENCE           UNLOAD_MOD
 LANG_ENGLISH        "Unload Mod"
 
